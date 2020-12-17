@@ -1,0 +1,65 @@
+<header>
+  <div class="top-header">
+    <div class="container-fluid pl-pr-10 ">
+     <div class="d-flex justify-content-between">
+       <nav class="left">
+         <a routerLink="home"></a>
+         <a routerLink="home"> {{'hello' | translate }}</a>
+         <a routerLink="home">FAQ</a>
+         <a routerLink="home">Haqqımızda</a>
+         <a routerLink="home">Əlaqə</a>
+         <a routerLink="home">Xidmətlər</a>
+       </nav>
+       <div class="top-header-right right ">
+         <div class="phone">
+           <span>Məlumat mərkəzi</span>
+           <span>  *2112</span>
+         </div>
+         <div class="langs">
+           <div class="dropdown">
+             <mat-form-field [ngStyle]="{'border':'white'}" appearance="none" >
+               <mat-select [(value)]="selected" (valueChange)="SetLanguage(selectField.value)" #selectField >
+                 <mat-select-trigger>
+                   <a role="button" class="lang">
+                     <div class="flag">
+                       <img width="100%" [src]="select.img"  >
+                     </div>
+                     <span> {{select.name}}</span>
+                   </a>
+                 </mat-select-trigger>
+                 <mat-option *ngFor="let lang of languages"  [value]="lang.value" >
+                   <a role="button" class="lang">
+                     <div class="flag">
+                       <img width="100%" [src]="lang.img"  >
+                     </div>
+                     <span> {{lang.name}}</span>
+                   </a>
+                 </mat-option>
+               </mat-select>
+             </mat-form-field>
+           </div>
+         </div>
+       </div>
+     </div>
+    </div>
+  </div>
+  <div class="container-fluid pl-pr-10 ">
+
+  <a href="https://camex.az?lang=az" class="logo lg-logo"></a>
+
+  <!-- registration -->
+
+  <!-- registration -->
+
+  <div class="menu">
+    <ul>
+      <li><a href="#"><i class="fal fa-bags-shopping"></i>Mağazalar</a></li>
+      <li><a href="#">Tariflər</a></li>
+      <li><a href="#">Kalkulyator</a></li>
+      <li><a href="#">KURYER</a></li>
+    </ul>
+  </div>
+
+</div>
+</header>
+

@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Languages} from './models/languages';
 import {TranslateService} from '@ngx-translate/core';
-
+import {MatButtonModule} from '@angular/material/button';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -44,7 +44,6 @@ export class NavbarComponent implements OnInit {
       img:'../../assets/image/navbar/ru.svg'
     }
   ]
-
     this.select=this.languages.find(l=>l.value==this.selected)
   }
 

@@ -1,0 +1,33 @@
+<mat-sidenav-container autosize >
+  <mat-sidenav #sidenav [mode]="over">
+    <div class="mobile-navbar-slider d-flex justify-content-between align-items-center">
+      <a routerLink="" class="logo white-logo"></a>
+      <i class="fal fa-times close nav-btn" (click)="sidenav.toggle()"></i>
+    </div>
+    <div class="nav-item-list">
+      <ul>
+        <li><a href="">Gİrİş</a></li>
+        <li><a href="">ana səhİfə</a></li>
+        <li><a href="">mağazalar</a></li>
+        <li><a href="">tarİflər</a></li>
+        <li><a href="">xəbərlər</a></li>
+        <li><a href="">faq</a></li>
+        <li><a href="">haqqımızda</a></li>
+        <li><a href="">əlaqə</a></li>
+      </ul>
+    </div>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content >
+   <div class=" justify-content-between align-items-center mobile-navbar-head">
+     <a routerLink="" class="logo"></a>
+     <i class="fal fa-bars open nav-btn" (click)="sidenav.toggle()"></i>
+   </div>
+    <ng-content>
+    </ng-content>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+<mat-sidenav-container class="example-container" autosize>
+</mat-sidenav-container>

@@ -9,15 +9,18 @@ import {Routes,RouterModule} from '@angular/router'
 import { LoaderComponent } from './loader/loader.component';
 import { AboutComponent } from './about/about.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatSelectModule} from '@angular/material/select';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-
+import { MobileNavbarComponent } from './mobile-navbar/mobile-navbar.component';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatRadioModule} from "@angular/material/radio";
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
 const routes: Routes=[
-  { path: "",redirectTo:"home",pathMatch:"full", data: {animation: 'Home'}},
-  { path:"home",  component:HomeComponent, data: {animation: 'Home'} },
+  { path: "home", redirectTo:"" ,pathMatch:"full", data: {animation: 'Home'}},
+  { path:"",  component:HomeComponent, data: {animation: 'Home'} },
   { path:"about",  component:AboutComponent, data: {animation: 'About'} },
   { path:"**", redirectTo:"error404",data: {animation: 'Error'}},
   { path:"**", component:ErrorComponent,data: {animation: 'Error'}}
@@ -31,6 +34,7 @@ const routes: Routes=[
     LoaderComponent,
     AboutComponent,
     NavbarComponent,
+    MobileNavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,13 +43,16 @@ const routes: Routes=[
     MatFormFieldModule,
     MatSelectModule,
     HttpClientModule,
+    MatButtonModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: httpTranslateLoader,
         deps: [HttpClient]
       }
-    })
+    }),
+    MatSidenavModule,
+    MatRadioModule,
   ],
   exports:[
     RouterModule

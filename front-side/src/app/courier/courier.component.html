@@ -1,0 +1,33 @@
+<app-navbar>
+</app-navbar>
+<app-mobile-navbar>
+</app-mobile-navbar>
+<app-banner [name]="name" [bannerSrc]="bannerSrc"></app-banner>
+<section id="courier">
+  <div class="container-fluid  pl-pr-10 pt-5 ">
+     <div class="col-12 mt-3">
+       <h1>Courier service</h1>
+     </div>
+     <div class="d-flex flex-wrap">
+        <div class="col-lg-6  col-md-6 col-sm-12 col-12" *ngFor="let zone of zones; let i = index">
+           <div class="bg-color pr-1 pl-1">
+             <div class="pr-3 pl-3 pt-3 pb-5">
+               <h1>Zone {{i+1}}</h1>
+               <p>{{zone.zoneNames.concat()}}</p>
+               <h2 class="font-weight-bold float-right">{{zone.price}} AZN</h2>
+             </div>
+           </div>
+        </div>
+      </div>
+    <div class="col-12 w-100  pb-3">
+      <div class="float-right mt-5 text-right">
+        Call center:
+        <b>*2112</b>
+        <br>
+        E-mail address:
+       <b> alocourier@camex.az</b>
+      </div>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>

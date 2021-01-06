@@ -11,5 +11,6 @@ export class AboutComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  name:string="About"
+  bannerSrc:string="../../assets/image/banners/about-banner.jpg";
 }

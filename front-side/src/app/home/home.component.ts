@@ -1,15 +1,43 @@
+import {AfterContentChecked, AfterViewChecked, AfterViewInit, ElementRef, ViewEncapsulation} from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import * as Parallax from 'parallax-js';
+import {Country} from './models/country';
+import {  MatInputModule } from '@angular/material/input';
+import { Office } from './models/office';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  host: {
+    '(window:resize)': 'onResize()'
+  },
+  encapsulation: ViewEncapsulation.None
 })
-export class HomeComponent implements OnInit {
 
-  constructor() { }
+export class HomeComponent implements OnInit {
+  constructor(private elementRef: ElementRef) {
+    this.border= window.innerWidth / 2 + 160 + 'px solid transparent'
+  }
   ngOnInit(): void {
+    var scene = this.elementRef.nativeElement.querySelectorAll(".parallax").forEach(layer=>{
+      var parallax = new Parallax(layer)
+    })
+    this.countries=[ {
+      name:'turkey',
+      value:'1',
+    },]
+    this.offices=[ {
+      name:'Nefciler',
+      value:'1',
+    },]
   }
 
 
+  countries:Country[]=[];
+  offices:Office[]=[];
+  border:string;
+  onResize(){
+    this.border = window.innerWidth / 2 + 160 + 'px solid transparent'
+  }
 }

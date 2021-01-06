@@ -1,7 +1,186 @@
+<app-navbar>
+</app-navbar>
 <app-mobile-navbar>
-  <div>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam aspernatur consequuntur corporis cumque, dolorum earum maxime numquam officia placeat quas, quidem sunt, tenetur! Delectus excepturi, maiores numquam reprehenderit veritatis voluptate.
-    {{'hello' | translate }}
-  </div>
 </app-mobile-navbar>
-
+<section id="home-banner"  >
+  <div class="home-banner " >
+    <div class="slider "  >
+      <div class="img-box active text-center parallax" data-depth="0.005">
+        <div class="images parallax " data-depth="0.01">
+          <div class="img-bg parallax"data-depth="0.1" >
+            <div class="text layer " data-depth="0.12" >
+              <span class="" >Camex</span>
+              <h2  lang="ka">Your Partner In The Skies</h2>
+            </div>
+          </div>
+          <div class="img-top"  data-depth="0.09"></div>
+          <div class="img-bottom" data-depth="0.09"></div>
+          <div class="cloud img-left visible layer" data-depth="0.25"></div>
+          <div class="cloud img-right visible layer" data-depth="0.25"></div>
+        </div>
+      </div>
+    </div>
+    <span class="tringle left" [ngStyle]="{'border-right':border}"></span>
+    <span class="tringle right" [ngStyle]="{'border-left':border}"></span>
+    <span class="tringle left-bottom" [ngStyle]="{'border-right':border}"></span>
+    <span class="tringle right-bottom" [ngStyle]="{'border-left':border}"></span>
+  </div>
+</section >
+<section id="serviceNcalc" >
+  <div class="container-fluid pl-pr-10 ">
+    <div class="row p-0">
+      <div class="col-lg-8 col-md-12 col-sm-12 p-0">
+        <div class="services">
+          <span>Xidmətlər</span>
+          <h2 class="mb-5">Biz  təklif edirik   </h2>
+          <div class="row items p-0 m-0">
+            <a href="#" class="col-lg-3 col-md-4 col-xs-4 col-12 item" >
+              <div class="text-middle mt-icon"><div class="icon m-auto"></div></div>
+              <div class="title">Bağlamaların daşınılması</div>
+              <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+            </a>
+            <a href="#" class="col-lg-3 col-md-4 col-xs-4 col-12 item ">
+              <div class="text-middle  mt-icon"><div class="icon m-auto"></div></div>
+              <div class="title">Korporativ xidmətlər</div>
+              <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+            </a>
+            <a href="#" class="col-lg-3 col-md-4 col-xs-4 col-12 item">
+              <div class="text-middle mt-icon"><div class="icon m-auto"></div></div>
+              <div class="title">Şəhər daxili  Kuryer  xidməti</div>
+              <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-12 col-sm-12 p-0">
+        <div class="calc">
+          <div class="head d-flex align-items-center text-middle">
+           <div class="icon-main">
+             <div class="icon"></div>
+           </div>
+            <div class="title">Kalkulyator</div>
+          </div>
+          <div class="box">
+            <div class="row p-0 m-0">
+              <mat-form-field appearance="fill"  class="country">
+                <mat-label>Country</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let country of countries" [value]="country.value"  class="text-uppercase">
+                    {{country.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="fill"  class="country">
+                <mat-label>Issuing office</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let office of offices" [value]="office.value"  class="text-uppercase">
+                    {{office.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <div class="col-lg-6 d-flex p-0 pr-lg-1 ">
+                <div class="col-12 p-0">
+                  <mat-form-field appearance="fill"  class="lenght">
+                    <mat-label>Lenght</mat-label>
+                    <mat-select>
+                      <mat-option  value="cm"  class="text-uppercase">
+                        CM
+                      </mat-option>
+                      <mat-option  value="in"  class="text-uppercase">
+                        IN
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-lg-6 p-0 d-flex pl-lg-1">
+                <div class="col-12 p-0 ">
+                  <mat-form-field appearance="fill"  class="weight float-right">
+                    <mat-label>Weight</mat-label>
+                    <mat-select>
+                      <mat-option  value="kg"  class="text-uppercase">
+                        KG
+                      </mat-option>
+                      <mat-option  value="lb"  class="text-uppercase">
+                        LB
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="items d-flex">
+              <div class="col-3 p-0">
+                <mat-form-field appearance="fill">
+                  <mat-label>Çəki</mat-label>
+                  <input type="number" min="0" value="0" matInput >
+                </mat-form-field>
+              </div>
+              <div class="col-3 p-0">
+                <mat-form-field appearance="fill">
+                  <mat-label>Uzunluq</mat-label>
+                  <input type="number" min="0" value="0" matInput >
+                </mat-form-field>
+              </div>
+              <div class="col-3 p-0">
+                <mat-form-field appearance="fill">
+                  <mat-label>Eni</mat-label>
+                  <input type="number" min="0" value="0" matInput >
+                </mat-form-field>
+              </div>
+              <div class="col-3 p-0">
+                <mat-form-field appearance="fill">
+                  <mat-label>Hündürlük</mat-label>
+                  <input type="number" min="0" value="0" matInput>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="bottom">
+              <div class="row p-0">
+                <div class="col-lg-5 col-sm-6 col-6 text-sm-right text-xs-left">
+                  <span class="cost-title">Təqribi qiymət</span>
+                  <h4 class="cost">0$</h4>
+                </div>
+                <div class="col-lg-7 col-sm-6 col-6">
+                  <button mat-raised-button>DAŞINMA HAQQINI HESABLA</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <span class="tringle left" [ngStyle]="{'border-right':border}"></span>
+  <span class="tringle right" [ngStyle]="{'border-left':border}"></span>
+</section>
+<section id="news" class="mt-5 mb-5" >
+  <div class="container-fluid pl-pr-10 h-100">
+    <div class="row p-2  h-100 ">
+      <div class="col-lg-4 col-12 p-0 dark item">
+        <a href="">
+          <div class="w-100 h-100">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at autem beatae consectetur consequatur, consequuntur ducimus excepturi exercitationem facilis harum libero magnam minima modi mollitia officiis qui, rem, vero voluptatibus?
+          </div>
+        </a>
+      </div>
+      <div class="col-lg-4 col-6 p-0 h-100 item mob-flex">
+        <a href="" class="col-lg-12 col-md-12 col-12 p-0 mob-pad">
+          <div class="blue-dark">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquam architecto, beatae cupiditate dolorem esse excepturi iusto minima nihil non officiis optio quam qui quidem quos suscipit temporibus. Fugiat, molestiae?</div>
+        </a>
+        <a href="" class="col-lg-12 col-md-12 col-12 p-0 mob-pad">
+          <div class="blue">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquam architecto, beatae cupiditate dolorem esse excepturi iusto minima nihil non officiis optio quam qui quidem quos suscipit temporibus. Fugiat, molestiae?</div>
+        </a>
+      </div>
+      <div class="col-lg-4 col-12 p-0 gray item">
+        <a href="">
+          <div class="w-100 h-100">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at autem beatae consectetur consequatur, consequuntur ducimus excepturi exercitationem facilis harum libero magnam minima modi mollitia officiis qui, rem, vero voluptatibus?
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>
+<app-loader></app-loader>

@@ -4,10 +4,7 @@
 }
 header{
   display: block;
-  .pl-pr-10{
-    padding-left:7%;
-    padding-right:7%;
-  }
+
   .top-header{
     background-color: #282828;
     .container-fluid{
@@ -16,6 +13,9 @@ header{
     nav{
       display: flex;
       a{
+        display: flex;
+        align-items: center;
+        text-transform: capitalize;
         position: relative;
         color: var(--gray);
         font-size: 12px;
@@ -38,9 +38,7 @@ header{
             background-image: url(../../assets/image/navbar/home-icon.png);
           }
         }
-        .active{
-          color: #2780dc;
-        }
+
         &:hover{
           color: #2780dc;
         }
@@ -49,6 +47,8 @@ header{
     .top-header-right{
       display: flex;
       .phone{
+        text-transform: capitalize;
+
         padding: 15px 20px;
         border-left: 1px solid #3d3d3d;
         span{
@@ -89,7 +89,6 @@ header{
   .menu {
     display: inline-block;
     vertical-align: top;
-
     ul{
       list-style: none;
       display: flex;
@@ -102,7 +101,7 @@ header{
           text-transform: uppercase;
           text-decoration: none;
           li{
-            padding: 22px 30px 22px 75px;
+            padding: 22px 30px 22px 73px;
             position: relative;
             transition: all .3s;
             &:after {
@@ -144,11 +143,14 @@ header{
         }
       }
   .register{
+    text-transform: capitalize;
     background-color: #2F6BB7!important;
   }
   .log-sys-btn{
+    text-transform: capitalize;
     outline: none;
-    padding: 2px 40px;
+    padding: 2px 24px;
+    box-sizing: content-box;
     font-size: 12px;
     .user-icon{
       margin-right: 12px;
@@ -157,7 +159,6 @@ header{
     }
   }
 }
-
 .lang{
   color: black;
   font-size: 12px;transition: all .3s;
@@ -191,13 +192,16 @@ header{
     padding: 0!important;
     width: 165px!important;
   }
-}
 
+}
+.active-lang{
+  color: #2780dc!important;
+}
 @media (max-width: 1200px){
   header{
     display: block!important;
 
-    .pl-pr-10{
+      .pl-pr-10{
       padding:0 2% 0 2%;
     }
     .top-header {

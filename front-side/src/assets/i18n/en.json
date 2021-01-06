@@ -1,3 +1,14 @@
 {
-  "hello": "HELLO"
+  "news": "news",
+  "FAQ": "Faq",
+  "about": "about us",
+  "contact": "contact",
+  "services": "services",
+  "call": "call center",
+  "shopping": "shopping",
+  "tariffs": "tariffs",
+  "calculator": "calculator",
+  "courier": "courier",
+  "register": "register",
+  "login": "log in"
 }

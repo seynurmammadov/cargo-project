@@ -10,7 +10,7 @@ import {fader} from '../Animations/animation';
   ]
 })
 export class AppComponent {
-  title = 'front-side';
+  title = 'Camex';
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }

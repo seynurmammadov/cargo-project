@@ -1,0 +1,31 @@
+#service{
+  background-color: #EBEEF2;
+  .bg-color{
+    background: #3179ce;
+    padding-top: 20px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    box-shadow: 3px 3px 20px 0px #c8c8c8;
+    border-radius: 30px ;
+  }
+
+  .img-white{
+    background-color: white;
+    transform: scale(1.01);
+    border-radius: 30px;
+    height: 100%;
+
+  }
+  .description{
+    color: white;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}
+@media (max-width:768px) {
+  #service{
+    .bg-color{
+      height: 100% !important;
+    }
+  }
+}

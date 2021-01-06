@@ -1,3 +1,14 @@
 {
-  "hello": "SALAM"
+  "news": "Xəbərlər",
+  "FAQ": "Faq",
+  "about": "Haqqımızda",
+  "contact": "Əlaqə",
+  "services": "Xidmətlər",
+  "call": "Məlumat mərkəzi",
+  "shopping": "Mağazalar",
+  "tariffs": "Tariflər",
+  "calculator": "Kalkulyator",
+  "courier": "Kuryer",
+  "register": "Qeydiyyat",
+  "login": "Giriş"
 }

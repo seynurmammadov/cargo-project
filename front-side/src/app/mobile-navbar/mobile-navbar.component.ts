@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {FormControl} from '@angular/forms';
+import {LanguagesService} from '../services/languages.service';
+import {Languages} from '../navbar/models/languages';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-mobile-navbar',
@@ -9,9 +12,22 @@ import {FormControl} from '@angular/forms';
 })
 export class MobileNavbarComponent implements OnInit {
 
-  constructor() { }
-  mode= new FormControl('over')
+  constructor(private languagesService:LanguagesService, private elementRef: ElementRef) {
+  }
   ngOnInit(): void {
   }
 
+  languages: Languages[]=this.languagesService.languages;
+  selected:string=this.languagesService.selected;
+  select:Languages=this.languagesService.select;
+  SetLanguage(lang){
+    this.languagesService.SetLanguage(lang);
+    this.select=this.languagesService.select;
+  }
+  hideScroll(){
+    $('body').css('overflow','hidden')
+  }
+  showScroll(){
+    $('body').css('overflow','visible')
+  }
 }

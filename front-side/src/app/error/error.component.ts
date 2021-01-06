@@ -10,7 +10,6 @@ import { ElementRef } from '@angular/core';
 export class ErrorComponent implements OnInit {
 
   constructor(private elRef: ElementRef) {
-    elRef.nativeElement.ownerDocument.body.style.overflow = 'hidden';
   }
 
   ngOnInit(): void {
@@ -54,7 +53,6 @@ export class ErrorComponent implements OnInit {
       ease: "sine.inOut",
       transformOrigin: "50% 50%"
     });
-
     gsap.to("#starsBig g", {
       rotation: "random(-30,30)",
       transformOrigin: "50% 50%",
@@ -62,11 +60,10 @@ export class ErrorComponent implements OnInit {
       repeat: -1,
       ease: "sine.inOut"
     });
-    gsap.fromTo(
-      "#starsSmall g",
-      { scale: 0, transformOrigin: "50% 50%" },
-      { scale: 1, transformOrigin: "50% 50%", yoyo: true, repeat: -1, stagger: 0.1 }
-    );
+    gsap.fromTo("#starsSmall g",{
+      scale: 0, transformOrigin: "50% 50%" },
+      {
+        scale: 1, transformOrigin: "50% 50%", yoyo: true, repeat: -1, stagger: 0.1 });
     gsap.to("#circlesSmall circle", {
       y: -4,
       yoyo: true,
@@ -93,5 +90,7 @@ export class ErrorComponent implements OnInit {
       delay: 2
     });
   }
+  loader:boolean=false;
+
 }
 

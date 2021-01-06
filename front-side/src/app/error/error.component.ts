@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import gsap from 'gsap';
-import {MatButtonModule} from '@angular/material/button';
 import { ElementRef } from '@angular/core';
 @Component({
   selector: 'app-error',

@@ -1,6 +1,4 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
-import {MatSidenavModule} from "@angular/material/sidenav";
-import {FormControl} from '@angular/forms';
 import {LanguagesService} from '../services/languages.service';
 import {Languages} from '../navbar/models/languages';
 import * as $ from 'jquery';

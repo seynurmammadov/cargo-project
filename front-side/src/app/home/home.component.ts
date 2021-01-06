@@ -1,8 +1,7 @@
-import {AfterContentChecked, AfterViewChecked, AfterViewInit, ElementRef, ViewEncapsulation} from '@angular/core';
+import { ElementRef, ViewEncapsulation} from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import * as Parallax from 'parallax-js';
 import {Country} from './models/country';
-import {  MatInputModule } from '@angular/material/input';
 import { Office } from './models/office';
 
 @Component({

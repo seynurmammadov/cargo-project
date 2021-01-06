@@ -15,7 +15,7 @@
                 <h4 class=" pt-4 pb-4 w-100 text-uppercase"><b>PERSONAL INFORMATION</b></h4>
                <div class="d-flex flex-wrap w-100">
                  <div class="col-6">
-                   <mat-form-field class="w-100">
+                   <mat-form-field class="w-100" appearance="fill">
                      <mat-label>Email</mat-label>
                      <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
                      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
@@ -27,9 +27,35 @@
                    </mat-form-field>
                  </div>
                  <div class="col-6">
-                   <mat-form-field class="w-100">
-                     <mat-label>Email</mat-label>
-                     <input type="number" matInput  placeholder="Ex. pat@example.com">
+                   <mat-form-field class="w-100" appearance="fill">
+                     <mat-label>Şəxsiyyət vəsiqəsinin seriya nömrəsi *</mat-label>
+                     <input type="number" matInput  placeholder="12345678">
+                   </mat-form-field>
+                 </div>
+                 <div class="col-6">
+                   <mat-form-field class="w-100" appearance="fill">
+                     <mat-label>Ad (İngilis herifleri ile)</mat-label>
+                     <input type="text" matInput  placeholder="12345678">
+                   </mat-form-field>
+                 </div>
+                 <div class="col-6">
+                   <mat-form-field class="w-100" appearance="fill">
+                     <mat-label>Soyad (İngilis herifleri ile)</mat-label>
+                     <input type="text" matInput  placeholder="12345678">
+                   </mat-form-field>
+                 </div>
+                 <div class="col-6">
+                   <mat-form-field class="w-100" appearance="fill">
+                     <mat-label>Ata adi (İngilis herifleri ile)</mat-label>
+                     <input type="text" matInput  placeholder="12345678">
+                   </mat-form-field>
+                 </div>
+                 <div class="col-6">
+                   <mat-form-field class="w-100" appearance="fill">
+                     <mat-label>Choose birthdate</mat-label>
+                     <input matInput [matDatepicker]="picker">
+                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                     <mat-datepicker #picker></mat-datepicker>
                    </mat-form-field>
                  </div>
                </div>

@@ -1,5 +1,4 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {MatButtonModule} from '@angular/material/button';
 import { LanguagesService } from '../services/languages.service';
 import {Languages} from './models/languages';
 

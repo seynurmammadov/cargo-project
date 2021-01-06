@@ -22,6 +22,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
+import {MatDatepickerModule,} from '@angular/material/datepicker';
 import { LanguagesService } from './services/languages.service';
 import { FooterComponent } from './footer/footer.component';
 import { BannerComponent } from './banner/banner.component';
@@ -37,6 +38,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { ServiceComponent } from './service/service.component';
 import { TitleComponent } from './title/title.component';
 import { RegisterComponent } from './register/register.component';
+import { MatNativeDateModule } from '@angular/material/core';
 const routes: Routes=[
   { path: "home", redirectTo:"" ,pathMatch:"full"},
   { path:"",  component:HomeComponent },
@@ -75,6 +77,7 @@ const routes: Routes=[
     ServiceComponent,
     TitleComponent,
     RegisterComponent,
+
   ],
     imports: [
         BrowserModule,
@@ -98,13 +101,29 @@ const routes: Routes=[
         MatTabsModule,
         MatExpansionModule,
         ReactiveFormsModule,
-        MatIconModule
+        MatIconModule,
+        MatDatepickerModule,
+        MatNativeDateModule
     ],
   exports:[
     RouterModule,
 
   ],
-  providers: [LanguagesService],
+  providers: [
+    LanguagesService,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatRadioModule,
+    MatInputModule,
+    MatTabsModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

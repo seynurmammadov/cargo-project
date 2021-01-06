@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {MatExpansionModule} from '@angular/material/expansion';
 import { Panel } from './panel';
 
 @Component({

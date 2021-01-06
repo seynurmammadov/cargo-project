@@ -1,7 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Address} from './address';
 import {FormControl, Validators} from '@angular/forms';
-import {MatIconModule} from '@angular/material/icon';
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',

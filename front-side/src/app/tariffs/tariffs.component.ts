@@ -1,5 +1,4 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {MatTabsModule} from '@angular/material/tabs';
 export interface tariffsAll {
   name:string;
   flagSrc:string;

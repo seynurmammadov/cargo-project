@@ -55,8 +55,8 @@
                 font-size: 100px;
                 width: 40vw;
                 line-height: 102px;
-                margin: 0 auto;
-                margin-top: 12px;
+                margin: 12px auto 0;
+
                 &:lang(ka){
                   font-size: 5vw ;
                   line-height: 5vw ;
@@ -157,6 +157,13 @@
     bottom: 0px;
   }
   .services{
+    .bg-color{
+      background: white;
+      padding-top: 20px;
+      margin-top: 30px;
+      margin-bottom: 20px;
+      box-shadow: 3px 3px 20px 0px #c8c8c8;
+    }
     span{
       font-size: 12px;
       letter-spacing: 4px;
@@ -179,11 +186,16 @@
         color: #5E5F61;
         display: block;
         text-align: center;
-        padding: 0;
-        padding-bottom: 17px;
+        padding:  30px 0 70px 0 !important;
         border-right: 1px solid #c7cbd0;
+        transition: 0.5s;
+
         &:last-child{
           border-right: 0;
+        }
+        &:hover{
+          background-color:  #ebeef2;
+          box-shadow: inset 0px 0px 15px 13px #dee2e7;
         }
         .title{
           font-size: 13px;
@@ -198,7 +210,7 @@
           font-size: 17px;
           color: #0870EB;
           position: absolute;
-          bottom: 10px;
+          bottom: 40px;
           right: 45%;
           left: 45%;
         }
@@ -342,18 +354,53 @@
   .dark{
     height: 100%;
     background-color: #354558;
+    a{
+      color: white;
+    }
   }
   .blue-dark{
     height: 50%;
     background-color:#0D2949 ;
+    color: #d0d0d0;
+    p{
+      color: white;
+    }
   }
   .blue{
     height: 50%;
     background-color:#2066B9 ;
+    color: #d0d0d0;
+
+    p{
+      color: white;
+    }
   }
   .gray{
     height: 100%;
     background-color: #EBEEF2;
+   a{
+     color: #2066B9;
+   }
+    p{
+      color: #0D2949;
+    }
+  }
+  .img{
+    height: 65%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  p{
+    color: #dee1e5;
+  }
+  a{
+    text-decoration: none;
+  }
+  .title{
+    h1{
+      margin-bottom:10px ;
+    }
   }
 }
 
@@ -392,7 +439,16 @@
       }
     }
   }
-
+  #news{
+    .title{
+      h1{
+        font-size: 16px!important;
+      }
+      p{
+        font-size: 12px!important;
+      }
+    }
+  }
 }
 @media(min-width: 765px) and (max-width: 990px){
   .home-banner {
@@ -425,6 +481,7 @@
     .right-bottom{
       display: none;
     }
+
   }
   #serviceNcalc{
     background-color: white!important;
@@ -495,9 +552,34 @@
     .blue{
       height: 100%;
     }
+    .img{
+      height: 100%;
+    }
+    .title{
+      h1{
+        font-size: 18px!important;
+      }
+      p{
+        font-size: 14px!important;
+      }
+    }
   }
 }
 @media (max-width: 765px){
+  #news{
+    .img{
+      height: 100%;
+    }
+    .title{
+      h1{
+        font-size: 12px!important;
+        line-height: 1.3;
+      }
+      p{
+        font-size: 10px!important;
+      }
+    }
+  }
   #serviceNcalc{
     background-color: white!important;
     .services{

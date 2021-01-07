@@ -18,14 +18,17 @@ export class MobileNavbarComponent implements OnInit {
   languages: Languages[]=this.languagesService.languages;
   selected:string=this.languagesService.selected;
   select:Languages=this.languagesService.select;
+
   SetLanguage(lang){
     this.languagesService.SetLanguage(lang);
     this.select=this.languagesService.select;
   }
+
   hideScroll(){
     $('body').css('overflow','hidden')
   }
   showScroll(){
     $('body').css('overflow','visible')
   }
+
 }

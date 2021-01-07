@@ -1,4 +1,4 @@
-#register{
+#restore{
   background-color: #EBEEF2;
   .bg-color{
     background: white;
@@ -9,14 +9,14 @@
     height: auto;
     padding-top:20px;
     padding-bottom:20px;
-      justify-content: start;
+    justify-content: start;
   }
   .mat-form-field-flex{
     background-color: rgba(0,0,0,.04);
     border-radius: 4px 4px 0 0;
     padding: .75em .75em 0 .75em;
-    }
-  .reg-button{
+  }
+  .restore-button{
     outline: 0;
     white-space: normal;
     line-height: 20px;
@@ -27,37 +27,4 @@
   .mat-checkbox-label{
     white-space: normal;
   }
-
 }
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-button{
-  outline: 0!important;
-}
-@media (min-width: 576px) {
-  .label-head {
-    font-size: 14px;
-  }
-}
-
-@media (min-width: 768px) {
-  .label-head {
-    font-size: 18px;
-  }
-}
-
-@media (min-width: 992px) {
-  .label-head {
-    font-size: 22px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .label-head {
-    font-size: 25px;
-  }
-}
-

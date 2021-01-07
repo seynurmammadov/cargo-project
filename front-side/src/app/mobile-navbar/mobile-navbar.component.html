@@ -6,14 +6,14 @@
     </div>
     <div class="nav-item-list">
       <ul class="mainUL">
-        <li><a href="">Gİrİş</a></li>
-        <li><a routerLink="">ana səhİfə</a></li>
-        <li><a routerLink="/shopping">mağazalar</a></li>
-        <li><a routerLink="/tariffs">tarİflər</a></li>
-        <li><a routerLink="/news">xəbərlər</a></li>
-        <li><a routerLink="/faq">faq</a></li>
-        <li><a routerLink="/about">hadqqımızda</a></li>
-        <li><a routerLink="/tariffs">əlaqə</a></li>
+        <li><a routerLink="/login" (click)=" showScroll()">Gİrİş</a></li>
+        <li><a routerLink="" (click)=" showScroll()">ana səhİfə</a></li>
+        <li><a routerLink="/shopping" (click)=" showScroll()">mağazalar</a></li>
+        <li><a routerLink="/tariffs" (click)=" showScroll()">tarİflər</a></li>
+        <li><a routerLink="/news" (click)=" showScroll()">xəbərlər</a></li>
+        <li><a routerLink="/faq" (click)=" showScroll()">faq</a></li>
+        <li><a routerLink="/about" (click)=" showScroll()">hadqqımızda</a></li>
+        <li><a routerLink="/contact" (click)=" showScroll()">əlaqə</a></li>
       </ul>
       <ul class="d-flex flagUl flex-wrap"  >
         <li *ngFor="let lang of languages" >
@@ -39,5 +39,4 @@
   </mat-sidenav-content>
 
 </mat-sidenav-container>
-<mat-sidenav-container class="example-container" autosize>
-</mat-sidenav-container>
+

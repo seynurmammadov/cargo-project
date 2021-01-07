@@ -8,13 +8,13 @@
     <div class="bg-color w-100">
       <mat-tab-group  mat-stretch-tabs mat-align-tabs="center" >
         <mat-tab>
-          <ng-template mat-tab-label><p class="h5 m-0 text-uppercase">Private Person</p></ng-template>
+          <ng-template mat-tab-label><p class="label-head m-0 text-uppercase">Fiziki Şəxs</p></ng-template>
           <div class="d-flex flex-wrap">
-            <div class="p-4 pl-5 pr-5 w-100">
+            <div class="pt-4 pb-4 pl-xl-5 pr-xl-5 pl-lg-4 pr-lg-4 pl-md-2 pr-md-2 pr-sm-2 pl-sm-2 pl-1 pr-1 w-100">
               <div class="pr-4 pl-4 w-100">
-                <h4 class=" pt-4 pb-4 w-100 text-uppercase"><b>PERSONAL INFORMATION</b></h4>
-               <div class="d-flex flex-wrap w-100">
-                 <div class="col-6">
+                <h4 class=" pl-3 pt-4 pb-2 w-100 text-uppercase"><b>ŞƏXSİ MƏLUMAT</b></h4>
+                <div class="d-flex flex-wrap w-100">
+                 <div class="col-lg-6 col-md-6 col-12">
                    <mat-form-field class="w-100" appearance="fill">
                      <mat-label>Email</mat-label>
                      <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
@@ -26,31 +26,31 @@
                      </mat-error>
                    </mat-form-field>
                  </div>
-                 <div class="col-6">
+                 <div class="col-lg-6 col-md-6 col-12">
                    <mat-form-field class="w-100" appearance="fill">
                      <mat-label>Şəxsiyyət vəsiqəsinin seriya nömrəsi *</mat-label>
                      <input type="number" matInput  placeholder="12345678">
                    </mat-form-field>
                  </div>
-                 <div class="col-6">
+                 <div class="col-lg-6 col-md-6 col-12">
                    <mat-form-field class="w-100" appearance="fill">
                      <mat-label>Ad (İngilis herifleri ile)</mat-label>
                      <input type="text" matInput  placeholder="12345678">
                    </mat-form-field>
                  </div>
-                 <div class="col-6">
+                 <div class="col-lg-6 col-md-6 col-12">
                    <mat-form-field class="w-100" appearance="fill">
                      <mat-label>Soyad (İngilis herifleri ile)</mat-label>
                      <input type="text" matInput  placeholder="12345678">
                    </mat-form-field>
                  </div>
-                 <div class="col-6">
+                 <div class="col-lg-6 col-md-6 col-12">
                    <mat-form-field class="w-100" appearance="fill">
                      <mat-label>Ata adi (İngilis herifleri ile)</mat-label>
                      <input type="text" matInput  placeholder="12345678">
                    </mat-form-field>
                  </div>
-                 <div class="col-6">
+                 <div class="col-lg-6 col-md-6 col-12">
                    <mat-form-field class="w-100" appearance="fill">
                      <mat-label>Choose birthdate</mat-label>
                      <input matInput [matDatepicker]="picker">
@@ -58,17 +58,195 @@
                      <mat-datepicker #picker></mat-datepicker>
                    </mat-form-field>
                  </div>
+                 <div class="col-lg-6 col-md-6 col-12">
+                   <mat-form-field class="w-100" appearance="fill">
+                     <mat-label>Vetendasliq</mat-label>
+                     <mat-select (selectionChange)="changeImg(selectField.value)" #selectField>
+                       <mat-option value="non-az">
+                         Başqa ölkənin vətəndaşı (Qeyri-rezident)
+                       </mat-option>
+                       <mat-option value="az">
+                         Azərbaycan Respublikasının vətəndaşı (Rezident)
+                       </mat-option>
+                     </mat-select>
+                   </mat-form-field>
+                 </div>
+                 <div class="col-lg-6 col-md-6 col-12 d-flex flex-wrap">
+                  <div class="col-lg-6 col-md-6 col-12 p-0">
+                    <mat-form-field class="w-100" appearance="fill">
+                      <mat-label>Şəxsiyyət vəsiqəsinin FİN kodu *</mat-label>
+                      <input type="text" matInput  placeholder="4FRKPVD">
+                    </mat-form-field>
+                  </div>
+                   <div class="col-lg-6 col-md-6 col-12 p-0 d-flex align-items-center justify-content-between">
+                     <mat-radio-group color="primary" aria-label="Cinsiyeti secin" class=" mb-2 d-flex flex-wrap align-items-center justify-content-center w-100">
+                       <label>Cinsiyeti secin: </label>
+                       <mat-radio-button value="1" class="mr-2 ml-3">Kisi</mat-radio-button>
+                       <mat-radio-button value="2">Qadin</mat-radio-button>
+                     </mat-radio-group>
+                   </div>
+                 </div>
+                 <div class="col-12 d-flex justify-content-center mt-2">
+                   <div class="passport ">
+                     <p class="text-center w-100 mb-3">FİN kod harada yerlesir:</p>
+                     <img [src]="passportImgSrc" width="100%"  alt="">
+                   </div>
+                 </div>
                </div>
+                <h4 class=" pl-3  pt-4 pb-2 w-100 text-uppercase"><b>sifre</b></h4>
+                <div class="d-flex flex-wrap w-100">
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <mat-form-field class="w-100" appearance="fill">
+                      <mat-label>Sifre</mat-label>
+                      <input type="password" matInput placeholder="*********">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <mat-form-field class="w-100" appearance="fill">
+                      <mat-label>Sifreni tekrar yaz</mat-label>
+                      <input type="password" matInput placeholder="*********">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <h4 class=" pl-3  pt-4 pb-2 w-100 text-uppercase"><b>ƏLAQƏ</b></h4>
+                <div class="d-flex flex-wrap w-100">
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <mat-form-field class="w-100" appearance="fill">
+                      <mat-label>Seher</mat-label>
+                      <mat-select>
+                        <mat-option *ngFor="let city of currentCities" [value]="city.id" class="text-capitalize">
+                          {{city.name}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <mat-form-field class="w-100" appearance="fill">
+                      <mat-label>Unvan</mat-label>
+                      <input type="password" matInput placeholder="Naxcivanski 73 ">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Phone number</mat-label>
+                      <input type="tel" matInput placeholder="994559294860">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <h4 class=" pl-3  pt-4 pb-2 w-100 text-uppercase"><b>BAĞLAMANIN TƏHVİL VERİLMƏ MƏNTƏQƏSİ</b></h4>
+                <div class="d-flex flex-wrap w-100">
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <mat-form-field class="w-100" appearance="fill">
+                      <mat-label>Office</mat-label>
+                      <mat-select>
+                        <mat-option *ngFor="let office of offices" [value]="office.value"  class="text-uppercase">
+                          {{office.name}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    <mat-checkbox class="mt-2 w-100" color="primary">
+                      İstifadəçi <a [href]="user_agreement" target="_blank">qaydaları</a> ilə razıyam
+                    </mat-checkbox>
+                  </div>
+                </div>
+                <div class="w-100 d-flex justify-content-end mt-4">
+                  <button mat-raised-button class="text-uppercase reg-button">Qeydiyat </button>
+                </div>
               </div>
             </div>
           </div>
         </mat-tab>
         <mat-tab>
-          <ng-template mat-tab-label><p class="h5 m-0">Private Person</p></ng-template>
+          <ng-template mat-tab-label><p class="label-head m-0 text-uppercase">Hüquqi Şəxs</p></ng-template>
           <div class="d-flex flex-wrap">
-            <div class="p-4 pl-5 pr-5 ">
-              <div class="d-flex flex-wrap">
-                <p class=" pt-4 pb-4">PERSONAL INFORMATION</p>
+            <div class="pt-4 pb-4 pl-xl-5 pr-xl-5 pl-lg-4 pr-lg-4 pl-md-2 pr-md-2 pr-sm-2 pl-sm-2 pl-1 pr-1 w-100">
+              <div class="pr-4 pl-4 w-100">
+                <h4 class=" pl-3  pt-4 pb-2 w-100 text-uppercase"><b>ŞİRKƏT HAQDA MƏLUMAT</b></h4>
+                <div class="d-flex flex-wrap w-100">
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <mat-form-field class="w-100" appearance="fill">
+                      <mat-label>Email</mat-label>
+                      <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
+                      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                        Please enter a valid email address
+                      </mat-error>
+                      <mat-error *ngIf="emailFormControl.hasError('required')">
+                        Email is <strong>required</strong>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <mat-form-field class="w-100" appearance="fill">
+                      <mat-label>Şirkətin qeydiyyat nömrəsi *</mat-label>
+                      <input type="number" matInput  placeholder="12345678">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <mat-form-field class="w-100" appearance="fill">
+                      <mat-label>Şirkətin adı *</mat-label>
+                      <input type="text" matInput  placeholder="12345678">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <h4 class=" pl-3  pt-4 pb-2 w-100 text-uppercase"><b>sifre</b></h4>
+                <div class="d-flex flex-wrap w-100">
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <mat-form-field class="w-100" appearance="fill">
+                      <mat-label>Sifre</mat-label>
+                      <input type="password" matInput placeholder="*********">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <mat-form-field class="w-100" appearance="fill">
+                      <mat-label>Sifreni tekrar yaz</mat-label>
+                      <input type="password" matInput placeholder="*********">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <h4 class=" pl-3  pt-4 pb-2 w-100 text-uppercase"><b>ƏLAQƏ</b></h4>
+                <div class="d-flex flex-wrap w-100">
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <mat-form-field class="w-100" appearance="fill">
+                      <mat-label>Seher</mat-label>
+                      <mat-select>
+                        <mat-option *ngFor="let city of currentCities" [value]="city.id" class="text-capitalize">
+                          {{city.name}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <mat-form-field class="w-100" appearance="fill">
+                      <mat-label>Unvan</mat-label>
+                      <input type="password" matInput placeholder="Naxcivanski 73 ">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <mat-form-field appearance="fill" class="w-100">
+                      <mat-label>Phone number</mat-label>
+                      <input type="tel" matInput placeholder="994559294860">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <h4 class=" pl-3  pt-4 pb-2 w-100 text-uppercase"><b>BAĞLAMANIN TƏHVİL VERİLMƏ MƏNTƏQƏSİ</b></h4>
+                <div class="d-flex flex-wrap w-100">
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <mat-form-field class="w-100" appearance="fill">
+                      <mat-label>Office</mat-label>
+                      <mat-select>
+                        <mat-option *ngFor="let office of offices" [value]="office.value"  class="text-uppercase">
+                          {{office.name}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    <mat-checkbox class="mt-2 w-100" color="primary">
+                      İstifadəçi <a [href]="user_agreement" target="_blank">qaydaları</a> ilə razıyam
+                    </mat-checkbox>
+                  </div>
+                </div>
+                <div class="w-100 d-flex justify-content-end mt-4">
+                  <button mat-raised-button class="text-uppercase reg-button">Qeydiyat </button>
+                </div>
               </div>
             </div>
           </div>

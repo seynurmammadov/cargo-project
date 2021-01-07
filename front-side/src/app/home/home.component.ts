@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
       value:'1',
     },]
   }
-
+  imgSrc:string="../../assets/image/news/5f4fcff5535eb.png";
 
   countries:Country[]=[];
   offices:Office[]=[];

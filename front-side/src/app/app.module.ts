@@ -22,6 +22,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDatepickerModule,} from '@angular/material/datepicker';
 import { LanguagesService } from './services/languages.service';
 import { FooterComponent } from './footer/footer.component';
@@ -39,6 +40,8 @@ import { ServiceComponent } from './service/service.component';
 import { TitleComponent } from './title/title.component';
 import { RegisterComponent } from './register/register.component';
 import { MatNativeDateModule } from '@angular/material/core';
+import { LoginComponent } from './login/login.component';
+import { RestoreComponent } from './restore/restore.component';
 const routes: Routes=[
   { path: "home", redirectTo:"" ,pathMatch:"full"},
   { path:"",  component:HomeComponent },
@@ -52,6 +55,8 @@ const routes: Routes=[
   { path:"contact",  component:ContactComponent, data: {animation: 'Contact'} },
   { path:"services",  component:ServiceComponent, data: {animation: 'Services'} },
   { path:"register",  component:RegisterComponent, data: {animation: 'Register'} },
+  { path:"login",  component:LoginComponent, data: {animation: 'Login'} },
+  { path:"restore",  component:RestoreComponent, data: {animation: 'Restore'} },
   { path:"**", redirectTo:"error404",data: {animation: 'Error'}},
   { path:"**", component:ErrorComponent,data: {animation: 'Error'}}
 ]
@@ -77,37 +82,39 @@ const routes: Routes=[
     ServiceComponent,
     TitleComponent,
     RegisterComponent,
+    LoginComponent,
+    RestoreComponent,
 
   ],
     imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        RouterModule.forRoot(routes),
-        MatFormFieldModule,
-        MatSelectModule,
-        HttpClientModule,
-        MatButtonModule,
-        CarouselModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: httpTranslateLoader,
-                deps: [HttpClient]
-            }
-        }),
-        MatSidenavModule,
-        MatRadioModule,
-        MatInputModule,
-        MatTabsModule,
-        MatExpansionModule,
-        ReactiveFormsModule,
-        MatIconModule,
-        MatDatepickerModule,
-        MatNativeDateModule
+      BrowserModule,
+      BrowserAnimationsModule,
+      RouterModule.forRoot(routes),
+      MatFormFieldModule,
+      MatSelectModule,
+      HttpClientModule,
+      MatButtonModule,
+      CarouselModule,
+      TranslateModule.forRoot({
+          loader: {
+              provide: TranslateLoader,
+              useFactory: httpTranslateLoader,
+              deps: [HttpClient]
+          }
+      }),
+      MatSidenavModule,
+      MatRadioModule,
+      MatInputModule,
+      MatTabsModule,
+      MatExpansionModule,
+      ReactiveFormsModule,
+      MatIconModule,
+      MatDatepickerModule,
+      MatNativeDateModule,
+      MatCheckboxModule
     ],
   exports:[
     RouterModule,
-
   ],
   providers: [
     LanguagesService,
@@ -122,7 +129,8 @@ const routes: Routes=[
     MatExpansionModule,
     MatIconModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatCheckboxModule
   ],
   bootstrap: [AppComponent]
 })

@@ -1,4 +1,4 @@
-#news{
+#news-page{
   background-color: #EBEEF2;
 
   .owl-next{
@@ -10,7 +10,7 @@
     background-color: transparent;
   }
   .owl-nav {
-    margin-top: 0px;
+    margin-top: 0;
     position: absolute;
     top: -50px;
     right: 0;
@@ -26,6 +26,6 @@
   }
   .bg-color{
     background: white;
-    box-shadow: 3px 3px 10px 0px #e3e3e3;
+    box-shadow: 3px 3px 10px 0 #e3e3e3;
   }
 }

@@ -1,0 +1,33 @@
+#login{
+  background-color: #EBEEF2;
+  .bg-color{
+    background: white;
+    margin-top: 30px;
+    box-shadow: 3px 3px 20px 0px #bababa;
+  }
+  .mat-tab-label{
+    height: auto;
+    padding-top:20px;
+    padding-bottom:20px;
+    justify-content: start;
+  }
+  .mat-form-field-flex{
+    background-color: rgba(0,0,0,.04);
+    border-radius: 4px 4px 0 0;
+    padding: .75em .75em 0 .75em;
+  }
+  .log-button{
+    background-color: #3179ce;
+  }
+  .form-buttons{
+    outline: 0;
+    white-space: normal;
+    line-height: 20px;
+    padding: 15px 0px;
+    color: white;
+  }
+  .reg-button{
+    background-color: #36a420;
+  }
+}
+

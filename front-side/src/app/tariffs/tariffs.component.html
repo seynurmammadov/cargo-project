@@ -2,16 +2,16 @@
 </app-navbar>
 <app-mobile-navbar>
 </app-mobile-navbar>
-<app-banner [name]="name" [bannerSrc]="bannerSrc"></app-banner>
+<app-banner [name]="name" [bannerSrc]="bannerSrc" class="pb-5"></app-banner>
 <section id="tariffs">
   <div class="container-fluid  pl-pr-10 pt-5">
-    <div *ngFor="let countryTariff of countryTariffs" class="pb-5 bg-color">
+    <div *ngFor="let countryTariff of countryTariffs" class="pb-5 bg-color rounded">
       <p class="h2 text-uppercase d-flex align-items-center justify-content-center">  <img [src]="countryTariff.flagSrc" class="mr-2"  width="30" height="22" > {{countryTariff.name}}</p>
       <mat-tab-group  mat-align-tabs="center" >
         <mat-tab *ngFor="let tariff of countryTariff.tariffs">
           <ng-template mat-tab-label >{{countryTariff.name}}-{{tariff.to}}</ng-template>
           <div class="d-flex flex-wrap  ">
-            <div class=" col-lg-2 col-md-3 col-sm-3 col-4 text-center pt-2 mt-4 d-flex flex-wrap align-content-between" *ngFor="let price of tariff.prices">
+            <div class=" col-lg-2 col-md-3 col-sm-6 col-12 text-center pt-2 mt-4 d-flex flex-wrap align-content-between" *ngFor="let price of tariff.prices">
               <p class="col-12 pb-4"> {{price.minWeight}} kq-dan  {{price.maxWeight}} kq-a qədər</p>
               <p class="h2 col-12">{{price.price}}$</p>
             </div>

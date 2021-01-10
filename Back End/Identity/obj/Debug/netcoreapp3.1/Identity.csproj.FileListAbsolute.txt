@@ -1,0 +1,14 @@
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Identity\bin\Debug\netcoreapp3.1\Identity.deps.json
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Identity\bin\Debug\netcoreapp3.1\Identity.dll
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Identity\bin\Debug\netcoreapp3.1\Identity.pdb
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Identity\bin\Debug\netcoreapp3.1\Core.dll
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Identity\bin\Debug\netcoreapp3.1\Entity.dll
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Identity\bin\Debug\netcoreapp3.1\Entity.pdb
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Identity\bin\Debug\netcoreapp3.1\Core.pdb
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Identity\obj\Debug\netcoreapp3.1\Identity.csprojAssemblyReference.cache
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Identity\obj\Debug\netcoreapp3.1\Identity.AssemblyInfoInputs.cache
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Identity\obj\Debug\netcoreapp3.1\Identity.AssemblyInfo.cs
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Identity\obj\Debug\netcoreapp3.1\Identity.csproj.CoreCompileInputs.cache
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Identity\obj\Debug\netcoreapp3.1\Identity.csproj.CopyComplete
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Identity\obj\Debug\netcoreapp3.1\Identity.dll
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Identity\obj\Debug\netcoreapp3.1\Identity.pdb

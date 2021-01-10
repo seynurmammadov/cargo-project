@@ -1,0 +1,16 @@
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Business\bin\Debug\netcoreapp3.1\Business.deps.json
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Business\bin\Debug\netcoreapp3.1\Business.dll
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Business\bin\Debug\netcoreapp3.1\Business.pdb
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Business\bin\Debug\netcoreapp3.1\Core.dll
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Business\bin\Debug\netcoreapp3.1\DataAccess.dll
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Business\bin\Debug\netcoreapp3.1\Entity.dll
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Business\bin\Debug\netcoreapp3.1\DataAccess.pdb
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Business\bin\Debug\netcoreapp3.1\Entity.pdb
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Business\bin\Debug\netcoreapp3.1\Core.pdb
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Business\obj\Debug\netcoreapp3.1\Business.csprojAssemblyReference.cache
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Business\obj\Debug\netcoreapp3.1\Business.AssemblyInfoInputs.cache
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Business\obj\Debug\netcoreapp3.1\Business.AssemblyInfo.cs
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Business\obj\Debug\netcoreapp3.1\Business.csproj.CoreCompileInputs.cache
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Business\obj\Debug\netcoreapp3.1\Business.csproj.CopyComplete
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Business\obj\Debug\netcoreapp3.1\Business.dll
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Business\obj\Debug\netcoreapp3.1\Business.pdb

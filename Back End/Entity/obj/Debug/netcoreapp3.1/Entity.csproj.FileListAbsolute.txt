@@ -1,0 +1,24 @@
+C:\Users\Seynur\Desktop\AcrhitectureDLL\Entity\bin\Debug\netcoreapp3.1\Entity.deps.json
+C:\Users\Seynur\Desktop\AcrhitectureDLL\Entity\bin\Debug\netcoreapp3.1\Entity.dll
+C:\Users\Seynur\Desktop\AcrhitectureDLL\Entity\bin\Debug\netcoreapp3.1\Entity.pdb
+C:\Users\Seynur\Desktop\AcrhitectureDLL\Entity\bin\Debug\netcoreapp3.1\Core.dll
+C:\Users\Seynur\Desktop\AcrhitectureDLL\Entity\bin\Debug\netcoreapp3.1\Core.pdb
+C:\Users\Seynur\Desktop\AcrhitectureDLL\Entity\obj\Debug\netcoreapp3.1\Entity.csprojAssemblyReference.cache
+C:\Users\Seynur\Desktop\AcrhitectureDLL\Entity\obj\Debug\netcoreapp3.1\Entity.AssemblyInfoInputs.cache
+C:\Users\Seynur\Desktop\AcrhitectureDLL\Entity\obj\Debug\netcoreapp3.1\Entity.AssemblyInfo.cs
+C:\Users\Seynur\Desktop\AcrhitectureDLL\Entity\obj\Debug\netcoreapp3.1\Entity.csproj.CoreCompileInputs.cache
+C:\Users\Seynur\Desktop\AcrhitectureDLL\Entity\obj\Debug\netcoreapp3.1\Entity.csproj.CopyComplete
+C:\Users\Seynur\Desktop\AcrhitectureDLL\Entity\obj\Debug\netcoreapp3.1\Entity.dll
+C:\Users\Seynur\Desktop\AcrhitectureDLL\Entity\obj\Debug\netcoreapp3.1\Entity.pdb
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Entity\bin\Debug\netcoreapp3.1\Entity.deps.json
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Entity\bin\Debug\netcoreapp3.1\Entity.dll
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Entity\bin\Debug\netcoreapp3.1\Entity.pdb
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Entity\bin\Debug\netcoreapp3.1\Core.dll
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Entity\bin\Debug\netcoreapp3.1\Core.pdb
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Entity\obj\Debug\netcoreapp3.1\Entity.csprojAssemblyReference.cache
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Entity\obj\Debug\netcoreapp3.1\Entity.AssemblyInfoInputs.cache
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Entity\obj\Debug\netcoreapp3.1\Entity.AssemblyInfo.cs
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Entity\obj\Debug\netcoreapp3.1\Entity.csproj.CoreCompileInputs.cache
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Entity\obj\Debug\netcoreapp3.1\Entity.csproj.CopyComplete
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Entity\obj\Debug\netcoreapp3.1\Entity.dll
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Entity\obj\Debug\netcoreapp3.1\Entity.pdb

@@ -1,0 +1,21 @@
+C:\Users\Seynur\Desktop\AcrhitectureDLL\Core\bin\Debug\netcoreapp3.1\Core.deps.json
+C:\Users\Seynur\Desktop\AcrhitectureDLL\Core\bin\Debug\netcoreapp3.1\Core.dll
+C:\Users\Seynur\Desktop\AcrhitectureDLL\Core\bin\Debug\netcoreapp3.1\Core.pdb
+C:\Users\Seynur\Desktop\AcrhitectureDLL\Core\obj\Debug\netcoreapp3.1\Core.csprojAssemblyReference.cache
+C:\Users\Seynur\Desktop\AcrhitectureDLL\Core\obj\Debug\netcoreapp3.1\Core.AssemblyInfoInputs.cache
+C:\Users\Seynur\Desktop\AcrhitectureDLL\Core\obj\Debug\netcoreapp3.1\Core.AssemblyInfo.cs
+C:\Users\Seynur\Desktop\AcrhitectureDLL\Core\obj\Debug\netcoreapp3.1\Core.csproj.CoreCompileInputs.cache
+C:\Users\Seynur\Desktop\AcrhitectureDLL\Core\obj\Debug\netcoreapp3.1\Core.dll
+C:\Users\Seynur\Desktop\AcrhitectureDLL\Core\obj\Debug\netcoreapp3.1\Core.pdb
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Core\bin\Debug\netcoreapp3.1\Core.deps.json
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Core\bin\Debug\netcoreapp3.1\Core.dll
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Core\bin\Debug\netcoreapp3.1\Core.pdb
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Core\obj\Debug\netcoreapp3.1\Core.AssemblyInfoInputs.cache
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Core\obj\Debug\netcoreapp3.1\Core.AssemblyInfo.cs
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Core\obj\Debug\netcoreapp3.1\Core.csproj.CoreCompileInputs.cache
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Core\obj\Debug\netcoreapp3.1\Core.dll
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Core\obj\Debug\netcoreapp3.1\Core.pdb
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Core\bin\Debug\netcoreapp3.1\Core.runtimeconfig.json
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Core\bin\Debug\netcoreapp3.1\Core.runtimeconfig.dev.json
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Core\obj\Debug\netcoreapp3.1\Core.genruntimeconfig.cache
+C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Back End\Core\obj\Debug\netcoreapp3.1\Core.csprojAssemblyReference.cache

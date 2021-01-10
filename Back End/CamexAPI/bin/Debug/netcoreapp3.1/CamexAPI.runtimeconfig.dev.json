@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\Seynur\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Seynur\\.nuget\\packages"
+    ]
+  }
+}

@@ -9,43 +9,39 @@ namespace Business.Concrete
 {
    public class PrivateCustomerManager : IPrivateCustomerService
     {
-        private readonly IPrivateCustomerDAL _customerDAL;
+        private readonly IPrivateCustomerDAL _context;
 
-        public PrivateCustomerManager(IPrivateCustomerDAL customerDAL)
+        public PrivateCustomerManager(IPrivateCustomerDAL context)
         {
-            _customerDAL = customerDAL;
+            _context = context;
         }
 
         public List<PrivateCustomer> GetAllPrivateCustomers()
         {
-            return _customerDAL.GetAll();
+            return _context.GetAll();
         }
 
-        public PrivateCustomer GetPrivateCustomerWithId(int id)
+        public PrivateCustomer GetPrivateCustomerWithFIN(string FINCode)
         {
-            return _customerDAL.Get(c => c.Id == id);
+            return _context.Get(c => c.FINCode == FINCode);
         }
-
-        public bool Add(PrivateCustomer customer)
+        public PrivateCustomer GetPrivateCustomerWithPassportNumber(int PassportNumber)
         {
-            PrivateCustomer customer2 =  _customerDAL.Get(c => c.FINCode == customer.FINCode);
-            if (customer2 != null) return false;
-
-             customer2 = _customerDAL.Get(c => c.PassportNumber == customer.PassportNumber);
-            if (customer2 != null) return false;
-
-            _customerDAL.Add(customer);
-            return true;
+            return _context.Get(c => c.PassportNumber == PassportNumber);
+        }
+        public void Add(PrivateCustomer data)
+        {
+            _context.Add(data);
         }
 
         public void Detele(int id)
         {
-            _customerDAL.Delete(new PrivateCustomer { Id = id });
+            _context.Delete(new PrivateCustomer { Id = id });
         }
 
-        public void Update(PrivateCustomer customer)
+        public void Update(PrivateCustomer data)
         {
-            _customerDAL.Update(customer);
+            _context.Update(data);
         }
     }
 }

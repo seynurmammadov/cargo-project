@@ -1,5 +1,8 @@
 export class Languages{
+  id:number;
   name: string;
-  img:string;
   value:string;
+  flagSrc:string;
+  cityNameTranslates: any
+  officeNameTranlates: any
 }

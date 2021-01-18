@@ -24,7 +24,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDatepickerModule,} from '@angular/material/datepicker';
-import { LanguagesService } from './services/languages.service';
+import { LanguagesService } from './Core/services/Lang/languages.service';
 import { FooterComponent } from './footer/footer.component';
 import { BannerComponent } from './banner/banner.component';
 import { ShopingComponent } from './shoping/shoping.component';
@@ -42,10 +42,15 @@ import { RegisterComponent } from './register/register.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { LoginComponent } from './login/login.component';
 import { RestoreComponent } from './restore/restore.component';
+import {GlobalService} from './Core/services/global/global.service';
+import {RxReactiveFormsModule} from '@rxweb/reactive-form-validators';
+import {AuthGuard} from './Core/guards/auth.guard';
+import {AuthOutGuard} from './Core/guards/auth-out.guard';
+import { CoreModule } from './Core/core.module';
 const routes: Routes=[
   { path: "home", redirectTo:"" ,pathMatch:"full"},
   { path:"",  component:HomeComponent },
-  { path:"about",  component:AboutComponent, data: {animation: 'About'} },
+  { path:"about",  component:AboutComponent, data: {animation: 'About'}},
   { path:"shopping",  component:ShopingComponent, data: {animation: 'Shopping'} },
   { path:"tariffs",  component:TariffsComponent, data: {animation: 'Tariffs'} },
   { path:"calculator",  component:CalculatorComponent, data: {animation: 'Calculator'} },
@@ -54,9 +59,9 @@ const routes: Routes=[
   { path:"faq",  component:FaqComponent, data: {animation: 'Faq'} },
   { path:"contact",  component:ContactComponent, data: {animation: 'Contact'} },
   { path:"services",  component:ServiceComponent, data: {animation: 'Services'} },
-  { path:"register",  component:RegisterComponent, data: {animation: 'Register'} },
-  { path:"login",  component:LoginComponent, data: {animation: 'Login'} },
-  { path:"restore",  component:RestoreComponent, data: {animation: 'Restore'} },
+  { path:"register",  component:RegisterComponent, data: {animation: 'Register'}, canActivate: [AuthOutGuard] },
+  { path:"login",  component:LoginComponent, data: {animation: 'Login'},canActivate: [AuthOutGuard]},
+  { path:"restore",  component:RestoreComponent, data: {animation: 'Restore'}, canActivate: [AuthOutGuard] },
   { path:"**", redirectTo:"error404",data: {animation: 'Error'}},
   { path:"**", component:ErrorComponent,data: {animation: 'Error'}}
 ]
@@ -95,6 +100,7 @@ const routes: Routes=[
       HttpClientModule,
       MatButtonModule,
       CarouselModule,
+      CoreModule,
       TranslateModule.forRoot({
           loader: {
               provide: TranslateLoader,
@@ -111,13 +117,15 @@ const routes: Routes=[
       MatIconModule,
       MatDatepickerModule,
       MatNativeDateModule,
-      MatCheckboxModule
+      MatCheckboxModule,
+      RxReactiveFormsModule
     ],
   exports:[
     RouterModule,
   ],
   providers: [
     LanguagesService,
+    GlobalService,
     MatDatepickerModule,
     MatFormFieldModule,
     MatSelectModule,

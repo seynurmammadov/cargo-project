@@ -27,7 +27,15 @@
   .mat-checkbox-label{
     white-space: normal;
   }
-
+  .passport{
+    width: 75%;
+  }
+  .mat-button-disabled{
+    background-color: #5E5F61!important;
+  }
+  .mat-form-field-wrapper {
+    margin-bottom: 7px;
+  }
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

@@ -1,17 +1,29 @@
-﻿
+﻿    
 using BackProject.Extentions;
 using BackProject.Helpers;
 using Business.Abstract;
 using CamexAPI.Identity;
+using CamexAPI.Infrastructure;
 using CamexAPI.Models;
+using CamexAPI.Models.VM;
 using Entity.Models;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+
 
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -20,173 +32,880 @@ namespace CamexAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class AuthController : ControllerBase
     {
         
         private readonly UserManager<AppUser> _userManager;
         private readonly IConfiguration _configuration;
-        private readonly IPrivateCustomerService _customerDAL;
         private readonly MyIdentityDbContext _userDbContext;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly IPrivateCustomerService _privateContext;
+        private readonly ICitizenshipService _citizenshipContext;
+        private readonly ICityService _cityContext;
+        private readonly IOfficeService _officeContext;
+        private readonly IBalanceService _balanceContext;
+        private readonly IBusinessCustomerService _businessContext;
+        private readonly IJwtAuthManager _jwtAuthManager;
+
         public AuthController(
             UserManager<AppUser> userManager,
             IConfiguration configuration,
-            IPrivateCustomerService customerDAL,
             MyIdentityDbContext userDbContext,
-            RoleManager<IdentityRole> roleManager
+            RoleManager<IdentityRole> roleManager,
+            IPrivateCustomerService privateContext,
+            ICitizenshipService citizenshipContext,
+            ICityService cityContext,
+            IOfficeService officeContext,
+            IBalanceService balanceContext,
+            IBusinessCustomerService businessContext,
+            IJwtAuthManager jwtAuthManager
             )
         {
             _userManager = userManager;
             _configuration = configuration;
-            _customerDAL = customerDAL;
+            _privateContext = privateContext;
             _userDbContext = userDbContext;
             _roleManager = roleManager;
+            _citizenshipContext = citizenshipContext;
+            _cityContext = cityContext;
+            _officeContext = officeContext;
+            _balanceContext = balanceContext;
+            _businessContext = businessContext;
+            _jwtAuthManager = jwtAuthManager;
+        }
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("register")]
+        public RegisterVM Register()
+        {
+            List<City> cities = _cityContext.GetAllCities();
+            List<Office> offices = _officeContext.GetAllOffices();
+            return new RegisterVM { Cities = cities, Offices = offices };
         }
 
-/*        [HttpPost]
-        [Route("login")]
-        public async Task<IActionResult> Login([FromBody] Login model)
-        {
-            var user = await _userManager.FindByNameAsync(model.Username);
-            if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
-            {
-                var userRoles = await _userManager.GetRolesAsync(user);
-
-                var authClaims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Name, user.UserName),
-                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                };
-
-                foreach (var userRole in userRoles)
-                {
-                    authClaims.Add(new Claim(ClaimTypes.Role, userRole));
-                }
-
-                var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]));
-
-                var token = new JwtSecurityToken(
-                    issuer: _configuration["JWT:ValidIssuer"],
-                    audience: _configuration["JWT:ValidAudience"],
-                    expires: DateTime.Now.AddHours(3),
-                    claims: authClaims,
-                    signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
-                    );
-
-                return Ok(new
-                {
-                    token = new JwtSecurityTokenHandler().WriteToken(token),
-                    expiration = token.ValidTo
-                });
-            }
-            return Unauthorized();
-        }*/
-
         [HttpPost]
+        [AllowAnonymous]
         [Route("register-private")]
         public async Task<IActionResult> RegisterPrivate([FromBody] RegisterPrivate privateUser)
         {
-
-            if (User.Identity.IsAuthenticated) return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User Is Authenticated!" });
-
-            if (!ModelState.IsValid)
+            try
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "Model state isn't valid!" });
+                if (User.Identity.IsAuthenticated) return StatusCode(StatusCodes.Status500InternalServerError, 
+                    new Response { 
+                        Status = "Error",
+                        Messages = new Message[] {
+                            new Message { 
+                                Lang_id = 1,
+                                MessageLang="User Is Authenticated!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Пользователь уже вошел в систему!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="İstifadəçi artıq daxil olub!"
+                            }
+                        }
+                    });
+
+                if (!ModelState.IsValid)
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error",
+                        Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="Model state isn't valid!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Состояние модели недействительно!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="Model vəziyyəti etibarsızdır!"
+                            }
+                        }
+                    });
+                }
+
+                if (privateUser.IsTermsAccepted == false)
+                    return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error",
+                        Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="User should access terms!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Пользователь должен принять условия!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="İstifadəçi şərtlərini gəbul etməlidir!"
+                            }
+                        }
+                    });
+
+                var userExists = await _userManager.FindByEmailAsync(privateUser.Email);
+                if (userExists != null)
+                    return StatusCode(StatusCodes.Status500InternalServerError, new Response
+                    {
+                        Status = "Error",
+                        Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="User already exists!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Такой пользователь уже существует!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="Belə istifadəçi artıq mövcuddur!"
+                            }
+                        }
+                    });
+
+                var privateUserDb = _userDbContext.Users.Where(u => u.PhoneNumber == privateUser.PhoneNumber).FirstOrDefault();
+                if (privateUserDb != null)
+                    return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error",
+                        Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="User already exists!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Такой пользователь уже существует!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="Belə istifadəçi artıq mövcuddur!"
+                            }
+                        }
+                    });
+
+                PrivateCustomer customer = _privateContext.GetPrivateCustomerWithFIN(privateUser.FINCode);
+                if (customer != null) return StatusCode(StatusCodes.Status500InternalServerError, new Response
+                {
+                    Status = "Error",
+                    Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="User already exists!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Такой пользователь уже существует!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="Belə istifadəçi artıq mövcuddur!"
+                            }
+                        }
+                });
+
+                customer = _privateContext.GetPrivateCustomerWithPassportNumber(privateUser.PassportNumber);
+                if (customer != null) return StatusCode(StatusCodes.Status500InternalServerError, new Response
+                {
+                    Status = "Error",
+                    Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="User already exists!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Такой пользователь уже существует!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="Belə istifadəçi artıq mövcuddur!"
+                            }
+                        }
+                });
+
+                Сitizenship сitizenship = _citizenshipContext.GetCitizenWithId(privateUser.СitizenshipId);
+                if (сitizenship == null) return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error",
+                    Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="Citizenship isn't correct!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Гражданство выбрано неправильно!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="Vətəndaşlıq düzgün seçilməyib!"
+                            }
+                        }
+                });
+
+                City city = _cityContext.GetCityWithId(privateUser.CityId);
+                if (city == null) return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error",
+                    Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="City isn't correct!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Город выбран неправильно!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="Vətəndaşlıq düzgün seçilməyib!"
+                            }
+                        }
+                });
+
+                Office office = _officeContext.GetOfficeWithId(privateUser.OfficeId);
+                if (office == null) return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error",
+                    Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="Office isn't correct!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Офис выбран неправильно!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="Ofis düzgün seçilməyib!"
+                            }
+                        }
+                });
+
+                int camexId = 1;
+
+
+                AppUser user = new AppUser()
+                {
+                    UserName = privateUser.Name + privateUser.Surname + privateUser.FINCode,
+                    Email = privateUser.Email,
+                    PhoneNumber = privateUser.PhoneNumber,
+                    CamexId = camexId,
+                    CityId = privateUser.CityId,
+                    OfficeId = privateUser.OfficeId,
+                    Address = privateUser.Address,
+                    Image = "placeholder.jpg",
+                    IsTermsAccepted = privateUser.IsTermsAccepted,
+                    IsActived = false,
+                };
+
+                user.Balance = new Balance
+                {
+                    UserBalance = 0
+                };
+
+
+                IdentityResult identityResult = await _userManager.CreateAsync(user, privateUser.Password);
+                await _userManager.AddToRoleAsync(user, Helper.Roles.PrivateCustomer.ToString());
+
+                if (!identityResult.Succeeded)
+                {
+                    string errors = ModelState.GetAllErrors(identityResult);
+                    return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error",
+                        Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="User creation failed! Please check user details and try again." + " Errors: " + errors
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Не удалось создать пользователя! Пожалуйста, проверьте данные пользователя и попробуйте еще раз." + " Errors: " + errors
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="İstifadəçini yaratmaq alınmadı! Xahiş edirik istifadəçi məlumatlarınızı yoxlayın və yenidən cəhd edin."+ " Errors: " + errors
+                            }
+                        }
+                    });
+
+                }
+                _privateContext.Add(new PrivateCustomer
+                {
+                    CamexId = camexId,
+                    PassportNumber = privateUser.PassportNumber,
+                    Name = privateUser.Name,
+                    Surname = privateUser.Surname,
+                    Lastname = privateUser.Lastname,
+                    Birthday = privateUser.Birthday,
+                    СitizenshipId = privateUser.СitizenshipId,
+                    FINCode = privateUser.FINCode,
+                    IsMan = privateUser.IsMan,
+                });
+                return Ok(new Response { Status = "Success",
+                    Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="User created successfully!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Пользователь успешно создан!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="İstifadəçi uğurla yaradıldı!"
+                            }
+                        }
+                });
+
             }
-            var userExists = await _userManager.FindByEmailAsync(privateUser.Email);
-            if (userExists != null)
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User already exists!" });
-
-                
-            var privateUserDb = _userDbContext.Users.Where(u => u.PhoneNumber == privateUser.PhoneNumber).FirstOrDefault();
-            if (privateUserDb != null)
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User already exists!" });
-
-            int camexId = _userDbContext.Users.OrderByDescending(u => u.CamexId).FirstOrDefault().CamexId + 1;
-            bool isAdded = _customerDAL.Add(new PrivateCustomer
+            catch (Exception e)
             {
-                CamexId = camexId,
-                PassportNumber = privateUser.PassportNumber,
-                Name = privateUser.Name,
-                Surname = privateUser.Surname,
-                Lastname = privateUser.Lastname,
-                Birthday = privateUser.Birthday,
-                СitizenshipId = privateUser.СitizenshipId,
-                FINCode = privateUser.FINCode,
-                IsMan = privateUser.IsMan,
-            });
-            if (!isAdded)
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User already exists!" });
+                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error",
+                    Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang=e.Message + e.InnerException
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang=e.Message + e.InnerException
 
-            AppUser user = new AppUser()
-            {
-                UserName = privateUser.Name + privateUser.Surname + privateUser.FINCode,
-                Email = privateUser.Email,
-                PhoneNumber = privateUser.PhoneNumber,
-                CamexId = camexId,
-                CityId = privateUser.CityId,
-                Address = privateUser.Address,
-                OfficeId = privateUser.OfficeId,
-                Image = "placeholder.jpg",
-                IsTermsAccepted = privateUser.IsTermAccepted,
-                IsActived = false,
-            };
-
-            user.Balance = new Balance
-            {
-                UserBalance = 0
-            };
-
-            IdentityResult identityResult = await _userManager.CreateAsync(user, privateUser.Password);
-            await _userManager.AddToRoleAsync(user, Helper.Roles.PrivateCustomer.ToString());
-
-            if (!identityResult.Succeeded)
-            {
-                string errors= ModelState.GetAllErrors(identityResult);
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User creation failed! Please check user details and try again."+"\n Errors: \n"+errors });
-
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                 MessageLang=e.Message + e.InnerException
+                            }
+                        }
+                });
             }
-            return Ok(new Response { Status = "Success", Message = "User created successfully!" });
-
         }
-     /*   [HttpGet]
-        [Route("CreateRole")]
-        public async Task CreateRole()
+
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("register-business")]
+        public async Task<IActionResult> RegisterBusiness([FromBody] RegisterBusiness businessUser)
         {
-            if (!await _roleManager.RoleExistsAsync("Admin"))
-                await _roleManager.CreateAsync(new IdentityRole()
-                {
-                    Name = "Admin"
-                });
-            if (!await _roleManager.RoleExistsAsync("PrivateCustomer"))
+            try
             {
-                await _roleManager.CreateAsync(new IdentityRole()
+                if (User.Identity.IsAuthenticated) return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error",
+                    Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="User Is Authenticated!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Пользователь уже вошел в систему!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="İstifadəçi artıq daxil olub!"
+                            }
+                        }
+                });
+
+                if (!ModelState.IsValid)
                 {
-                    Name = "PrivateCustomer"
+                    return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error",
+                        Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="Model state isn't valid!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Состояние модели недействительно!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="Model vəziyyəti etibarsızdır!"
+                            }
+                        }
+                    });
+                }
+
+                if (businessUser.IsTermsAccepted == false)
+                    return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error",
+                        Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="User should access terms!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Пользователь должен принять условия!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="İstifadəçi şərtlərini gəbul etməlidir!"
+                            }
+                        }
+                    });
+
+                var userExists = await _userManager.FindByEmailAsync(businessUser.Email);
+                if (userExists != null)
+                    return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error",
+                         Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="User already exists!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Такой пользователь уже существует!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="Belə istifadəçi artıq mövcuddur!"
+                            } 
+                         }
+                        });
+
+                var privateUserDb = _userDbContext.Users.Where(u => u.PhoneNumber == businessUser.PhoneNumber).FirstOrDefault();
+                if (privateUserDb != null)
+                    return StatusCode(StatusCodes.Status500InternalServerError, new Response
+                    {
+                        Status = "Error",
+                        Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="User already exists!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Такой пользователь уже существует!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="Belə istifadəçi artıq mövcuddur!"
+                            }
+                        }
+                    
+                    });
+
+                BusinessCustomer customer = _businessContext.GetBusinessCustomerWithNumber(businessUser.CompanyRegistrationNumber);
+                if (customer != null) return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error",
+                    Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="User already exists!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Такой пользователь уже существует!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="Belə istifadəçi artıq mövcuddur!"
+                            }
+                        }
+                });
+               
+                 customer = _businessContext.GetBusinessCustomerWithName(businessUser.CompanyName);
+                if (customer != null) return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error",
+                    Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="User already exists!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Такой пользователь уже существует!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="Belə istifadəçi artıq mövcuddur!"
+                            }
+                        }
+                });
+
+                City city = _cityContext.GetCityWithId(businessUser.CityId);
+                if (city == null) return StatusCode(StatusCodes.Status500InternalServerError, new Response
+                {
+                    Status = "Error",
+                    Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="City isn't correct!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Город выбран неправильно!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="Vətəndaşlıq düzgün seçilməyib!"
+                            }
+                        }
+                });
+
+                Office office = _officeContext.GetOfficeWithId(businessUser.OfficeId);
+                if (office == null) return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error",
+                    Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="Office isn't correct!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Офис выбран неправильно!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="Ofis düzgün seçilməyib!"
+                            }
+                        }
+                });
+
+                int camexId = 1;
+
+
+                AppUser user = new AppUser()
+                {
+                    UserName = businessUser.CompanyName + businessUser.CompanyRegistrationNumber,
+                    Email = businessUser.Email,
+                    PhoneNumber = businessUser.PhoneNumber,
+                    CamexId = camexId,
+                    CityId = businessUser.CityId,
+                    OfficeId = businessUser.OfficeId,
+                    Address = businessUser.Address,
+                    Image = "placeholder.jpg",
+                    IsTermsAccepted = businessUser.IsTermsAccepted,
+                    IsActived = false,
+                };
+
+                user.Balance = new Balance
+                {
+                    UserBalance = 0
+                };
+
+                IdentityResult identityResult = await _userManager.CreateAsync(user, businessUser.Password);
+                await _userManager.AddToRoleAsync(user, Helper.Roles.PrivateCustomer.ToString());
+
+                if (!identityResult.Succeeded)
+                {
+                    string errors = ModelState.GetAllErrors(identityResult);
+                    return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error",
+                        Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="User creation failed! Please check user details and try again." + " Errors: " + errors
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Не удалось создать пользователя! Пожалуйста, проверьте данные пользователя и попробуйте еще раз." + " Errors: " + errors
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="İstifadəçini yaratmaq alınmadı! Xahiş edirik istifadəçi məlumatlarınızı yoxlayın və yenidən cəhd edin."+ " Errors: " + errors
+                            }
+                        }
+                    });
+
+                }
+                _businessContext.Add(new BusinessCustomer
+                {
+                    CamexId = camexId,
+                    CompanyRegistrationNumber=businessUser.CompanyRegistrationNumber,
+                    CompanyName=businessUser.CompanyName,
+                });
+                return Ok(new Response { Status = "Success",
+                    Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="User created successfully!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Пользователь успешно создан!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="İstifadəçi uğurla yaradıldı!"
+                            }
+                        }
+                });
+
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error",
+                    Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang=e.Message + e.InnerException
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang=e.Message + e.InnerException
+
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                 MessageLang=e.Message + e.InnerException
+                            }
+                        }
                 });
             }
-            if (!await _roleManager.RoleExistsAsync("BusinessCustomer"))
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("login")]
+        public async Task<IActionResult> Login([FromBody] Login model)
+        {
+            try
             {
-                await _roleManager.CreateAsync(new IdentityRole()
+                AppUser user = await _userManager.FindByEmailAsync(model.Email);
+                if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
                 {
-                    Name = "BusinessCustomer"
+                    if (!user.IsActived)
+                    {
+                        return StatusCode(StatusCodes.Status401Unauthorized, new Response { Status = "Error",
+                            Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="Your account is Deactivatived! Please check your email and active account!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Ваш аккаунт деактивирован! Пожалуйста, проверьте свою электронную почту и активную учетную запись!"
+
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="Hesabınız activ deyil! Zəhmət olmasa e-poçtunuzu yoxlayın ve hesabınızı aktiv edin!"
+                            }
+                        }
+                        });
+
+                    }
+                    IList<string> userRoles = await _userManager.GetRolesAsync(user);
+
+                    List<Claim> authClaims = new List<Claim>
+                    {
+                        new Claim(ClaimTypes.Name, user.UserName),
+                    };
+                    string role="";
+                    foreach (var userRole in userRoles)
+                    {
+                        authClaims.Add(new Claim(ClaimTypes.Role, userRole));
+                        role = userRole;                    
+                    }
+
+                    var jwtResult = _jwtAuthManager.GenerateTokens(user.UserName, authClaims, DateTime.Now);
+
+                    return Ok(new LoginResult
+                    {
+                        UserName = model.Email,
+                        Role = role,
+                        AccessToken = jwtResult.AccessToken,
+                        RefreshToken = jwtResult.RefreshToken.TokenString
+                    });
+
+                }
+                return StatusCode(StatusCodes.Status401Unauthorized, new Response
+                {
+                    Status = "Error",
+                    Messages = new Message[]
+                    { 
+                        new Message {Lang_id=1,MessageLang= "Email or Password is Wrong!" } ,
+                        new Message {Lang_id=2,MessageLang= "Е-маил или пароль введены неправильно!" },
+                        new Message {Lang_id=3,MessageLang= "E-poçt və ya şifrə düzgün yazılmayıb!" }
+                    }
+                        
+                });
+
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error",
+                    Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang=e.Message +" aaa"+ e.InnerException+e.StackTrace
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang=e.Message + e.InnerException
+
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                 MessageLang=e.Message + e.InnerException
+                            }
+                        }
                 });
             }
-            if (!await _roleManager.RoleExistsAsync("Moderator"))
+        }
+
+        [HttpGet("user")]
+        [Authorize]
+        public ActionResult GetCurrentUser()
+        {
+            return Ok(new LoginResult
             {
-                await _roleManager.CreateAsync(new IdentityRole()
+                UserName = User.Identity.Name,
+                Role = User.FindFirst(ClaimTypes.Role)?.Value ?? string.Empty,
+                OriginalUserName = User.FindFirst("OriginalUserName")?.Value
+            });
+        }
+
+
+        [HttpPost("logout")]
+        [Authorize]
+        public ActionResult Logout()
+        {
+            var userName = User.Identity.Name;
+            _jwtAuthManager.RemoveRefreshTokenByUserName(userName);
+            return Ok();
+        }
+
+        [HttpPost("refresh-token")]
+        [Authorize] 
+        public async Task<ActionResult> RefreshToken([FromBody] RefreshTokenRequest request)
+        {
+            try
+            {
+                var userName = User.Identity.Name;
+
+                if (string.IsNullOrWhiteSpace(request.RefreshToken))
                 {
-                    Name = "Moderator"
+                    return Unauthorized();
+                }
+
+                var accessToken = await HttpContext.GetTokenAsync("Bearer", "access_token");
+                var jwtResult = _jwtAuthManager.Refresh(request.RefreshToken, accessToken, DateTime.Now);
+                return Ok(new LoginResult
+                {
+                    UserName = userName,
+                    Role = User.FindFirst(ClaimTypes.Role)?.Value ?? string.Empty,
+                    AccessToken = jwtResult.AccessToken,
+                    RefreshToken = jwtResult.RefreshToken.TokenString
                 });
             }
-            if (!await _roleManager.RoleExistsAsync("MainAdmin"))
+            catch (SecurityTokenException e)
             {
-                await _roleManager.CreateAsync(new IdentityRole()
-                {
-                    Name = "MainAdmin"
-                });
+                return Unauthorized(e.Message); // return 401 so that the client side can redirect the user to login page
+            }
+        }
+
+/*        [HttpPost("impersonation")]
+        [Authorize(Roles = "Admin,MainAdmin")]
+        public async Task<ActionResult> Impersonate([FromBody] ImpersonationRequest request)
+        {
+            var userName = User.Identity.Name;
+
+            AppUser user = await _userManager.FindByNameAsync(request.UserName);
+
+            IList<string> userRoles = await _userManager.GetRolesAsync(user);
+
+            List<Claim> authClaims = new List<Claim>{
+                new Claim(ClaimTypes.Name, request.UserName),
+                new Claim("OriginalUserName", userName)
+            };
+            string impersonatedRole = "";
+            foreach (var userRole in userRoles)
+            {
+                authClaims.Add(new Claim(ClaimTypes.Role, userRole));
+                impersonatedRole = userRole;
+            }
+            if (string.IsNullOrWhiteSpace(impersonatedRole))
+            {
+                return BadRequest($"The target user [{request.UserName}] is not found.");
+            }
+            if (impersonatedRole == Helper.Roles.Admin.ToString() || impersonatedRole == Helper.Roles.MainAdmin.ToString())
+            {
+                return BadRequest("This action is not supported.");
+            }
+          
+
+
+            var jwtResult = _jwtAuthManager.GenerateTokens(request.UserName, authClaims, DateTime.Now);
+            return Ok(new LoginResult
+            {
+                UserName = request.UserName,
+                Role = impersonatedRole,
+                OriginalUserName = userName,
+                AccessToken = jwtResult.AccessToken,
+                RefreshToken = jwtResult.RefreshToken.TokenString
+            });
+        }
+
+        [HttpPost("stop-impersonation")]
+        public async Task<ActionResult> StopImpersonation()
+        {
+            var userName = User.Identity.Name;
+            AppUser user = await _userManager.FindByNameAsync(userName);
+            var originalUserName = User.FindFirst("OriginalUserName")?.Value;
+            if (string.IsNullOrWhiteSpace(originalUserName))
+            {
+                return BadRequest("You are not impersonating anyone.");
             }
 
+            IList<string> userRoles = await _userManager.GetRolesAsync(user);
+
+            List<Claim> authClaims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, user.UserName),
+            };
+            string role = "";
+            foreach (var userRole in userRoles)
+            {
+                authClaims.Add(new Claim(ClaimTypes.Role, userRole));
+                role = userRole;
+            }
+
+            var jwtResult = _jwtAuthManager.GenerateTokens(originalUserName, authClaims, DateTime.Now);
+            return Ok(new LoginResult
+            {
+                UserName = originalUserName,
+                Role = role,
+                OriginalUserName = null,
+                AccessToken = jwtResult.AccessToken,
+                RefreshToken = jwtResult.RefreshToken.TokenString
+            });
         }*/
+
+        /*[HttpGet]
+          [Route("CreateRole")]
+          public async Task CreateRole()
+          {
+              if (!await _roleManager.RoleExistsAsync("Admin"))
+                  await _roleManager.CreateAsync(new IdentityRole()
+                  {
+                      Name = "Admin"
+                  });
+              if (!await _roleManager.RoleExistsAsync("PrivateCustomer"))
+              {
+                  await _roleManager.CreateAsync(new IdentityRole()
+                  {
+                      Name = "PrivateCustomer"
+                  });
+              }
+              if (!await _roleManager.RoleExistsAsync("BusinessCustomer"))
+              {
+                  await _roleManager.CreateAsync(new IdentityRole()
+                  {
+                      Name = "BusinessCustomer"
+                  });
+              }
+              if (!await _roleManager.RoleExistsAsync("Moderator"))
+              {
+                  await _roleManager.CreateAsync(new IdentityRole()
+                  {
+                      Name = "Moderator"
+                  });
+              }
+              if (!await _roleManager.RoleExistsAsync("MainAdmin"))
+              {
+                  await _roleManager.CreateAsync(new IdentityRole()
+                  {
+                      Name = "MainAdmin"
+                  });
+              }
+
+          }*/
     }
 }

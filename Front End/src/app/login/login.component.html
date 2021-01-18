@@ -3,41 +3,47 @@
 <app-mobile-navbar>
 </app-mobile-navbar>
 <section id="login">
-  <app-title [title]="title" ></app-title>
+  <app-title [title]="'login' | translate" ></app-title>
   <div class="container-fluid  pl-pr-10 pt-5 pb-5 d-flex justify-content-center">
     <div class="bg-color col-xl-6 xol-lg-6 col-md-9 col-sm-12 col-12 p-sm-0">
       <div class="p-lg-5 p-md-5 p-sm-3 pb-sm-4 p-2 pb-4">
-        <div class="pr-lg-2 pl-lg-2  p-0 pt-2">
-          <mat-form-field class="w-100 mt-3" appearance="fill">
-            <mat-label class="ml-2">Email</mat-label>
-            <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
-            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-              Please enter a valid email address
-            </mat-error>
-            <mat-error *ngIf="emailFormControl.hasError('required')">
-              Email is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
-          <mat-form-field appearance="fill" class="w-100">
-            <mat-label class="ml-2">Enter your password</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'">
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
-          </mat-form-field>
-          <div class="w-100 d-flex  mt-4">
-            <button mat-raised-button class="text-uppercase log-button form-buttons w-100">giriş </button>
+        <form [formGroup]="loginForm" novalidate (ngSubmit)="submit()">
+          <div class="pr-lg-2 pl-lg-2  p-0 pt-2">
+            <mat-form-field class="w-100 mt-3" appearance="fill">
+              <mat-label class="ml-2">{{'EmailLogin' | translate}}</mat-label>
+              <input type="email" matInput formControlName="Email" placeholder="camex.example@example.com">
+              <mat-error  *ngIf="errorHandling('Email','email') && !errorHandling('Email','required')">
+                {{'EmailInCorrect' | translate }}
+              </mat-error>
+              <mat-error  *ngIf="errorHandling('Email','required')" [innerHTML]="'Required' | translate ">
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="w-100 mt-3">
+              <mat-label class="ml-2">{{'PasswordLogin' | translate}}</mat-label>
+              <input matInput  formControlName="Password" [type]="hide ? 'password' : 'text'">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <mat-error  *ngIf="errorHandling('Password','required')" [innerHTML]="'Required' | translate ">
+              </mat-error>
+              <mat-error  *ngIf="Password.errors?.minlength " >
+                {{'minLengthPass' | translate }}
+              </mat-error>
+            </mat-form-field>
+            <div class="w-100 d-flex  mt-4">
+              <button mat-raised-button class="text-uppercase log-button form-buttons w-100">{{'login' | translate}} </button>
+            </div>
+            <div class="w-100 mt-4 d-flex justify-content-center">
+              <a routerLink="/restore">{{'RestoreLogin' | translate}}</a>
+            </div>
+            <div class="w-100 mt-4 mb-5" style="border-bottom: 1px solid #dadde1;"></div>
+            <div class="w-100 d-flex mt-4 justify-content-center">
+              <a routerLink="/register" class="w-50">
+                <button mat-raised-button class="text-uppercase reg-button form-buttons w-100" >{{'register' | translate}}</button>
+              </a>
+            </div>
           </div>
-          <div class="w-100 mt-4 d-flex justify-content-center">
-            <a routerLink="/restore">Şifrəni unutmusan?</a>
-          </div>
-          <div class="w-100 mt-4 mb-5" style="border-bottom: 1px solid #dadde1;"></div>
-          <div class="w-100 d-flex mt-4 justify-content-center">
-            <a routerLink="/register" class="w-50">
-              <button mat-raised-button class="text-uppercase reg-button form-buttons w-100" >Qeydiyat</button>
-            </a>
-          </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>

@@ -20,10 +20,10 @@
            <div class="dropdown">
              <mat-form-field [ngStyle]="{'border':'white'}" appearance="none" >
                <mat-select [(value)]="selected" (valueChange)="SetLanguage(selectField.value)" #selectField >
-                 <mat-select-trigger>
+                 <mat-select-trigger *ngIf="select!=null">
                    <a role="button" class="lang">
                      <div class="flag">
-                       <img width="100%" [src]="select.img"  >
+                       <img width="100%" [src]="select.flagSrc"  >
                      </div>
                      <span> {{select.name}}</span>
                    </a>
@@ -31,7 +31,7 @@
                  <mat-option *ngFor="let lang of languages"  [value]="lang.value" >
                    <a role="button" class="lang">
                      <div class="flag">
-                       <img width="100%" [src]="lang.img"  >
+                       <img width="100%" [src]="lang.flagSrc"  >
                      </div>
                      <span [ngClass]="{'active-lang':selected==lang.value}"> {{lang.name}}</span>
                    </a>
@@ -45,7 +45,7 @@
     </div>
   </div>
   <div class="container-fluid pl-pr-10 d-flex justify-content-between">
-    <div class="d-flex col-9 p-0">
+    <div class="d-flex col-8 p-0">
       <a routerLink="" class="logo lg-logo"></a>
       <div class="menu">
         <ul>
@@ -56,9 +56,33 @@
         </ul>
       </div>
     </div>
-    <div class="d-flex col-3 p-0 justify-content-end align-items-center">
-      <a routerLink="/register"><button mat-raised-button class="register log-sys-btn mr-4" color="primary">{{'register' | translate }}</button></a>
-      <a routerLink="/login"><button mat-raised-button class="log-sys-btn mr-2"> <i class=" user-icon far fa-user"></i>{{'login' | translate }}</button></a>
+    <div class="d-flex col-4 p-0 justify-content-end align-items-center">
+      <div *ngIf="authService.user$ | async as user else elseBlock">
+        <div class="user-box d-flex align-items-center">
+          <div class="user d-flex mr-3">
+            <div class="img">
+
+            </div>
+            <div class="title">
+              <p class="m-0 mb-2">
+                <a routerLink="" class="username">Seynur Memmedov</a>
+              </p>
+              <p class="m-0">
+                <a routerLink="" class="balance">
+                  <span>Balans: </span>
+                  <span> 0.00 <i class="far fa-dollar-sign fa-1"></i></span>
+                </a>
+              </p>
+            </div>
+          </div>
+          <div class="logout-icon ml-1  " (click)="logout()">
+          </div>
+        </div>
+      </div>
+      <ng-template #elseBlock>
+        <a routerLink="/register"><button mat-raised-button    class="register log-sys-btn mr-4" color="primary">{{'register' | translate }}</button></a>
+        <a routerLink="/login"><button mat-raised-button class="log-sys-btn mr-2"> <i class=" user-icon far fa-user"></i>{{'login' | translate }}</button></a>
+      </ng-template>
     </div>
   </div>
 </header>

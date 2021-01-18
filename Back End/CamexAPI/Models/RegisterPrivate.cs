@@ -8,7 +8,7 @@ namespace CamexAPI.Models
 {
     public class RegisterPrivate
     {
-        [Required]
+        [Required, Range(1, 99999999)]
         public int PassportNumber { get; set; }
         [Required]
         public string Name { get; set; }
@@ -35,12 +35,12 @@ namespace CamexAPI.Models
         public int CityId { get; set; }
         [Required]
         public string Address { get; set; }
-        [Required, DataType(DataType.PhoneNumber)]
+        [Required, DataType(DataType.PhoneNumber),MaxLength(9),MinLength(9)] 
         public string PhoneNumber { get; set; }
         [Required]
         public int OfficeId { get; set; }
         [Required]
-        public bool IsTermAccepted { get; set; }
+        public bool IsTermsAccepted { get; set; }
 
     }
 }

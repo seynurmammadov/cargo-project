@@ -3,253 +3,362 @@
 <app-mobile-navbar>
 </app-mobile-navbar>
 <section id="register">
-  <app-title [title]="title" ></app-title>
+  <app-title [title]="'register' | translate " ></app-title>
   <div class="container-fluid  pl-pr-10 pt-5 pb-5">
     <div class="bg-color w-100">
       <mat-tab-group  mat-stretch-tabs mat-align-tabs="center" >
         <mat-tab>
-          <ng-template mat-tab-label><p class="label-head m-0 text-uppercase">Fiziki Şəxs</p></ng-template>
-          <div class="d-flex flex-wrap">
-            <div class="pt-4 pb-4 pl-xl-5 pr-xl-5 pl-lg-4 pr-lg-4 pl-md-2 pr-md-2 pr-sm-2 pl-sm-2 pl-1 pr-1 w-100">
-              <div class="pr-4 pl-4 w-100">
-                <h4 class=" pl-3 pt-4 pb-2 w-100 text-uppercase"><b>ŞƏXSİ MƏLUMAT</b></h4>
-                <div class="d-flex flex-wrap w-100">
-                 <div class="col-lg-6 col-md-6 col-12">
-                   <mat-form-field class="w-100" appearance="fill">
-                     <mat-label>Email</mat-label>
-                     <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
-                     <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                       Please enter a valid email address
-                     </mat-error>
-                     <mat-error *ngIf="emailFormControl.hasError('required')">
-                       Email is <strong>required</strong>
-                     </mat-error>
-                   </mat-form-field>
-                 </div>
-                 <div class="col-lg-6 col-md-6 col-12">
-                   <mat-form-field class="w-100" appearance="fill">
-                     <mat-label>Şəxsiyyət vəsiqəsinin seriya nömrəsi *</mat-label>
-                     <input type="number" matInput  placeholder="12345678">
-                   </mat-form-field>
-                 </div>
-                 <div class="col-lg-6 col-md-6 col-12">
-                   <mat-form-field class="w-100" appearance="fill">
-                     <mat-label>Ad (İngilis herifleri ile)</mat-label>
-                     <input type="text" matInput  placeholder="12345678">
-                   </mat-form-field>
-                 </div>
-                 <div class="col-lg-6 col-md-6 col-12">
-                   <mat-form-field class="w-100" appearance="fill">
-                     <mat-label>Soyad (İngilis herifleri ile)</mat-label>
-                     <input type="text" matInput  placeholder="12345678">
-                   </mat-form-field>
-                 </div>
-                 <div class="col-lg-6 col-md-6 col-12">
-                   <mat-form-field class="w-100" appearance="fill">
-                     <mat-label>Ata adi (İngilis herifleri ile)</mat-label>
-                     <input type="text" matInput  placeholder="12345678">
-                   </mat-form-field>
-                 </div>
-                 <div class="col-lg-6 col-md-6 col-12">
-                   <mat-form-field class="w-100" appearance="fill">
-                     <mat-label>Choose birthdate</mat-label>
-                     <input matInput [matDatepicker]="picker">
-                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                     <mat-datepicker #picker></mat-datepicker>
-                   </mat-form-field>
-                 </div>
-                 <div class="col-lg-6 col-md-6 col-12">
-                   <mat-form-field class="w-100" appearance="fill">
-                     <mat-label>Vetendasliq</mat-label>
-                     <mat-select (selectionChange)="changeImg(selectField.value)" #selectField>
-                       <mat-option value="non-az">
-                         Başqa ölkənin vətəndaşı (Qeyri-rezident)
-                       </mat-option>
-                       <mat-option value="az">
-                         Azərbaycan Respublikasının vətəndaşı (Rezident)
-                       </mat-option>
-                     </mat-select>
-                   </mat-form-field>
-                 </div>
-                 <div class="col-lg-6 col-md-6 col-12 d-flex flex-wrap">
-                  <div class="col-lg-6 col-md-6 col-12 p-0">
-                    <mat-form-field class="w-100" appearance="fill">
-                      <mat-label>Şəxsiyyət vəsiqəsinin FİN kodu *</mat-label>
-                      <input type="text" matInput  placeholder="4FRKPVD">
-                    </mat-form-field>
-                  </div>
-                   <div class="col-lg-6 col-md-6 col-12 p-0 d-flex align-items-center justify-content-between">
-                     <mat-radio-group color="primary" aria-label="Cinsiyeti secin" class=" mb-2 d-flex flex-wrap align-items-center justify-content-center w-100">
-                       <label>Cinsiyeti secin: </label>
-                       <mat-radio-button value="1" class="mr-2 ml-3">Kisi</mat-radio-button>
-                       <mat-radio-button value="2">Qadin</mat-radio-button>
-                     </mat-radio-group>
+          <ng-template mat-tab-label><p class="label-head m-0 text-uppercase">{{'PrivatePerson' | translate }}</p></ng-template>
+          <form [formGroup]="privateForm" novalidate (ngSubmit)="submit()">
+            <div class="d-flex flex-wrap">
+              <div class="pt-4 pb-4 pl-xl-5 pr-xl-5 pl-lg-4 pr-lg-4 pl-md-2 pr-md-2 pr-sm-2 pl-sm-2 pl-1 pr-1 w-100">
+                <div class="pr-4 pl-4 w-100">
+                  <h4 class=" pl-3 pt-4 pb-2 w-100 text-uppercase"><b>{{'PersonalInfo' | translate }} </b></h4>
+                  <div class="d-flex flex-wrap w-100">
+                   <div class="col-lg-6 col-md-6 col-12">
+                     <mat-form-field class="w-100" appearance="fill">
+                       <mat-label class="text-capitalize">{{'Email' | translate }} </mat-label>
+                       <input type="email" matInput formControlName="Email" placeholder="camex.example@example.com">
+                       <mat-error  *ngIf="errorHandling('Email','email') && !errorHandling('Email','required')">
+                         {{'EmailInCorrect' | translate }}
+                       </mat-error>
+                       <mat-error  *ngIf="errorHandling('Email','required')" [innerHTML]="'Required' | translate ">
+                       </mat-error>
+                     </mat-form-field>
+                   </div>
+                   <div class="col-lg-6 col-md-6 col-12">
+                     <mat-form-field class="w-100" appearance="fill">
+                       <mat-label class="text-capitalize" >{{'IDCardNumber' | translate }}</mat-label>
+                       <input type="number" formControlName="PassportNumber" matInput  placeholder="12345678">
+                       <mat-error  *ngIf="errorHandling('PassportNumber','required')" [innerHTML]="'Required' | translate ">
+                       </mat-error>
+                       <mat-error  *ngIf="errorHandling('PassportNumber','min') ||errorHandling('PassportNumber','max') " >
+                         {{'MinMaxPassNumber' | translate }}
+                       </mat-error>
+                       <mat-error  *ngIf="errorHandling('PassportNumber','pattern') " >
+                         {{'NumberPattern' | translate }}
+                       </mat-error>
+                     </mat-form-field>
+                   </div>
+                   <div class="col-lg-6 col-md-6 col-12">
+                     <mat-form-field class="w-100" appearance="fill">
+                       <mat-label class="text-capitalize" >{{'registrationName' | translate }}</mat-label>
+                       <input type="text" matInput  placeholder="Seynur" formControlName="Name">
+                       <mat-error  *ngIf="errorHandling('Name','required')" [innerHTML]="'Required' | translate ">
+                       </mat-error>
+                     </mat-form-field>
+                   </div>
+                   <div class="col-lg-6 col-md-6 col-12">
+                     <mat-form-field class="w-100" appearance="fill">
+                       <mat-label class="text-capitalize" >{{'registrationSurname' | translate }}</mat-label>
+                       <input type="text" matInput  placeholder="Məmmədov" formControlName="Surname">
+                       <mat-error  *ngIf="errorHandling('Surname','required')" [innerHTML]="'Required' | translate ">
+                       </mat-error>
+                     </mat-form-field>
+                   </div>
+                   <div class="col-lg-6 col-md-6 col-12">
+                     <mat-form-field class="w-100" appearance="fill">
+                       <mat-label class="text-capitalize" >{{'registrationLastname' | translate }}</mat-label>
+                       <input type="text" matInput  placeholder="Seymur" formControlName="Lastname">
+                       <mat-error  *ngIf="errorHandling('Lastname','required')" [innerHTML]="'Required' | translate ">
+                       </mat-error>
+                     </mat-form-field>
+                   </div>
+                   <div class="col-lg-6 col-md-6 col-12">
+                     <mat-form-field class="w-100" appearance="fill">
+                       <mat-label class="text-capitalize" >{{'BirthDate' | translate }}</mat-label>
+                       <input matInput [matDatepicker]="picker" formControlName="Birthday" m>
+                       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                       <mat-datepicker #picker></mat-datepicker>
+                       <mat-error  *ngIf="errorHandling('Birthday','required')" [innerHTML]="'Required' | translate ">
+                       </mat-error>
+                     </mat-form-field>
+                   </div>
+                   <div class="col-lg-6 col-md-6 col-12">
+                     <mat-form-field class="w-100" appearance="fill">
+                       <mat-label class="text-capitalize" >{{'Citizenship' | translate }}</mat-label>
+                       <mat-select (selectionChange)="changeImg(selectField.value)" #selectField formControlName="СitizenshipId">
+                         <mat-option value="1" class="text-capitalize">
+                           {{'CitizenNonAz' | translate }}
+                         </mat-option>
+                         <mat-option value="2" class="text-capitalize">
+                           {{'CitizenAz' | translate }}
+                         </mat-option>
+                       </mat-select>
+                       <mat-error  *ngIf="errorHandling('СitizenshipId','required')" [innerHTML]="'Required' | translate ">
+                       </mat-error>
+                       <mat-error  *ngIf="errorHandling('СitizenshipId','pattern') " >
+                         {{'NumberPattern' | translate }}
+                       </mat-error>
+                     </mat-form-field>
+                   </div>
+                   <div class="col-lg-6 col-md-6 col-12 d-flex flex-wrap">
+                    <div class="col-lg-6 col-md-6 col-12 p-0">
+                      <mat-form-field class="w-100" appearance="fill">
+                        <mat-label class="text-capitalize"> {{'PassIIN' | translate }}</mat-label>
+                        <input type="text" matInput  placeholder="4FRKPVD" formControlName="FINCode">
+                        <mat-error  *ngIf="errorHandling('FINCode','required')" [innerHTML]="'Required' | translate ">
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                     <div class="col-lg-6 col-md-6 col-12 p-0 pl-lg-1 pl-md-1 d-flex align-items-center justify-content-between">
+                       <mat-form-field class="w-100" appearance="fill">
+                       <mat-label class="text-capitalize" >{{'Gender' | translate }}</mat-label>
+                       <mat-select  formControlName="IsMan">
+                         <mat-option value="true" class="text-capitalize">
+                           {{'Male' | translate }}
+                         </mat-option>
+                         <mat-option value="false" class="text-capitalize">
+                           {{'Female' | translate }}
+                         </mat-option>
+                       </mat-select>
+                       <mat-error  *ngIf="errorHandling('IsMan','required')" [innerHTML]="'Required' | translate ">
+                       </mat-error>
+                       </mat-form-field>
+                     </div>
+                   </div>
+                   <div class="col-12 d-flex justify-content-center mt-2">
+                     <div class=" text-center">
+                       <div class="text-center mb-3 text-capitalize passport m-auto">{{'IINPlace' | translate }}</div>
+                       <img [src]="passportImgSrc" width="100%" class="mt-3"  alt="">
+                     </div>
                    </div>
                  </div>
-                 <div class="col-12 d-flex justify-content-center mt-2">
-                   <div class="passport ">
-                     <p class="text-center w-100 mb-3">FİN kod harada yerlesir:</p>
-                     <img [src]="passportImgSrc" width="100%"  alt="">
-                   </div>
-                 </div>
-               </div>
-                <h4 class=" pl-3  pt-4 pb-2 w-100 text-uppercase"><b>sifre</b></h4>
-                <div class="d-flex flex-wrap w-100">
-                  <div class="col-lg-6 col-md-6 col-12">
-                    <mat-form-field class="w-100" appearance="fill">
-                      <mat-label>Sifre</mat-label>
-                      <input type="password" matInput placeholder="*********">
-                    </mat-form-field>
+                  <h4 class=" pl-3  pt-4 pb-2 w-100 text-uppercase"><b>{{'Password' | translate }}</b></h4>
+                  <div class="d-flex flex-wrap w-100">
+                    <div class="col-lg-6 col-md-6 col-12">
+                      <mat-form-field class="w-100" appearance="fill">
+                        <mat-label class="text-capitalize">{{'Password' | translate }}</mat-label>
+                        <input type="password" matInput placeholder="*********" formControlName="Password">
+                        <mat-error  *ngIf="errorHandling('Password','required')" [innerHTML]="'Required' | translate ">
+                        </mat-error>
+                        <mat-error  *ngIf="Password.errors?.minlength " >
+                          {{'minLengthPass' | translate }}
+                        </mat-error>
+                        <mat-error  *ngIf="errorHandling('Password','pattern')" >
+                          {{'patternPass' | translate }}
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12">
+                      <mat-form-field class="w-100" appearance="fill">
+                        <mat-label class="text-capitalize" >{{'PasswordAgain' | translate }}</mat-label>
+                        <input type="password" matInput placeholder="*********" formControlName="CheckPassword">
+                        <mat-error  *ngIf="errorHandling('CheckPassword','compare')" >
+                          {{'comparePass' | translate }}
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
                   </div>
-                  <div class="col-lg-6 col-md-6 col-12">
-                    <mat-form-field class="w-100" appearance="fill">
-                      <mat-label>Sifreni tekrar yaz</mat-label>
-                      <input type="password" matInput placeholder="*********">
-                    </mat-form-field>
+                  <h4 class=" pl-3  pt-4 pb-2 w-100 text-uppercase"><b>{{'Contact' | translate }}</b></h4>
+                  <div class="d-flex flex-wrap w-100">
+                    <div class="col-lg-6 col-md-6 col-12">
+                      <mat-form-field class="w-100" appearance="fill" >
+                        <mat-label class="text-capitalize">{{'City' | translate }}</mat-label>
+                        <mat-select formControlName="CityId">
+                          <mat-option *ngFor="let city of currentCities" [value]="city.id" class="text-capitalize">
+                            {{city.cityNameTranslates[0].name}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error  *ngIf="errorHandling('CityId','required')" [innerHTML]="'Required' | translate ">
+                        </mat-error>
+                        <mat-error  *ngIf="errorHandling('CityId','pattern') " >
+                          {{'NumberPattern' | translate }}
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12">
+                      <mat-form-field class="w-100" appearance="fill">
+                        <mat-label class="text-capitalize">{{'Address' | translate }}</mat-label>
+                        <input type="text" matInput placeholder="Nizami rayonu, Cəmşid Naxçivanski 73 " formControlName="Address">
+                        <mat-error  *ngIf="errorHandling('Address','required')" [innerHTML]="'Required' | translate ">
+                        </mat-error>
+
+                      </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12">
+                      <mat-form-field appearance="fill" class="w-100">
+                        <mat-label class="text-capitalize">{{'PhoneNum' | translate }}</mat-label>
+                        <input type="text" matInput placeholder="559294860" formControlName="PhoneNumber">
+                        <mat-error  *ngIf="errorHandling('PhoneNumber','required')" [innerHTML]="'Required' | translate ">
+                        </mat-error>
+                        <mat-error  *ngIf=" PhoneNumber.errors?.minlength ||PhoneNumber.errors?.maxlength " >
+                          {{'PhoneNumberLength' | translate }}
+                        </mat-error>
+                        <mat-error  *ngIf="errorHandling('PhoneNumber','pattern') " >
+                          {{'NumberPattern' | translate }}
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
                   </div>
-                </div>
-                <h4 class=" pl-3  pt-4 pb-2 w-100 text-uppercase"><b>ƏLAQƏ</b></h4>
-                <div class="d-flex flex-wrap w-100">
-                  <div class="col-lg-6 col-md-6 col-12">
-                    <mat-form-field class="w-100" appearance="fill">
-                      <mat-label>Seher</mat-label>
-                      <mat-select>
-                        <mat-option *ngFor="let city of currentCities" [value]="city.id" class="text-capitalize">
-                          {{city.name}}
-                        </mat-option>
-                      </mat-select>
-                    </mat-form-field>
+                  <h4 class=" pl-3  pt-4 pb-2 w-100 text-uppercase"><b>{{'OfficeTitle' | translate }}</b></h4>
+                  <div class="d-flex flex-wrap w-100">
+                    <div class="col-lg-6 col-md-6 col-12">
+                      <mat-form-field class="w-100" appearance="fill">
+                        <mat-label class="text-capitalize">{{'Office' | translate }}</mat-label>
+                        <mat-select formControlName="OfficeId">
+                          <mat-option *ngFor="let office of offices" [value]="office.id" class="text-capitalize">
+                            {{office.officeNameTranlates[0].name}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error  *ngIf="errorHandling('OfficeId','required')" [innerHTML]="'Required' | translate ">
+                        </mat-error>
+                        <mat-error  *ngIf="errorHandling('OfficeId','pattern') " >
+                          {{'NumberPattern' | translate }}
+                        </mat-error>
+                      </mat-form-field>
+                        <mat-checkbox class="mt-2 w-100 text-capitalize" color="primary" required  formControlName="IsTermsAccepted">
+                          {{'Terms1' | translate }}  <a [href]="user_agreement" target="_blank">{{'Terms2' | translate }} </a>{{'Terms3' | translate }}
+                        </mat-checkbox>
+
+                    </div>
                   </div>
-                  <div class="col-lg-6 col-md-6 col-12">
-                    <mat-form-field class="w-100" appearance="fill">
-                      <mat-label>Unvan</mat-label>
-                      <input type="password" matInput placeholder="Naxcivanski 73 ">
-                    </mat-form-field>
+                  <div class="w-100 d-flex justify-content-end mt-4">
+                    <button mat-raised-button class="text-uppercase reg-button"  [disabled]="!privateForm.valid">{{'register' | translate }}  </button>
                   </div>
-                  <div class="col-lg-6 col-md-6 col-12">
-                    <mat-form-field appearance="fill" class="w-100">
-                      <mat-label>Phone number</mat-label>
-                      <input type="tel" matInput placeholder="994559294860">
-                    </mat-form-field>
-                  </div>
-                </div>
-                <h4 class=" pl-3  pt-4 pb-2 w-100 text-uppercase"><b>BAĞLAMANIN TƏHVİL VERİLMƏ MƏNTƏQƏSİ</b></h4>
-                <div class="d-flex flex-wrap w-100">
-                  <div class="col-lg-6 col-md-6 col-12">
-                    <mat-form-field class="w-100" appearance="fill">
-                      <mat-label>Office</mat-label>
-                      <mat-select>
-                        <mat-option *ngFor="let office of offices" [value]="office.value"  class="text-uppercase">
-                          {{office.name}}
-                        </mat-option>
-                      </mat-select>
-                    </mat-form-field>
-                    <mat-checkbox class="mt-2 w-100" color="primary">
-                      İstifadəçi <a [href]="user_agreement" target="_blank">qaydaları</a> ilə razıyam
-                    </mat-checkbox>
-                  </div>
-                </div>
-                <div class="w-100 d-flex justify-content-end mt-4">
-                  <button mat-raised-button class="text-uppercase reg-button">Qeydiyat </button>
                 </div>
               </div>
             </div>
-          </div>
+          </form>
         </mat-tab>
         <mat-tab>
-          <ng-template mat-tab-label><p class="label-head m-0 text-uppercase">Hüquqi Şəxs</p></ng-template>
-          <div class="d-flex flex-wrap">
-            <div class="pt-4 pb-4 pl-xl-5 pr-xl-5 pl-lg-4 pr-lg-4 pl-md-2 pr-md-2 pr-sm-2 pl-sm-2 pl-1 pr-1 w-100">
-              <div class="pr-4 pl-4 w-100">
-                <h4 class=" pl-3  pt-4 pb-2 w-100 text-uppercase"><b>ŞİRKƏT HAQDA MƏLUMAT</b></h4>
-                <div class="d-flex flex-wrap w-100">
-                  <div class="col-lg-6 col-md-6 col-12">
-                    <mat-form-field class="w-100" appearance="fill">
-                      <mat-label>Email</mat-label>
-                      <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
-                      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                        Please enter a valid email address
-                      </mat-error>
-                      <mat-error *ngIf="emailFormControl.hasError('required')">
-                        Email is <strong>required</strong>
-                      </mat-error>
-                    </mat-form-field>
+          <ng-template mat-tab-label><p class="label-head m-0 text-uppercase">{{'BusinessPerson' | translate }}</p></ng-template>
+          <form [formGroup]="businessForm" novalidate (ngSubmit)="submitBusiness()">
+            <div class="d-flex flex-wrap">
+              <div class="pt-4 pb-4 pl-xl-5 pr-xl-5 pl-lg-4 pr-lg-4 pl-md-2 pr-md-2 pr-sm-2 pl-sm-2 pl-1 pr-1 w-100">
+                <div class="pr-4 pl-4 w-100">
+                  <h4 class=" pl-3  pt-4 pb-2 w-100 text-uppercase"><b>{{'BusinessInfo' | translate }}</b></h4>
+                  <div class="d-flex flex-wrap w-100">
+                    <div class="col-lg-6 col-md-6 col-12">
+                      <mat-form-field class="w-100" appearance="fill">
+                        <mat-label class="text-capitalize">{{'Email' | translate }} </mat-label>
+                        <input type="email" matInput formControlName="Email"  placeholder="camex.example@example.com">
+                        <mat-error  *ngIf="errorHandlingBusiness('Email','email') && !errorHandlingBusiness('Email','required')">
+                          {{'EmailInCorrect' | translate }}
+                        </mat-error>
+                        <mat-error  *ngIf="errorHandlingBusiness('Email','required')" [innerHTML]="'Required' | translate ">
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12">
+                      <mat-form-field class="w-100"  appearance="fill">
+                        <mat-label  class="text-capitalize"> {{'CompanyNumber' | translate }} </mat-label>
+                        <input type="number" formControlName="CompanyRegistrationNumber" matInput  placeholder="123456789">
+                        <mat-error  *ngIf="errorHandlingBusiness('CompanyRegistrationNumber','required')" [innerHTML]="'Required' | translate ">
+                        </mat-error>
+                        <mat-error  *ngIf="errorHandlingBusiness('CompanyRegistrationNumber','min') ||errorHandlingBusiness('CompanyRegistrationNumber','max') " >
+                          {{'MinMaxPassNumber' | translate }}
+                        </mat-error>
+                        <mat-error  *ngIf="errorHandlingBusiness('CompanyRegistrationNumber','pattern') " >
+                          {{'NumberPattern' | translate }}
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12">
+                      <mat-form-field class="w-100" appearance="fill">
+                        <mat-label class="text-capitalize"> {{'CompanyName' | translate }} </mat-label>
+                        <input type="text" matInput  formControlName="CompanyName" placeholder="Camex MMC">
+                        <mat-error  *ngIf="errorHandlingBusiness('CompanyName','required')" [innerHTML]="'Required' | translate ">
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
                   </div>
-                  <div class="col-lg-6 col-md-6 col-12">
-                    <mat-form-field class="w-100" appearance="fill">
-                      <mat-label>Şirkətin qeydiyyat nömrəsi *</mat-label>
-                      <input type="number" matInput  placeholder="12345678">
-                    </mat-form-field>
+                  <h4 class=" pl-3  pt-4 pb-2 w-100 text-uppercase"><b>{{'Password' | translate }}</b></h4>
+                  <div class="d-flex flex-wrap w-100">
+                    <div class="col-lg-6 col-md-6 col-12">
+                      <mat-form-field class="w-100" appearance="fill">
+                        <mat-label class="text-capitalize">{{'Password' | translate }}</mat-label>
+                        <input type="password" matInput placeholder="*********" formControlName="Password">
+                        <mat-error  *ngIf="errorHandlingBusiness('Password','required')" [innerHTML]="'Required' | translate ">
+                        </mat-error>
+                        <mat-error  *ngIf="PasswordBusiness.errors?.minlength " >
+                          {{'minLengthPass' | translate }}
+                        </mat-error>
+                        <mat-error  *ngIf="errorHandlingBusiness('Password','pattern')" >
+                          {{'patternPass' | translate }}
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12">
+                      <mat-form-field class="w-100" appearance="fill">
+                        <mat-label class="text-capitalize" >{{'PasswordAgain' | translate }}</mat-label>
+                        <input type="password" matInput placeholder="*********" formControlName="CheckPassword">
+                        <mat-error  *ngIf="errorHandlingBusiness('CheckPassword','compare')" >
+                          {{'comparePass' | translate }}
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
                   </div>
-                  <div class="col-lg-6 col-md-6 col-12">
-                    <mat-form-field class="w-100" appearance="fill">
-                      <mat-label>Şirkətin adı *</mat-label>
-                      <input type="text" matInput  placeholder="12345678">
-                    </mat-form-field>
+                  <h4 class=" pl-3  pt-4 pb-2 w-100 text-uppercase"><b>{{'Contact' | translate }}</b></h4>
+                  <div class="d-flex flex-wrap w-100">
+                    <div class="col-lg-6 col-md-6 col-12">
+                      <mat-form-field class="w-100" appearance="fill" >
+                        <mat-label class="text-capitalize">{{'City' | translate }}</mat-label>
+                        <mat-select formControlName="CityId">
+                          <mat-option *ngFor="let city of currentCities" [value]="city.id" class="text-capitalize">
+                            {{city.cityNameTranslates[0].name}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error  *ngIf="errorHandlingBusiness('CityId','required')" [innerHTML]="'Required' | translate ">
+                        </mat-error>
+                        <mat-error  *ngIf="errorHandlingBusiness('CityId','pattern') " >
+                          {{'NumberPattern' | translate }}
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12">
+                      <mat-form-field class="w-100" appearance="fill">
+                        <mat-label class="text-capitalize">{{'Address' | translate }}</mat-label>
+                        <input type="text" matInput placeholder="Nizami rayonu, Cəmşid Naxçivanski 73 " formControlName="Address">
+                        <mat-error  *ngIf="errorHandlingBusiness('Address','required')" [innerHTML]="'Required' | translate ">
+                        </mat-error>
+
+                      </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12">
+                      <mat-form-field appearance="fill" class="w-100">
+                        <mat-label class="text-capitalize">{{'PhoneNum' | translate }}</mat-label>
+                        <input type="text" matInput placeholder="559294860" formControlName="PhoneNumber">
+                        <mat-error  *ngIf="errorHandlingBusiness('PhoneNumber','required')" [innerHTML]="'Required' | translate ">
+                        </mat-error>
+                        <mat-error  *ngIf=" PhoneNumberBusiness.errors?.minlength ||PhoneNumberBusiness.errors?.maxlength " >
+                          {{'PhoneNumberLength' | translate }}
+                        </mat-error>
+                        <mat-error  *ngIf="errorHandlingBusiness('PhoneNumber','pattern') " >
+                          {{'NumberPattern' | translate }}
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
                   </div>
-                </div>
-                <h4 class=" pl-3  pt-4 pb-2 w-100 text-uppercase"><b>sifre</b></h4>
-                <div class="d-flex flex-wrap w-100">
-                  <div class="col-lg-6 col-md-6 col-12">
-                    <mat-form-field class="w-100" appearance="fill">
-                      <mat-label>Sifre</mat-label>
-                      <input type="password" matInput placeholder="*********">
-                    </mat-form-field>
+                  <h4 class=" pl-3  pt-4 pb-2 w-100 text-uppercase"><b>{{'OfficeTitle' | translate }}</b></h4>
+                  <div class="d-flex flex-wrap w-100">
+                    <div class="col-lg-6 col-md-6 col-12">
+                      <mat-form-field class="w-100" appearance="fill">
+                        <mat-label class="text-capitalize">{{'Office' | translate }}</mat-label>
+                        <mat-select formControlName="OfficeId">
+                          <mat-option *ngFor="let office of offices" [value]="office.id" class="text-capitalize">
+                            {{office.officeNameTranlates[0].name}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error  *ngIf="errorHandlingBusiness('OfficeId','required')" [innerHTML]="'Required' | translate ">
+                        </mat-error>
+                        <mat-error  *ngIf="errorHandlingBusiness('OfficeId','pattern') " >
+                          {{'NumberPattern' | translate }}
+                        </mat-error>
+                      </mat-form-field>
+                      <mat-checkbox class="mt-2 w-100 text-capitalize" color="primary" required  formControlName="IsTermsAccepted">
+                        {{'Terms1' | translate }}  <a [href]="user_agreement" target="_blank">{{'Terms2' | translate }} </a>{{'Terms3' | translate }}
+                      </mat-checkbox>
+
+                    </div>
                   </div>
-                  <div class="col-lg-6 col-md-6 col-12">
-                    <mat-form-field class="w-100" appearance="fill">
-                      <mat-label>Sifreni tekrar yaz</mat-label>
-                      <input type="password" matInput placeholder="*********">
-                    </mat-form-field>
+                  <div class="w-100 d-flex justify-content-end mt-4">
+                    <button mat-raised-button class="text-uppercase reg-button"  [disabled]="!businessForm.valid">{{'register' | translate }}  </button>
                   </div>
-                </div>
-                <h4 class=" pl-3  pt-4 pb-2 w-100 text-uppercase"><b>ƏLAQƏ</b></h4>
-                <div class="d-flex flex-wrap w-100">
-                  <div class="col-lg-6 col-md-6 col-12">
-                    <mat-form-field class="w-100" appearance="fill">
-                      <mat-label>Seher</mat-label>
-                      <mat-select>
-                        <mat-option *ngFor="let city of currentCities" [value]="city.id" class="text-capitalize">
-                          {{city.name}}
-                        </mat-option>
-                      </mat-select>
-                    </mat-form-field>
-                  </div>
-                  <div class="col-lg-6 col-md-6 col-12">
-                    <mat-form-field class="w-100" appearance="fill">
-                      <mat-label>Unvan</mat-label>
-                      <input type="password" matInput placeholder="Naxcivanski 73 ">
-                    </mat-form-field>
-                  </div>
-                  <div class="col-lg-6 col-md-6 col-12">
-                    <mat-form-field appearance="fill" class="w-100">
-                      <mat-label>Phone number</mat-label>
-                      <input type="tel" matInput placeholder="994559294860">
-                    </mat-form-field>
-                  </div>
-                </div>
-                <h4 class=" pl-3  pt-4 pb-2 w-100 text-uppercase"><b>BAĞLAMANIN TƏHVİL VERİLMƏ MƏNTƏQƏSİ</b></h4>
-                <div class="d-flex flex-wrap w-100">
-                  <div class="col-lg-6 col-md-6 col-12">
-                    <mat-form-field class="w-100" appearance="fill">
-                      <mat-label>Office</mat-label>
-                      <mat-select>
-                        <mat-option *ngFor="let office of offices" [value]="office.value"  class="text-uppercase">
-                          {{office.name}}
-                        </mat-option>
-                      </mat-select>
-                    </mat-form-field>
-                    <mat-checkbox class="mt-2 w-100" color="primary">
-                      İstifadəçi <a [href]="user_agreement" target="_blank">qaydaları</a> ilə razıyam
-                    </mat-checkbox>
-                  </div>
-                </div>
-                <div class="w-100 d-flex justify-content-end mt-4">
-                  <button mat-raised-button class="text-uppercase reg-button">Qeydiyat </button>
                 </div>
               </div>
             </div>
-          </div>
+          </form>
         </mat-tab>
       </mat-tab-group>
     </div>

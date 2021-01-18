@@ -1,8 +1,8 @@
 import { ElementRef, ViewEncapsulation} from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import * as Parallax from 'parallax-js';
-import {Country} from './models/country';
-import { Office } from './models/office';
+import {Country} from '../Core/models/country';
+import { Office } from '../Core/models/office';
 
 @Component({
   selector: 'app-home',
@@ -26,10 +26,7 @@ export class HomeComponent implements OnInit {
       name:'turkey',
       value:'1',
     },]
-    this.offices=[ {
-      name:'Nefciler',
-      value:'1',
-    },]
+
   }
   imgSrc:string="../../assets/image/news/5f4fcff5535eb.png";
 

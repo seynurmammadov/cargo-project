@@ -7,11 +7,12 @@ namespace Business.Abstract
 {
     public interface IPrivateCustomerService
     {
-        PrivateCustomer GetPrivateCustomerWithId(int id);
+        PrivateCustomer GetPrivateCustomerWithFIN(string FINcode);
+        PrivateCustomer GetPrivateCustomerWithPassportNumber(int PassportNumber);
         List<PrivateCustomer> GetAllPrivateCustomers();
 
-        bool Add(PrivateCustomer customer);
-        void Update(PrivateCustomer customer);
+        void Add(PrivateCustomer data);
+        void Update(PrivateCustomer data);
         void Detele(int id);  
     }
 }

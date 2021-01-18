@@ -24,6 +24,15 @@ namespace Entity.Models
         public IFormFile Photo { get; set; }
         public bool IsTermsAccepted { get; set; }
         public bool IsActived { get; set; }
+        public bool IsDeleted { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public DateTime ModifiedDate { get; set; }
+
+        public AppUser()
+        {
+            this.CreatedDate = DateTime.UtcNow;
+            this.ModifiedDate = DateTime.UtcNow;
+        }
 
     }
 }

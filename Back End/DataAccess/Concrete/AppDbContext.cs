@@ -1,7 +1,9 @@
 ﻿using Entity.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace DataAccess.Concrete
@@ -16,5 +18,25 @@ namespace DataAccess.Concrete
         public DbSet<BusinessCustomer> BusinessCustomers { get; set; }
         public DbSet<PrivateCustomer> PrivateCustomers { get; set; }
         public DbSet<Сitizenship> Сitizenships { get; set; }
+        public DbSet<City> Cities { get; set; }
+        public DbSet<Office> Offices { get; set; }
+        public DbSet<Balance> Balances { get; set; }
+        public DbSet<OfficeNameTranlate> OfficeNameTranlates { get; set; }
+        public DbSet<CityNameTranslate> CityNameTranslates { get; set; }
+        public DbSet<Language> Languages { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+          
+            modelBuilder.Entity<Сitizenship>().HasData(
+                new Сitizenship
+                {
+                    Id = 1,
+                    Name = "Azerbaycanli",
+                }
+                );
+        }
+
     }
 }

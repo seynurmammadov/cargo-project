@@ -8,7 +8,7 @@ namespace CamexAPI.Models
 {
     public class RegisterBusiness
     {
-        [Required]
+        [Required, Range(1, 999999999)]
         public int CompanyRegistrationNumber { get; set; }
         [Required]
         public string CompanyName { get; set; }
@@ -23,11 +23,11 @@ namespace CamexAPI.Models
         public int CityId { get; set; }
         [Required]
         public string Address { get; set; }
-        [Required, DataType(DataType.PhoneNumber)]
+        [Required, DataType(DataType.PhoneNumber), MaxLength(9), MinLength(9)]
         public string PhoneNumber { get; set; }
         [Required]
         public int OfficeId { get; set; }
         [Required]
-        public bool IsTermAccepted { get; set; }
+        public bool IsTermsAccepted { get; set; }
     }
 }

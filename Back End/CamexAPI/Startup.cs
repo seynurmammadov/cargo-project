@@ -1,6 +1,7 @@
 using Business.Abstract;
 using Business.Concrete;
 using CamexAPI.Identity;
+using CamexAPI.Infrastructure;
 using DataAccess.Abstract;
 using DataAccess.Concrete;
 using Entity.Models;
@@ -32,17 +33,28 @@ namespace CamexAPI
         }
 
         public IConfiguration Configuration { get; }
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<MyIdentityDbContext>(options=>
+            services.AddDbContext<MyIdentityDbContext>(options =>
             {
                 options.UseSqlServer(Configuration["ConnectionStrings:Default"]);
             });
 
             services.AddScoped<IPrivateCustomerService, PrivateCustomerManager>();
             services.AddScoped<IPrivateCustomerDAL, EFPrivateCustomer>();
+            services.AddScoped<ICitizenshipService, CitizenshipManager>();
+            services.AddScoped<ICitizenshipDAL, EFCitizenship>();
+            services.AddScoped<ICityService, CityManager>();
+            services.AddScoped<ICityDAL, EFCity>();
+            services.AddScoped<IOfficeService, OfficeManager>();
+            services.AddScoped<IOfficeDAL, EFOffice>();
+            services.AddScoped<IBalanceService, BalanceManager>();
+            services.AddScoped<IBalanceDAL, EFBalance>();
+            services.AddScoped<IBusinessCustomerService, BusinessCustomerManager>();
+            services.AddScoped<IBusinessCustomerDAL, EFBusinessCustomer>();
+            services.AddScoped<ILanguageService, LanguageManager>();
+            services.AddScoped<ILanguageDAL, EFLanguage>();
             // For Identity  
             services.AddIdentity<AppUser, IdentityRole>(IdentityOption =>
             {
@@ -59,30 +71,42 @@ namespace CamexAPI
                 IdentityOption.Lockout.AllowedForNewUsers = true;
             }).AddEntityFrameworkStores<MyIdentityDbContext>().AddDefaultTokenProviders();
 
+
+            var jwtTokenConfig = Configuration.GetSection("jwtTokenConfig").Get<JwtTokenConfig>();
+            services.AddSingleton(jwtTokenConfig);
+
             // Adding Authentication  
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
             })
 
             // Adding Jwt Bearer  
-            .AddJwtBearer(options =>
+            .AddJwtBearer(x =>
             {
-                options.SaveToken = true;
-                options.RequireHttpsMetadata = false;
-                options.TokenValidationParameters = new TokenValidationParameters()
+                x.RequireHttpsMetadata = true;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
+                    ValidIssuer = jwtTokenConfig.Issuer,
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtTokenConfig.Secret)),
+                    ValidAudience = jwtTokenConfig.Audience,
                     ValidateAudience = true,
-                    ValidAudience = Configuration["JWT:ValidAudience"],
-                    ValidIssuer = Configuration["JWT:ValidIssuer"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Secret"]))
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.FromMinutes(1)
                 };
             });
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
 
+            services.AddSingleton<IJwtAuthManager, JwtAuthManager>();
+            services.AddHostedService<JwtRefreshTokenCache>();
+
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -96,6 +120,10 @@ namespace CamexAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(
+                options => options.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod()
+            );
 
             app.UseAuthentication();
             app.UseAuthorization();

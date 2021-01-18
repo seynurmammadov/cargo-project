@@ -19,7 +19,7 @@
         <li *ngFor="let lang of languages" >
           <a role="button" class="lang-mobile" (click)="SetLanguage(lang.value)">
             <div class="flag-mobile">
-              <img width="100%" [src]="lang.img"  >
+              <img width="100%" [src]="lang.flagSrc"  >
             </div>
             <span> {{lang.name}}</span>
           </a>

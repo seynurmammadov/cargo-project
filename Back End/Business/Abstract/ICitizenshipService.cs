@@ -7,11 +7,11 @@ namespace Business.Abstract
 {
     public interface ICitizenshipService
     {
-        Сitizenship GetCitizenWithId(int id);
-        List<Сitizenship> GetAllCitizens();
+        Citizenship GetCitizenWithId(int id);
+        List<Citizenship> GetAllCitizens();
 
-        void Add(Сitizenship data);
-        void Update(Сitizenship data);
+        void Add(Citizenship data);
+        void Update(Citizenship data);
         void Detele(int id);
     }
 }

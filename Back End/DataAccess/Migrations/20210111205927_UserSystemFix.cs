@@ -7,7 +7,7 @@ namespace DataAccess.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
+            /*migrationBuilder.CreateTable(
                 name: "Cities",
                 columns: table => new
                 {
@@ -114,7 +114,7 @@ namespace DataAccess.Migrations
                 table: "Balances",
                 column: "UserId",
                 unique: true,
-                filter: "[UserId] IS NOT NULL");
+                filter: "[UserId] IS NOT NULL");*/
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

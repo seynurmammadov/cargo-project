@@ -29,6 +29,11 @@ namespace Business.Concrete
         {
             return _context.Get(c => c.PassportNumber == PassportNumber);
         }
+        public PrivateCustomer GetPrivateCustomerWithCamexId(int CamexId)
+        {
+            return _context.Get(c => c.CamexId == CamexId);
+        }
+
         public void Add(PrivateCustomer data)
         {
             _context.Add(data);

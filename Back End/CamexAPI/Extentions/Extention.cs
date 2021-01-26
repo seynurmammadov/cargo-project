@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using CamexAPI.Controllers.Admin;
+using CamexAPI.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
@@ -35,25 +37,93 @@ namespace BackProject.Extentions
             }
             return fileName;
         }
-        public static bool PhotoValidate(this IFormFile Photo, ModelStateDictionary modelState)
+        public static ValidateModel PhotoValidate(this IFormFile Photo)
         {
             if (Photo == null)
             {
-                modelState.AddModelError("Photo", "Please select photo for course!!!");
-                return false;
+                return new ValidateModel
+                {
+                    Success = false,
+                    Response = new Response
+                    {
+                        Status = "Error",
+                        Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="Please select image!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Пожалуйста выберите изображение!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="Zəhmət olmasa şəkil seçin!"
+                            }
+                        }
+                    }
+                };
             }
             if (!Photo.IsType("image"))
             {
-                modelState.AddModelError("Photo", "Please select image types!!!");
-                return false;
+                return new ValidateModel
+                {
+                    Success = false,
+                    Response = new Response
+                    {
+                        Status = "Error",
+                        Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="Please select image!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Пожалуйста выберите изображение!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="Zəhmət olmasa şəkil seçin!"
+                            }
+                        }
+                    }
+                };
             }
 
             if (Photo.MaxLength(3000))
             {
-                modelState.AddModelError("Photo", "Image length must be max 300kb!!!");
-                return false;
+                return new ValidateModel
+                {
+                    Success = false,
+                    Response = new Response
+                    {
+                        Status = "Error",
+                        Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="Image length must be max 300kb!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Размер фотографии должен состовлять не более 300 кб!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="Şəkilin ölçüsü 300 kb cox olmalı deyil!"
+                            }
+                        }
+                    }
+                };
             }
-            return true;
+            return new ValidateModel
+            {
+                Success = true,
+                Response = new Response
+                {
+                    Status = "Ok",
+                    Messages = new Message[] { }
+                }
+            };
         }
         public static string GetAllErrors(this ModelStateDictionary modelState, IdentityResult result)
         {

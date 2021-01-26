@@ -34,7 +34,6 @@
               "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css",
               "./node_modules/alertifyjs/build/css/alertify.min.css",
               "./node_modules/alertifyjs/build/css/themes/bootstrap.min.css",
-
               "src/styles.scss"
             ],
             "scripts": [

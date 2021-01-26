@@ -55,6 +55,8 @@ namespace CamexAPI
             services.AddScoped<IBusinessCustomerDAL, EFBusinessCustomer>();
             services.AddScoped<ILanguageService, LanguageManager>();
             services.AddScoped<ILanguageDAL, EFLanguage>();
+            services.AddScoped<ICountryService, CountryManager>();
+            services.AddScoped<ICountryDAL, EFCountry>();
             // For Identity  
             services.AddIdentity<AppUser, IdentityRole>(IdentityOption =>
             {
@@ -107,6 +109,7 @@ namespace CamexAPI
             services.AddHostedService<JwtRefreshTokenCache>();
 
             services.AddCors();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -124,10 +127,10 @@ namespace CamexAPI
             app.UseCors(
                 options => options.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod()
             );
+            app.UseStaticFiles();
 
             app.UseAuthentication();
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

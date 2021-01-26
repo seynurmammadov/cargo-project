@@ -1,0 +1,94 @@
+<div class="toolbar-container" id="layout" [class.toolbar-mobile]="mobileQuery.matches" >
+  <mat-toolbar  class="toolbar">
+    <div class="col-lg-2 col-md-3 col-sm-6 col-6 p-0">
+      <h1 class="logo ml-3 text-uppercase"><img [src]="logoSrc" width="130" alt=""></h1>
+    </div>
+    <div class="col-lg-8 col-md-7 d-md-block p-0 d-sm-none d-none">
+      <button mat-icon-button class="d-md-block d-sm-none d-none ml-3" (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    </div>
+  <div class="logout col-lg-2 col-md-2 col-sm-6 col-6 d-flex justify-content-end   ">
+    <button mat-icon-button routerLink="/home" class="mr-2"><i class="fad fa-home" style="font-size: 16px"></i> </button>
+    <button mat-icon-button class="d-md-block d-sm-none d-none"  (click)="logout()"><i class="far fa-power-off" style="font-size: 16px"></i></button>
+    <button mat-icon-button class="d-md-none d-sm-block d-block" (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+  </div>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav  #snav [mode]="mobileQuery.matches ? 'over' : 'side'" opened
+                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <div class="w-100 background-image">
+        <div class="d-flex align-items-center flex-column pt-4 ">
+          <div class="profile-img mb-4"></div>
+          <div class="info text-center mb-3">
+            Seynur Mammadov
+          </div>
+          <div class="myaccount mt-1">
+            <mat-accordion>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <div class="w-100 mr-5 d-flex align-items-center">
+                      <i class="far fa-user mr-2"></i>   My Account
+                    </div>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-list-item routerLink="[child.route]">
+                  <div >
+                    setting
+                  </div>
+                </mat-list-item>
+                <mat-list-item routerLink="[child.route]">
+                  <div >
+                    log out
+                  </div>
+                </mat-list-item>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </div>
+      </div>
+      <mat-nav-list>
+           <!-- <mat-accordion>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <div class="w-100 mr-5 d-flex align-items-center">
+                      Users
+                    </div>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-list-item routerLink="[child.route]">
+                  <div >
+                    child
+                  </div>
+                </mat-list-item>
+              </mat-expansion-panel>
+            </mat-accordion>-->
+        <mat-list-item routerLink="/admin/dashboard">
+          <div class="slidenav-item">
+            <i class="far fa-chart-line mr-2"></i>
+            Dashboard
+          </div>
+        </mat-list-item>
+        <mat-list-item routerLink="/admin/users">
+          <div class="slidenav-item">
+            <i class="far fa-users mr-2"></i>
+            Users
+          </div>
+        </mat-list-item>
+        <mat-list-item routerLink="/admin/countries">
+          <div class="slidenav-item">
+            <i class="far fa-flag mr-2"></i>
+            Countries
+          </div>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <ng-content>
+      </ng-content>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+

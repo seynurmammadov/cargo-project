@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LoginService} from '../Core/services/login/login.service';
-import {LanguagesService} from '../Core/services/Lang/languages.service';
+import {LanguagesService} from '../Core/services/lang/languages.service';
 import {Subscription} from 'rxjs';
 declare let alertify:any;
 @Component({
@@ -54,11 +54,13 @@ export class LoginComponent implements OnInit,OnDestroy {
         this.router.navigate(['home'])
       },
       error => {
-        error.error.messages.forEach(e=>{
-          if(e.lang_id==this.languageService.select.id){
-            alertify.error(e.messageLang);
-          }
-        })
+        if(error.error.messages){
+          error.error.messages.forEach(e=>{
+            if(e.lang_id==this.languageService.select.id){
+              alertify.error(e.messageLang);
+            }
+          })
+        }
       }
     )
   }

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DataAccess.Abstract
 {
-    public interface ICitizenshipDAL : IEntityRepository<Сitizenship>
+    public interface ICitizenshipDAL : IEntityRepository<Citizenship>
     {
     }
 }

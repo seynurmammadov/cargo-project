@@ -39,7 +39,10 @@ namespace Business.Concrete
         {
             return _context.Get(c => c.CompanyName == CompanyName);
         }
-
+        public BusinessCustomer GetBusinessCustomerWithCamexId(int CamexId)
+        {
+            return _context.Get(c => c.CamexId == CamexId);
+        }
         public void Update(BusinessCustomer data)
         {
             _context.Update(data);

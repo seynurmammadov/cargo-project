@@ -17,20 +17,22 @@ namespace DataAccess.Concrete
         }
         public DbSet<BusinessCustomer> BusinessCustomers { get; set; }
         public DbSet<PrivateCustomer> PrivateCustomers { get; set; }
-        public DbSet<Сitizenship> Сitizenships { get; set; }
+        public DbSet<Citizenship> Сitizenships { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<Office> Offices { get; set; }
         public DbSet<Balance> Balances { get; set; }
         public DbSet<OfficeNameTranlate> OfficeNameTranlates { get; set; }
         public DbSet<CityNameTranslate> CityNameTranslates { get; set; }
         public DbSet<Language> Languages { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<CountryAddressDescription> CountryAddressDescriptions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
           
-            modelBuilder.Entity<Сitizenship>().HasData(
-                new Сitizenship
+            modelBuilder.Entity<Citizenship>().HasData(
+                new Citizenship
                 {
                     Id = 1,
                     Name = "Azerbaycanli",

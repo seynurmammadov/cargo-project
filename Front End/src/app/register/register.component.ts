@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {City} from "../Core/models/City";
-import {Office} from "../Core/models/office";
-import {LanguagesService} from '../Core/services/Lang/languages.service';
+import {Office} from "../Core/models/Office";
+import {LanguagesService} from '../Core/services/lang/languages.service';
 import {RegistrationService} from './Registration/registration.service';
 import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
 import {RxwebValidators} from '@rxweb/reactive-form-validators';
@@ -12,7 +12,6 @@ declare let alertify:any;
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
-  encapsulation:ViewEncapsulation.None
 })
 export class RegisterComponent implements OnInit {
 
@@ -78,7 +77,7 @@ export class RegisterComponent implements OnInit {
       Birthday: new FormControl('', [
         Validators.required
       ]),
-      СitizenshipId: new FormControl('', [
+      CitizenshipId: new FormControl('', [
         Validators.required,
         Validators.pattern(/^\d*\.?\d*$/)
       ]),
@@ -194,7 +193,7 @@ export class RegisterComponent implements OnInit {
       "Password": this.privateForm.controls['Password'].value.split(' ').join(''),
       "PhoneNumber": this.privateForm.controls['PhoneNumber'].value.split(' ').join(''),
       "Surname": this.privateForm.controls['Surname'].value.split(' ').join(''),
-      "СitizenshipId": this.privateForm.controls['СitizenshipId'].value,
+      "CitizenshipId": this.privateForm.controls['CitizenshipId'].value,
       "Lastname": this.privateForm.controls['Lastname'].value.split(' ').join(''),
       "Name": this.privateForm.controls['Name'].value.split(' ').join(''),
       "OfficeId": this.privateForm.controls['OfficeId'].value
@@ -220,8 +219,8 @@ export class RegisterComponent implements OnInit {
       "CompanyRegistrationNumber": this.businessForm.controls['CompanyRegistrationNumber'].value,
       "Password": this.businessForm.controls['Password'].value.split(' ').join(''),
       "PhoneNumber": this.businessForm.controls['PhoneNumber'].value.split(' ').join(''),
-      "Address": this.businessForm.controls['Address'].value.split(' ').join(''),
-      "CompanyName": this.businessForm.controls['CompanyName'].value.split(' ').join(''),
+      "Address": this.businessForm.controls['Address'].value,
+      "CompanyName": this.businessForm.controls['CompanyName'].value,
       "OfficeId": this.businessForm.controls['OfficeId'].value
     }
     this.registerService.PostRegisterBusiness(body).subscribe(()=> {

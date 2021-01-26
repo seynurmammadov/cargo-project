@@ -7,6 +7,7 @@ background-color: #EBEEF2;
       padding: 0px 15px;
       background-color: #303741;
       border: 0;
+      border-radius: 0.25rem !important;
       .mat-tab-labels {
         display: block;
         .mat-tab-label{
@@ -30,7 +31,7 @@ background-color: #EBEEF2;
       }
       .mat-ripple{
         width: 100%;
-        border-bottom: 1px solid #414750;
+        border-bottom: 2px solid #414750;
       }
     }
     .mat-tab-body-wrapper{
@@ -66,7 +67,7 @@ background-color: #EBEEF2;
     .mat-tab-group {
       flex-direction: column!important;
       .mat-tab-header{
-        background-color: #e2e5e9!important;
+        background-color: #e2e5e9;
         width: 100%;
         padding: 5px;
         .mat-tab-labels {

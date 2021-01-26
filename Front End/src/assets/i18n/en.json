@@ -53,5 +53,7 @@
   "PhoneNumberLength": "The number must be 9 digits!",
   "EmailLogin": "E-mail",
   "PasswordLogin": "Password",
-  "RestoreLogin": "Forgot Password?"
+  "RestoreLogin": "Forgot Password?",
+  "Balance":"Balance"
+
 }

@@ -9,6 +9,7 @@ namespace Business.Abstract
     {
         PrivateCustomer GetPrivateCustomerWithFIN(string FINcode);
         PrivateCustomer GetPrivateCustomerWithPassportNumber(int PassportNumber);
+        PrivateCustomer GetPrivateCustomerWithCamexId(int CamexId);
         List<PrivateCustomer> GetAllPrivateCustomers();
 
         void Add(PrivateCustomer data);

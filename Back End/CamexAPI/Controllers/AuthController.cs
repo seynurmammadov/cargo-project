@@ -228,7 +228,7 @@ namespace CamexAPI.Controllers
                         }
                 });
 
-                Сitizenship сitizenship = _citizenshipContext.GetCitizenWithId(privateUser.СitizenshipId);
+                Citizenship сitizenship = _citizenshipContext.GetCitizenWithId(privateUser.СitizenshipId);
                 if (сitizenship == null) return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error",
                     Messages = new Message[] {
                             new Message {
@@ -282,12 +282,12 @@ namespace CamexAPI.Controllers
                         }
                 });
 
-                int camexId = 1;
+                int camexId = _userDbContext.Users.OrderByDescending(c=>c.CamexId).FirstOrDefault().CamexId+1;
 
 
                 AppUser user = new AppUser()
                 {
-                    UserName = privateUser.Name + privateUser.Surname + privateUser.FINCode,
+                    UserName = String.Concat(privateUser.Name.Where(c => !Char.IsWhiteSpace(c))) + String.Concat(privateUser.Surname.Where(c => !Char.IsWhiteSpace(c)))  + Guid.NewGuid(),
                     Email = privateUser.Email,
                     PhoneNumber = privateUser.PhoneNumber,
                     CamexId = camexId,
@@ -337,7 +337,7 @@ namespace CamexAPI.Controllers
                     Surname = privateUser.Surname,
                     Lastname = privateUser.Lastname,
                     Birthday = privateUser.Birthday,
-                    СitizenshipId = privateUser.СitizenshipId,
+                    CitizenshipId = privateUser.СitizenshipId,
                     FINCode = privateUser.FINCode,
                     IsMan = privateUser.IsMan,
                 });
@@ -558,12 +558,12 @@ namespace CamexAPI.Controllers
                         }
                 });
 
-                int camexId = 1;
+                int camexId = _userDbContext.Users.OrderByDescending(c => c.CamexId).FirstOrDefault().CamexId + 1;
 
 
                 AppUser user = new AppUser()
                 {
-                    UserName = businessUser.CompanyName + businessUser.CompanyRegistrationNumber,
+                    UserName = String.Concat(businessUser.CompanyName.Where(c => !Char.IsWhiteSpace(c))) +Guid.NewGuid(),
                     Email = businessUser.Email,
                     PhoneNumber = businessUser.PhoneNumber,
                     CamexId = camexId,
@@ -581,7 +581,7 @@ namespace CamexAPI.Controllers
                 };
 
                 IdentityResult identityResult = await _userManager.CreateAsync(user, businessUser.Password);
-                await _userManager.AddToRoleAsync(user, Helper.Roles.PrivateCustomer.ToString());
+                await _userManager.AddToRoleAsync(user, Helper.Roles.BusinessCustomer.ToString());
 
                 if (!identityResult.Succeeded)
                 {
@@ -687,11 +687,11 @@ namespace CamexAPI.Controllers
                     {
                         new Claim(ClaimTypes.Name, user.UserName),
                     };
-                    string role="";
+                    List<string> Roles = new List<string> { };
                     foreach (var userRole in userRoles)
                     {
                         authClaims.Add(new Claim(ClaimTypes.Role, userRole));
-                        role = userRole;                    
+                        Roles.Add(userRole);                    
                     }
 
                     var jwtResult = _jwtAuthManager.GenerateTokens(user.UserName, authClaims, DateTime.Now);
@@ -699,7 +699,7 @@ namespace CamexAPI.Controllers
                     return Ok(new LoginResult
                     {
                         UserName = model.Email,
-                        Role = role,
+                        Roles = Roles,
                         AccessToken = jwtResult.AccessToken,
                         RefreshToken = jwtResult.RefreshToken.TokenString
                     });
@@ -747,7 +747,7 @@ namespace CamexAPI.Controllers
             return Ok(new LoginResult
             {
                 UserName = User.Identity.Name,
-                Role = User.FindFirst(ClaimTypes.Role)?.Value ?? string.Empty,
+                Roles = User.FindAll(ClaimTypes.Role).Select(c=>c.Value.ToString()).ToList(),
                 OriginalUserName = User.FindFirst("OriginalUserName")?.Value
             });
         }
@@ -780,7 +780,7 @@ namespace CamexAPI.Controllers
                 return Ok(new LoginResult
                 {
                     UserName = userName,
-                    Role = User.FindFirst(ClaimTypes.Role)?.Value ?? string.Empty,
+                    Roles = User.FindAll(ClaimTypes.Role).Select(c => c.Value.ToString()).ToList(),
                     AccessToken = jwtResult.AccessToken,
                     RefreshToken = jwtResult.RefreshToken.TokenString
                 });
@@ -790,83 +790,6 @@ namespace CamexAPI.Controllers
                 return Unauthorized(e.Message); // return 401 so that the client side can redirect the user to login page
             }
         }
-
-/*        [HttpPost("impersonation")]
-        [Authorize(Roles = "Admin,MainAdmin")]
-        public async Task<ActionResult> Impersonate([FromBody] ImpersonationRequest request)
-        {
-            var userName = User.Identity.Name;
-
-            AppUser user = await _userManager.FindByNameAsync(request.UserName);
-
-            IList<string> userRoles = await _userManager.GetRolesAsync(user);
-
-            List<Claim> authClaims = new List<Claim>{
-                new Claim(ClaimTypes.Name, request.UserName),
-                new Claim("OriginalUserName", userName)
-            };
-            string impersonatedRole = "";
-            foreach (var userRole in userRoles)
-            {
-                authClaims.Add(new Claim(ClaimTypes.Role, userRole));
-                impersonatedRole = userRole;
-            }
-            if (string.IsNullOrWhiteSpace(impersonatedRole))
-            {
-                return BadRequest($"The target user [{request.UserName}] is not found.");
-            }
-            if (impersonatedRole == Helper.Roles.Admin.ToString() || impersonatedRole == Helper.Roles.MainAdmin.ToString())
-            {
-                return BadRequest("This action is not supported.");
-            }
-          
-
-
-            var jwtResult = _jwtAuthManager.GenerateTokens(request.UserName, authClaims, DateTime.Now);
-            return Ok(new LoginResult
-            {
-                UserName = request.UserName,
-                Role = impersonatedRole,
-                OriginalUserName = userName,
-                AccessToken = jwtResult.AccessToken,
-                RefreshToken = jwtResult.RefreshToken.TokenString
-            });
-        }
-
-        [HttpPost("stop-impersonation")]
-        public async Task<ActionResult> StopImpersonation()
-        {
-            var userName = User.Identity.Name;
-            AppUser user = await _userManager.FindByNameAsync(userName);
-            var originalUserName = User.FindFirst("OriginalUserName")?.Value;
-            if (string.IsNullOrWhiteSpace(originalUserName))
-            {
-                return BadRequest("You are not impersonating anyone.");
-            }
-
-            IList<string> userRoles = await _userManager.GetRolesAsync(user);
-
-            List<Claim> authClaims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, user.UserName),
-            };
-            string role = "";
-            foreach (var userRole in userRoles)
-            {
-                authClaims.Add(new Claim(ClaimTypes.Role, userRole));
-                role = userRole;
-            }
-
-            var jwtResult = _jwtAuthManager.GenerateTokens(originalUserName, authClaims, DateTime.Now);
-            return Ok(new LoginResult
-            {
-                UserName = originalUserName,
-                Role = role,
-                OriginalUserName = null,
-                AccessToken = jwtResult.AccessToken,
-                RefreshToken = jwtResult.RefreshToken.TokenString
-            });
-        }*/
 
         /*[HttpGet]
           [Route("CreateRole")]

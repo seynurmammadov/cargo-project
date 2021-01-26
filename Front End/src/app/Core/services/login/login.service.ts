@@ -22,7 +22,7 @@ export class LoginService implements OnDestroy{
   private readonly path:string;
   private timer: Subscription;
   private _user = new BehaviorSubject<ApplicationUser>(null);
-
+  end:boolean=false
   user$: Observable<ApplicationUser> = this._user.asObservable();
 
   private storageEventListener(event: StorageEvent) {
@@ -34,6 +34,7 @@ export class LoginService implements OnDestroy{
       if (event.key === 'login-event') {
         this.stopTokenTimer();
         this.http.get<LoginResult>(`${this.path}Auth/user`).subscribe((x) => {
+
           this._user.next({
             username: x.username,
             role: x.role,
@@ -66,6 +67,7 @@ export class LoginService implements OnDestroy{
           });
           this.setLocalStorage(x);
           this.startTokenTimer();
+          this.end=true;
           return x;
         })
       );
@@ -79,6 +81,7 @@ export class LoginService implements OnDestroy{
           this.clearLocalStorage();
           this._user.next(null);
           this.stopTokenTimer();
+          this.end=false;
           this.router.navigate(['login']);
         })
       )
@@ -101,6 +104,7 @@ export class LoginService implements OnDestroy{
             role: x.role,
             originalUserName: x.originalUserName,
           });
+          this.end=true;
           this.setLocalStorage(x);
           this.startTokenTimer();
           return x;

@@ -14,8 +14,8 @@ namespace Entity.Models
         public string Surname { get; set; }
         public string Lastname { get; set; }
         public DateTime Birthday { get; set; }
-        public int СitizenshipId { get; set; }
-        public virtual Сitizenship Сitizenship { get; set; }
+        public int CitizenshipId { get; set; }
+        public virtual Citizenship Citizenship { get; set; }
         public string FINCode { get; set; }
         public bool IsMan { get; set; }
 

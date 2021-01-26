@@ -1,0 +1,205 @@
+#myprofile{
+  background-color: #EBEEF2;
+  .mat-tab-group {
+    flex-direction: row!important;
+    .mat-tab-header{
+      width: 20%;
+      padding: 20px 20px;
+      background-color: white;
+      border: 0;
+      border-radius: 8px;
+      box-shadow: 3px 3px 20px 0 #c8c8c8;
+      margin-bottom: 1.5rem;
+      .mat-tab-labels {
+        display: block;
+        .mat-tab-label{
+          padding: 0;
+          align-items: center;
+          justify-content: left;
+          color: #282828;
+          opacity: 1;
+          font-size: 14px;
+          font-weight: normal;
+          text-transform: capitalize;
+          transition:  .3s;
+          min-width: 0;
+          &:hover{
+            color: #3179ce;
+          }
+          .mat-tab-label-content{
+            width: 100%;
+            height: 100%;
+            .item{
+              width: 100%;
+              height: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: start;
+            }
+          }
+
+        }
+      }
+      .mat-ink-bar{
+        height: 0!important;
+      }
+      .mat-ripple{
+        width: 100%;
+      }
+    }
+    .mat-tab-body-wrapper{
+      width: 100%;
+    }
+  }
+  .mat-tab-labels{
+    .mat-ripple{
+      &:last-child{
+        &:after{
+          border-top: 0;
+        }
+      }
+    }
+  }
+  #inside-tab{
+    .mat-tab-group {
+      padding: 20px 22px;
+      display: block;
+      .mat-tab-header{
+        width: 100% !important;
+        padding: 0;
+        border-radius: 0;
+        box-shadow: none;
+        border-bottom: 1px solid rgba(0,0,0,.12);
+        .mat-tab-labels {
+          height: 48px;
+          cursor: pointer;
+          box-sizing: border-box;
+          min-width: 160px;
+          text-align: center;
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+          white-space: nowrap;
+          position: relative;
+          .mat-tab-label{
+            padding-right: 25px;
+          }
+        }
+        .mat-ink-bar{
+          height: 1px!important;
+        }
+      }
+    }
+    .flag{
+      background-position: left;
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 100%;
+      height: 300px;
+    }
+    .countryAbout{
+      span{
+        color: #9ca2af;
+        font-size: 11px;
+      }
+    }
+  }
+
+  .style{
+    box-shadow: 3px 3px 20px 0 #c8c8c8;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+
+  }
+  .bg-color-val{
+    position: absolute;
+    z-index: 2;
+    opacity: 0.7;
+    background-color: #3179ce;
+    width: 100%;
+    height: 100%;
+    top: 0;
+  }
+  .content{
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    color: white;
+    width: 100%;
+    height: 100%;
+    .balance{
+      position: relative;
+      width: 100%;
+      height: 100%;
+      .balance-text{
+        position: absolute;
+        bottom: 15px;
+        left: 30px;
+        width: 300px;
+        font-size: 15px;
+        line-height: 22px;
+      }
+      .balance-count{
+        font-size: 18px;
+        font-weight: 600;
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        .count{
+          font-size: 45px;
+          font-weight: 700;
+        }
+        .camexID{
+          background-color: white;
+          opacity: 0.8;
+          color: #3179ce;
+          border-radius: 4px;
+          margin-left: -1rem;
+        }
+      }
+      .balance-date{
+        position: absolute;
+        top: 35px;
+        right: 25px;
+        font-size: 15px;
+        line-height: 22px;
+        font-weight: bold;
+      }
+      .btn-balance{
+        position: absolute;
+        bottom: 30px;
+        right: 35px;
+      }
+    }
+  }
+  .mat-stroked-button:not(.mat-button-disabled) {
+    border-color: white;
+    transition: 0.3s;
+    &:focus{
+      outline: none;
+    }
+    &:hover{
+      background-color: white;
+      opacity: 0.8;
+      color: #3179ce;
+    }
+  }
+
+  .table-angular{
+    table {
+      width: 100%;
+    }
+
+    .mat-form-field {
+      font-size: 14px;
+      width: 100%;
+    }
+
+    td, th {
+      width: 25%;
+    }
+  }
+}

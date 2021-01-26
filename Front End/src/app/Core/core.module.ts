@@ -6,10 +6,7 @@ import {JwtInterceptor} from './interceptors/jwt.interceptor';
 import {LoginService} from './services/login/login.service';
 import {appInitializer} from './services/app-initializer';
 
-
-
 @NgModule({
-  declarations: [],
   imports: [CommonModule],
   providers: [
     {

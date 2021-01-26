@@ -53,5 +53,7 @@
   "PhoneNumberLength": "Номер должен состоять из 9 цифр!",
   "EmailLogin": "Электронный адрес",
   "PasswordLogin": "Пароль",
-  "RestoreLogin": "Забыли пароль?"
+  "RestoreLogin": "Забыли пароль?",
+  "Balance":"Баланс"
+
 }

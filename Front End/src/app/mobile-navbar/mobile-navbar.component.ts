@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {LanguagesService} from '../Core/services/Lang/languages.service';
+import {LanguagesService} from '../Core/services/lang/languages.service';
 import {Languages} from '../navbar/models/languages';
 import * as $ from 'jquery';
 

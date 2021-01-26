@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {GlobalService} from '../../Core/services/global/global.service';
 import {Register} from './register';
-import {PrivateRegister} from './PrivateRegister';
 import {catchError} from 'rxjs/operators';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';

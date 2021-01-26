@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewEncapsulation} from '@angular/core';
-import { LanguagesService } from '../Core/services/Lang/languages.service';
+import { LanguagesService } from '../Core/services/lang/languages.service';
 import {Languages} from './models/languages';
 import {LoginService} from '../Core/services/login/login.service';
+import {NavigationService} from '../Core/services/navigation/navigation.service';
+import {UserNavVM} from './models/UserNavVM';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +12,7 @@ import {LoginService} from '../Core/services/login/login.service';
   encapsulation: ViewEncapsulation.None
 })
 export class NavbarComponent implements OnInit {
-  constructor(private languagesService:LanguagesService, public authService:LoginService) {
+  constructor(private languagesService:LanguagesService, public authService:LoginService, private navigation:NavigationService) {
     this.languagesService.getLang().subscribe(res=>{
       res.forEach(r=>{
         r.flagSrc='../../assets/image/navbar/'+r.flagSrc
@@ -18,6 +20,8 @@ export class NavbarComponent implements OnInit {
       this.languages=res;
       this.select=this.languagesService.select;
     });
+    this.getUser();
+
   }
   ngOnInit(): void {
   }
@@ -25,6 +29,7 @@ export class NavbarComponent implements OnInit {
   languages: Languages[]=this.languagesService.languages;
   selected:string=this.languagesService.selected;
   select:Languages;
+  userNav:UserNavVM;
 
   SetLanguage(lang){
     this.languagesService.SetLanguage(lang);
@@ -33,4 +38,16 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.authService.logout();
   }
+  loaded:boolean=false
+  getUser(){
+    this.authService.user$.subscribe(user=> {
+      if (user != null && this.authService.end) {
+        this.navigation.getUser().subscribe(res=>{
+          this.userNav=res;
+          this.loaded=true
+        })
+      }
+    })
+  }
+
 }

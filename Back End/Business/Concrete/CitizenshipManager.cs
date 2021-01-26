@@ -16,27 +16,27 @@ namespace Business.Concrete
             _context = context;
         }
 
-        public List<Сitizenship> GetAllCitizens()
+        public List<Citizenship> GetAllCitizens()
         {
             return _context.GetAll();
         }
 
-        public Сitizenship GetCitizenWithId(int id)
+        public Citizenship GetCitizenWithId(int id)
         {
             return _context.Get(c => c.Id == id);
         }
 
-        public void Add(Сitizenship data)
+        public void Add(Citizenship data)
         {
             _context.Add(data);
         }
 
         public void Detele(int id)
         {
-            _context.Delete(new Сitizenship { Id = id });
+            _context.Delete(new Citizenship { Id = id });
         }
 
-        public void Update(Сitizenship data)
+        public void Update(Citizenship data)
         {
             _context.Update(data);
         }

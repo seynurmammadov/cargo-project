@@ -1,0 +1,36 @@
+<h1 class="mb-2" mat-dialog-title>
+  <b>Reset Password</b>
+</h1>
+<form [formGroup]="resetForm" novalidate (ngSubmit)="resetPassword()">
+  <div mat-dialog-content>
+    <div class="d-flex flex-wrap w-100 mt-4">
+      <div class="col-12">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label class="text-capitalize">{{'Password' | translate }}</mat-label>
+          <input type="password" matInput placeholder="*********" formControlName="Password">
+          <mat-error  *ngIf="errorHandling('Password','required')" [innerHTML]="'Required' | translate ">
+          </mat-error>
+          <mat-error  *ngIf="Password.errors?.minlength " >
+            {{'minLengthPass' | translate }}
+          </mat-error>
+          <mat-error  *ngIf="errorHandling('Password','pattern')" >
+            {{'patternPass' | translate }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-12">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label class="text-capitalize" >{{'PasswordAgain' | translate }}</mat-label>
+          <input type="password" matInput placeholder="*********" formControlName="CheckPassword">
+          <mat-error  *ngIf="errorHandling('CheckPassword','compare')" >
+            {{'comparePass' | translate }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions class="w-100 justify-content-end">
+    <button mat-button (click)="onNoClick()" color="warn">Cancel</button>
+    <button mat-button [disabled]="!resetForm.valid" color="primary" cdkFocusInitial>Reset</button>
+  </div>
+</form>

@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
@@ -24,7 +23,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDatepickerModule,} from '@angular/material/datepicker';
-import { LanguagesService } from './Core/services/Lang/languages.service';
+import {MatToolbarModule,} from '@angular/material/toolbar';
+import {MatListModule} from '@angular/material/list';
+import { LanguagesService } from './Core/services/lang/languages.service';
 import { FooterComponent } from './footer/footer.component';
 import { BannerComponent } from './banner/banner.component';
 import { ShopingComponent } from './shoping/shoping.component';
@@ -35,7 +36,7 @@ import { NewsComponent } from './news/news.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { FaqComponent } from './faq/faq.component';
 import { ContactComponent } from './contact/contact.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ServiceComponent } from './service/service.component';
 import { TitleComponent } from './title/title.component';
 import { RegisterComponent } from './register/register.component';
@@ -47,6 +48,32 @@ import {RxReactiveFormsModule} from '@rxweb/reactive-form-validators';
 import {AuthGuard} from './Core/guards/auth.guard';
 import {AuthOutGuard} from './Core/guards/auth-out.guard';
 import { CoreModule } from './Core/core.module';
+import { NgApexchartsModule } from "ng-apexcharts";
+import { MyprofileComponent } from './myprofile/myprofile.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { StatementDialogComponent } from './myprofile/dialogs/statement-dialog/statement-dialog.component';
+import { ControlPanelComponent } from './myprofile/control-panel/control-panel.component';
+import { CountriesComponent } from './myprofile/countries/countries.component';
+import { StatementsComponent } from './myprofile/statements/statements.component';
+import { OrdersComponent } from './myprofile/orders/orders.component';
+import { OrderDialogComponent } from './myprofile/dialogs/order-dialog/order-dialog.component';
+import {DashboardComponent} from './Admin/dashboard/dashboard.component';
+import {LayoutComponent} from './Admin/layout/layout.component';
+import { UsersComponent } from './Admin/users/users.component';
+import { TitleAdminComponent } from './Admin/title-admin/title-admin.component';
+import { RoleDialogComponent } from './Admin/dialogs/role-dialog/role-dialog.component';
+import { ResetDialogComponent } from './Admin/dialogs/reset-dialog/reset-dialog.component';
+import { InfoDialogComponent } from './Admin/dialogs/info-dialog/info-dialog.component';
+import { InfoBusinessDialogComponent } from './Admin/dialogs/info-business-dialog/info-business-dialog.component';
+import { CountriesAllComponent } from './Admin/countries-all/countries-all.component';
+import { CountryEditDialogComponent } from './Admin/dialogs/country-edit-dialog/country-edit-dialog.component';
+import { CountryCreateDialogComponent } from './Admin/dialogs/country-create-dialog/country-create-dialog.component';
+
 const routes: Routes=[
   { path: "home", redirectTo:"" ,pathMatch:"full"},
   { path:"",  component:HomeComponent },
@@ -62,6 +89,36 @@ const routes: Routes=[
   { path:"register",  component:RegisterComponent, data: {animation: 'Register'}, canActivate: [AuthOutGuard] },
   { path:"login",  component:LoginComponent, data: {animation: 'Login'},canActivate: [AuthOutGuard]},
   { path:"restore",  component:RestoreComponent, data: {animation: 'Restore'}, canActivate: [AuthOutGuard] },
+  { path:"myprofile/statements", redirectTo:"myprofile" },
+  { path:"myprofile/control-panel", redirectTo:"myprofile" },
+  { path:"myprofile/countries", redirectTo:"myprofile" },
+  { path:"myprofile/orders", redirectTo:"myprofile" },
+  { path:"myprofile",  component:MyprofileComponent, data: {animation: 'Myprofile'}, canActivate: [AuthGuard] },
+  {
+    path: 'admin',
+    children: [
+      {
+        path: '',
+        component: DashboardComponent,
+      },
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+      },
+      {
+        path: 'users',
+        component: UsersComponent,
+      },
+      {
+        path: 'countries',
+        component: CountriesAllComponent,
+      },
+      {
+        path: '**',
+        component: ErrorComponent,
+      },
+    ],
+  },
   { path:"**", redirectTo:"error404",data: {animation: 'Error'}},
   { path:"**", component:ErrorComponent,data: {animation: 'Error'}}
 ]
@@ -89,39 +146,68 @@ const routes: Routes=[
     RegisterComponent,
     LoginComponent,
     RestoreComponent,
-
+    MyprofileComponent,
+    StatementDialogComponent,
+    ControlPanelComponent,
+    CountriesComponent,
+    StatementsComponent,
+    OrdersComponent,
+    OrderDialogComponent,
+    LayoutComponent,
+    DashboardComponent,
+    LayoutComponent,
+    UsersComponent,
+    TitleAdminComponent,
+    RoleDialogComponent,
+    ResetDialogComponent,
+    InfoDialogComponent,
+    InfoBusinessDialogComponent,
+    CountriesAllComponent,
+    CountryEditDialogComponent,
+    CountryCreateDialogComponent,
   ],
-    imports: [
-      BrowserModule,
-      BrowserAnimationsModule,
-      RouterModule.forRoot(routes),
-      MatFormFieldModule,
-      MatSelectModule,
-      HttpClientModule,
-      MatButtonModule,
-      CarouselModule,
-      CoreModule,
-      TranslateModule.forRoot({
-          loader: {
-              provide: TranslateLoader,
-              useFactory: httpTranslateLoader,
-              deps: [HttpClient]
-          }
-      }),
-      MatSidenavModule,
-      MatRadioModule,
-      MatInputModule,
-      MatTabsModule,
-      MatExpansionModule,
-      ReactiveFormsModule,
-      MatIconModule,
-      MatDatepickerModule,
-      MatNativeDateModule,
-      MatCheckboxModule,
-      RxReactiveFormsModule
-    ],
-  exports:[
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    RouterModule.forRoot(routes),
+    MatFormFieldModule,
+    MatSelectModule,
+    HttpClientModule,
+    MatButtonModule,
+    CarouselModule,
+    CoreModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpTranslateLoader,
+        deps: [HttpClient]
+      }
+    }),
+    MatSidenavModule,
+    MatRadioModule,
+    MatInputModule,
+    MatTabsModule,
+    MatExpansionModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCheckboxModule,
+    RxReactiveFormsModule,
+    NgApexchartsModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatSortModule,
+    MatDialogModule,
+    FormsModule,
+    MatToolbarModule,
+    MatListModule,
+    MatAutocompleteModule,
+    MatChipsModule
+  ],
+  exports: [
     RouterModule,
+    LayoutComponent,
   ],
   providers: [
     LanguagesService,
@@ -136,9 +222,17 @@ const routes: Routes=[
     MatTabsModule,
     MatExpansionModule,
     MatIconModule,
+    MatChipsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatPaginatorModule,
+    MatAutocompleteModule,
+    MatTableModule,
+    MatSortModule,
+    MatDialogModule,
+    MatToolbarModule,
+    MatListModule
   ],
   bootstrap: [AppComponent]
 })

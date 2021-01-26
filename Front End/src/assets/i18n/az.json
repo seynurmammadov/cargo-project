@@ -23,8 +23,8 @@
   "registrationLastname": "ata adi (İngilis hərifləri ilə) *",
   "BirthDate": "doğum tarixini seçin *",
   "Citizenship": "vətəndaşlıq *",
-  "CitizenAz": "azərbaycan Respublikasının vətəndaşı (Rezident)",
-  "CitizenNonAz": "başqa ölkənin vətəndaşı (Qeyri-rezident)",
+  "CitizenAz": "Azərbaycan Respublikasının vətəndaşı (Rezident)",
+  "CitizenNonAz": "Başqa ölkənin vətəndaşı (Qeyri-rezident)",
   "PassIIN": "şəxsiyyət vəsiqəsinin FİN kodu *",
   "Gender": "cinsiyyəti seçin *",
   "Male": "kişi",
@@ -53,6 +53,7 @@
   "PhoneNumberLength": "Nömrə 9 rəqəmnən ibarət olmalıdır!",
   "EmailLogin": "E-poçt",
   "PasswordLogin": "Şifrə",
-  "RestoreLogin": "Şifrəni unutmusuz?"
+  "RestoreLogin": "Şifrəni unutmusuz?",
+  "Balance":"Balans"
 }
 

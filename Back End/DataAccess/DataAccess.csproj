@@ -7,6 +7,18 @@
   <ItemGroup>
     <Compile Remove="Migrations\20210111205954_UserSystemFixx.cs" />
     <Compile Remove="Migrations\20210111205954_UserSystemFixx.Designer.cs" />
+    <Compile Remove="Migrations\20210126141543_Fix2.0.cs" />
+    <Compile Remove="Migrations\20210126141543_Fix2.0.Designer.cs" />
+    <Compile Remove="Migrations\20210126141810_Fix2.0.cs" />
+    <Compile Remove="Migrations\20210126141810_Fix2.0.Designer.cs" />
+    <Compile Remove="Migrations\20210126142133_Fix2.0.cs" />
+    <Compile Remove="Migrations\20210126142133_Fix2.0.Designer.cs" />
+    <Compile Remove="Migrations\20210126142320_Fix2.0.cs" />
+    <Compile Remove="Migrations\20210126142320_Fix2.0.Designer.cs" />
+    <Compile Remove="Migrations\20210126143607_Fix2.0.cs" />
+    <Compile Remove="Migrations\20210126143607_Fix2.0.Designer.cs" />
+    <Compile Remove="Migrations\20210126165342_CounryAdressesActionsRequired.cs" />
+    <Compile Remove="Migrations\20210126165342_CounryAdressesActionsRequired.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

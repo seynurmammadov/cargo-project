@@ -9,6 +9,7 @@ namespace Business.Abstract
     {
         BusinessCustomer GetBusinessCustomerWithNumber(int CompanyRegistrationNumber);
         BusinessCustomer GetBusinessCustomerWithName(string CompanyName);
+        BusinessCustomer GetBusinessCustomerWithCamexId(int CamexId);
         List<BusinessCustomer> GetAllBusinessCustomers();
 
         void Add(BusinessCustomer data);

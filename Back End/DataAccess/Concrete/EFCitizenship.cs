@@ -7,7 +7,7 @@ using System.Text;
 
 namespace DataAccess.Concrete
 {
-    public class EFCitizenship: EFRepositoryBase<Сitizenship,AppDbContext>, ICitizenshipDAL
+    public class EFCitizenship: EFRepositoryBase<Citizenship,AppDbContext>, ICitizenshipDAL
     {
     }
 }

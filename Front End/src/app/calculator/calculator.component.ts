@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {Country} from '../Core/models/country';
-import {Office} from '../Core/models/office';
+import {Country} from '../Core/models/Country';
+import {Office} from '../Core/models/Office';
 
 @Component({
   selector: 'app-calculator',
@@ -15,9 +15,7 @@ export class CalculatorComponent implements OnInit {
       name:'turkey',
       value:'1',
     },]
-
   }
-
   countries:Country[]=[];
   offices:Office[]=[];
   name:string="Calculator"

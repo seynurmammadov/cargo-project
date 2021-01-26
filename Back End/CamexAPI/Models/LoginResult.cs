@@ -12,7 +12,7 @@ namespace CamexAPI.Models
         public string UserName { get; set; }
 
         [JsonPropertyName("role")]
-        public string Role { get; set; }
+        public List<string> Roles { get; set; }
 
         [JsonPropertyName("originalUserName")]
         public string OriginalUserName { get; set; }

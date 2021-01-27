@@ -57,6 +57,11 @@ namespace CamexAPI
             services.AddScoped<ILanguageDAL, EFLanguage>();
             services.AddScoped<ICountryService, CountryManager>();
             services.AddScoped<ICountryDAL, EFCountry>();
+            services.AddScoped<ICountryAddressDescriptionService, CountryAddressDescriptionManager>();
+            services.AddScoped<ICountryAddressDescriptionDAL, EFCountryAddressDescription>();
+            services.AddScoped<IOfficeNameTranslateService, OfficeNameTranslateManager>();
+            services.AddScoped<IOfficeNameTranslateDAL, EFOfficeNameTranslate>();
+
             // For Identity  
             services.AddIdentity<AppUser, IdentityRole>(IdentityOption =>
             {

@@ -8,6 +8,7 @@ import {appInitializer} from './services/app-initializer';
 
 @NgModule({
   imports: [CommonModule],
+  declarations: [],
   providers: [
     {
       provide: APP_INITIALIZER,

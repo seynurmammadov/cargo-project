@@ -25,7 +25,6 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDatepickerModule,} from '@angular/material/datepicker';
 import {MatToolbarModule,} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
-import { LanguagesService } from './Core/services/lang/languages.service';
 import { FooterComponent } from './footer/footer.component';
 import { BannerComponent } from './banner/banner.component';
 import { ShopingComponent } from './shoping/shoping.component';
@@ -43,11 +42,7 @@ import { RegisterComponent } from './register/register.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { LoginComponent } from './login/login.component';
 import { RestoreComponent } from './restore/restore.component';
-import {GlobalService} from './Core/services/global/global.service';
 import {RxReactiveFormsModule} from '@rxweb/reactive-form-validators';
-import {AuthGuard} from './Core/guards/auth.guard';
-import {AuthOutGuard} from './Core/guards/auth-out.guard';
-import { CoreModule } from './Core/core.module';
 import { NgApexchartsModule } from "ng-apexcharts";
 import { MyprofileComponent } from './myprofile/myprofile.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
@@ -66,13 +61,24 @@ import {DashboardComponent} from './Admin/dashboard/dashboard.component';
 import {LayoutComponent} from './Admin/layout/layout.component';
 import { UsersComponent } from './Admin/users/users.component';
 import { TitleAdminComponent } from './Admin/title-admin/title-admin.component';
-import { RoleDialogComponent } from './Admin/dialogs/role-dialog/role-dialog.component';
-import { ResetDialogComponent } from './Admin/dialogs/reset-dialog/reset-dialog.component';
-import { InfoDialogComponent } from './Admin/dialogs/info-dialog/info-dialog.component';
-import { InfoBusinessDialogComponent } from './Admin/dialogs/info-business-dialog/info-business-dialog.component';
+import { RoleDialogComponent } from './Admin/dialogs/auth/role-dialog/role-dialog.component';
+import { ResetDialogComponent } from './Admin/dialogs/auth/reset-dialog/reset-dialog.component';
+import { InfoDialogComponent } from './Admin/dialogs/auth/info-dialog/info-dialog.component';
+import { InfoBusinessDialogComponent } from './Admin/dialogs/auth/info-business-dialog/info-business-dialog.component';
 import { CountriesAllComponent } from './Admin/countries-all/countries-all.component';
-import { CountryEditDialogComponent } from './Admin/dialogs/country-edit-dialog/country-edit-dialog.component';
-import { CountryCreateDialogComponent } from './Admin/dialogs/country-create-dialog/country-create-dialog.component';
+import { CountryEditDialogComponent } from './Admin/dialogs/country/country-edit-dialog/country-edit-dialog.component';
+import { CountryCreateDialogComponent } from './Admin/dialogs/country/country-create-dialog/country-create-dialog.component';
+import { CountryInfoComponent } from './Admin/countries-all/country-info/country-info.component';
+import { CountryInfoCreateComponent } from './Admin/dialogs/country/country-info-create/country-info-create.component';
+import { CountryInfoEditComponent } from './Admin/dialogs/country/country-info-edit/country-info-edit.component';
+import { OfficesComponent } from './Admin/offices/offices.component';
+import {AuthOutGuard} from './Core/guards/auth-out.guard';
+import {AuthGuard} from './Core/guards/auth.guard';
+import {CoreModule} from './Core/core.module';
+import {LanguagesService} from './Core/services/lang/languages.service';
+import {GlobalService} from './Core/services/global/global.service';
+import { CreateOfficeComponent } from './Admin/dialogs/office/create-office/create-office.component';
+import { UpdateOfficeComponent } from './Admin/dialogs/office/update-office/update-office.component';
 
 const routes: Routes=[
   { path: "home", redirectTo:"" ,pathMatch:"full"},
@@ -100,26 +106,40 @@ const routes: Routes=[
       {
         path: '',
         component: DashboardComponent,
+        data: {animation: 'admin'},
       },
       {
         path: 'dashboard',
         component: DashboardComponent,
+        data: {animation: 'dashboard'},
       },
       {
         path: 'users',
         component: UsersComponent,
+        data: {animation: 'users'},
       },
       {
         path: 'countries',
         component: CountriesAllComponent,
+        data: {animation: 'countries'},
+      },
+      {
+        path: 'countries/:id',
+        component: CountryInfoComponent,
+        data: {animation: 'countriesId'},
+      },
+      {
+        path: 'offices',
+        component: OfficesComponent,
+        data: {animation: 'countries'},
       },
       {
         path: '**',
         component: ErrorComponent,
+        data: {animation: 'errorr'},
       },
     ],
   },
-  { path:"**", redirectTo:"error404",data: {animation: 'Error'}},
   { path:"**", component:ErrorComponent,data: {animation: 'Error'}}
 ]
 
@@ -165,6 +185,12 @@ const routes: Routes=[
     CountriesAllComponent,
     CountryEditDialogComponent,
     CountryCreateDialogComponent,
+    CountryInfoComponent,
+    CountryInfoCreateComponent,
+    CountryInfoEditComponent,
+    OfficesComponent,
+    CreateOfficeComponent,
+    UpdateOfficeComponent,
   ],
   imports: [
     BrowserModule,

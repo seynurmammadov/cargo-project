@@ -1,6 +1,7 @@
 #myprofile{
   background-color: #EBEEF2;
   .mat-tab-group {
+    display: flex;
     flex-direction: row!important;
     .mat-tab-header{
       width: 20%;
@@ -34,7 +35,7 @@
               height: 100%;
               display: flex;
               align-items: center;
-              justify-content: start;
+              justify-content: flex-start;
             }
           }
 

@@ -27,7 +27,6 @@ namespace CamexAPI.Controllers.Admin
             _env = env;
         }
 
-        [Route("get")]
         [HttpGet]
         public IActionResult Get()
         {
@@ -44,7 +43,6 @@ namespace CamexAPI.Controllers.Admin
 
         // POST api/<CountryController>
         [HttpPost]
-        [Route("create")]
         public async Task<IActionResult> Create([FromForm] Country country)
         {
             try
@@ -78,7 +76,7 @@ namespace CamexAPI.Controllers.Admin
 
                 country.Image = fileName;
                 _countryContext.Add(country);
-                return Ok(country);
+                return Ok();
             }
             catch (Exception e)
             {
@@ -86,25 +84,144 @@ namespace CamexAPI.Controllers.Admin
             }
            
         }
-        // GET api/<CountryController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-   
 
         // PUT api/<CountryController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> PutAsync(int id, [FromForm] Country country)
         {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError, new Response
+                    {
+                        Status = "Error",
+                        Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="Model state isn't valid!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Состояние модели недействительно!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="Model vəziyyəti etibarsızdır!"
+                            }
+                        }
+                    });
+                }
+                Country db_country = _countryContext.GetCountryWithId(id);
+                if(db_country== null)
+                    return StatusCode(StatusCodes.Status500InternalServerError, new Response
+                    {
+                        Status = "Error",
+                        Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="Model state isn't valid!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Состояние модели недействительно!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="Model vəziyyəti etibarsızdır!"
+                            }
+                        }
+                    });
+                if (country.Photo != null)
+                {
+                    ValidateModel res = country.Photo.PhotoValidate();
+                    if (!res.Success) return StatusCode(StatusCodes.Status500InternalServerError, res.Response);
+
+                    string folder = Path.Combine("Site", "images", "countries");
+                    string fileName = await country.Photo.SaveImage(_env.WebRootPath, folder);
+                    db_country.Image = fileName;
+                }
+                db_country.Name = country.Name;
+                db_country.Value = country.Value;
+                db_country.IsActived = country.IsActived;
+                _countryContext.Update(db_country);
+                return Ok();
+
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+            }
         }
+
+
 
         // DELETE api/<CountryController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            try
+            {
+                Country db_country = _countryContext.GetCountryWithId(id);
+                if(db_country== null)
+                    return StatusCode(StatusCodes.Status500InternalServerError, new Response
+                    {
+                        Status = "Error",
+                        Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="Model state isn't valid!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Состояние модели недействительно!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="Model vəziyyəti etibarsızdır!"
+                            }
+                        }
+                    });
+                db_country.IsDeleted = true;
+                _countryContext.Update(db_country);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+            }
+        }
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            try
+            {
+                Country country = _countryContext.GetCountryWithId(id);
+                if (country == null)
+                    return StatusCode(StatusCodes.Status500InternalServerError, new Response
+                    {
+                        Status = "Error",
+                        Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="Model state isn't valid!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Состояние модели недействительно!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="Model vəziyyəti etibarsızdır!"
+                            }
+                        }
+                    });
+                return Ok(country);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+            }
         }
     }
 }

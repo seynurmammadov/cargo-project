@@ -153,8 +153,8 @@ namespace CamexAPI.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int>("PriceValue")
-                        .HasColumnType("int");
+                    b.Property<float>("PriceValue")
+                        .HasColumnType("real");
 
                     b.HasKey("Id");
 
@@ -220,15 +220,15 @@ namespace CamexAPI.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int>("PriceValue")
-                        .HasColumnType("int");
+                    b.Property<float>("PriceValue")
+                        .HasColumnType("real");
 
                     b.HasKey("Id");
 
                     b.ToTable("Offices");
                 });
 
-            modelBuilder.Entity("Entity.Models.OfficeNameTranlate", b =>
+            modelBuilder.Entity("Entity.Models.OfficeNameTranslate", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -239,6 +239,7 @@ namespace CamexAPI.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("OfficeId")
@@ -250,7 +251,7 @@ namespace CamexAPI.Migrations
 
                     b.HasIndex("OfficeId");
 
-                    b.ToTable("OfficeNameTranlates");
+                    b.ToTable("OfficeNameTranslates");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -421,7 +422,7 @@ namespace CamexAPI.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Entity.Models.OfficeNameTranlate", b =>
+            modelBuilder.Entity("Entity.Models.OfficeNameTranslate", b =>
                 {
                     b.HasOne("Entity.Models.Language", "Language")
                         .WithMany("OfficeNameTranlates")

@@ -19,7 +19,7 @@ namespace CamexAPI.Models
         [Required]
         public DateTime Birthday { get; set; }
         [Required]
-        public int СitizenshipId { get; set; }
+        public int CitizenshipId { get; set; }
         [Required]
         public string FINCode { get; set; }
         [Required]

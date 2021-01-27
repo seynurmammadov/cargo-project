@@ -5,8 +5,7 @@ import {
   HttpEvent,
   HttpInterceptor
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import {throwError} from 'rxjs/internal/observable/throwError';
+import { Observable, throwError } from 'rxjs';
 import {LoginService} from '../services/login/login.service';
 import {Router} from '@angular/router';
 import {catchError} from 'rxjs/operators';

@@ -25,6 +25,7 @@
     "@ngx-translate/http-loader": "^6.0.0",
     "@rxweb/reactive-form-validators": "^2.1.2",
     "alertifyjs": "^1.13.1",
+    "sweetalert2": "^10.13.3",
     "apexcharts": "^3.23.1",
     "bootstrap": "4.5.3",
     "gsap": "3.5.1",

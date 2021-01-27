@@ -17,7 +17,7 @@ namespace CamexAPI.Identity
          public DbSet<City> Cities { get; set; }
          public DbSet<Office> Offices { get; set; }
          public DbSet<Balance> Balances { get; set; }
-         public DbSet<OfficeNameTranlate> OfficeNameTranlates { get; set; }
+         public DbSet<OfficeNameTranslate> OfficeNameTranslates { get; set; }
          public DbSet<CityNameTranslate> CityNameTranslates { get; set; }
          public DbSet<Language> Languages { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

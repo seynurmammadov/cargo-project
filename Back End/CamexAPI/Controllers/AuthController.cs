@@ -228,7 +228,7 @@ namespace CamexAPI.Controllers
                         }
                 });
 
-                Citizenship сitizenship = _citizenshipContext.GetCitizenWithId(privateUser.СitizenshipId);
+                Citizenship сitizenship = _citizenshipContext.GetCitizenWithId(privateUser.CitizenshipId);
                 if (сitizenship == null) return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error",
                     Messages = new Message[] {
                             new Message {
@@ -337,7 +337,7 @@ namespace CamexAPI.Controllers
                     Surname = privateUser.Surname,
                     Lastname = privateUser.Lastname,
                     Birthday = privateUser.Birthday,
-                    CitizenshipId = privateUser.СitizenshipId,
+                    CitizenshipId = privateUser.CitizenshipId,
                     FINCode = privateUser.FINCode,
                     IsMan = privateUser.IsMan,
                 });

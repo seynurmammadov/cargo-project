@@ -1,8 +1,8 @@
 import { ElementRef, ViewEncapsulation} from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import * as Parallax from 'parallax-js';
+import {Office} from '../Core/models/Office';
 import {Country} from '../Core/models/Country';
-import { Office } from '../Core/models/Office';
 
 @Component({
   selector: 'app-home',

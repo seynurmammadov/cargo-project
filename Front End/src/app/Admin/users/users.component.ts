@@ -3,13 +3,13 @@ import {MatTableDataSource} from '@angular/material/table';
 import {UserData} from './UserData';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
-import {UsersService} from '../../Core/services/admin/users/users.service';
 import {LanguagesService} from '../../Core/services/lang/languages.service';
 import {MatDialog} from '@angular/material/dialog';
-import {RoleDialogComponent} from '../dialogs/role-dialog/role-dialog.component';
-import {ResetDialogComponent} from '../dialogs/reset-dialog/reset-dialog.component';
-import {InfoDialogComponent} from '../dialogs/info-dialog/info-dialog.component';
-import {InfoBusinessDialogComponent} from '../dialogs/info-business-dialog/info-business-dialog.component';
+import {RoleDialogComponent} from '../dialogs/auth/role-dialog/role-dialog.component';
+import {ResetDialogComponent} from '../dialogs/auth/reset-dialog/reset-dialog.component';
+import {InfoDialogComponent} from '../dialogs/auth/info-dialog/info-dialog.component';
+import {InfoBusinessDialogComponent} from '../dialogs/auth/info-business-dialog/info-business-dialog.component';
+import {UsersService} from '../../Core/services/Admin/users/users.service';
 declare let alertify:any;
 @Component({
   selector: 'app-users',

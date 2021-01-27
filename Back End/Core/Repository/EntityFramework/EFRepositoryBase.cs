@@ -12,23 +12,23 @@ namespace Core.Repository.EntityFramework
         where TEntity : class, IEntity, new()
         where TContext : DbContext, new()
     {
-        public async void Add(TEntity entity)
+        public void Add(TEntity entity)
         {
             using (var context = new TContext())
             {
                 var addEntity = context.Entry(entity);
                 addEntity.State = EntityState.Added;
-                await context.SaveChangesAsync();
+                context.SaveChanges();
             };
         }
 
-        public async void Delete(TEntity entity)
+        public void Delete(TEntity entity)
         {
             using (var context = new TContext())
             {
                 var removeEntity = context.Entry(entity);
                 removeEntity.State = EntityState.Deleted;
-                await context.SaveChangesAsync();
+                 context.SaveChanges();
             };
         }
 
@@ -54,13 +54,13 @@ namespace Core.Repository.EntityFramework
             };
         }
 
-        public async void Update(TEntity entity)
+        public  void Update(TEntity entity)
         {
             using (var context = new TContext())
             {
                 var updateEntity = context.Entry(entity);
                 updateEntity.State = EntityState.Modified;
-                await context.SaveChangesAsync();
+                 context.SaveChanges();
             };
         }
     }

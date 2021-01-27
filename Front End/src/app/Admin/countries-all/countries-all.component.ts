@@ -3,11 +3,13 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {CountryData} from './CountryData';
-import {CountriesService} from '../../Core/services/admin/countries/countries.service';
 import {MatDialog} from '@angular/material/dialog';
-import {CountryEditDialogComponent} from '../dialogs/country-edit-dialog/country-edit-dialog.component';
-import {CountryCreateDialogComponent} from '../dialogs/country-create-dialog/country-create-dialog.component';
-
+import {CountryEditDialogComponent} from '../dialogs/country/country-edit-dialog/country-edit-dialog.component';
+import {CountryCreateDialogComponent} from '../dialogs/country/country-create-dialog/country-create-dialog.component';
+import {CountriesService} from '../../Core/services/Admin/countries/countries.service';
+import {LanguagesService} from '../../Core/services/lang/languages.service';
+declare let alertify:any;
+declare let Swal:any;
 @Component({
   selector: 'app-countries-all',
   templateUrl: './countries-all.component.html',
@@ -20,7 +22,7 @@ export class CountriesAllComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   countryData:CountryData[];
   displayedColumns: string[] = ['image','name', 'value' ,'isActived','actions'];
-  constructor(public service:CountriesService,public dialog: MatDialog) {
+  constructor(public service:CountriesService,public dialog: MatDialog,private languageService:LanguagesService,) {
     this.getCountries()
   }
   applyFilter(event: Event) {
@@ -41,23 +43,53 @@ export class CountriesAllComponent implements OnInit {
       this.dataSource.sort = this.sort;
     })
   }
+  deleteCountry(id:number){
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+        this.service.deleteCountry(id).subscribe(
+          ()=> {
+            this.getCountries()
+          },
+          error => {
+            error.error.messages.forEach(e => {
+              if (e.lang_id == this.languageService.select.id) {
+                alertify.error(e.messageLang);
+              }
+            })
+          }
+        )
+      }
+    })
+
+  }
 
   openDialogEditCountry(row:CountryData): void {
-    const dialogRef = this.dialog.open(CountryEditDialogComponent, {
-      width: '70%',
+    const dialogRefEdit = this.dialog.open(CountryEditDialogComponent, {
+      width: '450px',
       data: {row:row}
     });
-
-    dialogRef.afterClosed().subscribe(() => {
+    dialogRefEdit.afterClosed().subscribe(() => {
       this.getCountries()
     });
   }
   openDialogCreate(): void {
-    const dialogRef = this.dialog.open(CountryCreateDialogComponent, {
+    const dialogRefCreate = this.dialog.open(CountryCreateDialogComponent, {
       width: '450px',
     });
-
-    dialogRef.afterClosed().subscribe(() => {
+    dialogRefCreate.afterClosed().subscribe(() => {
       this.getCountries()
     });
   }

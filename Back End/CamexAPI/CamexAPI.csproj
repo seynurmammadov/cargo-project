@@ -7,6 +7,12 @@
   <ItemGroup>
     <Compile Remove="Migrations\20210114142441_TranslateTables.cs" />
     <Compile Remove="Migrations\20210114142441_TranslateTables.Designer.cs" />
+    <Compile Remove="Migrations\20210127223619_fixFloat.cs" />
+    <Compile Remove="Migrations\20210127223619_fixFloat.Designer.cs" />
+    <Compile Remove="Migrations\20210127223751_fixFloat.cs" />
+    <Compile Remove="Migrations\20210127223751_fixFloat.Designer.cs" />
+    <Compile Remove="Migrations\20210127223902_fixFloat.cs" />
+    <Compile Remove="Migrations\20210127223902_fixFloat.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,6 +1,6 @@
-import {City} from '../../Core/models/City';
-import {Office} from '../../Core/models/Office';
 import {Balance} from './Balance';
+import {Office} from '../../Core/models/Office';
+import {City} from '../../Core/models/City';
 
 export class AppUser{
   camexId:string;

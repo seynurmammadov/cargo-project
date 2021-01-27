@@ -13,7 +13,7 @@ namespace Entity.Models
         public string FlagSrc { get; set; }
 
         public ICollection<CityNameTranslate> CityNameTranslates { get; set; }
-        public ICollection<OfficeNameTranlate> OfficeNameTranlates { get; set; }
+        public ICollection<OfficeNameTranslate> OfficeNameTranlates { get; set; }
 
     }
 }

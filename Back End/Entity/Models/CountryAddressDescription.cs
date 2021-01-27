@@ -13,7 +13,6 @@ namespace Entity.Models
         public string Title { get; set; }
         [Required]
         public string Description { get; set; }
-     
         public int CountryId { get; set; }
         public virtual Country Country { get; set; }
     }

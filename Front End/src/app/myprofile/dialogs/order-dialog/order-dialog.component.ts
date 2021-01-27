@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {LanguagesService} from '../../../Core/services/lang/languages.service';
 import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
+import {LanguagesService} from '../../../Core/services/lang/languages.service';
 
 @Component({
   selector: 'app-order-dialog',

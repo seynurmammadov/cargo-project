@@ -1,9 +1,9 @@
 <app-layout>
   <div id="countries">
-    <app-title-admin [title]="'Users'"></app-title-admin>
+    <app-title-admin [title]="'Countries'"></app-title-admin>
     <div style="    padding: 25px 35px;">
       <div class="top-title d-flex justify-content-between align-items-center">
-        <span class="m-0 pl-3 title">Beyanlarim</span>
+        <span class="m-0 pl-3 title">Countries</span>
         <button mat-raised-button (click)="openDialogCreate()">Create</button>
       </div>
     </div>
@@ -53,8 +53,8 @@
                 <td mat-cell *matCellDef="let row" class="">
                   <div class="buttons">
                     <button mat-icon-button  color="primary" (click)="openDialogEditCountry(row)" > <mat-icon style="font-size: 22px ">edit</mat-icon></button>
-                    <button mat-icon-button  color="warn" (click)="openDialogEditCountry(row)" > <mat-icon style="font-size: 22px ">delete_forever</mat-icon></button>
-                    <button mat-icon-button   (click)="openDialogEditCountry(row)" > <mat-icon style="font-size: 22px ">list</mat-icon></button>
+                    <button mat-icon-button  color="warn" (click)="deleteCountry(row.id)" > <mat-icon style="font-size: 22px ">delete_forever</mat-icon></button>
+                    <button mat-icon-button   [routerLink]="row.id" > <mat-icon style="font-size: 22px ">list</mat-icon></button>
                   </div>
                 </td>
               </ng-container>

@@ -14,7 +14,7 @@
   </mat-toolbar>
 
   <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav  #snav [mode]="mobileQuery.matches ? 'over' : 'side'" opened
+    <mat-sidenav  style="transform: none; visibility: visible;" #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
                  [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
       <div class="w-100 background-image">
         <div class="d-flex align-items-center flex-column pt-4 ">
@@ -25,7 +25,7 @@
           <div class="myaccount mt-1">
             <mat-accordion>
               <mat-expansion-panel>
-                <mat-expansion-panel-header>
+                <mat-expansion-panel-header >
                   <mat-panel-title>
                     <div class="w-100 mr-5 d-flex align-items-center">
                       <i class="far fa-user mr-2"></i>   My Account
@@ -80,6 +80,12 @@
           <div class="slidenav-item">
             <i class="far fa-flag mr-2"></i>
             Countries
+          </div>
+        </mat-list-item>
+        <mat-list-item routerLink="/admin/offices">
+          <div class="slidenav-item">
+            <i class="fas fa-phone-office mr-2"></i>
+            Offices
           </div>
         </mat-list-item>
       </mat-nav-list>

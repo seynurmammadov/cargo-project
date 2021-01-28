@@ -16,12 +16,12 @@ namespace Business.Concrete
             _context = context;
         }
 
-        public List<Citizenship> GetAllCitizens()
+        public List<Citizenship> GetAll()
         {
             return _context.GetAll();
         }
 
-        public Citizenship GetCitizenWithId(int id)
+        public Citizenship GetWithId(int id)
         {
             return _context.Get(c => c.Id == id);
         }

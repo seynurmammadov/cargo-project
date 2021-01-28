@@ -247,8 +247,8 @@ export class RegisterComponent implements OnInit {
       res.cities.forEach(c=>{
         c.cityNameTranslates.forEach(ct=>{
           if(ct.languageId==this.languageService.select.id){
+            c.cityNameTranslates[0]=ct
             this.currentCities=res.cities;
-            this.currentCities.forEach(a=>a.cityNameTranslates[0]=ct)
           }
         })
 
@@ -256,8 +256,8 @@ export class RegisterComponent implements OnInit {
       res.offices.forEach(o=>{
         o.officeNameTranlates.forEach(of=>{
           if(of.languageId==this.languageService.select.id){
+            o.officeNameTranlates[0]=of;
             this.offices=res.offices;
-            this.offices.forEach(a=>a.officeNameTranlates[0]=of)
           }
         })
       })

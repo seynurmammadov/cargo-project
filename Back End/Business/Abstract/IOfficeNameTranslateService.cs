@@ -7,8 +7,8 @@ namespace Business.Abstract
 {
     public interface IOfficeNameTranslateService
     {
-        OfficeNameTranslate GetOfficeNameTranlateWithId(int id);
-        List<OfficeNameTranslate> GetAllOfficeNameTranlates();
+        OfficeNameTranslate GetWithId(int id);
+        List<OfficeNameTranslate> GetAll();
 
         void Add(OfficeNameTranslate data);
         void Update(OfficeNameTranslate data);

@@ -7,8 +7,8 @@ namespace Business.Abstract
 {
     public interface ILanguageService
     {
-        Language GetLanguageWithId(int id);
-        List<Language> GetAllLanguages();
+        Language GetWithId(int id);
+        List<Language> GetAll();
         void Add(Language data);
         void Update(Language data);
         void Detele(int id);

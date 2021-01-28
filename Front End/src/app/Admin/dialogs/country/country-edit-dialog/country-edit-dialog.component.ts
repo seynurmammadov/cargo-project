@@ -15,9 +15,12 @@ export class CountryEditDialogComponent implements OnInit {
 
   editForm:FormGroup
   fileAttr = 'Choose File';
+  fileAttr2 = 'Choose File';
   fileToUpload:File
-  data:CountryData
+  fileToUpload2:File
   @ViewChild('fileInput') fileInput: ElementRef;
+  @ViewChild('fileInput2') fileInput2: ElementRef;
+  data:CountryData
   constructor(
     public dialogRef: MatDialogRef<CountryEditDialogComponent>,
     private languageService:LanguagesService,
@@ -39,6 +42,8 @@ export class CountryEditDialogComponent implements OnInit {
       IsActived: new FormControl(this.data.isActived ),
       FileInput: new FormControl('', [
       ]),
+      FileInput2: new FormControl('', [
+      ]),
     })
   }
   public errorHandling = (control: string, error: string) => {
@@ -58,6 +63,19 @@ export class CountryEditDialogComponent implements OnInit {
       this.fileAttr = 'Choose File';
     }
   }
+  uploadFileEvt2(imgFile: any) {
+    if (imgFile.target.files && imgFile.target.files[0]) {
+      this.fileAttr2 = '';
+      this.fileAttr2 = imgFile.target.files[0].name
+
+      this.fileToUpload2= <File>imgFile.target.files[0]
+
+      // Reset if duplicate image uploaded again
+      this.fileInput2.nativeElement.value = "";
+    } else {
+      this.fileAttr2 = 'Choose File';
+    }
+  }
   submit(){
     const body = new FormData();
     if(this.fileToUpload == undefined){
@@ -66,6 +84,13 @@ export class CountryEditDialogComponent implements OnInit {
     else{
       body.append("Photo",this.fileToUpload,this.fileToUpload.name)
     }
+    if(this.fileToUpload2 == undefined){
+      body.append("FlagPhoto",null)
+    }
+    else{
+      body.append("FlagPhoto",this.fileToUpload2,this.fileToUpload2.name)
+    }
+
     body.append("Name",this.editForm.controls["Name"].value.trim())
     body.append("Value",this.editForm.controls["Value"].value)
     body.append("IsActived",this.editForm.controls["IsActived"].value)

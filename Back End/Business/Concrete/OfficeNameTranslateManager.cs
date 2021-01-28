@@ -16,12 +16,12 @@ namespace Business.Concrete
             _context = context;
         }
 
-        public List<OfficeNameTranslate> GetAllOfficeNameTranlates()
+        public List<OfficeNameTranslate> GetAll()
         {
             return _context.GetAll();
         }
 
-        public OfficeNameTranslate GetOfficeNameTranlateWithId(int id)
+        public OfficeNameTranslate GetWithId(int id)
         {
             return _context.Get(c => c.Id == id);
         }

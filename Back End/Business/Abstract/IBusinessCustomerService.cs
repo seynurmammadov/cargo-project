@@ -7,10 +7,10 @@ namespace Business.Abstract
 {
     public interface IBusinessCustomerService
     {
-        BusinessCustomer GetBusinessCustomerWithNumber(int CompanyRegistrationNumber);
-        BusinessCustomer GetBusinessCustomerWithName(string CompanyName);
-        BusinessCustomer GetBusinessCustomerWithCamexId(int CamexId);
-        List<BusinessCustomer> GetAllBusinessCustomers();
+        BusinessCustomer GetWithNumber(int CompanyRegistrationNumber);
+        BusinessCustomer GetWithName(string CompanyName);
+        BusinessCustomer GetWithCamexId(int CamexId);
+        List<BusinessCustomer> GetAll();
 
         void Add(BusinessCustomer data);
         void Update(BusinessCustomer data);

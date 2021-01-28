@@ -100,7 +100,7 @@ namespace CamexAPI.Controllers.Admin
                     .Include(u=>u.Balance)
                     .Include(u=>u.Office).ThenInclude(o => o.OfficeNameTranlates).FirstOrDefault();
                 if (appUser == null) return StatusCode(StatusCodes.Status404NotFound);
-                PrivateCustomer customer = _privateContext.GetPrivateCustomerWithCamexId(appUser.CamexId);
+                PrivateCustomer customer = _privateContext.GetWithCamexId(appUser.CamexId);
                 if (customer == null) return StatusCode(StatusCodes.Status404NotFound);
                 return Ok(
                     new PrivateUserAdmin
@@ -147,7 +147,7 @@ namespace CamexAPI.Controllers.Admin
                     .Include(u => u.Balance)
                     .Include(u => u.Office).ThenInclude(o => o.OfficeNameTranlates).FirstOrDefault();
                 if (appUser == null) return StatusCode(StatusCodes.Status404NotFound);
-                BusinessCustomer customer = _businessContext.GetBusinessCustomerWithCamexId(appUser.CamexId);
+                BusinessCustomer customer = _businessContext.GetWithCamexId(appUser.CamexId);
                 if (customer == null) return StatusCode(StatusCodes.Status404NotFound);
                 return Ok(
                     new BusinessUserAdmin

@@ -17,7 +17,6 @@
           </mat-form-field>
           <div class="scroll">
             <table mat-table [dataSource]="dataSource" matSort>
-              <!-- Name Column -->
               <ng-container matColumnDef="image"  sticky>
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Image </th>
                 <td mat-cell *matCellDef="let row">
@@ -30,13 +29,10 @@
                 <td mat-cell *matCellDef="let row"> {{row.name}} </td>
               </ng-container>
 
-              <!-- Color Column -->
               <ng-container matColumnDef="value">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Value </th>
                 <td mat-cell *matCellDef="let row" > {{row.value}} </td>
               </ng-container>
-
-
 
               <ng-container matColumnDef="isActived">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>

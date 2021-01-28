@@ -24,12 +24,16 @@ namespace Business.Concrete
             _context.Delete(new Office { Id = id });
         }
 
-        public List<Office> GetAllOffices()
+        public List<Office> GetAll()
+        {
+            return _context.GetAllNInclude(o=>!o.IsDeleted);
+        }
+        public List<Office> GetAllActive()
         {
             return _context.GetAllNInclude(o => o.IsActived && !o.IsDeleted);
         }
 
-        public Office GetOfficeWithId(int id)
+        public Office GetWithId(int id)
         {
             return _context.Get(o=>o.Id==id);
         }

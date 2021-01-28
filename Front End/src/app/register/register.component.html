@@ -197,7 +197,7 @@
                       <mat-form-field class="w-100" appearance="fill">
                         <mat-label class="text-capitalize">{{'Office' | translate }}</mat-label>
                         <mat-select formControlName="OfficeId">
-                          <mat-option *ngFor="let office of offices" [value]="office.id" class="text-capitalize">
+                          <mat-option *ngFor="let office of offices;index as i" [value]="office.id" class="text-capitalize">
                             {{office.officeNameTranlates[0].name}}
                           </mat-option>
                         </mat-select>

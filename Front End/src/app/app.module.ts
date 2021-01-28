@@ -79,6 +79,12 @@ import {LanguagesService} from './Core/services/lang/languages.service';
 import {GlobalService} from './Core/services/global/global.service';
 import { CreateOfficeComponent } from './Admin/dialogs/office/create-office/create-office.component';
 import { UpdateOfficeComponent } from './Admin/dialogs/office/update-office/update-office.component';
+import { CitiesComponent } from './Admin/cities/cities.component';
+import { CreateCityComponent } from './Admin/dialogs/city/create-city/create-city.component';
+import { UpdateCityComponent } from './Admin/dialogs/city/update-city/update-city.component';
+import { ProductsComponent } from './Admin/products/products.component';
+import { CreatePtoductComponent } from './Admin/dialogs/product/create-ptoduct/create-ptoduct.component';
+import { UpdateProductComponent } from './Admin/dialogs/product/update-product/update-product.component';
 
 const routes: Routes=[
   { path: "home", redirectTo:"" ,pathMatch:"full"},
@@ -132,6 +138,16 @@ const routes: Routes=[
         path: 'offices',
         component: OfficesComponent,
         data: {animation: 'countries'},
+      },
+      {
+        path: 'cities',
+        component: CitiesComponent,
+        data: {animation: 'countries'},
+      },
+      {
+        path: 'products',
+        component: ProductsComponent,
+        data: {animation: 'products'},
       },
       {
         path: '**',
@@ -191,6 +207,12 @@ const routes: Routes=[
     OfficesComponent,
     CreateOfficeComponent,
     UpdateOfficeComponent,
+    CitiesComponent,
+    CreateCityComponent,
+    UpdateCityComponent,
+    ProductsComponent,
+    CreatePtoductComponent,
+    UpdateProductComponent,
   ],
   imports: [
     BrowserModule,

@@ -7,8 +7,8 @@ namespace Business.Abstract
 {
     public interface IBalanceService
     {
-        Balance GetBalanceWithUserId(string id);
-        List<Balance> GetAllBalance();
+        Balance GetWithUserId(string id);
+        List<Balance> GetAll();
         void Add(Balance data);
         void Update(Balance data);
         void Detele(int id);

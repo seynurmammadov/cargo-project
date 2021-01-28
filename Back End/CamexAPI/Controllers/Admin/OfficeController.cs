@@ -29,8 +29,8 @@ namespace CamexAPI.Controllers.Admin
         {
             try
             {
-                List<Office> countries = _officeContext.GetAllOffices();
-                return Ok(countries);
+                List<Office> offices = _officeContext.GetAll();
+                return Ok(offices);
             }
             catch (Exception e)
             {
@@ -107,7 +107,7 @@ namespace CamexAPI.Controllers.Admin
                         }
                     });
                 }
-                Office db_office = _officeContext.GetOfficeWithId(id);
+                Office db_office = _officeContext.GetWithId(id);
                 if (db_office == null)
                     return StatusCode(StatusCodes.Status500InternalServerError, new Response
                     {
@@ -133,7 +133,7 @@ namespace CamexAPI.Controllers.Admin
                 _officeContext.Update(db_office);
                 foreach (OfficeNameTranslate item in office.OfficeNameTranlates)
                 {
-                    OfficeNameTranslate db_officeTranslate = _officeTranslateContext.GetOfficeNameTranlateWithId(item.Id);
+                    OfficeNameTranslate db_officeTranslate = _officeTranslateContext.GetWithId(item.Id);
                     db_officeTranslate.Name = item.Name;
                     _officeTranslateContext.Update(db_officeTranslate);
                 }
@@ -145,25 +145,13 @@ namespace CamexAPI.Controllers.Admin
             }
         }
 
-
-        // GET api/<OfficeController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-         
-        
-
-    
-
         // DELETE api/<OfficeController>/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
             try
             {
-                Office db_office = _officeContext.GetOfficeWithId(id);
+                Office db_office = _officeContext.GetWithId(id);
                 if (db_office == null)
                     return StatusCode(StatusCodes.Status500InternalServerError, new Response
                     {

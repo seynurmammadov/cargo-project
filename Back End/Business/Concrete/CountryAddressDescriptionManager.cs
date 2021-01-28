@@ -26,12 +26,12 @@ namespace Business.Concrete
             _context.Delete(new CountryAddressDescription { Id = id });
         }
 
-        public List<CountryAddressDescription> GetAllCountryAddressDescriptions()
+        public List<CountryAddressDescription> GetAll()
         {
             return _context.GetAll();
         }
 
-        public CountryAddressDescription GetCountryAddressDescriptionWithId(int id)
+        public CountryAddressDescription GetWithId(int id)
         {
             return _context.Get(c => c.Id == id);
         }

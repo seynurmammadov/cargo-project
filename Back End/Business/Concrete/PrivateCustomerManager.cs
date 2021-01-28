@@ -16,20 +16,20 @@ namespace Business.Concrete
             _context = context;
         }
 
-        public List<PrivateCustomer> GetAllPrivateCustomers()
+        public List<PrivateCustomer> GetAll()
         {
             return _context.GetAll();
         }
 
-        public PrivateCustomer GetPrivateCustomerWithFIN(string FINCode)
+        public PrivateCustomer GetWithFIN(string FINCode)
         {
             return _context.Get(c => c.FINCode == FINCode);
         }
-        public PrivateCustomer GetPrivateCustomerWithPassportNumber(int PassportNumber)
+        public PrivateCustomer GetWithPassportNumber(int PassportNumber)
         {
             return _context.Get(c => c.PassportNumber == PassportNumber);
         }
-        public PrivateCustomer GetPrivateCustomerWithCamexId(int CamexId)
+        public PrivateCustomer GetWithCamexId(int CamexId)
         {
             return _context.Get(c => c.CamexId == CamexId);
         }

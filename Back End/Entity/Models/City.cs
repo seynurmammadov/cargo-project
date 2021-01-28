@@ -9,7 +9,6 @@ namespace Entity.Models
     public class City : IEntity
     {
         public int Id { get; set; }
-        public float PriceValue { get; set; }
         public bool IsActived { get; set; }
         public bool IsDeleted { get; set; }
         public ICollection<CityNameTranslate> CityNameTranslates { get; set; }

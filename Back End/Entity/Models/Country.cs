@@ -15,10 +15,13 @@ namespace Entity.Models
         public string Name { get; set; }
         [Required]
         public float Value { get; set; }
-   
         public string Image { get; set; }
+        public string BgImage { get; set; }
+
         [NotMapped]
         public IFormFile Photo { get; set; }
+        [NotMapped]
+        public IFormFile FlagPhoto { get; set; }
         public bool IsActived { get; set; }
         public bool IsDeleted { get; set; }
         public ICollection<CountryAddressDescription> CountryAddressDescriptions { get; set; }

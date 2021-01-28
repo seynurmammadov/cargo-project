@@ -79,8 +79,8 @@ namespace CamexAPI.Controllers
         [Route("register")]
         public RegisterVM Register()
         {
-            List<City> cities = _cityContext.GetAllCities();
-            List<Office> offices = _officeContext.GetAllOffices();
+            List<City> cities = _cityContext.GetAllActive();
+            List<Office> offices = _officeContext.GetAllActive();
             return new RegisterVM { Cities = cities, Offices = offices };
         }
 
@@ -188,7 +188,7 @@ namespace CamexAPI.Controllers
                         }
                     });
 
-                PrivateCustomer customer = _privateContext.GetPrivateCustomerWithFIN(privateUser.FINCode);
+                PrivateCustomer customer = _privateContext.GetWithFIN(privateUser.FINCode);
                 if (customer != null) return StatusCode(StatusCodes.Status500InternalServerError, new Response
                 {
                     Status = "Error",
@@ -208,7 +208,7 @@ namespace CamexAPI.Controllers
                         }
                 });
 
-                customer = _privateContext.GetPrivateCustomerWithPassportNumber(privateUser.PassportNumber);
+                customer = _privateContext.GetWithPassportNumber(privateUser.PassportNumber);
                 if (customer != null) return StatusCode(StatusCodes.Status500InternalServerError, new Response
                 {
                     Status = "Error",
@@ -228,7 +228,7 @@ namespace CamexAPI.Controllers
                         }
                 });
 
-                Citizenship сitizenship = _citizenshipContext.GetCitizenWithId(privateUser.CitizenshipId);
+                Citizenship сitizenship = _citizenshipContext.GetWithId(privateUser.CitizenshipId);
                 if (сitizenship == null) return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error",
                     Messages = new Message[] {
                             new Message {
@@ -246,7 +246,7 @@ namespace CamexAPI.Controllers
                         }
                 });
 
-                City city = _cityContext.GetCityWithId(privateUser.CityId);
+                City city = _cityContext.GetWithId(privateUser.CityId);
                 if (city == null) return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error",
                     Messages = new Message[] {
                             new Message {
@@ -264,7 +264,7 @@ namespace CamexAPI.Controllers
                         }
                 });
 
-                Office office = _officeContext.GetOfficeWithId(privateUser.OfficeId);
+                Office office = _officeContext.GetWithId(privateUser.OfficeId);
                 if (office == null) return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error",
                     Messages = new Message[] {
                             new Message {
@@ -484,7 +484,7 @@ namespace CamexAPI.Controllers
                     
                     });
 
-                BusinessCustomer customer = _businessContext.GetBusinessCustomerWithNumber(businessUser.CompanyRegistrationNumber);
+                BusinessCustomer customer = _businessContext.GetWithNumber(businessUser.CompanyRegistrationNumber);
                 if (customer != null) return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error",
                     Messages = new Message[] {
                             new Message {
@@ -502,7 +502,7 @@ namespace CamexAPI.Controllers
                         }
                 });
                
-                 customer = _businessContext.GetBusinessCustomerWithName(businessUser.CompanyName);
+                 customer = _businessContext.GetWithName(businessUser.CompanyName);
                 if (customer != null) return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error",
                     Messages = new Message[] {
                             new Message {
@@ -520,7 +520,7 @@ namespace CamexAPI.Controllers
                         }
                 });
 
-                City city = _cityContext.GetCityWithId(businessUser.CityId);
+                City city = _cityContext.GetWithId(businessUser.CityId);
                 if (city == null) return StatusCode(StatusCodes.Status500InternalServerError, new Response
                 {
                     Status = "Error",
@@ -540,7 +540,7 @@ namespace CamexAPI.Controllers
                         }
                 });
 
-                Office office = _officeContext.GetOfficeWithId(businessUser.OfficeId);
+                Office office = _officeContext.GetWithId(businessUser.OfficeId);
                 if (office == null) return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error",
                     Messages = new Message[] {
                             new Message {

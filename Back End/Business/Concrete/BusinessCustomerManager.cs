@@ -25,21 +25,21 @@ namespace Business.Concrete
             _context.Delete(new BusinessCustomer { Id = id });
         }
 
-        public List<BusinessCustomer> GetAllBusinessCustomers()
+        public List<BusinessCustomer> GetAll()
         {
             return _context.GetAll();
         }
 
-        public BusinessCustomer GetBusinessCustomerWithNumber(int CompanyRegistrationNumber)
+        public BusinessCustomer GetWithNumber(int CompanyRegistrationNumber)
         {
             return _context.Get(c => c.CompanyRegistrationNumber == CompanyRegistrationNumber);
         }
 
-        public BusinessCustomer GetBusinessCustomerWithName(string CompanyName)
+        public BusinessCustomer GetWithName(string CompanyName)
         {
             return _context.Get(c => c.CompanyName == CompanyName);
         }
-        public BusinessCustomer GetBusinessCustomerWithCamexId(int CamexId)
+        public BusinessCustomer GetWithCamexId(int CamexId)
         {
             return _context.Get(c => c.CamexId == CamexId);
         }

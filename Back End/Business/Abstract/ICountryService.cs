@@ -7,8 +7,8 @@ namespace Business.Abstract
 {
     public interface ICountryService
     {
-        Country GetCountryWithId(int id);
-        List<Country> GetAllCountries();
+        Country GetWithId(int id);
+        List<Country> GetAll();
         void Add(Country data);
         void Update(Country data);
         void Detele(int id);

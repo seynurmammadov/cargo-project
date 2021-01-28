@@ -49,7 +49,7 @@ namespace CamexAPI.Controllers.Admin
                         }
                     });
                 }
-                Country db_country = _countryContext.GetCountryWithId(countryAddressDescription.CountryId);
+                Country db_country = _countryContext.GetWithId(countryAddressDescription.CountryId);
                 if (db_country == null)
                     return StatusCode(StatusCodes.Status500InternalServerError, new Response
                     {
@@ -105,7 +105,7 @@ namespace CamexAPI.Controllers.Admin
                         }
                     });
                 }
-                Country country = _countryContext.GetCountryWithId(countryAddressDescription.CountryId);
+                Country country = _countryContext.GetWithId(countryAddressDescription.CountryId);
                 if (country == null)
                     return StatusCode(StatusCodes.Status500InternalServerError, new Response
                     {
@@ -125,7 +125,7 @@ namespace CamexAPI.Controllers.Admin
                             }
                         }
                     });
-                CountryAddressDescription db_countryAddressDescription = _countryInfoContext.GetCountryAddressDescriptionWithId(id);
+                CountryAddressDescription db_countryAddressDescription = _countryInfoContext.GetWithId(id);
                 if (db_countryAddressDescription == null)
                     return StatusCode(StatusCodes.Status500InternalServerError, new Response
                     {
@@ -164,7 +164,7 @@ namespace CamexAPI.Controllers.Admin
         {
             try
             {
-                CountryAddressDescription countryAddressDescription = _countryInfoContext.GetCountryAddressDescriptionWithId(id);
+                CountryAddressDescription countryAddressDescription = _countryInfoContext.GetWithId(id);
                 if (countryAddressDescription == null)
                     return StatusCode(StatusCodes.Status500InternalServerError, new Response
                     {

@@ -16,12 +16,12 @@ namespace Business.Concrete
             _context = context;
         }
 
-        public List<Language> GetAllLanguages()
+        public List<Language> GetAll()
         {
             return _context.GetAll();
         }
 
-        public Language GetLanguageWithId(int id)
+        public Language GetWithId(int id)
         {
             return _context.Get(l => l.Id == id);
         }

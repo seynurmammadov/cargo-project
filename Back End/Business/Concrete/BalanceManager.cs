@@ -26,12 +26,12 @@ namespace Business.Concrete
             _context.Delete(new Balance { Id = id });
         }
 
-        public List<Balance> GetAllBalance()
+        public List<Balance> GetAll()
         {
             return _context.GetAll();
         }
 
-        public Balance GetBalanceWithUserId(string id)
+        public Balance GetWithUserId(string id)
         {
             return _context.Get(b => b.UserId == id);
         }

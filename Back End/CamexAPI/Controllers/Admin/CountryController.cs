@@ -32,7 +32,7 @@ namespace CamexAPI.Controllers.Admin
         {
             try
             {
-                List<Country> countries = _countryContext.GetAllCountries();
+                List<Country> countries = _countryContext.GetAll();
                 return Ok(countries);
             }
             catch (Exception e)
@@ -70,11 +70,13 @@ namespace CamexAPI.Controllers.Admin
                 }
                 ValidateModel res = country.Photo.PhotoValidate();
                 if (!res.Success) return StatusCode(StatusCodes.Status500InternalServerError, res.Response);
-
+                ValidateModel res2 = country.FlagPhoto.PhotoValidate();
+                if (!res2.Success) return StatusCode(StatusCodes.Status500InternalServerError, res.Response);
                 string folder = Path.Combine("Site", "images", "countries");
                 string fileName = await country.Photo.SaveImage(_env.WebRootPath, folder);
-
                 country.Image = fileName;
+                fileName = await country.FlagPhoto.SaveImage(_env.WebRootPath, folder);
+                country.BgImage = fileName;
                 _countryContext.Add(country);
                 return Ok();
             }
@@ -112,7 +114,7 @@ namespace CamexAPI.Controllers.Admin
                         }
                     });
                 }
-                Country db_country = _countryContext.GetCountryWithId(id);
+                Country db_country = _countryContext.GetWithId(id);
                 if(db_country== null)
                     return StatusCode(StatusCodes.Status500InternalServerError, new Response
                     {
@@ -141,6 +143,16 @@ namespace CamexAPI.Controllers.Admin
                     string fileName = await country.Photo.SaveImage(_env.WebRootPath, folder);
                     db_country.Image = fileName;
                 }
+
+                if (country.FlagPhoto != null)
+                {
+                    ValidateModel res = country.FlagPhoto.PhotoValidate();
+                    if (!res.Success) return StatusCode(StatusCodes.Status500InternalServerError, res.Response);
+
+                    string folder = Path.Combine("Site", "images", "countries");
+                    string fileName = await country.FlagPhoto.SaveImage(_env.WebRootPath, folder);
+                    db_country.BgImage = fileName;
+                }
                 db_country.Name = country.Name;
                 db_country.Value = country.Value;
                 db_country.IsActived = country.IsActived;
@@ -162,7 +174,7 @@ namespace CamexAPI.Controllers.Admin
         {
             try
             {
-                Country db_country = _countryContext.GetCountryWithId(id);
+                Country db_country = _countryContext.GetWithId(id);
                 if(db_country== null)
                     return StatusCode(StatusCodes.Status500InternalServerError, new Response
                     {
@@ -196,7 +208,7 @@ namespace CamexAPI.Controllers.Admin
         {
             try
             {
-                Country country = _countryContext.GetCountryWithId(id);
+                Country country = _countryContext.GetWithId(id);
                 if (country == null)
                     return StatusCode(StatusCodes.Status500InternalServerError, new Response
                     {

@@ -16,12 +16,15 @@ namespace Business.Concrete
             _context = context;
         }
 
-        public List<City> GetAllCities()
+        public List<City> GetAll()
         {
-            return _context.GetAllNInclude(c=>c.IsActived && !c.IsDeleted);
+            return _context.GetAllNInclude(c=>!c.IsDeleted);
         }
-
-        public City GetCityWithId(int id)
+        public List<City> GetAllActive()
+        {
+            return _context.GetAllNInclude(c => c.IsActived && !c.IsDeleted);
+        }
+        public City GetWithId(int id)
         {
             return _context.Get(c => c.Id == id);
         }

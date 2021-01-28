@@ -23,7 +23,7 @@ namespace CamexAPI.Controllers
         [HttpGet]
         public List<Language> Get()
         {
-            return _languageContext.GetAllLanguages();
+            return _languageContext.GetAll();
         }
 
         // GET api/<LanguageController>/5

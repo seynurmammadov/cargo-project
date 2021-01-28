@@ -7,8 +7,9 @@ namespace Business.Abstract
 {
     public interface ICityService
     {
-        City GetCityWithId(int id);
-        List<City> GetAllCities();
+        City GetWithId(int id);
+        List<City> GetAll();
+        List<City> GetAllActive();
 
         void Add(City data);
         void Update(City data);

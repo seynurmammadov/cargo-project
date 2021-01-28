@@ -22,7 +22,7 @@ export class OfficesComponent implements OnInit {
   dataSource: MatTableDataSource<Office>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  countryData:Office[];
+  officeData:Office[];
   displayedColumns: string[] = ['name', 'value','isActived','actions'];
   constructor(public service:OfficeService,public dialog: MatDialog,private languageService:LanguagesService,) {
     this.getOffices()
@@ -30,8 +30,8 @@ export class OfficesComponent implements OnInit {
 
   getOffices(){
     this.service.getOffices().subscribe(res=>{
-      this.countryData=res;
-      this.dataSource = new MatTableDataSource(this.countryData);
+      this.officeData=res;
+      this.dataSource = new MatTableDataSource(this.officeData);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     })

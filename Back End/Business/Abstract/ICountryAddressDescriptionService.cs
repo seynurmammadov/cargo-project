@@ -7,8 +7,8 @@ namespace Business.Abstract
 {
     public interface ICountryAddressDescriptionService
     {
-        CountryAddressDescription GetCountryAddressDescriptionWithId(int id);
-        List<CountryAddressDescription> GetAllCountryAddressDescriptions();
+        CountryAddressDescription GetWithId(int id);
+        List<CountryAddressDescription> GetAll();
         void Add(CountryAddressDescription data);
         void Update(CountryAddressDescription data);
         void Detele(int id);

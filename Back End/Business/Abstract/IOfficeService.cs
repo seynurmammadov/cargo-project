@@ -7,8 +7,9 @@ namespace Business.Abstract
 {
     public interface IOfficeService
     {
-        Office GetOfficeWithId(int id);
-        List<Office> GetAllOffices();
+        Office GetWithId(int id);
+        List<Office> GetAllActive();
+        List<Office> GetAll();
 
         void Add(Office data);
         void Update(Office data);

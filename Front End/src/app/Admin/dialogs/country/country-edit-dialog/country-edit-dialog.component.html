@@ -28,6 +28,7 @@
 
                 <div class="w-100 " id="fileInput">
                   <mat-form-field>
+                    <mat-label class="text-capitalize">Flag image</mat-label>
                     <div class="d-flex justify-content-between">
                       <input matInput [value]="fileAttr" readonly name="name" />
                       <button mat-raised-button type="button"  (click)="fileInput.click()">
@@ -39,7 +40,19 @@
                     <mat-error  *ngIf="errorHandling('FileInput','required')" [innerHTML]="'Required' | translate ">
                     </mat-error>
                   </mat-form-field>
-                  <mat-checkbox class="mt-2 w-100 text-capitalize" color="primary"[attr.checked]="data.isActived  ? 'checked' : null" formControlName="IsActived" >
+                  <mat-form-field>
+                    <mat-label class="text-capitalize">Background Flag image</mat-label>
+                    <div class="d-flex justify-content-between">
+                      <input matInput [value]="fileAttr2" readonly name="name" />
+                      <button mat-raised-button type="button"  (click)="fileInput2.click()">
+                        Browse File
+                      </button>
+                      <input type="file"  hidden #fileInput2 formControlName="FileInput2"  (change)="uploadFileEvt2($event)" name="uploadFile2"
+                             accept="image/*" />
+                    </div>
+                    <mat-error  *ngIf="errorHandling('FileInput2','required')" [innerHTML]="'Required' | translate ">
+                    </mat-error>
+                  </mat-form-field>                  <mat-checkbox class="mt-2 w-100 text-capitalize" color="primary"[attr.checked]="data.isActived  ? 'checked' : null" formControlName="IsActived" >
                     Activation
                   </mat-checkbox>
                 </div>

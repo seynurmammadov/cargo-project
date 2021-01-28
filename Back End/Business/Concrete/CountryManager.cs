@@ -26,12 +26,12 @@ namespace Business.Concrete
             _context.Delete(new Country { Id = id });
         }
 
-        public List<Country> GetAllCountries()
+        public List<Country> GetAll()
         {
             return _context.GetAllNInclude(c=>!c.IsDeleted);
         }
 
-        public Country GetCountryWithId(int id)
+        public Country GetWithId(int id)
         {
             return _context.GetNInclude(c => c.Id == id && !c.IsDeleted);
         }

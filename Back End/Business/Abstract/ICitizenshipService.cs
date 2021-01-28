@@ -7,8 +7,8 @@ namespace Business.Abstract
 {
     public interface ICitizenshipService
     {
-        Citizenship GetCitizenWithId(int id);
-        List<Citizenship> GetAllCitizens();
+        Citizenship GetWithId(int id);
+        List<Citizenship> GetAll();
 
         void Add(Citizenship data);
         void Update(Citizenship data);

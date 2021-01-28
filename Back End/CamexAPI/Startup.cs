@@ -61,7 +61,12 @@ namespace CamexAPI
             services.AddScoped<ICountryAddressDescriptionDAL, EFCountryAddressDescription>();
             services.AddScoped<IOfficeNameTranslateService, OfficeNameTranslateManager>();
             services.AddScoped<IOfficeNameTranslateDAL, EFOfficeNameTranslate>();
-
+            services.AddScoped<ICityNameTranslateService, CityNameTranslateManager>();
+            services.AddScoped<ICityNameTranslateDAL, EFCityNameTranslate>();
+            services.AddScoped<IProductService, ProductManager>();
+            services.AddScoped<IProductDAL, EFProduct>();
+            services.AddScoped<IProductTranslateService, ProductTranslateManager>();
+            services.AddScoped<IProductTranslateDAL, EFProductTranslate>();
             // For Identity  
             services.AddIdentity<AppUser, IdentityRole>(IdentityOption =>
             {

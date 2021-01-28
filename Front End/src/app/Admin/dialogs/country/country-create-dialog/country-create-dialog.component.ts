@@ -12,8 +12,11 @@ declare let alertify:any;
 export class CountryCreateDialogComponent implements OnInit {
   createForm:FormGroup
   fileAttr = 'Choose File';
+  fileAttr2 = 'Choose File';
   fileToUpload:File
+  fileToUpload2:File
   @ViewChild('fileInput') fileInput: ElementRef;
+  @ViewChild('fileInput2') fileInput2: ElementRef;
   constructor(
     public dialogRef: MatDialogRef<CountryCreateDialogComponent>,
     private languageService:LanguagesService,
@@ -32,6 +35,9 @@ export class CountryCreateDialogComponent implements OnInit {
       ]),
       IsActived: new FormControl(false ),
       FileInput: new FormControl('', [
+        Validators.required,
+      ]),
+      FileInput2: new FormControl('', [
         Validators.required,
       ]),
     })
@@ -53,9 +59,23 @@ export class CountryCreateDialogComponent implements OnInit {
       this.fileAttr = 'Choose File';
     }
   }
+  uploadFileEvt2(imgFile: any) {
+    if (imgFile.target.files && imgFile.target.files[0]) {
+      this.fileAttr2 = '';
+      this.fileAttr2 = imgFile.target.files[0].name
+
+      this.fileToUpload2= <File>imgFile.target.files[0]
+
+      // Reset if duplicate image uploaded again
+      this.fileInput2.nativeElement.value = "";
+    } else {
+      this.fileAttr2 = 'Choose File';
+    }
+  }
   submit(){
     const body = new FormData();
     body.append("Photo",this.fileToUpload,this.fileToUpload.name)
+    body.append("FlagPhoto",this.fileToUpload2,this.fileToUpload2.name)
     body.append("Name",this.createForm.controls["Name"].value.trim())
     body.append("Value",this.createForm.controls["Value"].value)
     body.append("IsActived",this.createForm.controls["IsActived"].value)

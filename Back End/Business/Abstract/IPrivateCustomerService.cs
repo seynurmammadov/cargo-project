@@ -7,10 +7,10 @@ namespace Business.Abstract
 {
     public interface IPrivateCustomerService
     {
-        PrivateCustomer GetPrivateCustomerWithFIN(string FINcode);
-        PrivateCustomer GetPrivateCustomerWithPassportNumber(int PassportNumber);
-        PrivateCustomer GetPrivateCustomerWithCamexId(int CamexId);
-        List<PrivateCustomer> GetAllPrivateCustomers();
+        PrivateCustomer GetWithFIN(string FINcode);
+        PrivateCustomer GetWithPassportNumber(int PassportNumber);
+        PrivateCustomer GetWithCamexId(int CamexId);
+        List<PrivateCustomer> GetAll();
 
         void Add(PrivateCustomer data);
         void Update(PrivateCustomer data);

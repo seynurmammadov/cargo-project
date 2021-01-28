@@ -26,19 +26,11 @@ namespace DataAccess.Concrete
         public DbSet<Language> Languages { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<CountryAddressDescription> CountryAddressDescriptions { get; set; }
+        public DbSet<Product> Product { get; set; }
+        public DbSet<ProductTranslate> ProductTranslate { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
-          
-            modelBuilder.Entity<Citizenship>().HasData(
-                new Citizenship
-                {
-                    Id = 1,
-                    Name = "Azerbaycanli",
-                }
-                );
         }
-
     }
 }

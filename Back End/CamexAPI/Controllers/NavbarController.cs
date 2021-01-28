@@ -51,7 +51,7 @@ namespace CamexAPI.Controllers
                 if (role == Helper.Roles.BusinessCustomer.ToString())
                 {
                     
-                    BusinessCustomer businessCustomer = _businessContext.GetBusinessCustomerWithCamexId(user.CamexId);
+                    BusinessCustomer businessCustomer = _businessContext.GetWithCamexId(user.CamexId);
                     UserNavVM userNav = new UserNavVM
                     {
                         CompanyName = businessCustomer.CompanyName,
@@ -62,7 +62,7 @@ namespace CamexAPI.Controllers
                 }
                 else if (role == Helper.Roles.PrivateCustomer.ToString())
                 {
-                    PrivateCustomer privateCustomer = _privateContext.GetPrivateCustomerWithCamexId(user.CamexId);
+                    PrivateCustomer privateCustomer = _privateContext.GetWithCamexId(user.CamexId);
                     UserNavVM userNav = new UserNavVM
                     {
                         Name= privateCustomer.Name,

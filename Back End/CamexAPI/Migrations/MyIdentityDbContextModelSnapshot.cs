@@ -153,9 +153,6 @@ namespace CamexAPI.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<float>("PriceValue")
-                        .HasColumnType("real");
-
                     b.HasKey("Id");
 
                     b.ToTable("Cities");

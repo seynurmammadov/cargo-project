@@ -22,6 +22,7 @@ namespace Entity.Models
         public string Image { get; set; }
         [NotMapped]
         public IFormFile Photo { get; set; }
+        public ICollection<Cargo> Cargos { get; set; }
         public bool IsTermsAccepted { get; set; }
         public bool IsActived { get; set; }
         public bool IsDeleted { get; set; }

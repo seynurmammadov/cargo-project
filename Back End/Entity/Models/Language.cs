@@ -14,6 +14,8 @@ namespace Entity.Models
 
         public ICollection<CityNameTranslate> CityNameTranslates { get; set; }
         public ICollection<OfficeNameTranslate> OfficeNameTranlates { get; set; }
+        public ICollection<ProductTranslate> ProductTranslate { get; set; }
+        public ICollection<NoticeTranslate> NoticeTranslate { get; set; }
 
     }
 }

@@ -21,8 +21,8 @@ export class CountriesAllComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   countryData:CountryData[];
-  displayedColumns: string[] = ['image','name', 'value' ,'isActived','actions'];
-  constructor(public service:CountriesService,public dialog: MatDialog,private languageService:LanguagesService,) {
+  displayedColumns: string[] = ['image','name','wallet' ,'value' ,'isActived','actions'];
+  constructor(public service:CountriesService,public dialog: MatDialog,private languageService:LanguagesService) {
     this.getCountries()
   }
   applyFilter(event: Event) {

@@ -13,6 +13,9 @@ export class ProductService {
   getProducts():Observable<Product[]>{
     return this.http.get<Product[]>(`${this.global.path}Product`);
   }
+  getProductsActive():Observable<Product[]>{
+    return this.http.get<Product[]>(`${this.global.path}Product/active`);
+  }
   createProduct(body){
     return this.http.post(`${this.global.path}Product`,body);
   }

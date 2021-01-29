@@ -25,7 +25,30 @@
                     {{'NumberPattern' | translate }}
                   </mat-error>
                 </mat-form-field>
-
+                <mat-form-field class="w-100" appearance="fill">
+                  <mat-label class="text-capitalize">Wallet</mat-label>
+                  <input type="text" matInput formControlName="Wallet"  placeholder="USD">
+                  <mat-error  *ngIf="errorHandling('Wallet','required')" [innerHTML]="'Required' | translate ">
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field class="w-100" appearance="fill">
+                  <mat-label class="text-capitalize">Notice in Russia</mat-label>
+                  <input type="text" matInput formControlName="NameRussia"  placeholder="Имя">
+                  <mat-error  *ngIf="errorHandling('NameRussia','required')" [innerHTML]="'Required' | translate ">
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field class="w-100" appearance="fill">
+                  <mat-label class="text-capitalize">Notice in English</mat-label>
+                  <input type="text" matInput formControlName="NameEnglish"  placeholder="Name">
+                  <mat-error  *ngIf="errorHandling('NameEnglish','required')" [innerHTML]="'Required' | translate ">
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field class="w-100" appearance="fill">
+                  <mat-label class="text-capitalize">Notice in Azerbaijan</mat-label>
+                  <input type="text" matInput formControlName="NameAzerbaijan"  placeholder="Ad">
+                  <mat-error  *ngIf="errorHandling('NameAzerbaijan','required')" [innerHTML]="'Required' | translate ">
+                  </mat-error>
+                </mat-form-field>
                 <div class="w-100 " id="fileInput">
                   <mat-form-field>
                     <mat-label class="text-capitalize">Flag image</mat-label>

@@ -9,6 +9,7 @@ namespace Business.Abstract
     {
         Country GetWithId(int id);
         List<Country> GetAll();
+        List<Country> GetAllActive();
         void Add(Country data);
         void Update(Country data);
         void Detele(int id);

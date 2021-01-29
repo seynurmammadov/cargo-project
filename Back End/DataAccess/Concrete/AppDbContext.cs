@@ -28,6 +28,9 @@ namespace DataAccess.Concrete
         public DbSet<CountryAddressDescription> CountryAddressDescriptions { get; set; }
         public DbSet<Product> Product { get; set; }
         public DbSet<ProductTranslate> ProductTranslate { get; set; }
+        public DbSet<NoticeTranslate> NoticeTranslates { get; set; }
+        public DbSet<Cargo> Cargos { get; set; }
+        public DbSet<Status> Status { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

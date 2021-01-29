@@ -85,6 +85,7 @@ import { UpdateCityComponent } from './Admin/dialogs/city/update-city/update-cit
 import { ProductsComponent } from './Admin/products/products.component';
 import { CreatePtoductComponent } from './Admin/dialogs/product/create-ptoduct/create-ptoduct.component';
 import { UpdateProductComponent } from './Admin/dialogs/product/update-product/update-product.component';
+import { StatementUpdateComponent } from './myprofile/dialogs/statement-update/statement-update.component';
 
 const routes: Routes=[
   { path: "home", redirectTo:"" ,pathMatch:"full"},
@@ -213,6 +214,7 @@ const routes: Routes=[
     ProductsComponent,
     CreatePtoductComponent,
     UpdateProductComponent,
+    StatementUpdateComponent,
   ],
   imports: [
     BrowserModule,

@@ -67,6 +67,12 @@ namespace CamexAPI
             services.AddScoped<IProductDAL, EFProduct>();
             services.AddScoped<IProductTranslateService, ProductTranslateManager>();
             services.AddScoped<IProductTranslateDAL, EFProductTranslate>();
+            services.AddScoped<INoticeTranslateService, NoticeTranslateManager>();
+            services.AddScoped<INoticeTranslateDAL, EFNoticeTranslate>();
+            services.AddScoped<IStatusService, StatusManager>();
+            services.AddScoped<IStatusDAL, EFStatus>();
+            services.AddScoped<ICargoService, CargoManager>();
+            services.AddScoped<ICargoDAL, EFCargo>();
             // For Identity  
             services.AddIdentity<AppUser, IdentityRole>(IdentityOption =>
             {

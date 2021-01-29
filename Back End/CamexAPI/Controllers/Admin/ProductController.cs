@@ -37,6 +37,20 @@ namespace CamexAPI.Controllers.Admin
                 return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
             }
         }
+        [HttpGet]
+        [Route("active")]
+        public IActionResult GetActive()
+        {
+            try
+            {
+                List<Product> products = _productContext.GetAllActive();
+                return Ok(products);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+            }
+        }
 
         // POST api/<OfficeController>
         [HttpPost]

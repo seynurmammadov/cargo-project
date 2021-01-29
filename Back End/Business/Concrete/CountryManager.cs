@@ -30,7 +30,10 @@ namespace Business.Concrete
         {
             return _context.GetAllNInclude(c=>!c.IsDeleted);
         }
-
+        public List<Country> GetAllActive()
+        {
+            return _context.GetAllNInclude(c => c.IsActived && !c.IsDeleted);
+        }
         public Country GetWithId(int id)
         {
             return _context.GetNInclude(c => c.Id == id && !c.IsDeleted);

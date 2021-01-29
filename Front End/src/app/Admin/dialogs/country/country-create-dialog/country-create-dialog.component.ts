@@ -29,9 +29,21 @@ export class CountryCreateDialogComponent implements OnInit {
       Name: new FormControl('', [
         Validators.required,
       ]),
+      Wallet: new FormControl('', [
+        Validators.required,
+      ]),
       Value: new FormControl('', [
         Validators.required,
         Validators.pattern(/^\d*\.?\d*$/)
+      ]),
+      NameRussia: new FormControl('', [
+        Validators.required,
+      ]),
+      NameEnglish: new FormControl('', [
+        Validators.required,
+      ]),
+      NameAzerbaijan: new FormControl('', [
+        Validators.required,
       ]),
       IsActived: new FormControl(false ),
       FileInput: new FormControl('', [
@@ -78,7 +90,25 @@ export class CountryCreateDialogComponent implements OnInit {
     body.append("FlagPhoto",this.fileToUpload2,this.fileToUpload2.name)
     body.append("Name",this.createForm.controls["Name"].value.trim())
     body.append("Value",this.createForm.controls["Value"].value)
+    body.append("Wallet",this.createForm.controls["Wallet"].value.trim())
     body.append("IsActived",this.createForm.controls["IsActived"].value)
+    body.append("NoticeTranslate",null)
+   const NoticeTranlates= [
+      {
+        Name:this.createForm.controls["NameEnglish"].value.trim(),
+        LanguageId:1
+      },
+      {
+        Name:this.createForm.controls["NameRussia"].value.trim(),
+        LanguageId:2
+      },
+      {
+        Name:this.createForm.controls["NameAzerbaijan"].value.trim(),
+        LanguageId:3
+      }
+    ]
+    body.append("Notices",JSON.stringify(NoticeTranlates))
+
     this.service.createCountry(body).subscribe(
       ()=> {
         this.dialogRef.close();

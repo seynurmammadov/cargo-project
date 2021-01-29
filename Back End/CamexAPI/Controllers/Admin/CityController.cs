@@ -18,10 +18,14 @@ namespace CamexAPI.Controllers.Admin
     {
         private readonly ICityService _cityContext;
         private readonly ICityNameTranslateService _cityTranslateContext;
+
+        //class constructor
+       
         public CityController(ICityService cityContext, ICityNameTranslateService cityTranslateContext)
         {
             _cityContext = cityContext;
             _cityTranslateContext = cityTranslateContext;
+
         }
 
         [HttpGet]

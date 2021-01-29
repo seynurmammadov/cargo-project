@@ -20,6 +20,8 @@ namespace CamexAPI.Identity
          public DbSet<OfficeNameTranslate> OfficeNameTranslates { get; set; }
          public DbSet<CityNameTranslate> CityNameTranslates { get; set; }
          public DbSet<Language> Languages { get; set; }
+         public DbSet<Cargo> Cargos { get; set; }
+         public DbSet<Status> Status { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

@@ -13,6 +13,10 @@
     <Compile Remove="Migrations\20210127223751_fixFloat.Designer.cs" />
     <Compile Remove="Migrations\20210127223902_fixFloat.cs" />
     <Compile Remove="Migrations\20210127223902_fixFloat.Designer.cs" />
+    <Compile Remove="Migrations\20210129163802_cargos.cs" />
+    <Compile Remove="Migrations\20210129163802_cargos.Designer.cs" />
+    <Compile Remove="Migrations\20210129184351_cargosFix2.cs" />
+    <Compile Remove="Migrations\20210129184351_cargosFix2.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,6 +39,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\Site\images\countries\" />
+    <Folder Include="wwwroot\Site\images\statements\" />
   </ItemGroup>
 
 

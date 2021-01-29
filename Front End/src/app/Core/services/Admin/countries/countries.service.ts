@@ -14,8 +14,11 @@ export class CountriesService {
   getCountries():Observable<CountryData[]>{
     return this.http.get<CountryData[]>(`${this.global.path}Country`);
   }
+  getCountriesActive():Observable<CountryData[]>{
+    return this.http.get<CountryData[]>(`${this.global.path}Country/active`);
+  }
   createCountry(body:FormData){
-    return this.http.post(`${this.global.path}Country`,body);
+    return this.http.post(`${this.global.path}Country`,body );
   }
   updateCountry(body:FormData){
     return this.http.put(`${this.global.path}Country/${body.get("id")}`,body);

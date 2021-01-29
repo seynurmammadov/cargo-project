@@ -13,5 +13,6 @@ namespace Entity.Models
         public bool IsActived { get; set; }
         public bool IsDeleted { get; set; }
         public ICollection<ProductTranslate> ProductTranslates { get; set; }
+        public ICollection<Cargo> Cargos { get; set; }
     }
 }

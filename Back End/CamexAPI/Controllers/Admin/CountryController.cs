@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -20,11 +21,13 @@ namespace CamexAPI.Controllers.Admin
     public class CountryController : ControllerBase
     {
         private readonly ICountryService _countryContext;
+        private readonly INoticeTranslateService _noticeContext;
         private readonly IWebHostEnvironment _env;
-        public CountryController(ICountryService countryContext, IWebHostEnvironment env)
+        public CountryController(ICountryService countryContext, IWebHostEnvironment env, INoticeTranslateService noticeContext)
         {
             _countryContext = countryContext;
             _env = env;
+            _noticeContext = noticeContext;
         }
 
         [HttpGet]
@@ -40,6 +43,20 @@ namespace CamexAPI.Controllers.Admin
                 return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
             }
         }
+        [HttpGet]
+        [Route("active")]
+        public IActionResult GetActive()
+        {
+            try
+            {
+                List<Country> countries = _countryContext.GetAllActive();
+                return Ok(countries);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+            }
+        }
 
         // POST api/<CountryController>
         [HttpPost]
@@ -47,6 +64,7 @@ namespace CamexAPI.Controllers.Admin
         {
             try
             {
+                country.NoticeTranslate = JsonSerializer.Deserialize<ICollection<NoticeTranslate>>(country.Notices);
                 if (!ModelState.IsValid)
                 {
                     return StatusCode(StatusCodes.Status500InternalServerError, new Response
@@ -78,6 +96,12 @@ namespace CamexAPI.Controllers.Admin
                 fileName = await country.FlagPhoto.SaveImage(_env.WebRootPath, folder);
                 country.BgImage = fileName;
                 _countryContext.Add(country);
+
+                foreach (NoticeTranslate item in country.NoticeTranslate)
+                {
+                    item.CountryId = country.Id;
+                    _noticeContext.Add(item);
+                }
                 return Ok();
             }
             catch (Exception e)
@@ -93,6 +117,7 @@ namespace CamexAPI.Controllers.Admin
         {
             try
             {
+                country.NoticeTranslate = JsonSerializer.Deserialize<ICollection<NoticeTranslate>>(country.Notices);
                 if (!ModelState.IsValid)
                 {
                     return StatusCode(StatusCodes.Status500InternalServerError, new Response
@@ -156,7 +181,14 @@ namespace CamexAPI.Controllers.Admin
                 db_country.Name = country.Name;
                 db_country.Value = country.Value;
                 db_country.IsActived = country.IsActived;
+                db_country.Wallet = country.Wallet;
                 _countryContext.Update(db_country);
+                foreach (NoticeTranslate item in country.NoticeTranslate)
+                {
+                    NoticeTranslate db_noticeTranslate = _noticeContext.GetWithId(item.Id);
+                    db_noticeTranslate.Name = item.Name;
+                    _noticeContext.Update(db_noticeTranslate);
+                }
                 return Ok();
 
             }

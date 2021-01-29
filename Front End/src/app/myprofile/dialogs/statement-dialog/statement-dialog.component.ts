@@ -1,6 +1,13 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {RxwebValidators} from '@rxweb/reactive-form-validators';
+import {MatDialogRef} from '@angular/material/dialog';
+import {LanguagesService} from '../../../Core/services/lang/languages.service';
+import {StatementService} from '../../../Core/services/statement/statement.service';
+import {ProductService} from '../../../Core/services/Admin/product/product.service';
+import {Product} from '../../../Core/models/Product';
+import {CountriesService} from '../../../Core/services/Admin/countries/countries.service';
+import {CountryData} from '../../../Admin/countries-all/CountryData';
+declare let alertify:any
 
 @Component({
   selector: 'app-statement-dialog',
@@ -9,7 +16,18 @@ import {RxwebValidators} from '@rxweb/reactive-form-validators';
 })
 export class StatementDialogComponent implements OnInit {
   statementForm:FormGroup
-  constructor() {
+  fileAttr = 'Choose File';
+  fileToUpload:File;
+  products:Product[];
+  wallet:CountryData[];
+  @ViewChild('fileInput') fileInput: ElementRef;
+
+  constructor( public dialogRef: MatDialogRef<StatementDialogComponent>,
+               private languageService:LanguagesService,
+               private service:StatementService,
+               private proService:ProductService,
+               private cntService:CountriesService) {
+    this.getProduct();
   }
 
   ngOnInit(): void {
@@ -47,33 +65,36 @@ export class StatementDialogComponent implements OnInit {
       ]),
     })
   }
+  getProduct(){
+    this.proService.getProductsActive().subscribe((res)=>
+      {
+        res.forEach(p=>{
+          p.productTranslates.forEach(pt=>{
+            if(pt.languageId==this.languageService.select.id){
+              p.productTranslates[0]=pt
+              this.products=res;
+            }
+          })
+        })
+      }
+    )
+    this.cntService.getCountriesActive().subscribe(
+      (res)=>{
+        this.wallet=res;
+    })
+}
   public errorHandling = (control: string, error: string) => {
     return this.statementForm.controls[control].hasError(error);
   }
   get Track() {
     return this.statementForm.get('Track');
   }
-  @ViewChild('fileInput') fileInput: ElementRef;
-  fileAttr = 'Choose File';
-
-
   uploadFileEvt(imgFile: any) {
     if (imgFile.target.files && imgFile.target.files[0]) {
       this.fileAttr = '';
-      Array.from(imgFile.target.files).forEach((file: File) => {
-        this.fileAttr += file.name + ' - ';
-      });
+      this.fileAttr = imgFile.target.files[0].name
 
-      // HTML5 FileReader API
-      let reader = new FileReader();
-      reader.onload = (e: any) => {
-        let image = new Image();
-        image.src = e.target.result;
-        image.onload = rs => {
-          let imgBase64Path = e.target.result;
-        };
-      };
-      reader.readAsDataURL(imgFile.target.files[0]);
+      this.fileToUpload= <File>imgFile.target.files[0]
 
       // Reset if duplicate image uploaded again
       this.fileInput.nativeElement.value = "";
@@ -82,6 +103,26 @@ export class StatementDialogComponent implements OnInit {
     }
   }
   submit(){
-
+    const body = new FormData();
+    body.append("Track",this.statementForm.controls["Track"].value.trim())
+    body.append("Name",this.statementForm.controls["Name"].value.trim())
+    body.append("ProductId",this.statementForm.controls["Product"].value)
+    body.append("Price",this.statementForm.controls["Price"].value)
+    body.append("CountryId",this.statementForm.controls["Wallet"].value)
+    body.append("Count",this.statementForm.controls["Count"].value)
+    body.append("Notice",this.statementForm.controls["TextArea"].value.trim())
+    body.append("Photo",this.fileToUpload,this.fileToUpload.name)
+    this.service.create(body).subscribe(
+      ()=> {
+        this.dialogRef.close();
+      },
+      error => {
+        error.error.messages.forEach(e => {
+          if (e.lang_id == this.languageService.select.id) {
+            alertify.error(e.messageLang);
+          }
+        })
+      }
+    )
   }
 }

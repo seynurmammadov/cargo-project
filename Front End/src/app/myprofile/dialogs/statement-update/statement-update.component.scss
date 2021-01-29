@@ -1,0 +1,57 @@
+.mat-tab-label{
+  height: auto;
+  padding-top:20px;
+  padding-bottom:20px;
+  justify-content: start;
+}
+.mat-form-field-flex{
+  background-color: rgba(0,0,0,.04);
+  border-radius: 4px 4px 0 0;
+  padding: .75em .75em 0 .75em;
+}
+.reg-button{
+  outline: 0;
+  white-space: normal;
+  line-height: 20px;
+  padding: 10px 30px;
+  background-color: #3179ce;
+  color: white;
+}
+.mat-checkbox-label{
+  white-space: normal;
+}
+.passport{
+  width: 75%;
+}
+.mat-button-disabled{
+  background-color: #5E5F61!important;
+}
+.mat-form-field-wrapper {
+  margin-bottom: 7px;
+}
+textarea {
+  resize: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+button{
+  outline: 0!important;
+}
+#fileInput{
+
+  .mat-form-field {
+    width: 100%;
+  }
+  .mat-raised-button{
+    min-width: auto;
+  }
+
+}
+#bottom-btns{
+  .mat-raised-button{
+    color: white;
+  }
+}

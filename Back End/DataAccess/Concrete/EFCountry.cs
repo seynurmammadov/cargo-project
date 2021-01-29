@@ -17,8 +17,8 @@ namespace DataAccess.Concrete
             using (var context = new AppDbContext())
             {
                 return filter == null
-                    ? context.Countries.Include(c => c.CountryAddressDescriptions).ToList()
-                    : context.Countries.Where(filter).Include(c => c.CountryAddressDescriptions).ToList();
+                    ? context.Countries.Include(c => c.CountryAddressDescriptions).Include(c=>c.NoticeTranslate).ToList()
+                    : context.Countries.Where(filter).Include(c => c.CountryAddressDescriptions).Include(c => c.NoticeTranslate).ToList();
             };
         }
         public Country GetNInclude(Expression<Func<Country, bool>> filter = null)

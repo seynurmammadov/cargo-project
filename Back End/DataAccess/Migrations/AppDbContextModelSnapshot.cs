@@ -148,6 +148,77 @@ namespace DataAccess.Migrations
                     b.ToTable("BusinessCustomers");
                 });
 
+            modelBuilder.Entity("Entity.Models.Cargo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<float>("CamexPrice")
+                        .HasColumnType("real");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CountryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Notice")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("OfficeId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("PaymentStatus")
+                        .HasColumnType("bit");
+
+                    b.Property<float>("Price")
+                        .HasColumnType("real");
+
+                    b.Property<int>("StatusId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Track")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TrackCamex")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<float>("Weight")
+                        .HasColumnType("real");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
+
+                    b.HasIndex("OfficeId");
+
+                    b.HasIndex("StatusId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Cargos");
+                });
+
             modelBuilder.Entity("Entity.Models.Citizenship", b =>
                 {
                     b.Property<int>("Id")
@@ -232,6 +303,9 @@ namespace DataAccess.Migrations
                     b.Property<float>("Value")
                         .HasColumnType("real");
 
+                    b.Property<string>("Wallet")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Countries");
@@ -281,6 +355,32 @@ namespace DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Languages");
+                });
+
+            modelBuilder.Entity("Entity.Models.NoticeTranslate", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CountryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LanguageId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
+
+                    b.HasIndex("LanguageId");
+
+                    b.ToTable("NoticeTranslates");
                 });
 
             modelBuilder.Entity("Entity.Models.Office", b =>
@@ -415,6 +515,28 @@ namespace DataAccess.Migrations
                     b.ToTable("ProductTranslate");
                 });
 
+            modelBuilder.Entity("Entity.Models.Status", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("IsActived")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Status");
+                });
+
             modelBuilder.Entity("Entity.Models.AppUser", b =>
                 {
                     b.HasOne("Entity.Models.City", "City")
@@ -437,6 +559,31 @@ namespace DataAccess.Migrations
                         .HasForeignKey("Entity.Models.Balance", "UserId");
                 });
 
+            modelBuilder.Entity("Entity.Models.Cargo", b =>
+                {
+                    b.HasOne("Entity.Models.Country", "Country")
+                        .WithMany("Cargo")
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entity.Models.Office", "Office")
+                        .WithMany()
+                        .HasForeignKey("OfficeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entity.Models.Status", "Status")
+                        .WithMany("Cargos")
+                        .HasForeignKey("StatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entity.Models.AppUser", "User")
+                        .WithMany("Cargos")
+                        .HasForeignKey("UserId");
+                });
+
             modelBuilder.Entity("Entity.Models.CityNameTranslate", b =>
                 {
                     b.HasOne("Entity.Models.City", "City")
@@ -457,6 +604,21 @@ namespace DataAccess.Migrations
                     b.HasOne("Entity.Models.Country", "Country")
                         .WithMany("CountryAddressDescriptions")
                         .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Entity.Models.NoticeTranslate", b =>
+                {
+                    b.HasOne("Entity.Models.Country", "Country")
+                        .WithMany("NoticeTranslate")
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entity.Models.Language", "Language")
+                        .WithMany("NoticeTranslate")
+                        .HasForeignKey("LanguageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -488,7 +650,7 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("Entity.Models.ProductTranslate", b =>
                 {
                     b.HasOne("Entity.Models.Language", "Language")
-                        .WithMany()
+                        .WithMany("ProductTranslate")
                         .HasForeignKey("LanguageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

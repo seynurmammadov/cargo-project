@@ -86,6 +86,7 @@ import { ProductsComponent } from './Admin/products/products.component';
 import { CreatePtoductComponent } from './Admin/dialogs/product/create-ptoduct/create-ptoduct.component';
 import { UpdateProductComponent } from './Admin/dialogs/product/update-product/update-product.component';
 import { StatementUpdateComponent } from './myprofile/dialogs/statement-update/statement-update.component';
+import { BalanceDialogComponent } from './myprofile/dialogs/balance-dialog/balance-dialog.component';
 
 const routes: Routes=[
   { path: "home", redirectTo:"" ,pathMatch:"full"},
@@ -215,6 +216,7 @@ const routes: Routes=[
     CreatePtoductComponent,
     UpdateProductComponent,
     StatementUpdateComponent,
+    BalanceDialogComponent,
   ],
   imports: [
     BrowserModule,

@@ -22,6 +22,8 @@ namespace CamexAPI.Identity
          public DbSet<Language> Languages { get; set; }
          public DbSet<Cargo> Cargos { get; set; }
          public DbSet<Status> Status { get; set; }
+         public DbSet<Order> Orders { get; set; }
+         public DbSet<Receipt> Receipts { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

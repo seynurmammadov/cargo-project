@@ -37,20 +37,6 @@ namespace CamexAPI.Controllers
             _user = user;
         }
 
-        [HttpGet]
-        public IActionResult Get()
-        {
-            try
-            {
-                AppUser user = _user.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
-                List<Cargo> cargos = _cargoContext.GetAllActiveStatement(user.Id);
-                return Ok(cargos);
-            }
-            catch (Exception e)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
-            }
-        }
         [HttpPost]
         public async Task<IActionResult> Post([FromForm] Cargo cargo)
         {
@@ -181,6 +167,7 @@ namespace CamexAPI.Controllers
                 db_cargo.CountryId = cargo.CountryId;
                 db_cargo.Count = cargo.Count;
                 db_cargo.Notice = cargo.Notice;
+                db_cargo.ModifiedDate = DateTime.Now;
                 _cargoContext.Update(db_cargo);
                 return Ok();
 
@@ -220,6 +207,7 @@ namespace CamexAPI.Controllers
                         }
                     });
                 db_cargo.IsDeleted = true;
+                db_cargo.ModifiedDate = DateTime.Now;
                 _cargoContext.Update(db_cargo);
                 return Ok();
             }

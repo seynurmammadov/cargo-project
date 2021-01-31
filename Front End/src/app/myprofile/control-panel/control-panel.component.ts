@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild} from '@angular/core';
 import {
   ApexChart,
   ApexFill,
@@ -12,6 +12,11 @@ import {
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
+import {AppUser} from '../../Admin/Models/AppUser';
+import {Receipt} from '../../Core/models/Receipt';
+import {StatementDialogComponent} from '../dialogs/statement-dialog/statement-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
+import {BalanceDialogComponent} from '../dialogs/balance-dialog/balance-dialog.component';
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;
   chart: ApexChart;
@@ -22,27 +27,33 @@ export type ChartOptions = {
   states:ApexStates,
   tooltip:ApexTooltip
 };
-export interface UserPaymentData {
-  name: string;
-  value: string;
-  date: string;
-}
+
 @Component({
   selector: 'app-control-panel',
   templateUrl: './control-panel.component.html',
   styleUrls: ['./control-panel.component.scss']
 })
-export class ControlPanelComponent implements OnInit,AfterViewInit {
+export class ControlPanelComponent implements OnInit,AfterViewInit,OnChanges {
   @ViewChild("chart") chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
+
   limit:string= ((150*100)/300).toString();
   youLimit:number;
+
   displayedColumns: string[] = ['name', 'value', 'date'];
-  dataSource: MatTableDataSource<UserPaymentData>;
+  dataSource: MatTableDataSource<Receipt>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  usersPaymentData:UserPaymentData[]
-  constructor() {
+  @Input() user:AppUser;
+  @Output() event = new EventEmitter();
+  callParent(): void {
+    this.event.next();
+  }
+  ngOnChanges(changes:SimpleChanges) {
+    this.user= changes.user.currentValue
+    this.get()
+  }
+  constructor(public dialog: MatDialog) {
     this.youLimit= 150
     this.chartOptions = {
       series: [parseInt(this.limit)],
@@ -139,23 +150,20 @@ export class ControlPanelComponent implements OnInit,AfterViewInit {
         },
       }
     };
-    this.usersPaymentData=[
-      {
-        name:"aa",
-        value:"100",
-        date:"mondayy"
-      }
-    ]
-    this.dataSource = new MatTableDataSource(this.usersPaymentData);
 
   }
 
   ngOnInit(): void {
+    this.get()
+  }
+  get(){
+    this.dataSource = new MatTableDataSource(this.user.receipts);
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -165,4 +173,15 @@ export class ControlPanelComponent implements OnInit,AfterViewInit {
     }
   }
   srcImg:string="../../assets/image/manat.jpg"
+  getCamexId(val){
+    return String(val).padStart(5, '0')
+  }
+  openDialog(){
+    const dialogRefCreate = this.dialog.open(BalanceDialogComponent, {
+      width: '450px',
+    });
+    dialogRefCreate.afterClosed().subscribe(() => {
+      this.callParent()
+    });
+  }
 }

@@ -23,6 +23,8 @@ namespace Entity.Models
         [NotMapped]
         public IFormFile Photo { get; set; }
         public ICollection<Cargo> Cargos { get; set; }
+        public ICollection<Order> Orders { get; set; }
+        public ICollection<Receipt> Receipts { get; set; }
         public bool IsTermsAccepted { get; set; }
         public bool IsActived { get; set; }
         public bool IsDeleted { get; set; }

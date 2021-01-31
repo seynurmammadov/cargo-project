@@ -12,5 +12,10 @@ namespace Entity.Models
         public string UserId { get; set; }
         public float UserBalance { get; set; }
         public AppUser User { get; set; }
+        public DateTime ModifiedDate { get; set; }
+        public Balance()
+        {
+            this.ModifiedDate = DateTime.UtcNow;
+        }
     }
 }

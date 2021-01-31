@@ -43,6 +43,7 @@
               "node_modules/parallax-js/dist/parallax.min.js",
               "./node_modules/alertifyjs/build/alertify.min.js",
               "./node_modules/sweetalert2/dist/sweetalert2.js"
+
             ]
           },
           "configurations": {

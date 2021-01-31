@@ -30,6 +30,7 @@ namespace DataAccess.Concrete
         public DbSet<ProductTranslate> ProductTranslate { get; set; }
         public DbSet<NoticeTranslate> NoticeTranslates { get; set; }
         public DbSet<Cargo> Cargos { get; set; }
+        public DbSet<Order> Orders { get; set; }
         public DbSet<Status> Status { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

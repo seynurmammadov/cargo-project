@@ -131,5 +131,7 @@ export class StatementUpdateComponent implements OnInit {
       }
     )
   }
-
+  public createImgPath = (serverPath: string) => {
+    return `https://localhost:44387/Site/images/statements/${serverPath}`;
+  }
 }

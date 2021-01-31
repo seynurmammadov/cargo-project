@@ -45,7 +45,7 @@ namespace CamexAPI.Controllers.Admin
         {
             try
             {
-                List<AppUser> appUsers = _userManager.Users.ToList();
+                List<AppUser> appUsers = _userManager.Users.OrderByDescending(u=>u.Id).Take(30).ToList();
                 List<UserAdminVM> userVMs = new List<UserAdminVM>();
                 foreach (AppUser user in appUsers)
                 {
@@ -601,6 +601,54 @@ namespace CamexAPI.Controllers.Admin
                         });
                 }
                 return Ok();
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+            }
+        }
+
+        [HttpGet("search/{id}")]
+
+        public async Task<IActionResult> Search(int id)
+        {
+            try
+            {
+                List<AppUser> users = _userManager.Users.Where(u=>u.CamexId.ToString().Contains(id.ToString())).ToList();
+                if (users == null)
+                    return StatusCode(StatusCodes.Status404NotFound, new Response
+                    {
+                        Status = "Error",
+                        Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="User is not found!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Пользователь не найден!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="Istifadəçi tapılmadı!"
+                            }
+                        }
+                    });
+                List<UserAdminVM> userVMs = new List<UserAdminVM>();
+                foreach (AppUser user in users)
+                {
+                    UserAdminVM userVM = new UserAdminVM()
+                    {
+                        Id = user.Id,
+                        CamexId = user.CamexId,
+                        Email = user.Email,
+                        PhoneNumber = user.PhoneNumber,
+                        IsActived = user.IsActived,
+                        Roles = await _userManager.GetRolesAsync(user)
+                    };
+                    userVMs.Add(userVM);
+                }
+                return Ok(userVMs);
             }
             catch (Exception e)
             {

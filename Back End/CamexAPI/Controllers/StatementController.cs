@@ -24,14 +24,12 @@ namespace CamexAPI.Controllers
     {
         private readonly ICargoService _cargoContext;
         private readonly IStatusService _statusContext;
-        private UserManager<AppUser> _userManager;
         private readonly IWebHostEnvironment _env;
         private readonly MyIdentityDbContext _user;
-        public StatementController(ICargoService cargoContext, UserManager<AppUser> userManager
+        public StatementController(ICargoService cargoContext
             , MyIdentityDbContext user, IStatusService statusContext, IWebHostEnvironment env)
         {
             _cargoContext = cargoContext;
-            _userManager = userManager;
             _statusContext = statusContext;
             _env=env;
             _user = user;

@@ -128,8 +128,8 @@ namespace CamexAPI.Migrations
                     b.Property<DateTime>("ModifiedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<float>("UserBalance")
-                        .HasColumnType("real");
+                    b.Property<decimal>("UserBalance")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -298,7 +298,7 @@ namespace CamexAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Country");
+                    b.ToTable("Countries");
                 });
 
             modelBuilder.Entity("Entity.Models.CountryAddressDescription", b =>
@@ -551,8 +551,8 @@ namespace CamexAPI.Migrations
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<float>("Value")
-                        .HasColumnType("real");
+                    b.Property<decimal>("Value")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
@@ -824,7 +824,7 @@ namespace CamexAPI.Migrations
             modelBuilder.Entity("Entity.Models.Order", b =>
                 {
                     b.HasOne("Entity.Models.Country", "Country")
-                        .WithMany()
+                        .WithMany("Order")
                         .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

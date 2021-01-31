@@ -87,7 +87,10 @@ import { CreatePtoductComponent } from './Admin/dialogs/product/create-ptoduct/c
 import { UpdateProductComponent } from './Admin/dialogs/product/update-product/update-product.component';
 import { StatementUpdateComponent } from './myprofile/dialogs/statement-update/statement-update.component';
 import { BalanceDialogComponent } from './myprofile/dialogs/balance-dialog/balance-dialog.component';
-
+import {MatMenuModule} from '@angular/material/menu';
+import { UserOrdersComponent } from './Admin/users/user-orders/user-orders.component';
+import { OrderInfoComponent } from './Admin/dialogs/order/order-info/order-info.component';
+import { AddToAnbarComponent } from './Admin/dialogs/cargo/add-to-anbar/add-to-anbar.component';
 const routes: Routes=[
   { path: "home", redirectTo:"" ,pathMatch:"full"},
   { path:"",  component:HomeComponent },
@@ -125,6 +128,11 @@ const routes: Routes=[
         path: 'users',
         component: UsersComponent,
         data: {animation: 'users'},
+      },
+      {
+        path: 'users/orders/:id',
+        component: UserOrdersComponent,
+        data: {animation: 'userId'},
       },
       {
         path: 'countries',
@@ -217,6 +225,9 @@ const routes: Routes=[
     UpdateProductComponent,
     StatementUpdateComponent,
     BalanceDialogComponent,
+    UserOrdersComponent,
+    OrderInfoComponent,
+    AddToAnbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -255,7 +266,8 @@ const routes: Routes=[
     MatToolbarModule,
     MatListModule,
     MatAutocompleteModule,
-    MatChipsModule
+    MatChipsModule,
+    MatMenuModule
   ],
   exports: [
     RouterModule,
@@ -284,7 +296,8 @@ const routes: Routes=[
     MatSortModule,
     MatDialogModule,
     MatToolbarModule,
-    MatListModule
+    MatListModule,
+    MatMenuModule
   ],
   bootstrap: [AppComponent]
 })

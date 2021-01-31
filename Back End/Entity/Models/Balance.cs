@@ -10,7 +10,7 @@ namespace Entity.Models
     {
         public int Id { get; set; }
         public string UserId { get; set; }
-        public float UserBalance { get; set; }
+        public decimal UserBalance { get; set; }
         public AppUser User { get; set; }
         public DateTime ModifiedDate { get; set; }
         public Balance()

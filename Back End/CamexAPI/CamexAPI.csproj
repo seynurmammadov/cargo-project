@@ -17,6 +17,8 @@
     <Compile Remove="Migrations\20210129163802_cargos.Designer.cs" />
     <Compile Remove="Migrations\20210129184351_cargosFix2.cs" />
     <Compile Remove="Migrations\20210129184351_cargosFix2.Designer.cs" />
+    <Compile Remove="Migrations\20210131132416_fixOrder.cs" />
+    <Compile Remove="Migrations\20210131132416_fixOrder.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

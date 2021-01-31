@@ -10,13 +10,11 @@
          </mat-form-field>
          <div class="scroll">
            <table mat-table [dataSource]="dataSource" matSort>
-             <!-- Name Column -->
              <ng-container matColumnDef="camexId"  sticky>
                <th mat-header-cell *matHeaderCellDef mat-sort-header> CamexID </th>
                <td mat-cell *matCellDef="let row"> {{row.camexId}} </td>
              </ng-container>
 
-             <!-- Color Column -->
              <ng-container matColumnDef="email">
                <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
                <td mat-cell *matCellDef="let row"> {{row.email}} </td>
@@ -51,7 +49,17 @@
                    <button mat-raised-button color="primary" class="mr-2"  (click)="openDialogRole(row.roles,row.id)">Change Role</button>
                    <button mat-raised-button color="warn" class="mr-2" (click)="openDialogReset(row.id)">Reset Password</button>
                    <button mat-icon-button  color="accent" (click)="openDialogInfo(row.id,row.roles)" > <mat-icon style="font-size: 26px ">info</mat-icon></button>
-
+                   <button mat-icon-button [matMenuTriggerFor]="menu"  >
+                     <mat-icon>more_vert</mat-icon>
+                   </button>
+                   <mat-menu #menu="matMenu" xPosition="before" >
+                     <button mat-menu-item [routerLink]="'orders/'+row.camexId" >
+                       <span>Orders</span>
+                     </button>
+                     <button mat-menu-item>
+                       <span>Statements</span>
+                     </button>
+                   </mat-menu>
                  </div>
                </td>
              </ng-container>

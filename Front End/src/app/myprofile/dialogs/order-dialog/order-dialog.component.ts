@@ -9,6 +9,7 @@ import {BalanceService} from '../../../Core/services/balance/balance.service';
 import {OrderService} from '../../../Core/services/order/order.service';
 
 declare let alertify:any
+declare let Swal:any
 
 @Component({
   selector: 'app-order-dialog',
@@ -112,27 +113,46 @@ export class OrderDialogComponent implements OnInit {
     body.append("Notice",this.orderForm.controls["Note"].value.trim())
     body.append("IsTermsAccepted",this.orderForm.controls["IsTermsAccepted"].value)
     bodyBalance.append("total",(((this.orderForm.controls["CargoPrice"].value+this.orderForm.controls["Price"].value)*this.orderForm.controls["Count"].value)+0.5).toString())
-    this.balanceService.remove(bodyBalance).subscribe(
-      (res)=> {
-        console.log(res)
-        body.append("ReceiptId",res.toString())
-        this.service.create(body).subscribe(()=>{
-         this.dialogRef.close();
-       },error => {
-         error.error.messages.forEach(e => {
-           if (e.lang_id == this.languageService.select.id) {
-             alertify.error(e.messageLang);
-           }
-         })
-       })
-      },
-      error => {
-        error.error.messages.forEach(e => {
-          if (e.lang_id == this.languageService.select.id) {
-            alertify.error(e.messageLang);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, send it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        this.balanceService.remove(bodyBalance).subscribe(
+          (res)=> {
+            body.append("ReceiptId",res.toString())
+            this.service.create(body).subscribe(()=>{
+              Swal.fire(
+                'Successed!',
+                'Your statement sent.',
+                'success'
+              )
+              this.dialogRef.close();
+            },error => {
+              error.error.messages.forEach(e => {
+                if (e.lang_id == this.languageService.select.id) {
+                  alertify.error(e.messageLang);
+                }
+              })
+            })
+          },
+          error => {
+            error.error.messages.forEach(e => {
+              if (e.lang_id == this.languageService.select.id) {
+                alertify.error(e.messageLang);
+              }
+            })
           }
-        })
+        )
       }
-    )
+    })
+
+
   }
 }

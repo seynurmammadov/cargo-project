@@ -79,7 +79,7 @@ namespace CamexAPI.Controllers
                 });
                 order.IsActived = true;
                 order.UserId = user.Id;
-                order.StatusId = _statusContext.GetWithStatement("Order").Id;
+                order.StatusId = _statusContext.GetWithStatement("inProcess").Id;
                 _orderContext.Add(order);
                 return Ok();
             }
@@ -164,7 +164,7 @@ namespace CamexAPI.Controllers
         }*/
 
 
-
+/*
         // DELETE api/<CountryController>/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
@@ -200,6 +200,6 @@ namespace CamexAPI.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
             }
-        }
+        }*/
     }
 }

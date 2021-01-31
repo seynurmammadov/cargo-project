@@ -11,7 +11,7 @@ namespace CamexAPI.Models.VM
         public string Name { get; set; }
         public string Surname { get; set; }
         public string CompanyName { get; set; }
-        public float UserBalance { get; set; }
+        public decimal UserBalance { get; set; }
 
     }
 }

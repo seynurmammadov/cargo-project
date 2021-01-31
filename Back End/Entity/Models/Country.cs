@@ -30,5 +30,6 @@ namespace Entity.Models
         public ICollection<CountryAddressDescription> CountryAddressDescriptions { get; set; }
         public ICollection<NoticeTranslate> NoticeTranslate { get; set; }
         public ICollection<Cargo> Cargo { get; set; }
+        public ICollection<Order> Order { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace Entity.Models
         [Required]
         public string Name { get; set; }
         [Required]
-        public float Value { get; set; }
+        public decimal Value { get; set; }
         public string UserId { get; set; }
         public AppUser User { get; set; }
         public DateTime CreatedDate { get; set; }

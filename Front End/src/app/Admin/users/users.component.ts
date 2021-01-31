@@ -32,8 +32,19 @@ export class UsersComponent implements OnInit {
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
+    if(filterValue==''){
+      this.getUsers()
+      return
+    }
+    const body = {
+      "id":filterValue
+    }
+    this.service.search(body).subscribe(res=>{
+      this.usersData=res;
+      this.dataSource = new MatTableDataSource(this.usersData);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    })
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
@@ -94,7 +105,6 @@ export class UsersComponent implements OnInit {
           width: '70%',
           data: {id:id}
         });
-        console.log("business")
       }
     })
   }

@@ -12,30 +12,29 @@
       </mat-form-field>
       <div>
         <table mat-table [dataSource]="dataSource" matSort>
-          <ng-container matColumnDef="track">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Track </th>
-            <td mat-cell *matCellDef="let row"> {{row.track}} </td>
-          </ng-container>
-
           <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Site / Magazin name </th>
             <td mat-cell *matCellDef="let row"> {{row.name}} </td>
           </ng-container>
-
-          <ng-container matColumnDef="product">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Product </th>
-            <td mat-cell *matCellDef="let row" > {{row.product.productTranslates[0].name}} </td>
-          </ng-container>
-          <ng-container matColumnDef="actions">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
-            <td mat-cell *matCellDef="let row" class="">
-              <div class="buttons">
-                <button mat-icon-button  color="primary" (click)="openDialogEdit(row)" > <mat-icon style="font-size: 22px ">edit</mat-icon></button>
-                <button mat-icon-button  color="warn" (click)="delete(row.id)" > <mat-icon style="font-size: 22px ">delete_forever</mat-icon></button>
-              </div>
+          <ng-container matColumnDef="IsActived">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+            <td mat-cell *matCellDef="let row" >
+              <span *ngIf="row.status.name == 'Processed'; else elseblock" class="badge badge-success">Processed</span>
+              <ng-template #elseblock >
+                <span class="badge badge-danger">In Process</span>
+              </ng-template>
             </td>
-          </ng-container>
 
+
+          <ng-container matColumnDef="total">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Total price </th>
+            <td mat-cell *matCellDef="let row" > {{row.receipt.value}} {{row.country.wallet}}</td>
+          </ng-container>
+          </ng-container>
+          <ng-container matColumnDef="url">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Url </th>
+            <td mat-cell *matCellDef="let row"><a [href]="row.url" target="_blank">Mehsulun linki</a></td>
+          </ng-container>
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           <!-- Row shown when there is no matching data. -->

@@ -21,7 +21,7 @@ namespace CamexAPI.Controllers
         {
             _user = user;
         }
-        // GET: api/<UserController>
+
         [HttpGet]
         public IActionResult Get()
         {
@@ -31,7 +31,9 @@ namespace CamexAPI.Controllers
                     .Where(u => u.UserName == User.Identity.Name)
                     .Include(u => u.Balance)
                     .Include(u => u.Receipts)
-                    .Include(u => u.Orders)
+                    .Include(u => u.Orders).ThenInclude(r => r.Receipt)
+                    .Include(u => u.Orders).ThenInclude(c => c.Country)
+                    .Include(u => u.Orders).ThenInclude(c => c.Status)
                     .Include(u => u.Cargos).ThenInclude(c => c.Product).ThenInclude(p => p.ProductTranslates)
                     .Select(p => new
                     {
@@ -60,29 +62,5 @@ namespace CamexAPI.Controllers
             }
         }
 
-        // GET api/<UserController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<UserController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<UserController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<UserController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

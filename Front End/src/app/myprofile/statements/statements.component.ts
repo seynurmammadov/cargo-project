@@ -54,7 +54,7 @@ export class StatementsComponent implements OnInit,OnChanges {
         })
       })
       this.dataSource = new MatTableDataSource(this.user.cargos);
-      this.dataSource.paginator = this.paginator;
+       setTimeout(() => this.dataSource.paginator = this.paginator);
       this.dataSource.sort = this.sort;
   }
   delete(id:number){

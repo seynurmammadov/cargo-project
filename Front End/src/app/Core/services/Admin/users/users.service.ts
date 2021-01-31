@@ -15,6 +15,9 @@ export class UsersService {
   getUsers():Observable<UserData[]>{
     return this.http.get<UserData[]>(`${this.global.path}Users/get`);
   }
+  search(body):Observable<UserData[]>{
+    return this.http.get<UserData[]>(`${this.global.path}Users/search/${body.id}`);
+  }
   ChangeRole(str){
     return this.http.post(`${this.global.path}Users/status`,str);
   }

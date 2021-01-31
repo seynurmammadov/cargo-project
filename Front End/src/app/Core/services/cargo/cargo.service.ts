@@ -11,16 +11,16 @@ import {Cargo} from '../../models/Cargo';
 export class CargoService {
   constructor(private http:HttpClient, private  global:GlobalService) { }
 
-  get():Observable<Cargo[]>{
+/*  get():Observable<Cargo[]>{
     return this.http.get<Cargo[]>(`${this.global.path}Cargo`);
-  }
+  }*/
   create(body){
     return this.http.post(`${this.global.path}Cargo`,body);
   }
-  update(body){
+/*  update(body){
     return this.http.put(`${this.global.path}Cargo/${body.id}`,body);
   }
   delete(id){
     return this.http.delete(`${this.global.path}Cargo/${id}`);
-  }
+  }*/
 }

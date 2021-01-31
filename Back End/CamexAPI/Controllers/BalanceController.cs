@@ -22,7 +22,7 @@ namespace CamexAPI.Controllers
         }
         [HttpPut]
         [Route("add")]
-        public IActionResult Put([FromForm] float balance)
+        public IActionResult Put([FromForm] decimal balance)
         {
             try
             {
@@ -86,7 +86,7 @@ namespace CamexAPI.Controllers
         }
         [HttpPut]
         [Route("remove")]
-        public  IActionResult PutRemove([FromForm] float total)
+        public  IActionResult PutRemove([FromForm] decimal total)
         {
             try
             {
@@ -131,7 +131,7 @@ namespace CamexAPI.Controllers
                             }
                         }
                 });
-                float rezerv = user.Balance.UserBalance;
+                decimal rezerv = user.Balance.UserBalance;
                 rezerv -= Math.Abs(total);
                 if(rezerv<0) return StatusCode(StatusCodes.Status500InternalServerError, new Response
                 {

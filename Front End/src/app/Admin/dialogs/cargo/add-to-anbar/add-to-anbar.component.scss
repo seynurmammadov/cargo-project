@@ -1,0 +1,60 @@
+#addtoanbar {
+
+
+  .reg-button {
+    outline: 0;
+    white-space: normal;
+    line-height: 20px;
+    padding: 10px 30px;
+    background-color: #3179ce;
+    color: white;
+  }
+
+  .mat-checkbox-label {
+    white-space: normal;
+  }
+
+  .passport {
+    width: 75%;
+  }
+
+  .mat-button-disabled {
+    background-color: #5E5F61 !important;
+  }
+
+  .mat-form-field-wrapper {
+    margin-bottom: 7px;
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  button {
+    outline: 0 !important;
+  }
+
+  #fileInput {
+
+    .mat-form-field {
+      width: 100%;
+    }
+
+    .mat-raised-button {
+      min-width: auto;
+    }
+
+  }
+
+  #bottom-btns {
+    .mat-raised-button {
+      color: white;
+    }
+  }
+}

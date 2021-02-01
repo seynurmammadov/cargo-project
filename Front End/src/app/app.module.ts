@@ -91,6 +91,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import { UserOrdersComponent } from './Admin/users/user-orders/user-orders.component';
 import { OrderInfoComponent } from './Admin/dialogs/order/order-info/order-info.component';
 import { AddToAnbarComponent } from './Admin/dialogs/cargo/add-to-anbar/add-to-anbar.component';
+import { WaitingInvoiceComponent } from './myprofile/waiting-invoice/waiting-invoice.component';
+import { WaitingInvoiceDialogComponent } from './myprofile/dialogs/waiting-invoice-dialog/waiting-invoice-dialog.component';
 const routes: Routes=[
   { path: "home", redirectTo:"" ,pathMatch:"full"},
   { path:"",  component:HomeComponent },
@@ -110,6 +112,7 @@ const routes: Routes=[
   { path:"myprofile/control-panel", redirectTo:"myprofile" },
   { path:"myprofile/countries", redirectTo:"myprofile" },
   { path:"myprofile/orders", redirectTo:"myprofile" },
+  { path:"myprofile/waiting-invoice", redirectTo:"myprofile" },
   { path:"myprofile",  component:MyprofileComponent, data: {animation: 'Myprofile'}, canActivate: [AuthGuard] },
   {
     path: 'admin',
@@ -228,6 +231,8 @@ const routes: Routes=[
     UserOrdersComponent,
     OrderInfoComponent,
     AddToAnbarComponent,
+    WaitingInvoiceComponent,
+    WaitingInvoiceDialogComponent,
   ],
   imports: [
     BrowserModule,

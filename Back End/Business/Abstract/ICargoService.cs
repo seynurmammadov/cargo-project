@@ -10,7 +10,8 @@ namespace Business.Abstract
         Cargo GetWithId(int id);
         List<Cargo> GetAll();
         List<Cargo> GetAllActiveStatement(string id);
-
+        List<Cargo> GetAllActiveWaitingInvoice(string id);
+        
         void Add(Cargo data);
         void Update(Cargo data);
         void Detele(int id);

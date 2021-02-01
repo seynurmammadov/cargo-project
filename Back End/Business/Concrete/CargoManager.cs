@@ -24,6 +24,10 @@ namespace Business.Concrete
         {
             return _context.GetAllNInclude(c => c.IsActived && !c.IsDeleted && c.UserId ==id && c.Status.Name=="Statement");
         }
+        public List<Cargo> GetAllActiveWaitingInvoice(string id)
+        {
+            return _context.GetAllNIncludeOffice(c => c.IsActived && !c.IsDeleted && c.UserId == id && c.Status.Name == "WaitingInvoice");
+        }
         public Cargo GetWithId(int id)
         {
             return _context.Get(c => c.Id == id);

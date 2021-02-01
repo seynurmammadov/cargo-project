@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {GlobalService} from '../global/global.service';
 import {Observable} from 'rxjs/internal/Observable';
-import {City} from '../../models/City';
 import {Cargo} from '../../models/Cargo';
 
 @Injectable({
@@ -17,9 +16,13 @@ export class CargoService {
   create(body){
     return this.http.post(`${this.global.path}Cargo`,body);
   }
-/*  update(body){
-    return this.http.put(`${this.global.path}Cargo/${body.id}`,body);
+  getInvoice():Observable<Cargo[]>{
+    return this.http.get<Cargo[]>(`${this.global.path}WaitingInvoice`);
   }
+  updateInvoice(body){
+    return this.http.put(`${this.global.path}WaitingInvoice/${body.get("id")}`,body);
+  }
+/*
   delete(id){
     return this.http.delete(`${this.global.path}Cargo/${id}`);
   }*/

@@ -34,6 +34,20 @@ namespace CamexAPI.Controllers
             _env=env;
             _user = user;
         }
+        [HttpGet]
+        public IActionResult Get()
+        {
+            try
+            {
+                AppUser user = _user.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
+                List<Cargo> cargos = _cargoContext.GetAllActiveStatement(user.Id);
+                return Ok(cargos);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+            }
+        }
 
         [HttpPost]
         public async Task<IActionResult> Post([FromForm] Cargo cargo)

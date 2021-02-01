@@ -9,6 +9,9 @@ import {Cargo} from '../../models/Cargo';
 })
 export class StatementService {
   constructor(private http:HttpClient, private  global:GlobalService) { }
+  get():Observable<Cargo[]>{
+    return this.http.get<Cargo[]>(`${this.global.path}Statement`);
+  }
   create(body){
     return this.http.post(`${this.global.path}Statement`,body);
   }

@@ -28,7 +28,6 @@ export class MyprofileComponent implements OnInit {
   loaded:boolean=false
   get(){
     this.service.get().subscribe(res=>{
-      console.log(res)
       this.loaded=true
         res.receipts.sort((x, y) => +new Date(y.createdDate) - +new Date(x.createdDate));
       this.user=res;

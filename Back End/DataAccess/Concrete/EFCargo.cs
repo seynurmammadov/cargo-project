@@ -21,5 +21,14 @@ namespace DataAccess.Concrete
                     : context.Cargos.Where(filter).Include(c => c.Country).Include(c => c.Status).Include(p => p.Product).ThenInclude(p => p.ProductTranslates).ToList();
             };
         }
+        public List<Cargo> GetAllNIncludeOffice(Expression<Func<Cargo, bool>> filter = null)
+        {
+            using (var context = new AppDbContext())
+            {
+                return filter == null
+                    ? context.Cargos.Include(c => c.Status).Include(o=>o.Office).ThenInclude(o=>o.OfficeNameTranlates).ToList()
+                    : context.Cargos.Where(filter).Include(c => c.Status).Include(o => o.Office).ThenInclude(o => o.OfficeNameTranlates).ToList();
+            };
+        }
     }
 }

@@ -10,5 +10,6 @@ namespace DataAccess.Abstract
     public interface ICargoDAL : IEntityRepository<Cargo>
     {
         List<Cargo> GetAllNInclude(Expression<Func<Cargo, bool>> filter = null);
+        List<Cargo> GetAllNIncludeOffice(Expression<Func<Cargo, bool>> filter = null);
     }
 }

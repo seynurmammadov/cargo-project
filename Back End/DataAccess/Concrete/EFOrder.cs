@@ -17,7 +17,7 @@ namespace DataAccess.Concrete
             using (var context = new AppDbContext())
             {
                 return filter == null
-                    ? context.Orders.Include(c => c.Country).Include(c => c.Status).Include(c=>c.Country).Include(r=>r.Receipt).ToList()
+                    ? context.Orders.Include(c => c.Country).Include(c => c.Status).Include(r=>r.Receipt).ToList()
                     : context.Orders.Where(filter).Include(c => c.Status).Include(c => c.Country).Include(r => r.Receipt).ToList();
             };
         }

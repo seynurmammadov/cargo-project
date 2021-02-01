@@ -15,11 +15,15 @@
       </mat-tab>
       <mat-tab>
         <ng-template mat-tab-label ><div class="item" (click)="onSwitch('/myprofile/statements')"><i class="fas fa-edit ml-2 mr-3"></i>Bətanlarım</div> </ng-template>
-       <app-statements [user]="user" (event)="get()"></app-statements>
+       <app-statements></app-statements>
       </mat-tab>
       <mat-tab>
         <ng-template mat-tab-label><div class="item" (click)="onSwitch('/myprofile/orders')"><i class="far fa-browser ml-2 mr-3"></i>Sifarislerim</div> </ng-template>
-        <app-orders [user]="user" (event)="get()"></app-orders>
+        <app-orders  (event)="get()"></app-orders>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label><div class="item" (click)="onSwitch('/myprofile/waiting-invoice')"><i style="font-size: 17px;" class="far fa-file-invoice ml-2 mr-3"></i>Invoys Gozleyen</div> </ng-template>
+        <app-waiting-invoice></app-waiting-invoice>
       </mat-tab>
     </mat-tab-group>
     <ng-template #elseblock>

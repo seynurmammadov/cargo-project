@@ -14,7 +14,6 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {AppUser} from '../../Admin/Models/AppUser';
 import {Receipt} from '../../Core/models/Receipt';
-import {StatementDialogComponent} from '../dialogs/statement-dialog/statement-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
 import {BalanceDialogComponent} from '../dialogs/balance-dialog/balance-dialog.component';
 export type ChartOptions = {
@@ -33,7 +32,7 @@ export type ChartOptions = {
   templateUrl: './control-panel.component.html',
   styleUrls: ['./control-panel.component.scss']
 })
-export class ControlPanelComponent implements OnInit,AfterViewInit,OnChanges {
+export class ControlPanelComponent implements OnInit,OnChanges {
   @ViewChild("chart") chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
 
@@ -150,24 +149,20 @@ export class ControlPanelComponent implements OnInit,AfterViewInit,OnChanges {
         },
       }
     };
-
   }
 
-  ngOnInit(): void {
-    this.get()
-  }
-  get(){
-    this.dataSource = new MatTableDataSource(this.user.receipts);
-  }
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+      ngOnInit(): void {
+        this.get()
+      }
+      get(){
+        this.dataSource = new MatTableDataSource(this.user.receipts);
+        setTimeout(() => this.dataSource.paginator = this.paginator);
     this.dataSource.sort = this.sort;
   }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }

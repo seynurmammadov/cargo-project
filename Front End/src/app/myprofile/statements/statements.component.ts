@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component,  OnInit,  ViewChild, ViewEncapsulation} from '@angular/core';
 import {StatementDialogComponent} from '../dialogs/statement-dialog/statement-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
 import {MatTableDataSource} from '@angular/material/table';
@@ -8,8 +8,8 @@ import {MatSort} from '@angular/material/sort';
 import {StatementUpdateComponent} from '../dialogs/statement-update/statement-update.component';
 import {StatementService} from '../../Core/services/statement/statement.service';
 import {Cargo} from '../../Core/models/Cargo';
-import {AppUser} from '../../Admin/Models/AppUser';
 import {LanguagesService} from '../../Core/services/lang/languages.service';
+import { TranslateService} from '@ngx-translate/core';
 declare let alertify:any
 declare let Swal:any
 @Component({
@@ -18,17 +18,15 @@ declare let Swal:any
   styleUrls: ['./statements.component.scss'],
   encapsulation:ViewEncapsulation.None
 })
-export class StatementsComponent implements OnInit,OnChanges {
-  dataSource: MatTableDataSource<Cargo>;
+export class StatementsComponent implements OnInit {
+  dataSource: MatTableDataSource<Cargo>
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  @Input() user:AppUser;
-  @Output() event = new EventEmitter();
-  callParent(): void {
-    this.event.next();
-  }
+  Data:Cargo[];
+
   displayedColumns: string[] = ['track','name','product','actions'];
-  constructor(public languageService:LanguagesService,public service:StatementService,public dialog: MatDialog) {
+  constructor(public languageService:LanguagesService,public service:StatementService,public dialog: MatDialog,private translate: TranslateService) {
+     this.get()
   }
 
   applyFilter(event: Event) {
@@ -38,25 +36,29 @@ export class StatementsComponent implements OnInit,OnChanges {
       this.dataSource.paginator.firstPage();
     }
   }
+
+
   ngOnInit(): void {
-    this.get()
-  }
-  ngOnChanges(changes:SimpleChanges) {
-    this.user= changes.user.currentValue
-    this.get()
+    this.translate.onLangChange.subscribe(() => {
+      this.get()
+    });
   }
   get(){
-      this.user.cargos.forEach(p=>{
+    this.service.get().subscribe(res=>{
+      res.forEach(p=>{
         p.product.productTranslates.forEach(pt=>{
           if(pt.languageId==this.languageService.select.id){
             p.product.productTranslates[0]=pt
+            this.Data=res;
           }
         })
       })
-      this.dataSource = new MatTableDataSource(this.user.cargos);
-       setTimeout(() => this.dataSource.paginator = this.paginator);
+      this.dataSource = new MatTableDataSource(this.Data);
+      setTimeout(() => this.dataSource.paginator = this.paginator);
       this.dataSource.sort = this.sort;
+    })
   }
+
   delete(id:number){
     Swal.fire({
       title: 'Are you sure?',
@@ -75,7 +77,7 @@ export class StatementsComponent implements OnInit,OnChanges {
         )
         this.service.delete(id).subscribe(
           ()=> {
-            this.callParent()
+            this.get()
           },
           error => {
             error.error.messages.forEach(e => {
@@ -96,7 +98,7 @@ export class StatementsComponent implements OnInit,OnChanges {
       data: {row:row}
     });
     dialogRefEdit.afterClosed().subscribe(() => {
-      this.callParent()
+      this.get()
     });
   }
   openDialogCreate(): void {
@@ -104,7 +106,7 @@ export class StatementsComponent implements OnInit,OnChanges {
       width: '1000px',
     });
     dialogRefCreate.afterClosed().subscribe(() => {
-      this.callParent()
+      this.get()
     });
   }
 }

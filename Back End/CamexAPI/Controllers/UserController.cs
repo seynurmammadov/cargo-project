@@ -31,10 +31,6 @@ namespace CamexAPI.Controllers
                     .Where(u => u.UserName == User.Identity.Name)
                     .Include(u => u.Balance)
                     .Include(u => u.Receipts)
-                    .Include(u => u.Orders).ThenInclude(r => r.Receipt)
-                    .Include(u => u.Orders).ThenInclude(c => c.Country)
-                    .Include(u => u.Orders).ThenInclude(c => c.Status)
-                    .Include(u => u.Cargos).ThenInclude(c => c.Product).ThenInclude(p => p.ProductTranslates)
                     .Select(p => new
                     {
                         p.Id,
@@ -48,8 +44,6 @@ namespace CamexAPI.Controllers
                         p.Office,
                         p.OfficeId,
                         p.Image,
-                        Cargos= p.Cargos.Where(c => c.IsActived && !c.IsDeleted),
-                        Orders= p.Orders.Where(o => o.IsActived && !o.IsDeleted),
                         Receipts = p.Receipts.Where(r => r.IsActived),
                         p.CreatedDate,
                         p.ModifiedDate

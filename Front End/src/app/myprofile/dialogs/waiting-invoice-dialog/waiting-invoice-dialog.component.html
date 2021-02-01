@@ -82,20 +82,25 @@
           </textarea>
         </mat-form-field>
       </div>
-      <div class="col-12 " id="fileInput">
-        <mat-form-field>
-          <div class="d-flex justify-content-between">
-            <input matInput [value]="fileAttr" readonly name="name" />
-            <button mat-raised-button type="button"  (click)="fileInput.click()">
-              Browse File
-            </button>
-            <input type="file" hidden #fileInput formControlName="FileInput"  (change)="uploadFileEvt($event)" name="uploadFile" multiple="multiple"
-                   accept="image/*" />
-          </div>
-          <mat-error  *ngIf="errorHandling('FileInput','required')" [innerHTML]="'Required' | translate ">
-          </mat-error>
-        </mat-form-field>
+      <div class="col-12" *ngIf="this.data.row.image !=null && this.data.row.image !=''; else elseblock">
+        <a target="_blank" [href]="createImgPath(this.data.row.image)"> Image src</a>
       </div>
+      <ng-template #elseblock>
+        <div class="col-12 " id="fileInput">
+          <mat-form-field>
+            <div class="d-flex justify-content-between">
+              <input matInput [value]="fileAttr" readonly name="name" />
+              <button mat-raised-button type="button"  (click)="fileInput.click()">
+                Browse File
+              </button>
+              <input type="file" hidden #fileInput formControlName="FileInput"  (change)="uploadFileEvt($event)" name="uploadFile" multiple="multiple"
+                     accept="image/*" />
+            </div>
+            <mat-error  *ngIf="errorHandling('FileInput','required')" [innerHTML]="'Required' | translate ">
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </ng-template>
     </div>
   </mat-dialog-content>
   <mat-dialog-actions align="end" id="bottom-btns">

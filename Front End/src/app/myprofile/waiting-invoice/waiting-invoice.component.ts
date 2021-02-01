@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {Cargo} from '../../Core/models/Cargo';
 import {MatPaginator} from '@angular/material/paginator';
@@ -12,7 +12,8 @@ import {WaitingInvoiceDialogComponent} from '../dialogs/waiting-invoice-dialog/w
 @Component({
   selector: 'app-waiting-invoice',
   templateUrl: './waiting-invoice.component.html',
-  styleUrls: ['./waiting-invoice.component.scss']
+  styleUrls: ['./waiting-invoice.component.scss'],
+  encapsulation:ViewEncapsulation.None
 })
 export class WaitingInvoiceComponent implements OnInit {
 
@@ -41,20 +42,20 @@ export class WaitingInvoiceComponent implements OnInit {
   }
   get(){
     this.service.getInvoice().subscribe(res=>{
-      console.log(res)
       res.forEach(p=>{
         p.office.officeNameTranlates.forEach(pt=>{
           if(pt.languageId==this.languageService.select.id){
             p.office.officeNameTranlates[0]=pt
-            this.Data=res;
-            console.log(res)
-
           }
         })
       })
+      this.Data=res;
       this.dataSource = new MatTableDataSource(this.Data);
-      setTimeout(() => this.dataSource.paginator = this.paginator);
-      this.dataSource.sort = this.sort;
+      setTimeout(() =>{
+        this.dataSource.paginator = this.paginator
+        this.dataSource.sort = this.sort;
+      });
+
     })
   }
 
@@ -66,5 +67,5 @@ export class WaitingInvoiceComponent implements OnInit {
     dialogRefEdit.afterClosed().subscribe(() => {
       this.get()
     });
-  }x
+  }
 }

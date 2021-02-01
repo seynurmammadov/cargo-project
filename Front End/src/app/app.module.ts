@@ -93,6 +93,7 @@ import { OrderInfoComponent } from './Admin/dialogs/order/order-info/order-info.
 import { AddToAnbarComponent } from './Admin/dialogs/cargo/add-to-anbar/add-to-anbar.component';
 import { WaitingInvoiceComponent } from './myprofile/waiting-invoice/waiting-invoice.component';
 import { WaitingInvoiceDialogComponent } from './myprofile/dialogs/waiting-invoice-dialog/waiting-invoice-dialog.component';
+import { InAnbarComponent } from './myprofile/in-anbar/in-anbar.component';
 const routes: Routes=[
   { path: "home", redirectTo:"" ,pathMatch:"full"},
   { path:"",  component:HomeComponent },
@@ -233,6 +234,7 @@ const routes: Routes=[
     AddToAnbarComponent,
     WaitingInvoiceComponent,
     WaitingInvoiceDialogComponent,
+    InAnbarComponent,
   ],
   imports: [
     BrowserModule,

@@ -31,6 +31,7 @@ export class WaitingInvoiceDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
       this.statementForm= new FormGroup({
       Track: new FormControl(this.data.row.track, [
         Validators.required,
@@ -59,10 +60,17 @@ export class WaitingInvoiceDialogComponent implements OnInit {
       ]),
       TextArea: new FormControl(this.data.row.notice, [
       ]),
-      FileInput: new FormControl('', [
-        Validators.required
-      ]),
+
     })
+    if(this.data.row.image==null || this.data.row.image=="") {
+      this.statementForm.addControl('FileInput',new FormControl('', [
+        Validators.required
+      ]))
+    }
+    else{
+      this.statementForm.addControl('FileInput',new FormControl('', [
+      ]))
+    }
   }
   getProduct(){
     this.proService.getProductsActive().subscribe((res)=>
@@ -110,7 +118,9 @@ export class WaitingInvoiceDialogComponent implements OnInit {
     body.append("CountryId",this.statementForm.controls["Wallet"].value)
     body.append("Count",this.statementForm.controls["Count"].value)
     body.append("Notice",this.statementForm.controls["TextArea"].value.trim())
-    body.append("Photo",this.fileToUpload,this.fileToUpload.name)
+    if(this.data.row.image==null || this.data.row.image==""){
+      body.append("Photo",this.fileToUpload,this.fileToUpload.name)
+    }
     this.service.updateInvoice(body).subscribe(
       ()=> {
         this.dialogRef.close();
@@ -123,5 +133,8 @@ export class WaitingInvoiceDialogComponent implements OnInit {
         })
       }
     )
+  }
+  public createImgPath = (serverPath: string) => {
+    return `https://localhost:44387/Site/images/statements/${serverPath}`;
   }
 }

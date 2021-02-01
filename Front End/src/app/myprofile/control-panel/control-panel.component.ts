@@ -39,7 +39,7 @@ export class ControlPanelComponent implements OnInit,OnChanges {
   limit:string= ((150*100)/300).toString();
   youLimit:number;
 
-  displayedColumns: string[] = ['name', 'value', 'date'];
+  displayedColumns: string[] = ['name', 'value', 'createdDate'];
   dataSource: MatTableDataSource<Receipt>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -156,8 +156,11 @@ export class ControlPanelComponent implements OnInit,OnChanges {
       }
       get(){
         this.dataSource = new MatTableDataSource(this.user.receipts);
-        setTimeout(() => this.dataSource.paginator = this.paginator);
-    this.dataSource.sort = this.sort;
+        setTimeout(() => {
+          this.dataSource.paginator = this.paginator
+          this.dataSource.sort = this.sort;
+        });
+
   }
 
   applyFilter(event: Event) {

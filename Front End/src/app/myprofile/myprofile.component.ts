@@ -1,9 +1,7 @@
-import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {Component,  OnInit,  ViewEncapsulation} from '@angular/core';
 import {Location} from '@angular/common';
-import {MatTableDataSource} from '@angular/material/table';
 import {UserService} from '../Core/services/user/user.service';
 import {AppUser} from '../Admin/Models/AppUser';
-import {strict} from 'assert';
 import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
 import {LanguagesService} from '../Core/services/lang/languages.service';
 
@@ -35,6 +33,22 @@ export class MyprofileComponent implements OnInit {
   }
   onSwitch(str) {
    this.location.replaceState(str);
+  }
+  statement:boolean=false
+  order:boolean=false
+  waiting:boolean=false
+  inAnbar:boolean=false
+  activeStatement(){
+    this.statement=true
+  }
+  activeOrder(){
+    this.order=true
+  }
+  activeWaiting(){
+    this.waiting=true
+  }
+  activeInAnbar(){
+    this.inAnbar=true
   }
 }
 

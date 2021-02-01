@@ -93,12 +93,15 @@ namespace CamexAPI.Controllers.Admin
                             }
                         }
                     });
-              
-                ValidateModel res = cargo.Photo.PhotoValidate();
-                if (!res.Success) return StatusCode(StatusCodes.Status500InternalServerError, res.Response);
-                string folder = Path.Combine("Site", "images", "statements");
-                string fileName = await cargo.Photo.SaveImage(_env.WebRootPath, folder);
-                db_cargo.Image = fileName;
+
+                if (cargo.Image != null && cargo.Image!="")
+                {
+                    ValidateModel res = cargo.Photo.PhotoValidate();
+                    if (!res.Success) return StatusCode(StatusCodes.Status500InternalServerError, res.Response);
+                    string folder = Path.Combine("Site", "images", "statements");
+                    string fileName = await cargo.Photo.SaveImage(_env.WebRootPath, folder);
+                    db_cargo.Image = fileName;
+                }
                 db_cargo.Name = cargo.Name;
                 db_cargo.ProductId = cargo.ProductId;
                 db_cargo.Price = cargo.Price;

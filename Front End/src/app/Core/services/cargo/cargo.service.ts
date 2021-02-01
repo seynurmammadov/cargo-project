@@ -22,6 +22,9 @@ export class CargoService {
   updateInvoice(body){
     return this.http.put(`${this.global.path}WaitingInvoice/${body.get("id")}`,body);
   }
+  getInAnbar():Observable<Cargo[]>{
+    return this.http.get<Cargo[]>(`${this.global.path}InAnbar`);
+  }
 /*
   delete(id){
     return this.http.delete(`${this.global.path}Cargo/${id}`);

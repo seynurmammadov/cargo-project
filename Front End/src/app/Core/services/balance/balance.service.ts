@@ -14,5 +14,7 @@ export class BalanceService {
   remove(body){
     return this.http.put(`${this.global.path}Balance/remove`,body);
   }
-
+  status(id){
+    return this.http.put(`${this.global.path}Balance/status/${id}`,'');
+  }
 }

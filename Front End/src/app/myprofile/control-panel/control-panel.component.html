@@ -76,7 +76,7 @@
               <td mat-cell *matCellDef="let row" > {{row.value}} USD </td>
             </ng-container>
 
-            <ng-container matColumnDef="date">
+            <ng-container matColumnDef="createdDate">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
               <td mat-cell *matCellDef="let row"> {{row.createdDate | date:'yyyy-MM-dd H:mm:ss z'}} </td>
             </ng-container>

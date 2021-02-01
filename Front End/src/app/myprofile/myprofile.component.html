@@ -14,16 +14,20 @@
        <app-countries></app-countries>
       </mat-tab>
       <mat-tab>
-        <ng-template mat-tab-label ><div class="item" (click)="onSwitch('/myprofile/statements')"><i class="fas fa-edit ml-2 mr-3"></i>Bətanlarım</div> </ng-template>
-       <app-statements></app-statements>
+        <ng-template mat-tab-label ><div class="item" (click)="onSwitch('/myprofile/statements')" (click)="activeStatement()"><i class="fas fa-edit ml-2 mr-3"></i>Bətanlarım</div> </ng-template>
+       <app-statements *ngIf="statement"></app-statements>
       </mat-tab>
       <mat-tab>
-        <ng-template mat-tab-label><div class="item" (click)="onSwitch('/myprofile/orders')"><i class="far fa-browser ml-2 mr-3"></i>Sifarislerim</div> </ng-template>
-        <app-orders  (event)="get()"></app-orders>
+        <ng-template mat-tab-label><div class="item" (click)="onSwitch('/myprofile/orders')" (click)="activeOrder()"><i class="far fa-browser ml-2 mr-3"></i>Sifarislerim</div> </ng-template>
+        <app-orders  *ngIf="order" (event)="get()"></app-orders>
       </mat-tab>
       <mat-tab>
-        <ng-template mat-tab-label><div class="item" (click)="onSwitch('/myprofile/waiting-invoice')"><i style="font-size: 17px;" class="far fa-file-invoice ml-2 mr-3"></i>Invoys Gozleyen</div> </ng-template>
-        <app-waiting-invoice></app-waiting-invoice>
+        <ng-template mat-tab-label><div class="item" (click)="onSwitch('/myprofile/waiting-invoice')" (click)="activeWaiting()"><i style="font-size: 17px;" class="far fa-file-invoice ml-2 mr-3"></i>Invoys Gozleyen</div> </ng-template>
+        <app-waiting-invoice *ngIf="waiting"></app-waiting-invoice>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label><div class="item" (click)="onSwitch('/myprofile/waiting-invoice')" (click)="activeInAnbar()"><i class="fas fa-inventory ml-2 mr-3"></i>Anbarda olan</div> </ng-template>
+        <app-in-anbar  (event)="get()" *ngIf="inAnbar"></app-in-anbar>
       </mat-tab>
     </mat-tab-group>
     <ng-template #elseblock>

@@ -38,8 +38,12 @@ export class MyprofileComponent implements OnInit {
   order:boolean=false
   waiting:boolean=false
   inAnbar:boolean=false
+  Ended:boolean=false
   activeStatement(){
     this.statement=true
+  }
+  activeEnded(){
+    this.Ended=true
   }
   activeOrder(){
     this.order=true

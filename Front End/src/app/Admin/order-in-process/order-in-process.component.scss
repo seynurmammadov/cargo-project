@@ -1,0 +1,107 @@
+#orders{
+  background-color: #EBEEF2;
+  min-height: 100vh;
+  .margin{
+    margin-left: 30px;
+    margin-right: 30px;
+    .content{
+      box-shadow: 3px 3px 20px 0 #c8c8c8;
+      background-color: white;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      padding: 25px 35px;
+    }
+  }
+  .top-title{
+    box-shadow: 3px 3px 20px 0 #c8c8c8;
+    background-color: #3179ce;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    .title{
+      font-weight: 800;
+      font-size: 25px;
+      color: white;
+    }
+    .mat-raised-button:not(.mat-button-disabled) {
+      border-color: white;
+      background-color: rgba(255,255,255,0.9);
+      color: #3179ce;
+      transition: 0.3s;
+      &:focus{
+        outline: none;
+      }
+      &:hover{
+        color: white;
+        background-color: transparent;
+      }
+    }
+  }
+  .table-angular{
+    table {
+      width: 100%;
+    }
+    .scroll{
+      width: 100%;
+      max-width: 100%;
+      overflow: auto;
+    }
+    .mat-cell, .mat-footer-cell{
+      font-size: 12px;
+    }
+    .mat-table{
+      width: 100%;
+      max-width: 100%;
+      overflow: auto;
+    }
+    .mat-form-field {
+      font-size: 14px;
+      width: 100%;
+    }
+    .mat-sort-header-container{
+      justify-content: center;
+      margin-left: 18px;
+    }
+    .mat-button-wrapper{
+      font-size: 12px;
+    }
+    .mat-cell{
+      text-align: center;
+      padding: 0;
+    }
+    th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+      padding-left: 0px;
+    }
+    th.mat-header-cell:last-of-type, td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type {
+      padding-right: 0px;
+    }
+    .buttons{
+      white-space: nowrap;
+      text-align: center;
+    }
+
+  }
+}
+@media screen and (max-width: 960px) {
+  #orders{
+    .content{
+      padding: 25px 10px!important;
+    }
+    .filter{
+      display: flex;
+      justify-content: center;
+      .mat-form-field-wrapper{
+        width: 90%;
+      }
+
+    }
+    .mat-paginator-container{
+      justify-content: center;
+      margin-top: 10px;
+    }
+  }
+}

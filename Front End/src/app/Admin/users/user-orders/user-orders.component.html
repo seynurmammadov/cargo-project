@@ -44,7 +44,7 @@
                   <div class="buttons">
                     <button mat-raised-button color="primary" class="mr-2"  (click)="openDialogAdd(row)">Add to Anbar</button>
                     <button mat-raised-button color="accent" class="mr-2" [disabled]="checkStatus(row.status.name)"  (click)="changeStatus(row.id)">Accept</button>
-                    <button mat-raised-button color="warn" class="mr-2"  (click)="refuse(data.camexId,row.receiptId, row.id)">Refuse</button>
+                    <button mat-raised-button color="warn" class="mr-2"  (click)="refuse(row.userId,row.receiptId, row.id)">Refuse</button>
                     <button mat-icon-button  color="primary" (click)="openDialogInfo(row)" > <mat-icon style="font-size: 26px ">info</mat-icon></button>
                   </div>
                 </td>

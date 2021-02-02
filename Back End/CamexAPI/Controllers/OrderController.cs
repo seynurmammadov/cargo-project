@@ -21,13 +21,11 @@ namespace CamexAPI.Controllers
     {
         private readonly IOrderService _orderContext;
         private readonly IStatusService _statusContext;
-        private UserManager<AppUser> _userManager;
         private readonly MyIdentityDbContext _user;
-        public OrderController(IOrderService orderContext, UserManager<AppUser> userManager
+        public OrderController(IOrderService orderContext
             , MyIdentityDbContext user, IStatusService statusContext)
         {
             _orderContext = orderContext;
-            _userManager = userManager;
             _statusContext = statusContext;
             _user = user;
         }
@@ -37,7 +35,7 @@ namespace CamexAPI.Controllers
             try
             {
                 AppUser user = _user.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
-                List<Order> orders = _orderContext.GetAllActive(user.Id);
+                List<Order> orders = _orderContext.GetAllActiveWithUserId(user.Id);
                 return Ok(orders);
             }
             catch (Exception e)

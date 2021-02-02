@@ -10,9 +10,12 @@ import {Cargo} from '../../models/Cargo';
 export class CargoService {
   constructor(private http:HttpClient, private  global:GlobalService) { }
 
-/*  get():Observable<Cargo[]>{
-    return this.http.get<Cargo[]>(`${this.global.path}Cargo`);
-  }*/
+  getEnded():Observable<Cargo[]>{
+    return this.http.get<Cargo[]>(`${this.global.path}Ended`);
+  }
+  get(str):Observable<Cargo[]>{
+    return this.http.get<Cargo[]>(`${this.global.path}Cargo/${str}`);
+  }
   create(body){
     return this.http.post(`${this.global.path}Cargo`,body);
   }
@@ -22,8 +25,11 @@ export class CargoService {
   updateInvoice(body){
     return this.http.put(`${this.global.path}WaitingInvoice/${body.get("id")}`,body);
   }
-  getInAnbar():Observable<Cargo[]>{
+  getAll():Observable<Cargo[]>{
     return this.http.get<Cargo[]>(`${this.global.path}InAnbar`);
+  }
+  updateInAnbar(body){
+    return this.http.put(`${this.global.path}Cargo/${body.get("id")}`,body);
   }
 /*
   delete(id){

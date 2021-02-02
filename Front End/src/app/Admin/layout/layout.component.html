@@ -25,23 +25,25 @@
           <div class="myaccount mt-1">
             <mat-accordion>
               <mat-expansion-panel>
-                <mat-expansion-panel-header >
+                <mat-expansion-panel-header  >
                   <mat-panel-title>
                     <div class="w-100 mr-5 d-flex align-items-center">
                       <i class="far fa-user mr-2"></i>   My Account
                     </div>
                   </mat-panel-title>
                 </mat-expansion-panel-header>
-                <mat-list-item routerLink="[child.route]">
-                  <div >
-                    setting
+                  <div class="mat-expansion-panel-content" >
+                    <mat-list-item routerLink="[child.route]">
+                      <div >
+                        setting
+                      </div>
+                    </mat-list-item>
+                    <mat-list-item routerLink="[child.route]">
+                      <div >
+                        log out
+                      </div>
+                    </mat-list-item>
                   </div>
-                </mat-list-item>
-                <mat-list-item routerLink="[child.route]">
-                  <div >
-                    log out
-                  </div>
-                </mat-list-item>
               </mat-expansion-panel>
             </mat-accordion>
           </div>
@@ -76,6 +78,70 @@
             Users
           </div>
         </mat-list-item>
+       <mat-accordion>
+            <mat-expansion-panel >
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <div class="slidenav-item">
+                    <i class="far fa-browser mr-2"></i>  Action For Parcels
+                  </div>
+
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-list-item routerLink="/admin/order-in-process">
+                <div  class="slidenav-item">
+                  Orders In Process
+                </div>
+              </mat-list-item>
+              <mat-list-item routerLink="/admin/order-processed">
+                <div  class="slidenav-item">
+                  Orders Processed
+                </div>
+              </mat-list-item>
+              <mat-list-item routerLink="/admin/statements">
+                <div  class="slidenav-item">
+                  Statements
+                </div>
+              </mat-list-item>
+            </mat-expansion-panel>
+          </mat-accordion>
+        <mat-accordion>
+          <mat-expansion-panel >
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <div class="slidenav-item">
+                  <i class="far fa-boxes mr-2"></i>  Parcels status
+                </div>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-list-item  routerLink="/admin/parcels/inAnbar" >
+              <div  class="slidenav-item">
+                In Anbar
+              </div>
+            </mat-list-item>
+            <mat-list-item routerLink="/admin/parcels/inWay" >
+              <div  class="slidenav-item">
+                In Way
+              </div>
+            </mat-list-item>
+            <mat-list-item routerLink="/admin/parcels/inСustoms" >
+              <div  class="slidenav-item">
+                In Customs
+              </div>
+            </mat-list-item>
+            <mat-list-item routerLink="/admin/parcels/inOffice" >
+              <div  class="slidenav-item">
+                In Office
+              </div>
+            </mat-list-item>
+            <mat-list-item routerLink="/admin/parcels/end" >
+              <div  class="slidenav-item">
+                End
+              </div>
+            </mat-list-item>
+          </mat-expansion-panel>
+        </mat-accordion>
+
         <mat-list-item routerLink="/admin/countries">
           <div class="slidenav-item">
             <i class="far fa-flag mr-2"></i>

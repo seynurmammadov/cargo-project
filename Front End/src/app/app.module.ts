@@ -94,6 +94,13 @@ import { AddToAnbarComponent } from './Admin/dialogs/cargo/add-to-anbar/add-to-a
 import { WaitingInvoiceComponent } from './myprofile/waiting-invoice/waiting-invoice.component';
 import { WaitingInvoiceDialogComponent } from './myprofile/dialogs/waiting-invoice-dialog/waiting-invoice-dialog.component';
 import { InAnbarComponent } from './myprofile/in-anbar/in-anbar.component';
+import { OrderInProcessComponent } from './Admin/order-in-process/order-in-process.component';
+import { OrderProcessedComponent } from './Admin/order-processed/order-processed.component';
+import { StatemetsAdminComponent } from './Admin/statemets-admin/statemets-admin.component';
+import { AddStatementToAnbarComponent } from './Admin/dialogs/add-statement-to-anbar/add-statement-to-anbar.component';
+import { ParcelsComponent } from './Admin/parcels/parcels.component';
+import { StatusChangeComponent } from './Admin/dialogs/status-change/status-change.component';
+import { EndedComponent } from './myprofile/ended/ended.component';
 const routes: Routes=[
   { path: "home", redirectTo:"" ,pathMatch:"full"},
   { path:"",  component:HomeComponent },
@@ -139,6 +146,46 @@ const routes: Routes=[
         data: {animation: 'userId'},
       },
       {
+        path: 'order-in-process',
+        component: OrderInProcessComponent,
+        data: {animation: 'OrderInProcess'},
+      },
+      {
+        path: 'order-processed',
+        component: OrderProcessedComponent,
+        data: {animation: 'OrderProcessed'},
+      },
+      {
+        path: 'statements',
+        component: StatemetsAdminComponent,
+        data: {animation: 'Statements'},
+      },
+      {
+        path: 'parcels/inAnbar',
+        component: ParcelsComponent,
+        data: {animation: 'InAnbar',status:'InAnbar'},
+      },
+      {
+        path: 'parcels/inWay',
+        component: ParcelsComponent,
+        data: {animation: 'InWay',status:'InWay'},
+      },
+      {
+        path: 'parcels/inСustoms',
+        component: ParcelsComponent,
+        data: {animation: 'InСustoms',status:'InСustoms'},
+      },
+      {
+        path: 'parcels/inOffice',
+        component: ParcelsComponent,
+        data: {animation: 'InOffice',status:'InOffice'},
+      },
+      {
+        path: 'parcels/end',
+        component: ParcelsComponent,
+        data: {animation: 'End',status:'End'},
+      },
+      {
         path: 'countries',
         component: CountriesAllComponent,
         data: {animation: 'countries'},
@@ -151,12 +198,12 @@ const routes: Routes=[
       {
         path: 'offices',
         component: OfficesComponent,
-        data: {animation: 'countries'},
+        data: {animation: 'offices'},
       },
       {
         path: 'cities',
         component: CitiesComponent,
-        data: {animation: 'countries'},
+        data: {animation: 'cities'},
       },
       {
         path: 'products',
@@ -235,6 +282,13 @@ const routes: Routes=[
     WaitingInvoiceComponent,
     WaitingInvoiceDialogComponent,
     InAnbarComponent,
+    OrderInProcessComponent,
+    OrderProcessedComponent,
+    StatemetsAdminComponent,
+    AddStatementToAnbarComponent,
+    ParcelsComponent,
+    StatusChangeComponent,
+    EndedComponent,
   ],
   imports: [
     BrowserModule,

@@ -20,18 +20,17 @@
       <change beforePath="$PROJECT_DIR$/../Back End/CamexAPI/obj/Debug/netcoreapp3.1/CamexAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/CamexAPI/obj/Debug/netcoreapp3.1/CamexAPI.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/CamexAPI/obj/Debug/netcoreapp3.1/CamexAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/CamexAPI/obj/Debug/netcoreapp3.1/CamexAPI.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Core/services/balance/balance.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Core/services/balance/balance.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Admin/layout/layout.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/layout/layout.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Admin/layout/layout.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/layout/layout.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Admin/layout/layout.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/layout/layout.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Admin/users/user-orders/user-orders.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/users/user-orders/user-orders.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/Core/services/cargo/cargo.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Core/services/cargo/cargo.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/myprofile/control-panel/control-panel.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/myprofile/control-panel/control-panel.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/myprofile/control-panel/control-panel.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/myprofile/control-panel/control-panel.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/myprofile/dialogs/statement-update/statement-update.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/myprofile/dialogs/statement-update/statement-update.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/myprofile/dialogs/waiting-invoice-dialog/waiting-invoice-dialog.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/myprofile/dialogs/waiting-invoice-dialog/waiting-invoice-dialog.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/myprofile/dialogs/waiting-invoice-dialog/waiting-invoice-dialog.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/myprofile/dialogs/waiting-invoice-dialog/waiting-invoice-dialog.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/myprofile/in-anbar/in-anbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/myprofile/in-anbar/in-anbar.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/myprofile/in-anbar/in-anbar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/myprofile/in-anbar/in-anbar.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/myprofile/myprofile.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/myprofile/myprofile.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/myprofile/myprofile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/myprofile/myprofile.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/myprofile/waiting-invoice/waiting-invoice.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/myprofile/waiting-invoice/waiting-invoice.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/myprofile/waiting-invoice/waiting-invoice.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/myprofile/waiting-invoice/waiting-invoice.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/myprofile/statements/statements.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/myprofile/statements/statements.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,6 +119,7 @@
       <workItem from="1612178928647" duration="4782000" />
       <workItem from="1612185553027" duration="13567000" />
       <workItem from="1612205917051" duration="11289000" />
+      <workItem from="1612265349217" duration="26657000" />
     </task>
     <servers />
   </component>
@@ -203,7 +203,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/myprofile/statements/statements.component.ts</url>
-          <line>32</line>
+          <line>33</line>
           <option name="timeStamp" value="27" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -219,7 +219,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/myprofile/in-anbar/in-anbar.component.html</url>
           <line>9</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="31" />
         </line-breakpoint>
       </breakpoints>

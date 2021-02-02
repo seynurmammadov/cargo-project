@@ -35,7 +35,7 @@ namespace CamexAPI.Controllers
             try
             {
                 AppUser user = _user.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
-                List<Cargo> cargos = _cargoContext.GetAllActiveInAnbar(user.Id);
+                List<Cargo> cargos = _cargoContext.GetAllActiveUser(user.Id);
                 return Ok(cargos);
             }
             catch (Exception e)

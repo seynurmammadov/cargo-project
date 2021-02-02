@@ -28,7 +28,7 @@ namespace Business.Concrete
 
         public List<Status> GetAll()
         {
-            return _context.GetAll(c => !c.IsDeleted);
+            return _context.GetAll(c =>c.IsActived && !c.IsDeleted);
         }
         
         public Status GetWithStatement(string name)

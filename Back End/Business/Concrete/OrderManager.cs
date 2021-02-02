@@ -16,11 +16,11 @@ namespace Business.Concrete
             _context = context;
         }
 
-        public List<Order> GetAll()
+        public List<Order> GetAllActive(string str)
         {
-            return _context.GetAllNInclude(c => !c.IsDeleted);
+            return _context.GetAllNInclude(c => c.IsActived && !c.IsDeleted && c.Status.Name == str);
         }
-        public List<Order> GetAllActive(string id)
+        public List<Order> GetAllActiveWithUserId(string id)
         {
             return _context.GetAllNInclude(c => c.IsActived && !c.IsDeleted && c.UserId == id );
         }

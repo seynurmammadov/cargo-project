@@ -38,7 +38,7 @@ namespace CamexAPI.Controllers.Admin
             try
             {
                 AppUser user = _user.Users.Where(u => u.UserName == User.Identity.Name).FirstOrDefault();
-                List<Cargo> cargos = _cargoContext.GetAllActiveWaitingInvoice(user.Id);
+                List<Cargo> cargos = _cargoContext.GetAllActiveUserInvoice(user.Id, "WaitingInvoice");
                 return Ok(cargos);
             }
             catch (Exception e)
@@ -94,7 +94,7 @@ namespace CamexAPI.Controllers.Admin
                         }
                     });
 
-                if (cargo.Image != null && cargo.Image!="")
+                if (cargo.Image == null || cargo.Image=="")
                 {
                     ValidateModel res = cargo.Photo.PhotoValidate();
                     if (!res.Success) return StatusCode(StatusCodes.Status500InternalServerError, res.Response);

@@ -71,11 +71,11 @@ namespace CamexAPI.Controllers.Admin
         }
 
         [HttpPut("{id}")]
-        public IActionResult Refuse(int id, [FromForm] int ReceiptID)
+        public IActionResult Refuse(string id, [FromForm] int ReceiptID)
         {
             try
             {
-                AppUser user = _user.Users.Where(u => u.CamexId == id).Include(u => u.Balance).Include(r => r.Receipts).FirstOrDefault();
+                AppUser user = _user.Users.Where(u => u.Id == id).Include(u => u.Balance).Include(r => r.Receipts).FirstOrDefault();
                 if (user == null) return StatusCode(StatusCodes.Status500InternalServerError, new Response
                 {
                     Status = "Error",

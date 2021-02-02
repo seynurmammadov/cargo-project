@@ -29,6 +29,10 @@
         <ng-template mat-tab-label><div class="item" (click)="onSwitch('/myprofile/waiting-invoice')" (click)="activeInAnbar()"><i class="fas fa-inventory ml-2 mr-3"></i>Anbarda olan</div> </ng-template>
         <app-in-anbar  (event)="get()" *ngIf="inAnbar"></app-in-anbar>
       </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label><div class="item" (click)="onSwitch('/myprofile/waiting-invoice')" (click)="activeEnded()"><i class="far fa-hourglass-end ml-2 mr-3"></i>Bitən</div> </ng-template>
+        <app-ended   *ngIf="Ended"></app-ended>
+      </mat-tab>
     </mat-tab-group>
     <ng-template #elseblock>
       <div class="p-5 d-flex align-items-center justify-content-center" id="spinner">

@@ -53,7 +53,7 @@ export class InAnbarComponent implements OnInit {
 
   }
 
-  displayedColumns: string[] = ['select','track','name','weight','price','office','actions'];
+  displayedColumns: string[] = ['select','track','name','weight','price','status','office','actions'];
   constructor(
     private balanceService:BalanceService,
     public languageService:LanguagesService,
@@ -78,7 +78,7 @@ export class InAnbarComponent implements OnInit {
   }
   loaded:boolean=false
   get(){
-    this.service.getInAnbar().subscribe(res=>{
+    this.service.getAll().subscribe(res=>{
       res.forEach(p=>{
         p.office.officeNameTranlates.forEach(pt=>{
           if(pt.languageId==this.languageService.select.id){
@@ -88,20 +88,25 @@ export class InAnbarComponent implements OnInit {
       })
       this.Data=res;
       this.dataSource = new MatTableDataSource(this.Data);
-      setTimeout(() => this.dataSource.paginator = this.paginator);
-      this.dataSource.sort = this.sort;
+      setTimeout(() => {
+        this.dataSource.paginator = this.paginator
+        this.dataSource.sort = this.sort;
+      });
+
       this.loaded=true
     })
   }
 
   openDialogEdit(row): void {
-    const dialogRefEdit = this.dialog.open(WaitingInvoiceDialogComponent, {
-      width: '1000px',
-      data: {row:row}
-    });
-    dialogRefEdit.afterClosed().subscribe(() => {
-      this.get()
-    });
+    if(row.status.name == 'InAnbar'){
+      const dialogRefEdit = this.dialog.open(WaitingInvoiceDialogComponent, {
+        width: '1000px',
+        data: {row:row}
+      });
+      dialogRefEdit.afterClosed().subscribe(() => {
+        this.get()
+      });
+    }
   }
   count:number=0;
   totalPrice:number=0;

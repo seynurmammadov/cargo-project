@@ -20,18 +20,24 @@ namespace Business.Concrete
         {
             return _context.GetAllNInclude(c => !c.IsDeleted);
         }
+        public List<Cargo> GetAllActive(string str)
+        {
+            return _context.GetAllNInclude(c => c.IsActived && !c.IsDeleted && c.Status.Name == str);
+        }
         public List<Cargo> GetAllActiveStatement(string id)
         {
             return _context.GetAllNInclude(c => c.IsActived && !c.IsDeleted && c.UserId ==id && c.Status.Name=="Statement");
         }
-        public List<Cargo> GetAllActiveWaitingInvoice(string id)
+        public List<Cargo> GetAllActiveUser (string id)
         {
-            return _context.GetAllNIncludeOffice(c => c.IsActived && !c.IsDeleted && c.UserId == id && c.Status.Name == "WaitingInvoice");
+            return _context.GetAllNIncludeOffice(s=> s.IsActived && !s.IsDeleted && s.UserId == id && s.Status.Name!= "Statement" && s.Name != "InProcess" && s.Status.Name != "End" && s.Status.Name != "Processed" && s.Status.Name != "Refused" && s.Status.Name != "WaitingInvoice");
         }
-        public List<Cargo> GetAllActiveInAnbar(string id)
+        public List<Cargo> GetAllActiveUserInvoice(string id,string str)
         {
-            return _context.GetAllNIncludeOffice(c => c.IsActived && !c.IsDeleted && c.UserId == id && c.Status.Name == "InAnbar");
+            return _context.GetAllNIncludeOffice(s => s.IsActived && !s.IsDeleted && s.UserId == id && s.Status.Name == str);
         }
+
+
         public Cargo GetWithId(int id)
         {
             return _context.Get(c => c.Id == id);

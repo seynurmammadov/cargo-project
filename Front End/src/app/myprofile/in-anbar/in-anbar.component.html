@@ -43,6 +43,10 @@
               <th mat-header-cell *matHeaderCellDef mat-sort-header> weight </th>
               <td mat-cell *matCellDef="let row"> {{row.weight}} </td>
             </ng-container>
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+              <td mat-cell *matCellDef="let row"> {{row.status.name}} </td>
+            </ng-container>
             <ng-container matColumnDef="price">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Cargo Price </th>
               <td mat-cell *matCellDef="let row" > {{row.camexPrice}} USD</td>
@@ -54,7 +58,7 @@
             <ng-container matColumnDef="actions">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
               <td mat-cell *matCellDef="let row" class="">
-                <div class="buttons">
+                <div class="buttons"  *ngIf="row.status.name == 'InAnbar'">
                   <button mat-icon-button  color="primary" (click)="openDialogEdit(row)" > <mat-icon style="font-size: 22px ">edit</mat-icon></button>
                 </div>
               </td>

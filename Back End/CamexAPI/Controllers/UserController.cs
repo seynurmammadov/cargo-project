@@ -1,10 +1,13 @@
-﻿using CamexAPI.Identity;
+﻿using BackProject.Helpers;
+using Business.Abstract;
+using CamexAPI.Identity;
+using CamexAPI.Models.VM;
 using Entity.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,38 +20,59 @@ namespace CamexAPI.Controllers
     public class UserController : ControllerBase
     {
         private readonly MyIdentityDbContext _user;
-        public UserController(MyIdentityDbContext user)
+        public readonly UserManager<AppUser> _userManager;
+        public readonly IPrivateCustomerService _privateContext;
+        public readonly IBusinessCustomerService _businesContext;
+        public UserController(MyIdentityDbContext user, UserManager<AppUser> userManager, IPrivateCustomerService privateContext, IBusinessCustomerService businesContext)
         {
+            _privateContext = privateContext;
             _user = user;
+            _businesContext = businesContext;
+            _userManager = userManager;
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
             try
             {
-                return Ok(_user.Users
+                AppUser user = _user.Users
                     .Where(u => u.UserName == User.Identity.Name)
                     .Include(u => u.Balance)
                     .Include(u => u.Receipts)
-                    .Select(p => new
+                    .Where(u=>u.Receipts.Any(r=>r.IsActived)).FirstOrDefault();
+               
+                var roles = await _userManager.GetRolesAsync(user);
+
+                foreach (var role in roles)
+                {
+                    if (role == Helper.Roles.PrivateCustomer.ToString())
                     {
-                        p.Id,
-                        p.Email,
-                        p.PhoneNumber,
-                        p.CamexId,
-                        p.Balance,
-                        p.CityId,
-                        p.City,
-                        p.Address,
-                        p.Office,
-                        p.OfficeId,
-                        p.Image,
-                        Receipts = p.Receipts.Where(r => r.IsActived),
-                        p.CreatedDate,
-                        p.ModifiedDate
-                    })
-                    .FirstOrDefault());
+
+                        PrivateCustomer customer = _privateContext.GetWithCamexId(user.CamexId);
+                        UserVm userVm = new UserVm
+                        {
+                            User = user,
+                            PrivateCustomer = customer,
+                            BusinessCustomer = null
+                        };
+                        return Ok(userVm);
+                    }
+                    else if(role == Helper.Roles.BusinessCustomer.ToString())
+                    {
+                        BusinessCustomer customer = _businesContext.GetWithCamexId(user.CamexId);
+                        UserVm userVm = new UserVm
+                        {
+                            User = user,
+                            PrivateCustomer = null,
+                            BusinessCustomer = customer
+                        };
+                        return Ok(userVm);
+                    }
+                }
+
+             
+                return NotFound();
             }
             catch (Exception e)
             {

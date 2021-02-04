@@ -4,7 +4,6 @@ import {Product} from '../../../Core/models/Product';
 import {CountryData} from '../../countries-all/CountryData';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {LanguagesService} from '../../../Core/services/lang/languages.service';
-import {StatementService} from '../../../Core/services/statement/statement.service';
 import {ProductService} from '../../../Core/services/Admin/product/product.service';
 import {CountriesService} from '../../../Core/services/Admin/countries/countries.service';
 import {CargoService} from '../../../Core/services/cargo/cargo.service';
@@ -30,7 +29,6 @@ export class AddStatementToAnbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.data)
     this.statementForm= new FormGroup({
 
       Track: new FormControl(this.data.track, [

@@ -94,7 +94,7 @@ export class StatementsComponent implements OnInit {
   }
 
   openDialogEdit(row:CountryData): void {
-    const dialogRefEdit = this.dialog.open(AddStatementToAnbarComponent, {
+    const dialogRefEdit = this.dialog.open(StatementUpdateComponent, {
       width: '1000px',
       data: {row:row}
     });

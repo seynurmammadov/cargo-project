@@ -1,74 +1,25 @@
 <div class="w-100 d-flex flex-wrap">
   <div class="col-12 " id="inside-tab">
     <mat-tab-group class="style">
-      <mat-tab>
-        <ng-template mat-tab-label><img [src]="flagIcon" alt="icon" width="20px" class="mr-2"> USA</ng-template>
+
+      <mat-tab *ngFor="let country of countryData">
+        <ng-template mat-tab-label><img [src]="createImgPath(country.image)" alt="icon" width="20px" class="mr-2"> {{country.name}}</ng-template>
         <div class="w-100 d-flex flex-wrap">
           <div class="col-12 p-0">
             <div class="d-flex flex-wrap">
-              <div class="col-2 p-0 flag" [ngStyle]="{'background-image':'url('+imgFlagUsa+')'}">
+              <div class="col-2 p-0 flag" [ngStyle]="{'background-image':'url('+createImgPath(country.bgImage)+')'}">
               </div>
               <div class="col-10 py-3 px-4 countryAbout d-flex flex-wrap">
-                <div class="col-3">
-                  <span>Full name:</span>
-                  <p><b>Seynur Mammadov</b></p>
+                <div class="col-3" *ngFor="let desc of country.countryAddressDescriptions">
+                  <span>{{desc.title}}:</span>
+                  <p><b>{{desc.description}}</b></p>
                 </div>
-                <div class="col-3">
-                  <span>Full name:</span>
-                  <p><b>Seynur Mammadov</b></p>
-                </div>
-                <div class="col-3">
-                  <span>Full name:</span>
-                  <p><b>Seynur Mammadov</b></p>
-                </div>
-                <div class="col-3">
-                  <span>Full name:</span>
-                  <p><b>Seynur Mammadov</b></p>
-                </div> <div class="col-3">
-                <span>Full name:</span>
-                <p><b>Seynur Mammadov</b></p>
-              </div>
-                <div class="col-3">
-                  <span>Full name:</span>
-                  <p><b>Seynur Mammadov</b></p>
-                </div>
-                <div class="col-3">
-                  <span>Full name:</span>
-                  <p><b>Seynur Mammadov</b></p>
-                </div>
-                <div class="col-3">
-                  <span>Full name:</span>
-                  <p><b>Seynur Mammadov</b></p>
-                </div>
-                <div class="col-3">
-                  <span>Full name:</span>
-                  <p><b>Seynur Mammadov</b></p>
-                </div>
-                <div class="col-3">
-                  <span>Full name:</span>
-                  <p><b>Seynur Mammadov</b></p>
-                </div>
+
                 <div class="col-12 notice mt-4">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam aut consectetur enim ipsam quas, vero vitae. Ab aliquam cupiditate earum et facilis illo laboriosam magnam pariatur quaerat, quod, repellat vero.
+                  {{country.noticeTranslate[0].name}}
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </mat-tab>
-      <mat-tab>
-        <ng-template mat-tab-label>Turkiye</ng-template>
-        <div class="w-100 d-flex flex-wrap">
-          <div class="col-12">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur dignissimos dolorum magni optio quos! A eius facere facilis iusto molestiae nobis optio quod totam voluptas voluptatem? Deleniti dicta illo vitae.
-          </div>
-        </div>
-      </mat-tab>
-      <mat-tab>
-        <ng-template mat-tab-label>Turkiye</ng-template>
-        <div class="w-100 d-flex flex-wrap">
-          <div class="col-12">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur dignissimos dolorum magni optio quos! A eius facere facilis iusto molestiae nobis optio quod totam voluptas voluptatem? Deleniti dicta illo vitae.
           </div>
         </div>
       </mat-tab>

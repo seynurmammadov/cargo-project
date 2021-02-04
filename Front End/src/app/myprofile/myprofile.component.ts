@@ -4,6 +4,10 @@ import {UserService} from '../Core/services/user/user.service';
 import {AppUser} from '../Admin/Models/AppUser';
 import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
 import {LanguagesService} from '../Core/services/lang/languages.service';
+import {PrivateCustomer} from '../Admin/Models/PrivateCustomer';
+import {BusinessCustomer} from '../Admin/Models/BusinessCustomer';
+import {UserNavVM} from '../navbar/models/UserNavVM';
+import {UserVM} from '../Core/models/UserVM';
 
 @Component({
   selector: 'app-myprofile',
@@ -14,7 +18,7 @@ import {LanguagesService} from '../Core/services/lang/languages.service';
 
 export class MyprofileComponent implements OnInit {
   user:AppUser;
-
+  fullUser:UserVM
   constructor(private location: Location,private service:UserService,private translate: TranslateService, public languageService:LanguagesService) {
     this.get()
   }
@@ -27,8 +31,9 @@ export class MyprofileComponent implements OnInit {
   get(){
     this.service.get().subscribe(res=>{
       this.loaded=true
-        res.receipts.sort((x, y) => +new Date(y.createdDate) - +new Date(x.createdDate));
-      this.user=res;
+        res.user.receipts.sort((x, y) => +new Date(y.createdDate) - +new Date(x.createdDate));
+      this.user=res.user;
+      this.fullUser=res;
     })
   }
   onSwitch(str) {

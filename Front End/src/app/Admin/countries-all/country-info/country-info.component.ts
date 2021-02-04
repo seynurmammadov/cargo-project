@@ -31,7 +31,6 @@ export class CountryInfoComponent implements OnInit {
     this.activatedRoute.params.subscribe(param=>{
       this.countryId=param.id
     })
-    this.getCountry()
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -42,6 +41,7 @@ export class CountryInfoComponent implements OnInit {
     }
   }
   ngOnInit(): void {
+    this.getCountry()
   }
   loaded:boolean=false
   getCountry(){

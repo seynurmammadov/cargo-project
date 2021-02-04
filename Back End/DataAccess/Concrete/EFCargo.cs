@@ -30,5 +30,17 @@ namespace DataAccess.Concrete
                     : context.Cargos.Where(filter).Include(c => c.Status).Include(o => o.Office).ThenInclude(o => o.OfficeNameTranlates).ToList();
             };
         }
+
+        public Cargo GetNInclude(Expression<Func<Cargo, bool>> filter = null)
+        {
+            using (var context = new AppDbContext())
+            {
+                return filter == null
+                    ? context.Cargos.Include(o => o.Product).ThenInclude(o => o.ProductTranslates).Include(c => c.Country).FirstOrDefault()
+                    : context.Cargos.Where(filter).Include(o => o.Product).ThenInclude(o => o.ProductTranslates).FirstOrDefault();
+
+            };
+        }
+
     }
 }

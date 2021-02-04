@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -47,12 +48,62 @@ namespace CamexAPI.Controllers.Admin
                 return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
             }
         }
+        [HttpGet("{str}/{id}")]
+        public IActionResult GetUserData(string str,int id)
+        {
+            try
+            {
+                AppUser user = _user.Users.Where(u => u.CamexId ==id).FirstOrDefault();
+                List<Cargo> cargos = _cargoContext.GetAllActiveUserParcels(user.Id, str);
+
+                return Ok(cargos);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+            }
+        }
+
+        [HttpGet("info/{id}")]
+        public IActionResult Info(int id)
+        {
+            try
+            {
+                Cargo cargo = _cargoContext.GetWithIdInclude(id);
+                AppUser user = _user.Users.Where(u => u.Id == cargo.UserId).FirstOrDefault();
+                cargo.CamexId = user.CamexId;
+                if (cargo == null) return StatusCode(StatusCodes.Status500InternalServerError, new Response
+                {
+                    Status = "Error",
+                    Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="Model state isn't valid!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Состояние модели недействительно!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="Model vəziyyəti etibarsızdır!"
+                            }
+                        }
+                });
+                return Ok(cargo);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+            }
+        }
 
         [HttpPost]
         public async Task<IActionResult> Post([FromForm] Cargo cargo)
         {
             try
             {
+                AppUser user;
                 if (!ModelState.IsValid)
                 {
                     return StatusCode(StatusCodes.Status500InternalServerError, new Response
@@ -74,12 +125,13 @@ namespace CamexAPI.Controllers.Admin
                         }
                     });
                 }
-
-                AppUser user = _user.Users.Where(u => u.Id == cargo.UserId).FirstOrDefault();
-                if (user == null) return StatusCode(StatusCodes.Status500InternalServerError, new Response
+                if (cargo.UserId != null)
                 {
-                    Status = "Error",
-                    Messages = new Message[] {
+                     user = _user.Users.Where(u => u.Id == cargo.UserId).FirstOrDefault();
+                    if (user == null) return StatusCode(StatusCodes.Status500InternalServerError, new Response
+                    {
+                        Status = "Error",
+                        Messages = new Message[] {
                             new Message {
                                 Lang_id = 1,
                                 MessageLang="Model state isn't valid!"
@@ -93,7 +145,31 @@ namespace CamexAPI.Controllers.Admin
                                 MessageLang="Model vəziyyəti etibarsızdır!"
                             }
                         }
-                });
+                    });
+                }
+                else
+                {
+                     user = _user.Users.Where(u => u.CamexId == cargo.CamexId).FirstOrDefault();
+                    if (user == null) return StatusCode(StatusCodes.Status500InternalServerError, new Response
+                    {
+                        Status = "Error",
+                        Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="Model state isn't valid!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Состояние модели недействительно!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="Model vəziyyəti etibarsızdır!"
+                            }
+                        }
+                    });
+                }
+
                 cargo.IsActived = true;
                 cargo.OfficeId = user.OfficeId;
                 cargo.UserId = user.Id;

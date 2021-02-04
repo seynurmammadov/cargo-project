@@ -11,5 +11,6 @@ namespace DataAccess.Abstract
     {
         List<Cargo> GetAllNInclude(Expression<Func<Cargo, bool>> filter = null);
         List<Cargo> GetAllNIncludeOffice(Expression<Func<Cargo, bool>> filter = null);
+        Cargo GetNInclude(Expression<Func<Cargo, bool>> filter = null);
     }
 }

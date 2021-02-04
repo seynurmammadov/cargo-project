@@ -50,22 +50,6 @@
         </div>
       </div>
       <mat-nav-list>
-           <!-- <mat-accordion>
-              <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                  <mat-panel-title>
-                    <div class="w-100 mr-5 d-flex align-items-center">
-                      Users
-                    </div>
-                  </mat-panel-title>
-                </mat-expansion-panel-header>
-                <mat-list-item routerLink="[child.route]">
-                  <div >
-                    child
-                  </div>
-                </mat-list-item>
-              </mat-expansion-panel>
-            </mat-accordion>-->
         <mat-list-item routerLink="/admin/dashboard">
           <div class="slidenav-item">
             <i class="far fa-chart-line mr-2"></i>
@@ -88,6 +72,11 @@
 
                 </mat-panel-title>
               </mat-expansion-panel-header>
+              <mat-list-item (click)="open()">
+                <div  class="slidenav-item">
+                  Add New Parcel in anbar
+                </div>
+              </mat-list-item>
               <mat-list-item routerLink="/admin/order-in-process">
                 <div  class="slidenav-item">
                   Orders In Process
@@ -114,22 +103,22 @@
                 </div>
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <mat-list-item  routerLink="/admin/parcels/inAnbar" >
+            <mat-list-item  routerLink="/admin/parcels/InAnbar" >
               <div  class="slidenav-item">
                 In Anbar
               </div>
             </mat-list-item>
-            <mat-list-item routerLink="/admin/parcels/inWay" >
+            <mat-list-item routerLink="/admin/parcels/InWay" >
               <div  class="slidenav-item">
                 In Way
               </div>
             </mat-list-item>
-            <mat-list-item routerLink="/admin/parcels/inСustoms" >
+            <mat-list-item routerLink="/admin/parcels/InСustoms" >
               <div  class="slidenav-item">
                 In Customs
               </div>
             </mat-list-item>
-            <mat-list-item routerLink="/admin/parcels/inOffice" >
+            <mat-list-item routerLink="/admin/parcels/InOffice" >
               <div  class="slidenav-item">
                 In Office
               </div>
@@ -141,25 +130,43 @@
             </mat-list-item>
           </mat-expansion-panel>
         </mat-accordion>
+        <mat-accordion>
+          <mat-expansion-panel >
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <div class="slidenav-item">
+                  <i class="far fa-sitemap mr-2"></i> Site CRUD
+                </div>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-list-item routerLink="/admin/countries">
+              <div class="slidenav-item">
+                <i class="far fa-flag mr-2"></i>
+                Countries
+              </div>
+            </mat-list-item>
+            <mat-list-item routerLink="/admin/cities">
+              <div class="slidenav-item">
+                <i class="far fa-city mr-2"></i>
+                Cities
+              </div>
+            </mat-list-item>
+            <mat-list-item routerLink="/admin/offices">
+              <div class="slidenav-item">
+                <i class="far fa-phone-office mr-2"></i>
+                Offices
+              </div>
+            </mat-list-item>
+            <mat-list-item routerLink="/admin/shops">
+              <div>
+              <i class="far fa-shopping-bag mr-2"></i>
+                Shops
+              </div>
+            </mat-list-item>
 
-        <mat-list-item routerLink="/admin/countries">
-          <div class="slidenav-item">
-            <i class="far fa-flag mr-2"></i>
-            Countries
-          </div>
-        </mat-list-item>
-        <mat-list-item routerLink="/admin/offices">
-          <div class="slidenav-item">
-            <i class="far fa-phone-office mr-2"></i>
-            Offices
-          </div>
-        </mat-list-item>
-        <mat-list-item routerLink="/admin/cities">
-          <div class="slidenav-item">
-            <i class="far fa-city mr-2"></i>
-            Cities
-          </div>
-        </mat-list-item>
+          </mat-expansion-panel>
+        </mat-accordion>
+
         <mat-list-item routerLink="/admin/products">
           <div class="slidenav-item">
             <i class="far fa-boxes-alt mr-2"></i>

@@ -32,17 +32,24 @@ namespace Business.Concrete
         {
             return _context.GetAllNIncludeOffice(s=> s.IsActived && !s.IsDeleted && s.UserId == id && s.Status.Name!= "Statement" && s.Name != "InProcess" && s.Status.Name != "End" && s.Status.Name != "Processed" && s.Status.Name != "Refused" && s.Status.Name != "WaitingInvoice");
         }
-        public List<Cargo> GetAllActiveUserInvoice(string id,string str)
+        public List<Cargo> GetAllActiveUserInvoice(string id, string str)
         {
             return _context.GetAllNIncludeOffice(s => s.IsActived && !s.IsDeleted && s.UserId == id && s.Status.Name == str);
         }
-
+        public List<Cargo> GetAllActiveUserParcels(string id, string str)
+        {
+            return _context.GetAllNInclude(s => s.IsActived && !s.IsDeleted && s.UserId == id && s.Status.Name == str);
+        }
+        
 
         public Cargo GetWithId(int id)
         {
             return _context.Get(c => c.Id == id);
         }
-
+        public Cargo GetWithIdInclude(int id)
+        {
+            return _context.GetNInclude(c => c.IsActived && !c.IsDeleted && c.Id == id);
+        }
         public void Add(Cargo data)
         {
             _context.Add(data);

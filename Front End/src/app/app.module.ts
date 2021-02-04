@@ -101,6 +101,15 @@ import { AddStatementToAnbarComponent } from './Admin/dialogs/add-statement-to-a
 import { ParcelsComponent } from './Admin/parcels/parcels.component';
 import { StatusChangeComponent } from './Admin/dialogs/status-change/status-change.component';
 import { EndedComponent } from './myprofile/ended/ended.component';
+import { AddToAnbarNewParcelComponent } from './Admin/dialogs/add-to-anbar-new-parcel/add-to-anbar-new-parcel.component';
+import { ParcelInfoComponent } from './Admin/dialogs/parcel-info/parcel-info.component';
+import { ShopsComponent } from './Admin/shops/shops.component';
+import { ShopLinkComponent } from './Admin/shops/shop-link/shop-link.component';
+import {Shop} from './Core/models/Shop';
+import { ShopCreateDialogComponent } from './Admin/dialogs/shop/shop-create-dialog/shop-create-dialog.component';
+import { ShopUpdateDialogComponent } from './Admin/dialogs/shop/shop-update-dialog/shop-update-dialog.component';
+import { ShopLinkUpdateDialogComponent } from './Admin/dialogs/shop/shop-link-update-dialog/shop-link-update-dialog.component';
+import { ShopLinkCreateDialogComponent } from './Admin/dialogs/shop/shop-link-create-dialog/shop-link-create-dialog.component';
 const routes: Routes=[
   { path: "home", redirectTo:"" ,pathMatch:"full"},
   { path:"",  component:HomeComponent },
@@ -161,27 +170,57 @@ const routes: Routes=[
         data: {animation: 'Statements'},
       },
       {
-        path: 'parcels/inAnbar',
+        path: 'users/statements/:id',
+        component: StatemetsAdminComponent,
+        data: {animation: 'Statements'},
+      },
+      {
+        path: 'parcels/InAnbar',
         component: ParcelsComponent,
         data: {animation: 'InAnbar',status:'InAnbar'},
       },
       {
-        path: 'parcels/inWay',
+        path: 'parcels/InWay',
         component: ParcelsComponent,
         data: {animation: 'InWay',status:'InWay'},
       },
       {
-        path: 'parcels/inСustoms',
+        path: 'parcels/InСustoms',
         component: ParcelsComponent,
         data: {animation: 'InСustoms',status:'InСustoms'},
       },
       {
-        path: 'parcels/inOffice',
+        path: 'parcels/InOffice',
         component: ParcelsComponent,
         data: {animation: 'InOffice',status:'InOffice'},
       },
       {
         path: 'parcels/end',
+        component: ParcelsComponent,
+        data: {animation: 'End',status:'End'},
+      },
+      {
+        path: 'parcels/InAnbar/:id',
+        component: ParcelsComponent,
+        data: {animation: 'InAnbar',status:'InAnbar'},
+      },
+      {
+        path: 'parcels/InWay/:id',
+        component: ParcelsComponent,
+        data: {animation: 'InWay',status:'InWay'},
+      },
+      {
+        path: 'parcels/InСustoms/:id',
+        component: ParcelsComponent,
+        data: {animation: 'InСustoms',status:'InСustoms'},
+      },
+      {
+        path: 'parcels/InOffice/:id',
+        component: ParcelsComponent,
+        data: {animation: 'InOffice',status:'InOffice'},
+      },
+      {
+        path: 'parcels/end/:id',
         component: ParcelsComponent,
         data: {animation: 'End',status:'End'},
       },
@@ -199,6 +238,16 @@ const routes: Routes=[
         path: 'offices',
         component: OfficesComponent,
         data: {animation: 'offices'},
+      },
+      {
+        path: 'shops',
+        component: ShopsComponent,
+        data: {animation: 'shops'},
+      },
+      {
+        path: 'shops/:id',
+        component: ShopLinkComponent,
+        data: {animation: 'shop-link'},
       },
       {
         path: 'cities',
@@ -289,6 +338,14 @@ const routes: Routes=[
     ParcelsComponent,
     StatusChangeComponent,
     EndedComponent,
+    AddToAnbarNewParcelComponent,
+    ParcelInfoComponent,
+    ShopsComponent,
+    ShopLinkComponent,
+    ShopCreateDialogComponent,
+    ShopUpdateDialogComponent,
+    ShopLinkUpdateDialogComponent,
+    ShopLinkCreateDialogComponent,
   ],
   imports: [
     BrowserModule,

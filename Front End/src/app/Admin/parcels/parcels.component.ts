@@ -7,11 +7,9 @@ import {CargoService} from '../../Core/services/cargo/cargo.service';
 import {MatDialog} from '@angular/material/dialog';
 import {LanguagesService} from '../../Core/services/lang/languages.service';
 import {UserOrderService} from '../../Core/services/Admin/userOrder/user-order.service';
-import {OrderInfoComponent} from '../dialogs/order/order-info/order-info.component';
-import {AddStatementToAnbarComponent} from '../dialogs/add-statement-to-anbar/add-statement-to-anbar.component';
 import {ActivatedRoute} from '@angular/router';
 import {StatusChangeComponent} from '../dialogs/status-change/status-change.component';
-
+import {ParcelInfoComponent} from '../dialogs/parcel-info/parcel-info.component';
 @Component({
   selector: 'app-parcels',
   templateUrl: './parcels.component.html',
@@ -19,6 +17,7 @@ import {StatusChangeComponent} from '../dialogs/status-change/status-change.comp
   encapsulation:ViewEncapsulation.None
 })
 export class ParcelsComponent implements OnInit {
+  userId:number=0;
   val:string
   dataSource: MatTableDataSource<Cargo>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -29,7 +28,10 @@ export class ParcelsComponent implements OnInit {
               public dialog: MatDialog,
               private languageService:LanguagesService,
               private serviceOrder:UserOrderService,
-              private route: ActivatedRoute) {
+              private activatedRoute:ActivatedRoute) {
+    this.activatedRoute.params.subscribe(param=>{
+      this.userId=param.id
+    })
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -40,22 +42,38 @@ export class ParcelsComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-    this.route.data.subscribe(v =>this.val=v["status"]);
+    this.activatedRoute.data.subscribe(v =>this.val=v["status"]);
     this.get()
   }
   loaded:boolean=false
   get(){
-    this.service.get(this.val).subscribe(res=>{
-      this.data=res;
-      this.dataSource = new MatTableDataSource(this.data);
-      this.loaded=true
-      setTimeout(() => {
-          this.dataSource.paginator = this.paginator
-          this.dataSource.sort = this.sort;
-        }
-      )
+    if(this.userId==undefined){
+      this.service.get(this.val).subscribe(res=>{
+        this.data=res;
+        this.dataSource = new MatTableDataSource(this.data);
+        this.loaded=true
+        setTimeout(() => {
+            this.dataSource.paginator = this.paginator
+            this.dataSource.sort = this.sort;
+          }
+        )
 
-    })
+      })
+    }
+    else {
+      this.service.getUserId(this.val,this.userId).subscribe(res=>{
+        this.data=res;
+        console.log(res)
+        this.dataSource = new MatTableDataSource(this.data);
+        this.loaded=true
+        setTimeout(() => {
+            this.dataSource.paginator = this.paginator
+            this.dataSource.sort = this.sort;
+          }
+        )
+
+      })
+    }
   }
 
   openDialogStatus(row){
@@ -78,4 +96,10 @@ export class ParcelsComponent implements OnInit {
     return false;
   }
 
+  openDialogInfo(id){
+    const dialogRef = this.dialog.open(ParcelInfoComponent, {
+      width: '1050px',
+      data: {id:id}
+    });
+  }
 }

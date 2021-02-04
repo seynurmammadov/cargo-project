@@ -10,8 +10,8 @@
         <app-control-panel [user]="user" (event)="get()"></app-control-panel>
       </mat-tab>
       <mat-tab>
-        <ng-template mat-tab-label ><div class="item" (click)="onSwitch('/myprofile/countries')"><i class="far fa-globe-europe ml-2 mr-3"></i>Xaricdəki ünvanlarım </div></ng-template>
-       <app-countries></app-countries>
+        <ng-template mat-tab-label  ><div class="item" (click)="onSwitch('/myprofile/countries')"><i class="far fa-globe-europe ml-2 mr-3"></i>Xaricdəki ünvanlarım </div></ng-template>
+       <app-countries [fullUser]="fullUser"></app-countries>
       </mat-tab>
       <mat-tab>
         <ng-template mat-tab-label ><div class="item" (click)="onSwitch('/myprofile/statements')" (click)="activeStatement()"><i class="fas fa-edit ml-2 mr-3"></i>Bətanlarım</div> </ng-template>

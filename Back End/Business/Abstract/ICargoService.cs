@@ -13,8 +13,11 @@ namespace Business.Abstract
         List<Cargo> GetAllActiveStatement(string id);
         List<Cargo> GetAllActiveUser(string id);
         List<Cargo> GetAllActiveUserInvoice(string id,string str);
-        
-         void Add(Cargo data);
+        List<Cargo> GetAllActiveUserParcels(string id,string str);
+
+        Cargo GetWithIdInclude(int id);
+
+        void Add(Cargo data);
         void Update(Cargo data);
         void Detele(int id);
     }

@@ -9,5 +9,6 @@ export class CountryData{
   isActived: boolean
   image:string
   countryAddressDescriptions:CountryInfoData[]
-  noticeTranlates:NoticeTranslates[];
+  noticeTranslate:NoticeTranslates[];
+  bgImage:string
 }

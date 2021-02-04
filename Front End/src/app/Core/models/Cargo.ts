@@ -30,4 +30,5 @@ export class Cargo{
   modifiedDate: string;
   isActived: boolean;
   isDeleted: boolean;
+  camexId:number
 }

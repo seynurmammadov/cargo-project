@@ -33,6 +33,8 @@ namespace DataAccess.Concrete
         public DbSet<Order> Orders { get; set; }
         public DbSet<Status> Status { get; set; }
         public DbSet<Receipt> Receipts { get; set; }
+        public DbSet<Shop> Shops { get; set; }
+        public DbSet<ShopLink> ShopLinks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

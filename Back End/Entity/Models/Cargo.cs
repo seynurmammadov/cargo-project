@@ -41,6 +41,8 @@ namespace Entity.Models
         public DateTime ModifiedDate { get; set; }
         public bool IsActived { get; set; }
         public bool IsDeleted { get; set; }
+        [NotMapped]
+        public int CamexId { get; set; }
         public Cargo()
         {
             this.CreatedDate = DateTime.UtcNow;

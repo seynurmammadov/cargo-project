@@ -27,10 +27,10 @@ export class CountryEditDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public countryData:any,
     private service:CountriesService
   ) {
-    this.data=this.countryData.row
   }
 
   ngOnInit(): void {
+    this.data=this.countryData.row
     this.editForm= new FormGroup({
       Name: new FormControl(this.data.name, [
         Validators.required,

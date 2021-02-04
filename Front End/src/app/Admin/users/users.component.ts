@@ -42,8 +42,11 @@ export class UsersComponent implements OnInit {
     this.service.search(body).subscribe(res=>{
       this.usersData=res;
       this.dataSource = new MatTableDataSource(this.usersData);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+      setTimeout(()=>{
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      })
+
     })
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();

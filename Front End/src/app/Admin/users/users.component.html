@@ -56,8 +56,23 @@
                      <button mat-menu-item [routerLink]="'orders/'+row.camexId" >
                        <span>Orders</span>
                      </button>
-                     <button mat-menu-item>
+                     <button mat-menu-item [routerLink]="'statements/'+row.camexId">
                        <span>Statements</span>
+                     </button>
+                     <button mat-menu-item [routerLink]="'/admin/parcels/InAnbar/'+row.camexId">
+                       <span>in Anbar</span>
+                     </button>
+                     <button mat-menu-item [routerLink]="'/admin/parcels/InWay/'+row.camexId">
+                       <span>in Way</span>
+                     </button>
+                     <button mat-menu-item [routerLink]="'/admin/parcels/InСustoms/'+row.camexId">
+                       <span>in Сustoms</span>
+                     </button>
+                     <button mat-menu-item [routerLink]="'/admin/parcels/InOffice/'+row.camexId">
+                       <span>in Office</span>
+                     </button>
+                     <button mat-menu-item [routerLink]="'/admin/parcels/end/'+row.camexId">
+                       <span>End</span>
                      </button>
                    </mat-menu>
                  </div>

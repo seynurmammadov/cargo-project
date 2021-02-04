@@ -625,6 +625,49 @@ namespace DataAccess.Migrations
                     b.ToTable("Receipts");
                 });
 
+            modelBuilder.Entity("Entity.Models.Shop", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("IsActived")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Shops");
+                });
+
+            modelBuilder.Entity("Entity.Models.ShopLink", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Link")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ShopId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ShopId");
+
+                    b.ToTable("ShopLinks");
+                });
+
             modelBuilder.Entity("Entity.Models.Status", b =>
                 {
                     b.Property<int>("Id")
@@ -808,6 +851,15 @@ namespace DataAccess.Migrations
                     b.HasOne("Entity.Models.AppUser", "User")
                         .WithMany("Receipts")
                         .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("Entity.Models.ShopLink", b =>
+                {
+                    b.HasOne("Entity.Models.Shop", "Shop")
+                        .WithMany("ShopLinks")
+                        .HasForeignKey("ShopId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

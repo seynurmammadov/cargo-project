@@ -75,6 +75,10 @@ namespace CamexAPI
             services.AddScoped<ICargoDAL, EFCargo>();
             services.AddScoped<IOrderService, OrderManager>();
             services.AddScoped<IOrderDAL, EFOrder>();
+            services.AddScoped<IShopService, ShopManager>();
+            services.AddScoped<IShopDAL, EFShop>();
+            services.AddScoped<IShopLinkService, ShopLinkManager>();
+            services.AddScoped<IShopLinkDAL, EFShopLink>();
             // For Identity  
             services.AddIdentity<AppUser, IdentityRole>(IdentityOption =>
             {

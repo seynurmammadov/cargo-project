@@ -34,6 +34,7 @@
                 <td mat-cell *matCellDef="let row" >
                   <div class="buttons">
                     <button mat-raised-button  [disabled]="checkStatus(this.val)" color="primary" class="mr-2"  (click)="openDialogStatus(row)">Change Status</button>
+                    <button mat-icon-button  color="accent" (click)="openDialogInfo(row.id)" > <mat-icon style="font-size: 26px ">info</mat-icon></button>
                   </div>
                 </td>
               </ng-container>

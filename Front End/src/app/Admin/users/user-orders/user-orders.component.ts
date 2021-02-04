@@ -46,11 +46,14 @@ export class UserOrdersComponent implements OnInit {
   get(){
     this.service.get(this.userId).subscribe(res=>{
       this.data=res;
-      console.log(this.data)
       this.dataSource = new MatTableDataSource(this.data.orders);
       this.loaded=true
-      setTimeout(() => this.dataSource.paginator = this.paginator)
-      this.dataSource.sort = this.sort;
+      setTimeout(() =>
+      {
+        this.dataSource.paginator = this.paginator
+        this.dataSource.sort = this.sort;
+      })
+
     })
   }
   openDialogInfo(row): void {

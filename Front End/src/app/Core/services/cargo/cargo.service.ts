@@ -16,6 +16,15 @@ export class CargoService {
   get(str):Observable<Cargo[]>{
     return this.http.get<Cargo[]>(`${this.global.path}Cargo/${str}`);
   }
+  getUserId(str,id):Observable<Cargo[]>{
+    return this.http.get<Cargo[]>(`${this.global.path}Cargo/${str}/${id}`);
+  }
+  getWithId(id):Observable<Cargo[]>{
+    return this.http.get<Cargo[]>(`${this.global.path}UserStatements/${id}`);
+  }
+  getWithParcelId(id):Observable<Cargo>{
+    return this.http.get<Cargo>(`${this.global.path}Cargo/info/${id}`);
+  }
   create(body){
     return this.http.post(`${this.global.path}Cargo`,body);
   }

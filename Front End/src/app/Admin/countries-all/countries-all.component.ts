@@ -23,7 +23,6 @@ export class CountriesAllComponent implements OnInit {
   countryData:CountryData[];
   displayedColumns: string[] = ['image','name','wallet' ,'value' ,'isActived','actions'];
   constructor(public service:CountriesService,public dialog: MatDialog,private languageService:LanguagesService) {
-    this.getCountries()
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -34,6 +33,7 @@ export class CountriesAllComponent implements OnInit {
     }
   }
   ngOnInit(): void {
+  this.getCountries()
   }
   getCountries(){
     this.service.getCountries().subscribe(res=>{

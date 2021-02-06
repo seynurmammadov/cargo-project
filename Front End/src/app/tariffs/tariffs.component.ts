@@ -1,18 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-export interface tariffsAll {
-  name:string;
-  flagSrc:string;
-  tariffs:Tariffs[];
-}
-export interface Tariffs {
-  to: string;
-  prices:Price[];
-}
-export interface Price {
-  minWeight: number;
-  maxWeight: string;
-  price:number;
-}
+import {CountriesService} from '../Core/services/Admin/countries/countries.service';
+import {CountryData} from '../Admin/countries-all/CountryData';
+
 @Component({
   selector: 'app-tariffs',
   templateUrl: './tariffs.component.html',
@@ -20,192 +9,19 @@ export interface Price {
   encapsulation:ViewEncapsulation.None
 })
 export class TariffsComponent implements OnInit {
-  constructor() { }
+  countryTariffs:CountryData[]=[]
+  constructor(private service:CountriesService) { }
   ngOnInit(): void {
-    this.countryTariffs=[
-      {
-        name: 'Russia',
-        flagSrc:"../../assets/image/flags/ru.svg",
-        tariffs:[{
-          to:"baku",
-          prices:[
-            {
-              minWeight:0.01,
-              maxWeight:'0.25',
-              price:2.45
-            },
-            {
-              minWeight:0.25,
-              maxWeight:'1',
-              price:2.45
-            }
-          ]
-        },
-          {
-            to:"gence",
-            prices:[
-              {
-                minWeight:1,
-                maxWeight:'1',
-                price:2.45
-              },
-              {
-                minWeight:0.25,
-                maxWeight:'1',
-                price:2.45
-              }
-            ]
-          }]
-      },
-      {
-        name: 'Azerbaijan',
-        flagSrc:"../../assets/image/flags/az.svg",
-        tariffs:[{
-          to:"a",
-          prices:[{
-            minWeight:0.01,
-            maxWeight:'0.25',
-            price:2.45
-          },
-            {
-              minWeight:0.01,
-              maxWeight:'0.25',
-              price:2.45
-            },{
-              minWeight:0.01,
-              maxWeight:'0.25',
-              price:2.45
-            },{
-              minWeight:0.01,
-              maxWeight:'0.25',
-              price:2.45
-            },{
-              minWeight:0.01,
-              maxWeight:'0.25',
-              price:2.45
-            },{
-              minWeight:0.01,
-              maxWeight:'0.25',
-              price:2.45
-            },{
-              minWeight:0.01,
-              maxWeight:'0.25',
-              price:2.45
-            }]
-        },{
-          to:"a",
-          prices:[{
-            minWeight:0.01,
-            maxWeight:'0.25',
-            price:2.45
-          },
-            {
-              minWeight:0.01,
-              maxWeight:'0.25',
-              price:2.45
-            },{
-              minWeight:0.01,
-              maxWeight:'0.25',
-              price:2.45
-            },{
-              minWeight:0.01,
-              maxWeight:'0.25',
-              price:2.45
-            },{
-              minWeight:0.01,
-              maxWeight:'0.25',
-              price:2.45
-            },{
-              minWeight:0.01,
-              maxWeight:'0.25',
-              price:2.45
-            },{
-              minWeight:0.01,
-              maxWeight:'0.25',
-              price:2.45
-            }]
-        },{
-          to:"a",
-          prices:[{
-            minWeight:0.01,
-            maxWeight:'0.25',
-            price:2.45
-          },
-            {
-              minWeight:0.01,
-              maxWeight:'0.25',
-              price:2.45
-            },{
-              minWeight:0.01,
-              maxWeight:'0.25',
-              price:2.45
-            },{
-              minWeight:0.01,
-              maxWeight:'0.25',
-              price:2.45
-            },{
-              minWeight:0.01,
-              maxWeight:'0.25',
-              price:2.45
-            },{
-              minWeight:0.01,
-              maxWeight:'0.25',
-              price:2.45
-            },{
-              minWeight:0.01,
-              maxWeight:'0.25',
-              price:2.45
-            }]
-        },{
-          to:"a",
-          prices:[{
-            minWeight:0.01,
-            maxWeight:'0.25',
-            price:2.45
-          },
-            {
-              minWeight:0.01,
-              maxWeight:'0.25',
-              price:2.45
-            },{
-              minWeight:0.01,
-              maxWeight:'0.25',
-              price:2.45
-            },{
-              minWeight:0.01,
-              maxWeight:'0.25',
-              price:2.45
-            },{
-              minWeight:0.01,
-              maxWeight:'0.25',
-              price:2.45
-            },{
-              minWeight:0.01,
-              maxWeight:'0.25',
-              price:2.45
-            },{
-              minWeight:0.01,
-              maxWeight:'0.25',
-              price:2.45
-            }]
-        },
-          {
-            to:"a",
-            prices:[{
-              minWeight:0.01,
-              maxWeight:'0.25',
-              price:2.45
-            },
-              {
-                minWeight:0.01,
-                maxWeight:'0.25',
-                price:2.45
-              }]
-          }]
-      }]
+    this.get()
   }
-
-  countryTariffs:tariffsAll[]=[]
+  get(){
+    this.service.getWithTariffs().subscribe(res=>{
+      this.countryTariffs=res;
+    })
+  }
   name:string="tarifler"
   bannerSrc:string="../../assets/image/banners/price-banner.jpg";
+  public createImgPath = (serverPath: string) => {
+    return `https://localhost:44387/Site/images/countries/${serverPath}`;
+  }
 }

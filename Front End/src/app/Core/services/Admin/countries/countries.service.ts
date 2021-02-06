@@ -17,6 +17,9 @@ export class CountriesService {
   getCountriesActive():Observable<CountryData[]>{
     return this.http.get<CountryData[]>(`${this.global.path}Country/active`);
   }
+  getWithTariffs():Observable<CountryData[]>{
+    return this.http.get<CountryData[]>(`${this.global.path}Country/active/tariff`);
+  }
   createCountry(body:FormData){
     return this.http.post(`${this.global.path}Country`,body );
   }

@@ -2,20 +2,20 @@
 </app-navbar>
 <app-mobile-navbar>
 </app-mobile-navbar>
-<app-banner [name]="name" [bannerSrc]="bannerSrc"></app-banner>
+<app-banner [name]="'services'|translate" [bannerSrc]="bannerSrc"></app-banner>
 <section id="service" class="pt-5 pb-4">
   <div class="container-fluid pl-pr-10 pt-2 pb-5">
     <div class="d-flex flex-wrap">
       <div class="col-12 bg-color d-flex flex-wrap p-0 align-items-center" *ngFor="let service of services">
         <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12 col-12 p-0 h-100">
           <div class="img-white w-100 col-12 p-4 d-flex align-content-center flex-wrap h-100">
-            <div class="col-12 d-flex align-items-center justify-content-center pt-3 pb-4"><img [src]="service.iconSrc"  alt=""></div>
-            <div class="col-12 text-center"><h3><b>{{service.title}}</b></h3> </div>
+            <div class="col-12 d-flex align-items-center justify-content-center pt-3 pb-4"><img [src]="createImgPath(service.image)"  alt=""></div>
+            <div class="col-12 text-center"><h3><b>{{service.serviceTranslates[0].title}}</b></h3> </div>
           </div>
         </div>
         <div class="col-xl-9 col-lg-8 col-md-7 col-sm-12 col-12 p-0">
           <div class="col-12 pt-5 pb-5 d-flex align-items-center ">
-            <p class="description" [innerHTML]="service.description">
+            <p class="description" [innerHTML]="service.serviceTranslates[0].description">
             </p>
           </div>
         </div>

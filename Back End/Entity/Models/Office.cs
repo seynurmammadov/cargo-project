@@ -12,6 +12,14 @@ namespace Entity.Models
         public int Id { get; set; }
         [Required]
         public float PriceValue { get; set; }
+
+        [Required]
+        public string PhoneNumber { get; set; }
+        [Required,EmailAddress]
+        public string Email { get; set; }
+        public string Email2 { get; set; }
+        [Required,Url]
+        public string Url { get; set; }
         public bool IsActived { get; set; }
         public bool IsDeleted { get; set; }
         public ICollection<OfficeNameTranslate> OfficeNameTranlates { get; set; }

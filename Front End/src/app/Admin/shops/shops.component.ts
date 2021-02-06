@@ -5,12 +5,11 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatDialog} from '@angular/material/dialog';
 import {LanguagesService} from '../../Core/services/lang/languages.service';
-import {CountryEditDialogComponent} from '../dialogs/country/country-edit-dialog/country-edit-dialog.component';
-import {CountryCreateDialogComponent} from '../dialogs/country/country-create-dialog/country-create-dialog.component';
 import {Shop} from '../../Core/models/Shop';
 import {ShopService} from '../../Core/services/Admin/shop/shop.service';
 import {ShopUpdateDialogComponent} from '../dialogs/shop/shop-update-dialog/shop-update-dialog.component';
 import {ShopCreateDialogComponent} from '../dialogs/shop/shop-create-dialog/shop-create-dialog.component';
+import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
 
 declare let Swal:any
 declare let alertify:any
@@ -26,7 +25,8 @@ export class ShopsComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   shops:Shop[];
   displayedColumns: string[] = ['name' ,'isActived','actions'];
-  constructor(public service:ShopService,public dialog: MatDialog,private languageService:LanguagesService) {
+  constructor(public service:ShopService,private translate: TranslateService,public dialog: MatDialog,private languageService:LanguagesService) {
+    this.get()
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -37,10 +37,10 @@ export class ShopsComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-    this.get()
   }
   get(){
     this.service.get().subscribe(res=>{
+
       this.shops=res;
       this.dataSource = new MatTableDataSource(this.shops);
       setTimeout(()=>{

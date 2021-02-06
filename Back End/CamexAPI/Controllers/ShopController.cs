@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace CamexAPI.Controllers
@@ -15,9 +16,11 @@ namespace CamexAPI.Controllers
     public class ShopController : ControllerBase
     {
         private readonly IShopService _shopContext;
-        public ShopController(IShopService shopContext)
+        private readonly IShopTranslateService _shopTranslateContext;
+        public ShopController(IShopService shopContext, IShopTranslateService shopTranslateContext)
         {
             _shopContext = shopContext;
+            _shopTranslateContext = shopTranslateContext;
         }
 
         [HttpGet]
@@ -50,10 +53,11 @@ namespace CamexAPI.Controllers
 
         // POST api/<CountryController>
         [HttpPost]
-        public async Task<IActionResult> Create([FromForm] Shop shop)
+        public  IActionResult Create([FromForm] Shop shop)
         {
             try
             {
+                shop.ShopTranslates = JsonSerializer.Deserialize<ICollection<ShopTranslate>>(shop.Translates);
                 if (!ModelState.IsValid)
                 {
                     return StatusCode(StatusCodes.Status500InternalServerError, new Response
@@ -76,6 +80,11 @@ namespace CamexAPI.Controllers
                     });
                 }
                 _shopContext.Add(shop);
+                foreach (ShopTranslate item in shop.ShopTranslates)
+                {
+                    item.ShopId = shop.Id;
+                    _shopTranslateContext.Add(item);
+                }
                 return Ok();
             }
             catch (Exception e)
@@ -87,10 +96,11 @@ namespace CamexAPI.Controllers
 
         // PUT api/<CountryController>/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAsync(int id, [FromForm] Shop shop)
+        public  IActionResult PutAsync(int id, [FromForm] Shop shop)
         {
             try
             {
+                shop.ShopTranslates = JsonSerializer.Deserialize<ICollection<ShopTranslate>>(shop.Translates);
                 if (!ModelState.IsValid)
                 {
                     return StatusCode(StatusCodes.Status500InternalServerError, new Response
@@ -133,10 +143,15 @@ namespace CamexAPI.Controllers
                         }
                     });
 
-                db_shop.Name = shop.Name;
                 db_shop.IsActived = shop.IsActived;
                 _shopContext.Update(db_shop);
-
+                foreach (ShopTranslate item in shop.ShopTranslates)
+                {
+                    ShopTranslate db_shopTranslate = _shopTranslateContext.GetWithId(item.Id);
+                    db_shopTranslate.Name = item.Name;
+                    _shopTranslateContext.Update(db_shopTranslate);
+                }
+       
                 return Ok();
 
             }

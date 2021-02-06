@@ -34,6 +34,10 @@ namespace Business.Concrete
         {
             return _context.GetAllNInclude(c => c.IsActived && !c.IsDeleted);
         }
+        public List<Country> GetAllTariffActive()
+        {
+            return _context.GetNIncludeTariff(c => c.IsActived && !c.IsDeleted);
+        }
         public Country GetWithId(int id)
         {
             return _context.GetNInclude(c => c.Id == id && !c.IsDeleted);

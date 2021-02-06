@@ -79,6 +79,24 @@ namespace CamexAPI
             services.AddScoped<IShopDAL, EFShop>();
             services.AddScoped<IShopLinkService, ShopLinkManager>();
             services.AddScoped<IShopLinkDAL, EFShopLink>();
+            services.AddScoped<IShopTranslateService, ShopTranslateManager>();
+            services.AddScoped<IShopTranslateDAL, EFShopTranslate>();
+            services.AddScoped<ITariffService, TariffManager>();
+            services.AddScoped<ITariffDAL, EFTariff>();
+            services.AddScoped<IPriceService, PriceManager>();
+            services.AddScoped<IPriceDAL, EFPrice>();
+            services.AddScoped<ICourierTranslateService, CourierTranslateManager>();
+            services.AddScoped<ICourierTranslateDAL, EFCourierTranslate>();
+            services.AddScoped<ICourierLocationService, CourierLocationManager>();
+            services.AddScoped<ICourierLocationDAL, EFCourierLocation>();
+            services.AddScoped<IServiceService, ServiceManager>();
+            services.AddScoped<IServiceDAL, EFService>();
+            services.AddScoped<IServiceTranslateService, ServiceTranslateManager>();
+            services.AddScoped<IServiceTranslateDAL, EFServiceTranslate>();
+            services.AddScoped<IFAQService, FAQManager>();
+            services.AddScoped<IFAQDAL, EFFAQ>();
+            services.AddScoped<IFAQTranslateService, FAQTranslateManager>();
+            services.AddScoped<IFAQTranslateDAL, EFFAQTranslate>();
             // For Identity  
             services.AddIdentity<AppUser, IdentityRole>(IdentityOption =>
             {

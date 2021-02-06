@@ -6,4 +6,9 @@ export class Office{
   isActived:boolean;
   isDeleted: boolean;
   officeNameTranlates:OfficeNameTranlates[];
+  phoneNumber: string;
+  email: string;
+  url: string;
+  email2: string;
+
 }

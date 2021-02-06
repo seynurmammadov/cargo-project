@@ -20,8 +20,6 @@ export class CountriesComponent implements OnInit {
   }
   get() {
     this.service.getCountriesActive().subscribe(res=>{
-console.log(res)
-
       res.forEach(c=>{
         c.noticeTranslate.forEach(ct=>{
           if(ct.languageId==this.languageService.select.id){

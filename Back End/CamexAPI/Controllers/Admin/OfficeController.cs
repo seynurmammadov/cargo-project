@@ -37,7 +37,20 @@ namespace CamexAPI.Controllers.Admin
                 return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
             }
         }
-
+        [HttpGet]
+        [Route("active")]
+        public IActionResult GetActive()
+        {
+            try
+            {
+                List<Office> offices = _officeContext.GetAllActive();
+                return Ok(offices);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+            }
+        }
         // POST api/<OfficeController>
         [HttpPost]
         public IActionResult Post([FromBody] Office office)
@@ -129,12 +142,18 @@ namespace CamexAPI.Controllers.Admin
                     });
 
                 db_office.PriceValue = office.PriceValue;
+                db_office.PhoneNumber = office.PhoneNumber;
+                db_office.Email = office.Email;
+                db_office.Email2 = office.Email2;
                 db_office.IsActived = office.IsActived;
+                db_office.Url = office.Url;
                 _officeContext.Update(db_office);
                 foreach (OfficeNameTranslate item in office.OfficeNameTranlates)
                 {
                     OfficeNameTranslate db_officeTranslate = _officeTranslateContext.GetWithId(item.Id);
                     db_officeTranslate.Name = item.Name;
+                    db_officeTranslate.Address = item.Address;
+                    db_officeTranslate.WorkTime = item.WorkTime;
                     _officeTranslateContext.Update(db_officeTranslate);
                 }
                 return Ok();

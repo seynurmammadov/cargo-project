@@ -49,8 +49,10 @@ export class CountryInfoComponent implements OnInit {
       this.countryData=res;
       this.dataSource = new MatTableDataSource(this.countryData.countryAddressDescriptions);
       this.loaded=true
-      setTimeout(() => this.dataSource.paginator = this.paginator)
-      this.dataSource.sort = this.sort;
+      setTimeout(() =>{
+        this.dataSource.paginator = this.paginator
+        this.dataSource.sort = this.sort;
+      } )
     })
   }
   openDialogCreate(): void {

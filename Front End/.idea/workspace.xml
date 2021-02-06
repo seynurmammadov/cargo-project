@@ -5,47 +5,71 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e2a3b79f-e3fe-4f4c-9bf9-7e44337100bd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/Core/models/Shop.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Core/models/ShopLink.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/Core/models/UserVM.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/Core/models/CourierLocation.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/Core/models/CourierTranslate.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/Core/models/FAQ.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/Core/models/FAQTranslate.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/Core/models/PriceList.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/Core/models/Service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/Core/models/ServiceTranslate.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/Core/models/ShopTranslate.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/Core/models/Tariff.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/.vs/AcrhitectureDLL/DesignTimeBuild/.dtbcache.v2" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/.vs/AcrhitectureDLL/DesignTimeBuild/.dtbcache.v2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/.vs/AcrhitectureDLL/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/.vs/AcrhitectureDLL/v16/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Back End/Business/Abstract/ICargoService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/Business/Abstract/ICargoService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Back End/Business/Concrete/CargoManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/Business/Concrete/CargoManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back End/Business/Abstract/ICountryService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/Business/Abstract/ICountryService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back End/Business/Concrete/CountryManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/Business/Concrete/CountryManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/Business/bin/Debug/netcoreapp3.1/Business.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/Business/bin/Debug/netcoreapp3.1/Business.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/Business/bin/Debug/netcoreapp3.1/Business.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/Business/bin/Debug/netcoreapp3.1/Business.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/Business/bin/Debug/netcoreapp3.1/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/Business/bin/Debug/netcoreapp3.1/DataAccess.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/Business/bin/Debug/netcoreapp3.1/DataAccess.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/Business/bin/Debug/netcoreapp3.1/DataAccess.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/Business/bin/Debug/netcoreapp3.1/Entity.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/Business/bin/Debug/netcoreapp3.1/Entity.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/Business/bin/Debug/netcoreapp3.1/Entity.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/Business/bin/Debug/netcoreapp3.1/Entity.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back End/Business/obj/Debug/netcoreapp3.1/Business.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/Business/obj/Debug/netcoreapp3.1/Business.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/Business/obj/Debug/netcoreapp3.1/Business.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/Business/obj/Debug/netcoreapp3.1/Business.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/Business/obj/Debug/netcoreapp3.1/Business.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/Business/obj/Debug/netcoreapp3.1/Business.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/Business/obj/Debug/netcoreapp3.1/Business.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/Business/obj/Debug/netcoreapp3.1/Business.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Back End/CamexAPI/CamexAPI.csproj.user" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/CamexAPI/CamexAPI.csproj.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Back End/CamexAPI/Controllers/Admin/CargoController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/CamexAPI/Controllers/Admin/CargoController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Back End/CamexAPI/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/CamexAPI/Controllers/UserController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back End/CamexAPI/CamexAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/CamexAPI/CamexAPI.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back End/CamexAPI/Controllers/Admin/CountryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/CamexAPI/Controllers/Admin/CountryController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back End/CamexAPI/Controllers/Admin/OfficeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/CamexAPI/Controllers/Admin/OfficeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back End/CamexAPI/Controllers/ShopController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/CamexAPI/Controllers/ShopController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back End/CamexAPI/Migrations/MyIdentityDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/CamexAPI/Migrations/MyIdentityDbContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back End/CamexAPI/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/CamexAPI/Startup.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/CamexAPI/bin/Debug/netcoreapp3.1/Business.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/CamexAPI/bin/Debug/netcoreapp3.1/Business.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/CamexAPI/bin/Debug/netcoreapp3.1/Business.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/CamexAPI/bin/Debug/netcoreapp3.1/Business.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back End/CamexAPI/bin/Debug/netcoreapp3.1/CamexAPI.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/CamexAPI/bin/Debug/netcoreapp3.1/CamexAPI.deps.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/CamexAPI/bin/Debug/netcoreapp3.1/CamexAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/CamexAPI/bin/Debug/netcoreapp3.1/CamexAPI.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/CamexAPI/bin/Debug/netcoreapp3.1/CamexAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/CamexAPI/bin/Debug/netcoreapp3.1/CamexAPI.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/CamexAPI/bin/Debug/netcoreapp3.1/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/CamexAPI/bin/Debug/netcoreapp3.1/DataAccess.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/CamexAPI/bin/Debug/netcoreapp3.1/DataAccess.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/CamexAPI/bin/Debug/netcoreapp3.1/DataAccess.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/CamexAPI/bin/Debug/netcoreapp3.1/Entity.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/CamexAPI/bin/Debug/netcoreapp3.1/Entity.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/CamexAPI/bin/Debug/netcoreapp3.1/Entity.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/CamexAPI/bin/Debug/netcoreapp3.1/Entity.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back End/CamexAPI/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Authentication.JwtBearer.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/CamexAPI/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Authentication.JwtBearer.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back End/CamexAPI/obj/CamexAPI.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/CamexAPI/obj/CamexAPI.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back End/CamexAPI/obj/Debug/netcoreapp3.1/CamexAPI.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/CamexAPI/obj/Debug/netcoreapp3.1/CamexAPI.assets.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/CamexAPI/obj/Debug/netcoreapp3.1/CamexAPI.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/CamexAPI/obj/Debug/netcoreapp3.1/CamexAPI.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/CamexAPI/obj/Debug/netcoreapp3.1/CamexAPI.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/CamexAPI/obj/Debug/netcoreapp3.1/CamexAPI.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/CamexAPI/obj/Debug/netcoreapp3.1/CamexAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/CamexAPI/obj/Debug/netcoreapp3.1/CamexAPI.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/CamexAPI/obj/Debug/netcoreapp3.1/CamexAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/CamexAPI/obj/Debug/netcoreapp3.1/CamexAPI.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Back End/DataAccess/Abstract/ICargoDAL.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/DataAccess/Abstract/ICargoDAL.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Back End/DataAccess/Concrete/EFCargo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/DataAccess/Concrete/EFCargo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back End/CamexAPI/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/CamexAPI/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back End/CamexAPI/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/CamexAPI/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back End/DataAccess/Abstract/ICountryDAL.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/DataAccess/Abstract/ICountryDAL.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back End/DataAccess/Concrete/AppDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/DataAccess/Concrete/AppDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back End/DataAccess/Concrete/EFCountry.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/DataAccess/Concrete/EFCountry.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back End/DataAccess/Concrete/EFShop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/DataAccess/Concrete/EFShop.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back End/DataAccess/Concrete/IOfficeNameTranslate.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back End/DataAccess/Migrations/AppDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/DataAccess/Migrations/AppDbContextModelSnapshot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/DataAccess/bin/Debug/netcoreapp3.1/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/DataAccess/bin/Debug/netcoreapp3.1/DataAccess.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/DataAccess/bin/Debug/netcoreapp3.1/DataAccess.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/DataAccess/bin/Debug/netcoreapp3.1/DataAccess.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/DataAccess/bin/Debug/netcoreapp3.1/Entity.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/DataAccess/bin/Debug/netcoreapp3.1/Entity.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/DataAccess/bin/Debug/netcoreapp3.1/Entity.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/DataAccess/bin/Debug/netcoreapp3.1/Entity.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back End/DataAccess/obj/Debug/netcoreapp3.1/DataAccess.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/DataAccess/obj/Debug/netcoreapp3.1/DataAccess.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/DataAccess/obj/Debug/netcoreapp3.1/DataAccess.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/DataAccess/obj/Debug/netcoreapp3.1/DataAccess.csprojAssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/DataAccess/obj/Debug/netcoreapp3.1/DataAccess.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/DataAccess/obj/Debug/netcoreapp3.1/DataAccess.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/DataAccess/obj/Debug/netcoreapp3.1/DataAccess.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/DataAccess/obj/Debug/netcoreapp3.1/DataAccess.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Back End/Entity/Models/Cargo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/Entity/Models/Cargo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back End/Entity/Models/Country.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/Entity/Models/Country.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back End/Entity/Models/Office.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/Entity/Models/Office.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back End/Entity/Models/OfficeNameTranslate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/Entity/Models/OfficeNameTranslate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Back End/Entity/Models/Shop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/Entity/Models/Shop.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/Entity/bin/Debug/netcoreapp3.1/Entity.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/Entity/bin/Debug/netcoreapp3.1/Entity.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/Entity/bin/Debug/netcoreapp3.1/Entity.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/Entity/bin/Debug/netcoreapp3.1/Entity.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/Entity/obj/Debug/netcoreapp3.1/Entity.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/Entity/obj/Debug/netcoreapp3.1/Entity.csproj.CoreCompileInputs.cache" afterDir="false" />
@@ -53,30 +77,52 @@
       <change beforePath="$PROJECT_DIR$/../Back End/Entity/obj/Debug/netcoreapp3.1/Entity.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/Entity/obj/Debug/netcoreapp3.1/Entity.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/Entity/obj/Debug/netcoreapp3.1/Entity.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/Entity/obj/Debug/netcoreapp3.1/Entity.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/Admin/countries-all/CountryData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/countries-all/CountryData.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/countries-all/countries-all.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/countries-all/countries-all.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Admin/countries-all/countries-all.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/countries-all/countries-all.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/Admin/countries-all/country-info/country-info.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/countries-all/country-info/country-info.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/add-statement-to-anbar/add-statement-to-anbar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/add-statement-to-anbar/add-statement-to-anbar.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/country/country-edit-dialog/country-edit-dialog.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/country/country-edit-dialog/country-edit-dialog.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/country/country-info-create/country-info-create.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/country/country-info-create/country-info-create.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/office/create-office/create-office.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/office/create-office/create-office.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/office/create-office/create-office.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/office/create-office/create-office.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/office/update-office/update-office.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/office/update-office/update-office.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/office/update-office/update-office.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/office/update-office/update-office.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/shop/shop-create-dialog/shop-create-dialog.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/shop/shop-create-dialog/shop-create-dialog.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/shop/shop-create-dialog/shop-create-dialog.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/shop/shop-create-dialog/shop-create-dialog.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/shop/shop-update-dialog/shop-update-dialog.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/shop/shop-update-dialog/shop-update-dialog.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/shop/shop-update-dialog/shop-update-dialog.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/shop/shop-update-dialog/shop-update-dialog.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/Admin/layout/layout.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/layout/layout.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/layout/layout.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/layout/layout.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/parcels/parcels.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/parcels/parcels.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/parcels/parcels.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/parcels/parcels.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/statemets-admin/statemets-admin.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/statemets-admin/statemets-admin.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/users/user-orders/user-orders.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/users/user-orders/user-orders.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/users/users.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/users/users.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/users/users.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/users/users.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Core/models/Cargo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Core/models/Cargo.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Core/services/cargo/cargo.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Core/services/cargo/cargo.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Core/services/user/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Core/services/user/user.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Admin/offices/offices.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/offices/offices.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Admin/shops/shops.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/shops/shops.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Admin/shops/shops.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/shops/shops.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Core/models/Office.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Core/models/Office.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Core/models/OfficeNameTranlates.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Core/models/OfficeNameTranlates.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Core/models/Shop.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Core/models/Shop.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Core/services/Admin/countries/countries.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Core/services/Admin/countries/countries.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Core/services/Admin/office/office.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Core/services/Admin/office/office.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/myprofile/countries/countries.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/myprofile/countries/countries.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/banner/banner.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/banner/banner.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/calculator/calculator.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/calculator/calculator.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/calculator/calculator.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/calculator/calculator.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/calculator/calculator.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/calculator/calculator.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/contact/address.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/contact/contact.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/contact/contact.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/contact/contact.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/contact/contact.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/courier/courier.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/courier/courier.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/courier/courier.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/courier/courier.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/courier/models/zones.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/faq/faq.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/faq/faq.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/faq/faq.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/faq/faq.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/myprofile/countries/countries.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/myprofile/countries/countries.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/myprofile/myprofile.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/myprofile/myprofile.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/myprofile/myprofile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/myprofile/myprofile.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/myprofile/statements/statements.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/myprofile/statements/statements.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/service/service-item.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/service/service.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/service/service.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/service/service.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/service/service.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shoping/shoping.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shoping/shoping.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/shoping/shoping.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shoping/shoping.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/tariffs/tariffs.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/tariffs/tariffs.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/tariffs/tariffs.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/tariffs/tariffs.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/i18n/az.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/i18n/az.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/i18n/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/i18n/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/i18n/ru.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/i18n/ru.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,9 +147,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectId" id="1ms2WZSFgc13IO9IF6MvR9ZxM1L" />
   <component name="ProjectViewState">
@@ -171,6 +214,8 @@
       <workItem from="1612265349217" duration="26657000" />
       <workItem from="1612337359116" duration="1241000" />
       <workItem from="1612438362837" duration="29062000" />
+      <workItem from="1612528419186" duration="22169000" />
+      <workItem from="1612611433238" duration="25940000" />
     </task>
     <servers />
   </component>
@@ -239,12 +284,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/Admin/countries-all/country-info/country-info.component.ts</url>
-          <line>83</line>
+          <line>85</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/Admin/dialogs/office/update-office/update-office.component.ts</url>
-          <line>43</line>
+          <line>76</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -275,8 +320,12 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/Admin/dialogs/add-statement-to-anbar/add-statement-to-anbar.component.html</url>
           <line>43</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/Admin/countries-all/country-tariff/country-tariff.component.ts</url>
+          <line>114</line>
+          <option name="timeStamp" value="34" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

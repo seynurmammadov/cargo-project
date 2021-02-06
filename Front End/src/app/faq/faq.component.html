@@ -2,21 +2,18 @@
 </app-navbar>
 <app-mobile-navbar>
 </app-mobile-navbar>
-<app-banner [name]="name" [bannerSrc]="bannerSrc" class="pb-5"></app-banner>
+<app-banner [name]="'FAQ'" [bannerSrc]="bannerSrc" class="pb-5"></app-banner>
 <section id="faq" class="pt-5">
   <div class="container-fluid  pl-pr-10 pt-5 ">
     <mat-accordion>
 
-      <mat-expansion-panel (opened)="panelOpenState = true"
-                           (closed)="panelOpenState = false"
-      *ngFor="let panel of panels"
-      >
+      <mat-expansion-panel  *ngFor="let panel of faqs">
         <mat-expansion-panel-header>
           <mat-panel-title class="d-flex align-items-center">
-            <h3 class="m-0"><b>{{panel.name }}</b></h3>
+            <h3 class="m-0"><b>{{panel.faqTranslates[0].title }}</b></h3>
           </mat-panel-title>
         </mat-expansion-panel-header>
-      <div [innerHTML]="panel.description" class="pt-4 pb-4 pl-2 pr-2"></div>
+      <div [innerHTML]="panel.faqTranslates[0].description" class="pt-4 pb-4 pl-2 pr-2"></div>
       </mat-expansion-panel>
     </mat-accordion>
 

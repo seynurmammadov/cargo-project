@@ -38,7 +38,7 @@ export class OfficesComponent implements OnInit {
   }
   openDialogCreate(): void {
     const dialogRefCreate = this.dialog.open(CreateOfficeComponent, {
-      width: '450px',
+      width: '1050px',
     });
     dialogRefCreate.afterClosed().subscribe(() => {
       this.getOffices()
@@ -46,7 +46,7 @@ export class OfficesComponent implements OnInit {
   }
   openDialogEditOffice(row:Office): void {
     const dialogRefEdit = this.dialog.open(UpdateOfficeComponent, {
-      width: '450px',
+      width: '1050px',
       data: {row:row}
     });
     dialogRefEdit.afterClosed().subscribe(() => {

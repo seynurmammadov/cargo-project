@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ServiceItem} from './service-item';
+import {Service} from '../Core/models/Service';
+import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
+import {LanguagesService} from '../Core/services/lang/languages.service';
+import {Shop} from '../Core/models/Shop';
+import {ServiceService} from '../Core/services/Admin/service/service.service';
 
 @Component({
   selector: 'app-service',
@@ -7,29 +11,30 @@ import {ServiceItem} from './service-item';
   styleUrls: ['./service.component.scss']
 })
 export class ServiceComponent implements OnInit {
+  services:Service[]=[]
 
-  constructor() { }
-
-  ngOnInit(): void {
-    this.services=[{
-      title:"AIR SHIPPING FROM THE UNITED STATES,GERMANY,CHINA AND DUBAI",
-      description:"Camex offers international shipping of small and heavyweight cargo from the United States,Germany,China and Dubai to Georgia. Company supports the local customers to shop online worldwide and provides the quickest, cheapest and safest delivery of cargo. 15 year of expert knowledge in freight forwarding, offices in the United States, Europe and Asia and dedicated professionals ensure the high service quality, consistency and execution. Any individual or business customer having registered on our website may enjoy our services. Registration is free.",
-      iconSrc:"../../assets/image/icons/air-icon-png.png"
-    },{
-      title:"AIR SHIPPING FROM THE UNITED STATES,GERMANY,CHINA AND DUBAI",
-      description:"Camex offers international shipping of small and heavyweight cargo from the United States,Germany,China and Dubai to Georgia. Company supports the local customers to shop online worldwide and provides the quickest, cheapest and safest delivery of cargo. 15 year of expert knowledge in freight forwarding, offices in the United States, Europe and Asia and dedicated professionals ensure the high service quality, consistency and execution. Any individual or business customer having registered on our website may enjoy our services. Registration is free.",
-      iconSrc:"../../assets/image/icons/air-icon-png.png"
-    },{
-      title:"AIR SHIPPING FROM THE UNITED STATES,GERMANY,CHINA AND DUBAI",
-      description:"Camex offers international shipping of small and heavyweight cargo from the United States,Germany,China and Dubai to Georgia. Company supports the local customers to shop online worldwide and provides the quickest, cheapest and safest delivery of cargo. 15 year of expert knowledge in freight forwarding, offices in the United States, Europe and Asia and dedicated professionals ensure the high service quality, consistency and execution. Any individual or business customer having registered on our website may enjoy our services. Registration is free.",
-      iconSrc:"../../assets/image/icons/air-icon-png.png"
-    },{
-      title:"AIR SHIPPING FROM THE UNITED STATES,GERMANY,CHINA AND DUBAI",
-      description:"Camex offers international shipping of small and heavyweight cargo from the United States,Germany,China and Dubai to Georgia. Company supports the local customers to shop online worldwide and provides the quickest, cheapest and safest delivery of cargo. 15 year of expert knowledge in freight forwarding, offices in the United States, Europe and Asia and dedicated professionals ensure the high service quality, consistency and execution. Any individual or business customer having registered on our website may enjoy our services. Registration is free.",
-      iconSrc:"../../assets/image/icons/air-icon-png.png"
-    }]
-  }
-  services:ServiceItem[]=[]
-  name:string="Service"
   bannerSrc:string="../../assets/image/banners/service-banner.jpg";
+  constructor(public service:ServiceService,private translate: TranslateService,private languageService:LanguagesService) {
+    this.get()
+  }
+  ngOnInit(): void {
+    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.get()
+    });
+  }
+  get(){
+    this.service.getActive().subscribe(res=>{
+      res.forEach(r=>{
+        r.serviceTranslates.forEach(st=>{
+          if(st.languageId==this.languageService.select.id){
+            r.serviceTranslates[0]=st
+          }
+        })
+      })
+      this.services=res;
+    })
+  }
+  public createImgPath = (serverPath: string) => {
+    return `https://localhost:44387/Site/images/serviceIcon/${serverPath}`;
+  }
 }

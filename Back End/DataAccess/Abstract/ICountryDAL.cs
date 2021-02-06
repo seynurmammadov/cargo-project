@@ -11,5 +11,6 @@ namespace DataAccess.Abstract
     {
         List<Country> GetAllNInclude(Expression<Func<Country, bool>> filter = null);
         Country GetNInclude (Expression<Func<Country, bool>> filter = null);
+        List<Country> GetNIncludeTariff(Expression<Func<Country, bool>> filter = null);
     }
 }

@@ -2,20 +2,21 @@
 </app-navbar>
 <app-mobile-navbar>
 </app-mobile-navbar>
-<app-banner [name]="name" [bannerSrc]="bannerSrc"></app-banner>
+<app-banner [name]="'contact'|translate" [bannerSrc]="bannerSrc"></app-banner>
 <section id="contact" class="pt-5 pb-4">
   <div class="container-fluid pl-pr-10 pt-2 pb-5">
       <div class="d-flex flex-wrap ">
-        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 p-0 mt-4" *ngFor="let address of addresses">
+        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 p-0 mt-4" *ngFor="let address of offices">
           <div class="p-4 m-3 bg-color description h-100 d-flex flex-wrap align-content-between rounded">
             <div class="col-12 p-0">
-              <h2 class="title"><b>{{address.name}}</b></h2>
-              <div class="text-capitalize mb-2"><i class="far fa-map-marker-alt"></i> ünvan : <span class="sub">{{address.location}}</span></div>
-              <div class="text-capitalize mb-2"><i class="far fa-calendar-alt"></i> is vaxtlari :<br> <p class="sub p-0 m-0 mt-1" *ngFor="let time of address.workTime">{{time}}</p></div>
-              <div class="text-capitalize mb-2"><i class="far fa-mobile"></i> telefon : <span class="sub">{{address.phone}}</span></div>
-              <div class="text-capitalize mb-2"><i class="far fa-envelope"></i> email : <br><div class="sub p-0 m-0 mt-1 w-100" *ngFor="let email of address.email">{{email}} </div></div>
+              <h2 class="title"><b>{{address.officeNameTranlates[0].name}}</b></h2>
+              <div class="text-capitalize mb-2"><i class="far fa-map-marker-alt"></i> {{'address'|translate}} : <span class="sub">{{address.officeNameTranlates[0].address}}</span></div>
+              <div class="text-capitalize mb-2"><i class="far fa-calendar-alt"></i> {{'WorkTime'|translate}} :<br> <p class="sub p-0 m-0 mt-1" [innerHTML]="address.officeNameTranlates[0].workTime" ></p></div>
+              <div class="text-capitalize mb-2"><i class="far fa-mobile"></i> {{'Phone'|translate}} : <span class="sub">{{address.phoneNumber}}</span></div>
+              <div class="text-capitalize mb-2"><i class="far fa-envelope"></i> {{'Email'|translate}} : <br><div class="sub p-0 m-0 mt-1 w-100" >{{address.email}} </div></div>
+              <div class="text-capitalize mb-2" *ngIf="address.email2!=''"><i class="far fa-envelope"></i> {{'Email'|translate}} : <br><div class="sub p-0 m-0 mt-1 w-100" >{{address.email2}} </div></div>
             </div>
-            <div class="col-12 p-0"><a href="{{address.url}}" target="_blank"><button mat-raised-button class="w-100" >Xeritede Bax</button></a></div>
+            <div class="col-12 p-0"><a href="{{address.url}}" target="_blank"><button mat-raised-button class="w-100" >{{'CheckOnMap'|translate}}</button></a></div>
           </div>
         </div>
       </div>

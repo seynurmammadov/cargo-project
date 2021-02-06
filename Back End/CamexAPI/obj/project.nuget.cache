@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "kj2pFk7KT62DpxS8rpucUSaRq37KA+2WP+YS03niBsUrfeGFIleOCVBKSl0uohlcTGRvUP5hVvHRCL+zhAaKkA==",
+  "dgSpecHash": "honQoRALfIC2WZJ4ccpiMqX6nGqnxAgFRBQI4SKiKI49WqiCxDZP2bKWPYJ8KZBR2WG5avranfPEBG4jjutblQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Seynur\\Desktop\\Folders\\Projects\\cargo-project\\Back End\\CamexAPI\\CamexAPI.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Seynur\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.10\\microsoft.aspnetcore.authentication.jwtbearer.3.1.10.nupkg.sha512",
+    "C:\\Users\\Seynur\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.11\\microsoft.aspnetcore.authentication.jwtbearer.3.1.11.nupkg.sha512",
     "C:\\Users\\Seynur\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.10\\microsoft.aspnetcore.cryptography.internal.3.1.10.nupkg.sha512",
     "C:\\Users\\Seynur\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.10\\microsoft.aspnetcore.cryptography.keyderivation.3.1.10.nupkg.sha512",
     "C:\\Users\\Seynur\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

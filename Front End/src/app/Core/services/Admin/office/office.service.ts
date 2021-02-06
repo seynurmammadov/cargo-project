@@ -13,6 +13,9 @@ export class OfficeService {
   getOffices():Observable<Office[]>{
     return this.http.get<Office[]>(`${this.global.path}Office`);
   }
+  getActive():Observable<Office[]>{
+    return this.http.get<Office[]>(`${this.global.path}Office/active`);
+  }
   createOffice(body){
     return this.http.post(`${this.global.path}Office`,body);
   }

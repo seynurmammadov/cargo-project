@@ -35,7 +35,15 @@ namespace DataAccess.Concrete
         public DbSet<Receipt> Receipts { get; set; }
         public DbSet<Shop> Shops { get; set; }
         public DbSet<ShopLink> ShopLinks { get; set; }
-
+        public DbSet<ShopTranslate> ShopTranslates { get; set; }
+        public DbSet<Tariff> Tariffs { get; set; }
+        public DbSet<PriceList> PriceLists { get; set; }
+        public DbSet<CourierLocation> CourierLocations { get; set; }
+        public DbSet<CourierTranslate> CourierTranslates { get; set; }
+        public DbSet<FAQ> FAQs { get; set; }
+        public DbSet<FAQTranslate> FAQTranslates { get; set; }
+        public DbSet<Service> Services { get; set; }
+        public DbSet<ServiceTranslate> ServiceTranslates { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
         }

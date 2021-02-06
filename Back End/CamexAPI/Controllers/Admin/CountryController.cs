@@ -57,6 +57,20 @@ namespace CamexAPI.Controllers.Admin
                 return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
             }
         }
+        [HttpGet]
+        [Route("active/tariff")]
+        public IActionResult GetActiveTariff()
+        {
+            try
+            {
+                List<Country> countries = _countryContext.GetAllTariffActive();
+                return Ok(countries);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+            }
+        }
 
         // POST api/<CountryController>
         [HttpPost]

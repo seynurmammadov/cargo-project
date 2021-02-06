@@ -17,8 +17,8 @@ namespace DataAccess.Concrete
             using (var context = new AppDbContext())
             {
                 return filter == null
-                    ? context.Shops.Include(c => c.ShopLinks).ToList()
-                    : context.Shops.Where(filter).Include(c => c.ShopLinks).ToList();
+                    ? context.Shops.Include(c => c.ShopLinks).Include(s => s.ShopTranslates).ToList()
+                    : context.Shops.Where(filter).Include(c => c.ShopLinks).Include(s=>s.ShopTranslates).ToList();
             };
         }
         public Shop GetNInclude(Expression<Func<Shop, bool>> filter = null)
@@ -26,8 +26,8 @@ namespace DataAccess.Concrete
             using (var context = new AppDbContext())
             {
                 return filter == null
-                    ? context.Shops.Include(c => c.ShopLinks).FirstOrDefault()
-                    : context.Shops.Where(filter).Include(c => c.ShopLinks).FirstOrDefault();
+                    ? context.Shops.Include(c => c.ShopLinks).Include(s => s.ShopTranslates).FirstOrDefault()
+                    : context.Shops.Where(filter).Include(c => c.ShopLinks).Include(s => s.ShopTranslates).FirstOrDefault();
             };
         }
     }

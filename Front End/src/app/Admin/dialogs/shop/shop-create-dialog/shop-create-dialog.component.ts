@@ -19,10 +19,17 @@ export class ShopCreateDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm= new FormGroup({
-      Name: new FormControl('', [
+
+      IsActived: new FormControl(false ),
+      NameRussia: new FormControl('', [
         Validators.required,
       ]),
-      IsActived: new FormControl(false ),
+      NameEnglish: new FormControl('', [
+        Validators.required,
+      ]),
+      NameAzerbaijan: new FormControl('', [
+        Validators.required,
+      ]),
     })
   }
   public errorHandling = (control: string, error: string) => {
@@ -30,9 +37,22 @@ export class ShopCreateDialogComponent implements OnInit {
   }
   submit(){
     const body = new FormData();
-    body.append("Name",this.createForm.controls["Name"].value.trim())
     body.append("IsActived",this.createForm.controls["IsActived"].value)
-
+    const ShopTranslates= [
+      {
+        Name:this.createForm.controls["NameEnglish"].value.trim(),
+        LanguageId:1
+      },
+      {
+        Name:this.createForm.controls["NameRussia"].value.trim(),
+        LanguageId:2
+      },
+      {
+        Name:this.createForm.controls["NameAzerbaijan"].value.trim(),
+        LanguageId:3
+      }
+    ]
+    body.append("Translates",JSON.stringify(ShopTranslates))
     this.service.create(body).subscribe(
       ()=> {
         this.dialogRef.close();

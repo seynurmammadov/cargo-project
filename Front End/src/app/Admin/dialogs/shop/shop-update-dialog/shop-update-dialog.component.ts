@@ -22,7 +22,13 @@ export class ShopUpdateDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateForm= new FormGroup({
-      Name: new FormControl(this.data.name, [
+      NameEnglish: new FormControl(this.data.shopTranslates[0].name, [
+        Validators.required,
+      ]),
+      NameRussia: new FormControl(this.data.shopTranslates[1].name, [
+        Validators.required,
+      ]),
+      NameAzerbaijan: new FormControl(this.data.shopTranslates[2].name, [
         Validators.required,
       ]),
       IsActived: new FormControl(this.data.isActived ),
@@ -33,9 +39,26 @@ export class ShopUpdateDialogComponent implements OnInit {
   }
   submit(){
     const body = new FormData();
-    body.append("Name",this.updateForm.controls["Name"].value.trim())
     body.append("IsActived",this.updateForm.controls["IsActived"].value)
     body.append("id",this.data.id.toString())
+    const ShopTranslates= [
+      {
+        Id:this.data.shopTranslates[0].id,
+        Name:this.updateForm.controls["NameEnglish"].value.trim(),
+        LanguageId:1
+      },
+      {
+        Id:this.data.shopTranslates[1].id,
+        Name:this.updateForm.controls["NameRussia"].value.trim(),
+        LanguageId:2
+      },
+      {
+        Id:this.data.shopTranslates[2].id,
+        Name:this.updateForm.controls["NameAzerbaijan"].value.trim(),
+        LanguageId:3
+      }
+    ]
+    body.append("Translates",JSON.stringify(ShopTranslates))
     this.service.update(body).subscribe(
       ()=> {
         this.dialogRef.close();

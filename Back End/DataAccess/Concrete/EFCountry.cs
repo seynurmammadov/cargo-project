@@ -30,5 +30,14 @@ namespace DataAccess.Concrete
                     : context.Countries.Where(filter).Include(c => c.CountryAddressDescriptions).FirstOrDefault();
             };
         }
+        public List<Country> GetNIncludeTariff(Expression<Func<Country, bool>> filter = null)
+        {
+            using (var context = new AppDbContext())
+            {
+                return filter == null
+                    ? context.Countries.Include(c => c.Tariff).ThenInclude(t=>t.PriceLists).ToList()
+                    : context.Countries.Where(filter).Include(c => c.Tariff).ThenInclude(t => t.PriceLists).ToList();
+            };
+        }
     }
 }

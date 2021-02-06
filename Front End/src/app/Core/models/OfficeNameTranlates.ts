@@ -3,4 +3,7 @@ export class OfficeNameTranlates{
   name: string;
   officeId: number;
   languageId: number;
+  address: string;
+  workTime: string;
 }
+

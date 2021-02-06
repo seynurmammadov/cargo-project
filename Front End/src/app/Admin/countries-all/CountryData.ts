@@ -1,5 +1,6 @@
 import {CountryInfoData} from './country-info/CountryInfoData';
 import {NoticeTranslates} from './NoticeTranslates';
+import {Tariff} from '../../Core/models/Tariff';
 
 export class CountryData{
   id:number
@@ -9,6 +10,7 @@ export class CountryData{
   isActived: boolean
   image:string
   countryAddressDescriptions:CountryInfoData[]
+  tariff:Tariff[]
   noticeTranslate:NoticeTranslates[];
   bgImage:string
 }

@@ -54,7 +54,17 @@
                   <div class="buttons">
                     <button mat-icon-button  color="primary" (click)="openDialogEditCountry(row)" > <mat-icon style="font-size: 22px ">edit</mat-icon></button>
                     <button mat-icon-button  color="warn" (click)="deleteCountry(row.id)" > <mat-icon style="font-size: 22px ">delete_forever</mat-icon></button>
-                    <button mat-icon-button   [routerLink]="row.id" > <mat-icon style="font-size: 22px ">list</mat-icon></button>
+                    <button mat-icon-button [matMenuTriggerFor]="menu"  >
+                      <mat-icon style="font-size: 22px ">list</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu" xPosition="before" >
+                      <button  mat-menu-item   [routerLink]="row.id" >
+                       <span>Descriprions</span>
+                      </button>
+                      <button mat-menu-item [routerLink]="'tariffs/'+row.id" >
+                        <span>Tariffs</span>
+                      </button>
+                    </mat-menu>
                   </div>
                 </td>
               </ng-container>

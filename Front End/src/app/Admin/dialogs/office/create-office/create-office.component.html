@@ -36,6 +36,64 @@
                   {{'NumberPattern' | translate }}
                 </mat-error>
               </mat-form-field>
+              <mat-form-field class="w-100" appearance="fill">
+                <mat-label class="text-capitalize">Phone</mat-label>
+                <input type="text" matInput formControlName="PhoneNumber"  placeholder="0.3">
+                <mat-error  *ngIf="errorHandling('PhoneNumber','required')" [innerHTML]="'Required' | translate ">
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="w-100" appearance="fill">
+                <mat-label class="text-capitalize">Url location</mat-label>
+                <input type="text" matInput formControlName="Url"  placeholder="0.3">
+                <mat-error  *ngIf="errorHandling('Url','required')" [innerHTML]="'Required' | translate ">
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="w-100" appearance="fill">
+                <mat-label class="text-capitalize">Email</mat-label>
+                <input type="text" matInput formControlName="Email"  placeholder="0.3">
+                <mat-error  *ngIf="errorHandling('Email','required')" [innerHTML]="'Required' | translate ">
+                </mat-error>
+                <mat-error  *ngIf="errorHandling('Email','email') && !errorHandling('Email','required')">
+                  {{'EmailInCorrect' | translate }}
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="w-100" appearance="fill">
+                <mat-label class="text-capitalize">Rezerv Email </mat-label>
+                <input type="text" matInput formControlName="Email2"  placeholder="0.3">
+                <mat-error  *ngIf="errorHandling('Email2','required')" [innerHTML]="'Required' | translate ">
+                </mat-error>
+                <mat-error  *ngIf="errorHandling('Email2','email') && !errorHandling('Email2','required')">
+                  {{'EmailInCorrect' | translate }}
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="w-100" appearance="fill">
+                <mat-label class="text-capitalize">Address in Russia</mat-label>
+                <input type="text" matInput formControlName="AddressRussia"  placeholder="Имя">
+                <mat-error  *ngIf="errorHandling('AddressRussia','required')" [innerHTML]="'Required' | translate ">
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="w-100" appearance="fill">
+                <mat-label class="text-capitalize">Address in English</mat-label>
+                <input type="text" matInput formControlName="AddressEnglish"  placeholder="Name">
+                <mat-error  *ngIf="errorHandling('AddressEnglish','required')" [innerHTML]="'Required' | translate ">
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="w-100" appearance="fill">
+                <mat-label class="text-capitalize">Address in Azerbaijan</mat-label>
+                <input type="text" matInput formControlName="AddressAzerbaijan"  placeholder="Ad">
+                <mat-error  *ngIf="errorHandling('AddressAzerbaijan','required')" [innerHTML]="'Required' | translate ">
+                </mat-error>
+              </mat-form-field>
+
+              <mat-label class="text-capitalize">Notice in Russia</mat-label>
+              <ckeditor [editor]="Editor" formControlName="WorkTimeRussia" data="<p>Hello, world!</p>"></ckeditor>
+
+              <mat-label class="text-capitalize">Notice in English</mat-label>
+              <ckeditor [editor]="Editor" formControlName="WorkTimeEnglish"  data="<p>Hello, world!</p>"></ckeditor>
+
+              <mat-label class="text-capitalize">Notice in Azerbaijan</mat-label>
+              <ckeditor [editor]="Editor" formControlName="WorkTimeAzerbaijan" data="<p>Hello, world!</p>"></ckeditor>
+
               <mat-checkbox class="mt-2 w-100 text-capitalize" color="primary" formControlName="IsActived" >
                 Activation
               </mat-checkbox>

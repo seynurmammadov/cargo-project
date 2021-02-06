@@ -105,11 +105,26 @@ import { AddToAnbarNewParcelComponent } from './Admin/dialogs/add-to-anbar-new-p
 import { ParcelInfoComponent } from './Admin/dialogs/parcel-info/parcel-info.component';
 import { ShopsComponent } from './Admin/shops/shops.component';
 import { ShopLinkComponent } from './Admin/shops/shop-link/shop-link.component';
-import {Shop} from './Core/models/Shop';
 import { ShopCreateDialogComponent } from './Admin/dialogs/shop/shop-create-dialog/shop-create-dialog.component';
 import { ShopUpdateDialogComponent } from './Admin/dialogs/shop/shop-update-dialog/shop-update-dialog.component';
 import { ShopLinkUpdateDialogComponent } from './Admin/dialogs/shop/shop-link-update-dialog/shop-link-update-dialog.component';
 import { ShopLinkCreateDialogComponent } from './Admin/dialogs/shop/shop-link-create-dialog/shop-link-create-dialog.component';
+import { CountryTariffComponent } from './Admin/countries-all/country-tariff/country-tariff.component';
+import { TariffPricesComponent } from './Admin/countries-all/country-tariff/tariff-prices/tariff-prices.component';
+import { TariffUpdateComponent } from './Admin/dialogs/country/tariff-update/tariff-update.component';
+import { TariffCreateComponent } from './Admin/dialogs/country/tariff-create/tariff-create.component';
+import { PriceCreateComponent } from './Admin/dialogs/country/price-create/price-create.component';
+import { PriceUpdateComponent } from './Admin/dialogs/country/price-update/price-update.component';
+import { CourierServiceComponent } from './Admin/courier-service/courier-service.component';
+import { CourierCreateComponent } from './Admin/dialogs/courier/courier-create/courier-create.component';
+import { CourierUpdateComponent } from './Admin/dialogs/courier/courier-update/courier-update.component';
+import { FAQAdminComponent } from './Admin/faqadmin/faqadmin.component';
+import { ServiceAdminComponent } from './Admin/service-admin/service-admin.component';
+import { FaqCreateComponent } from './Admin/dialogs/faq/faq-create/faq-create.component';
+import { FaqUpdateComponent } from './Admin/dialogs/faq/faq-update/faq-update.component';
+import { ServiceUpdateComponent } from './Admin/dialogs/service/service-update/service-update.component';
+import { ServiceCreateComponent } from './Admin/dialogs/service/service-create/service-create.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 const routes: Routes=[
   { path: "home", redirectTo:"" ,pathMatch:"full"},
   { path:"",  component:HomeComponent },
@@ -235,6 +250,17 @@ const routes: Routes=[
         data: {animation: 'countriesId'},
       },
       {
+        path: 'countries/tariffs/:id',
+        component: CountryTariffComponent,
+        data: {animation: 'tariffsCountry'},
+      },
+      {
+        path: 'countries/tariffs/:id/prices/:id',
+        component: TariffPricesComponent,
+        data: {animation: 'tariffsPrices'},
+      },
+
+      {
         path: 'offices',
         component: OfficesComponent,
         data: {animation: 'offices'},
@@ -248,6 +274,21 @@ const routes: Routes=[
         path: 'shops/:id',
         component: ShopLinkComponent,
         data: {animation: 'shop-link'},
+      },
+      {
+        path: 'courier-service',
+        component: CourierServiceComponent,
+        data: {animation: 'CourierService'},
+      },
+      {
+        path: 'faq',
+        component: FAQAdminComponent,
+        data: {animation: 'CourierService'},
+      },
+      {
+        path: 'service',
+        component: ServiceAdminComponent,
+        data: {animation: 'CourierService'},
       },
       {
         path: 'cities',
@@ -346,6 +387,21 @@ const routes: Routes=[
     ShopUpdateDialogComponent,
     ShopLinkUpdateDialogComponent,
     ShopLinkCreateDialogComponent,
+    CountryTariffComponent,
+    TariffPricesComponent,
+    TariffUpdateComponent,
+    TariffCreateComponent,
+    PriceCreateComponent,
+    PriceUpdateComponent,
+    CourierServiceComponent,
+    CourierCreateComponent,
+    CourierUpdateComponent,
+    FAQAdminComponent,
+    ServiceAdminComponent,
+    FaqCreateComponent,
+    FaqUpdateComponent,
+    ServiceUpdateComponent,
+    ServiceCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -385,11 +441,12 @@ const routes: Routes=[
     MatListModule,
     MatAutocompleteModule,
     MatChipsModule,
-    MatMenuModule
+    MatMenuModule,
+    CKEditorModule
   ],
   exports: [
     RouterModule,
-    LayoutComponent,
+    LayoutComponent
   ],
   providers: [
     LanguagesService,

@@ -31,5 +31,6 @@ namespace Entity.Models
         public ICollection<NoticeTranslate> NoticeTranslate { get; set; }
         public ICollection<Cargo> Cargo { get; set; }
         public ICollection<Order> Order { get; set; }
+        public ICollection<Tariff> Tariff { get; set; }
     }
 }

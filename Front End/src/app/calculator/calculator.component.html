@@ -2,107 +2,107 @@
 </app-navbar>
 <app-mobile-navbar>
 </app-mobile-navbar>
-<app-banner [name]="name" [bannerSrc]="bannerSrc" ></app-banner>
+<app-banner [name]="'calculator'|translate" [bannerSrc]="bannerSrc" ></app-banner>
 <section id="calculator" class="pt-5">
-  <div class="container-fluid  pl-pr-10 pt-5">
-   <div class="d-flex flex-wrap bg-color rounded">
-     <div class="col-lg-4 col-md-4 col-sm-12 col-12 p-0 ">
-        <div class="approximate-price d-flex justify-content-center align-items-center rounded">
-          <span>Approximate price</span>
+  <form [formGroup]="Form" novalidate>
+    <div class="container-fluid  pl-pr-10 pt-5">
+      <div class="d-flex flex-wrap bg-color rounded">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-12 p-0 ">
+          <div class="approximate-price d-flex flex-column justify-content-center align-items-center rounded">
+            <span>{{'Approximate'|translate}}</span>
+              <h4 class="cost">{{total}} USD</h4>
+          </div>
+
         </div>
-     </div>
-     <div class="col-lg-8 col-md-8 col-sm-12 col-12 p-0">
+        <div class="col-lg-8 col-md-8 col-sm-12 col-12 p-0">
 
-       <div class="box">
-         <div class="row p-0 m-0">
-           <mat-form-field appearance="fill"  class="country">
-             <mat-label>Country</mat-label>
-             <mat-select>
-               <mat-option *ngFor="let country of countries" [value]="country.value"  class="text-uppercase">
-                 {{country.name}}
-               </mat-option>
-             </mat-select>
-           </mat-form-field>
-           <mat-form-field appearance="fill"  class="country">
-             <mat-label>Issuing office</mat-label>
-             <mat-select>
-               <mat-option *ngFor="let office of offices" [value]="office.value"  class="text-uppercase">
-                 {{office.name}}
-               </mat-option>
-             </mat-select>
-           </mat-form-field>
-           <div class="col-lg-6 d-flex p-0 pr-lg-1 ">
-             <div class="col-12 p-0">
-               <mat-form-field appearance="fill"  class="lenght">
-                 <mat-label>Lenght</mat-label>
-                 <mat-select>
-                   <mat-option  value="cm"  class="text-uppercase">
-                     CM
-                   </mat-option>
-                   <mat-option  value="in"  class="text-uppercase">
-                     IN
-                   </mat-option>
-                 </mat-select>
-               </mat-form-field>
-             </div>
-           </div>
-           <div class="col-lg-6 p-0 d-flex pl-lg-1">
-             <div class="col-12 p-0 ">
-               <mat-form-field appearance="fill"  class="weight float-right">
-                 <mat-label>Weight</mat-label>
-                 <mat-select>
-                   <mat-option  value="kg"  class="text-uppercase">
-                     KG
-                   </mat-option>
-                   <mat-option  value="lb"  class="text-uppercase">
-                     LB
-                   </mat-option>
-                 </mat-select>
-               </mat-form-field>
-             </div>
-           </div>
-         </div>
-         <div class="items d-flex">
-           <div class="col-3 p-0">
-             <mat-form-field appearance="fill">
-               <mat-label>Çəki</mat-label>
-               <input type="number" min="0" value="0" matInput >
-             </mat-form-field>
-           </div>
-           <div class="col-3 p-0">
-             <mat-form-field appearance="fill">
-               <mat-label>Uzunluq</mat-label>
-               <input type="number" min="0" value="0" matInput >
-             </mat-form-field>
-           </div>
-           <div class="col-3 p-0">
-             <mat-form-field appearance="fill">
-               <mat-label>Eni</mat-label>
-               <input type="number" min="0" value="0" matInput >
-             </mat-form-field>
-           </div>
-           <div class="col-3 p-0">
-             <mat-form-field appearance="fill">
-               <mat-label>Hündürlük</mat-label>
-               <input type="number" min="0" value="0" matInput>
-             </mat-form-field>
-           </div>
-         </div>
-         <div class="bottom">
-           <div class="row p-0">
-             <div class="col-lg-5 col-sm-6 col-6 text-sm-right text-xs-left">
-               <span class="cost-title">Təqribi qiymət</span>
-               <h4 class="cost">0$</h4>
-             </div>
-             <div class="col-lg-7 col-sm-6 col-6">
-               <button mat-raised-button>DAŞINMA HAQQINI HESABLA</button>
-             </div>
-           </div>
-         </div>
-       </div>
+          <div class="box">
+            <div class="row p-0 m-0">
+              <mat-form-field appearance="fill"  class="country">
+                <mat-label>{{'country'|translate}}</mat-label>
+                <mat-select formControlName="Country">
+                  <mat-option *ngFor="let country of countries" [value]="country.id"  class="text-capitalize">
+                    {{country.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="fill"  class="country">
+                <mat-label>{{'issOffice'|translate}}</mat-label>
+                <mat-select formControlName="Office">
+                  <mat-option *ngFor="let office of offices" [value]="office.id"  class="text-capitalize">
+                    {{office.officeNameTranlates[0].name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <div class="col-lg-6 d-flex p-0 pr-lg-1 ">
+                <div class="col-12 p-0">
+                  <mat-form-field appearance="fill"  class="lenght">
+                    <mat-label>{{'lengthUnit'|translate}}</mat-label>
+                    <mat-select formControlName="LenghtUnit">
+                      <mat-option  value="1"  class="text-capitalize">
+                        {{'cmUnit'|translate}}
+                      </mat-option>
+                      <mat-option  value="2.54"  class="text-capitalize">
+                        {{'inUnit'|translate}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="col-lg-6 p-0 d-flex pl-lg-1">
+                <div class="col-12 p-0 ">
+                  <mat-form-field appearance="fill"  class="weight float-right">
+                    <mat-label>{{'weightUnit'|translate}}</mat-label>
+                    <mat-select formControlName="WeightUnit">
+                      <mat-option  value="1"  class="text-capitalize">
+                        {{'kgUnit'|translate}}
+                      </mat-option>
+                      <mat-option  value="0.453592"  class="text-capitalize">
+                        {{'lbUnit'|translate}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="items d-flex">
+              <div class="col-3 p-0">
+                <mat-form-field appearance="fill">
+                  <mat-label>{{'Weight'|translate}}</mat-label>
+                  <input formControlName="Weight" type="number" min="0" value="0" matInput >
+                </mat-form-field>
+              </div>
+              <div class="col-3 p-0">
+                <mat-form-field appearance="fill">
+                  <mat-label>{{'Length'|translate}}</mat-label>
+                  <input formControlName="Lenght" type="number" min="0" value="0" matInput >
+                </mat-form-field>
+              </div>
+              <div class="col-3 p-0">
+                <mat-form-field appearance="fill">
+                  <mat-label>{{'Width'|translate}}</mat-label>
+                  <input formControlName="Width" type="number" min="0" value="0" matInput >
+                </mat-form-field>
+              </div>
+              <div class="col-3 p-0">
+                <mat-form-field appearance="fill">
+                  <mat-label>{{'Height'|translate}}</mat-label>
+                  <input formControlName="Height" type="number" min="0" value="0" matInput>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="bottom">
+              <div class="row p-0">
+                <div class="col-12">
+                  <button mat-raised-button [disabled]="!Form.valid" (click)="calc()">{{'calcBtn'|translate}}</button>
+                </div>
+              </div>
+            </div>
+          </div>
 
-     </div>
-   </div>
-  </div>
+        </div>
+      </div>
+    </div>
+  </form>
 </section>
 <app-footer></app-footer>

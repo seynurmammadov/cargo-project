@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Panel } from './panel';
+import {FAQ} from '../Core/models/FAQ';
+import {MatTableDataSource} from '@angular/material/table';
+import {CourierService} from '../Core/services/Admin/courier/courier.service';
+import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
+import {LanguagesService} from '../Core/services/lang/languages.service';
+import {FaqService} from '../Core/services/Admin/faq/faq.service';
 
 @Component({
   selector: 'app-faq',
@@ -7,82 +12,29 @@ import { Panel } from './panel';
   styleUrls: ['./faq.component.scss']
 })
 export class FaqComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-    this.panels=[{
-      name:"TERMİNLƏR LÜĞƏTİ",
-      description:"<p><strong>Carrier</strong>– Bağlamaların daşınılmasını öz üzərinə götürən şirkət və ya fiziki şəxs;</p>\n" +
-        "\n" +
-        "<p><strong>Customer</strong>&nbsp;– «Camex» saytında qeydiyyatdan keçib və şirkətin xidmətlərindən istifadə edən hər hansı bir fiziki şəxs;</p>\n" +
-        "\n" +
-        "<p><strong>Shipping address</strong>&nbsp;– bağlamanın çatdırılma ünvanı;</p>\n" +
-        "\n" +
-        "<p><strong>Billing address</strong>&nbsp;– bank kartının qeydiyyatda olduğu ünvan;</p>\n" +
-        "\n" +
-        "<p><strong>Order number</strong>&nbsp;– sifariş nömrəsi;</p>\n" +
-        "\n" +
-        "<p><strong>Tracking number</strong>&nbsp;– bağlamanın izləmə nömrəsi;</p>\n" +
-        "\n" +
-        "<p><strong>Order confirmation</strong>&nbsp;– satıcı tərəfindən sifarişin təsdiq edilməsi haqqında məlumat;</p>\n" +
-        "\n" +
-        "<p><strong>Shipping confirmation</strong>&nbsp;– bağlamanın ünvana göndərilməsinin təstiq edilməsi haqqında məlumat.</p>"
-    },{
-      name:"TERMİNLƏR LÜĞƏTİ",
-      description:"<p><strong>Carrier</strong>– Bağlamaların daşınılmasını öz üzərinə götürən şirkət və ya fiziki şəxs;</p>\n" +
-        "\n" +
-        "<p><strong>Customer</strong>&nbsp;– «Camex» saytında qeydiyyatdan keçib və şirkətin xidmətlərindən istifadə edən hər hansı bir fiziki şəxs;</p>\n" +
-        "\n" +
-        "<p><strong>Shipping address</strong>&nbsp;– bağlamanın çatdırılma ünvanı;</p>\n" +
-        "\n" +
-        "<p><strong>Billing address</strong>&nbsp;– bank kartının qeydiyyatda olduğu ünvan;</p>\n" +
-        "\n" +
-        "<p><strong>Order number</strong>&nbsp;– sifariş nömrəsi;</p>\n" +
-        "\n" +
-        "<p><strong>Tracking number</strong>&nbsp;– bağlamanın izləmə nömrəsi;</p>\n" +
-        "\n" +
-        "<p><strong>Order confirmation</strong>&nbsp;– satıcı tərəfindən sifarişin təsdiq edilməsi haqqında məlumat;</p>\n" +
-        "\n" +
-        "<p><strong>Shipping confirmation</strong>&nbsp;– bağlamanın ünvana göndərilməsinin təstiq edilməsi haqqında məlumat.</p>"
-    },{
-      name:"TERMİNLƏR LÜĞƏTİ",
-      description:"<p><strong>Carrier</strong>– Bağlamaların daşınılmasını öz üzərinə götürən şirkət və ya fiziki şəxs;</p>\n" +
-        "\n" +
-        "<p><strong>Customer</strong>&nbsp;– «Camex» saytında qeydiyyatdan keçib və şirkətin xidmətlərindən istifadə edən hər hansı bir fiziki şəxs;</p>\n" +
-        "\n" +
-        "<p><strong>Shipping address</strong>&nbsp;– bağlamanın çatdırılma ünvanı;</p>\n" +
-        "\n" +
-        "<p><strong>Billing address</strong>&nbsp;– bank kartının qeydiyyatda olduğu ünvan;</p>\n" +
-        "\n" +
-        "<p><strong>Order number</strong>&nbsp;– sifariş nömrəsi;</p>\n" +
-        "\n" +
-        "<p><strong>Tracking number</strong>&nbsp;– bağlamanın izləmə nömrəsi;</p>\n" +
-        "\n" +
-        "<p><strong>Order confirmation</strong>&nbsp;– satıcı tərəfindən sifarişin təsdiq edilməsi haqqında məlumat;</p>\n" +
-        "\n" +
-        "<p><strong>Shipping confirmation</strong>&nbsp;– bağlamanın ünvana göndərilməsinin təstiq edilməsi haqqında məlumat.</p>"
-    },{
-      name:"TERMİNLƏR LÜĞƏTİ",
-      description:"<p><strong>Carrier</strong>– Bağlamaların daşınılmasını öz üzərinə götürən şirkət və ya fiziki şəxs;</p>\n" +
-        "\n" +
-        "<p><strong>Customer</strong>&nbsp;– «Camex» saytında qeydiyyatdan keçib və şirkətin xidmətlərindən istifadə edən hər hansı bir fiziki şəxs;</p>\n" +
-        "\n" +
-        "<p><strong>Shipping address</strong>&nbsp;– bağlamanın çatdırılma ünvanı;</p>\n" +
-        "\n" +
-        "<p><strong>Billing address</strong>&nbsp;– bank kartının qeydiyyatda olduğu ünvan;</p>\n" +
-        "\n" +
-        "<p><strong>Order number</strong>&nbsp;– sifariş nömrəsi;</p>\n" +
-        "\n" +
-        "<p><strong>Tracking number</strong>&nbsp;– bağlamanın izləmə nömrəsi;</p>\n" +
-        "\n" +
-        "<p><strong>Order confirmation</strong>&nbsp;– satıcı tərəfindən sifarişin təsdiq edilməsi haqqında məlumat;</p>\n" +
-        "\n" +
-        "<p><strong>Shipping confirmation</strong>&nbsp;– bağlamanın ünvana göndərilməsinin təstiq edilməsi haqqında məlumat.</p>"
-    }]
+  faqs:FAQ[]
+  bannerSrc:string="../../assets/image/banners/faq-banner.png";
+  constructor(private service:FaqService,private translate: TranslateService,private languageService:LanguagesService) {
+    this.get()
   }
 
-  panels:Panel[]=[];
-  name:string="FAQ"
-  bannerSrc:string="../../assets/image/banners/faq-banner.png";
+  ngOnInit(): void {
+    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.get()
+    });
+  }
+  get(){
+    this.service.get().subscribe(res=>{
+      res.forEach(r=>{
+        r.faqTranslates.forEach(st=>{
+          if(st.languageId==this.languageService.select.id){
+            r.faqTranslates[0]=st
+          }
+        })
+      })
+      this.faqs=res;
+
+    })
+  }
+
 }

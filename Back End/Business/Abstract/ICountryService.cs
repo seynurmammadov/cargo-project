@@ -10,6 +10,7 @@ namespace Business.Abstract
         Country GetWithId(int id);
         List<Country> GetAll();
         List<Country> GetAllActive();
+        List<Country> GetAllTariffActive();
         void Add(Country data);
         void Update(Country data);
         void Detele(int id);

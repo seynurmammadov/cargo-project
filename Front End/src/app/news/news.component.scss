@@ -28,4 +28,26 @@
     background: white;
     box-shadow: 3px 3px 10px 0 #e3e3e3;
   }
+  .news{
+    .owl-stage {
+      display: flex;
+    }
+    .owl-item {
+      display: flex;
+      flex: 1 0 auto;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+  }
+}
+a{
+  text-decoration: none;
+  color: black;
+  &:hover{
+    text-decoration: none;
+    color: black;
+  }
+}
+::ng-deep .mat-tab-label {
+  pointer-events: none;
 }

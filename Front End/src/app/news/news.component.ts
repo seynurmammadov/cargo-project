@@ -1,7 +1,11 @@
 import {AfterViewInit, Component, OnInit, ViewEncapsulation} from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { Flight } from './models/flight';
-import {News} from './models/news';
+import {News} from '../Core/models/News';
+import {Flight} from '../Core/models/Flight';
+import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
+import {LanguagesService} from '../Core/services/lang/languages.service';
+import {FlightService} from '../Core/services/Admin/flight/flight.service';
+import {NewsService} from '../Core/services/Admin/news/news.service';
 declare var $: any;
 @Component({
   selector: 'app-news',
@@ -10,48 +14,28 @@ declare var $: any;
   encapsulation: ViewEncapsulation.None
 })
 export class NewsComponent implements OnInit,AfterViewInit {
-  constructor() {
-    this.newsArr=[{
-      title:"Some Titleeeeeeeeeeeeeeeee6",
-      description:"Some DESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSssss",
-      newsImgSrc:"../../assets/image/news/5f4fcff5535eb.png"
-    },
-      {
-        title:"Some Titleeeeeeeeeeeeeeeee6",
-        description:"Some DESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSssss",
-        newsImgSrc:"../../assets/image/news/5f4fcff5535eb.png"
-      },{
-        title:"Some Titleeeeeeeeeeeeeeeee6",
-        description:"Some DESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSssss",
-        newsImgSrc:"../../assets/image/news/5f4fcff5535eb.png"
-      },{
-        title:"Some Titleeeeeeeeeeeeeeeee6",
-        description:"Some DESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSssss",
-        newsImgSrc:"../../assets/image/news/5f4fcff5535eb.png"
-      }];
-    this.flights=[{
-      landingTime:"13.12.2020",
-      flightFrom:"ankara",
-      flightTo:"baku"
-    },{
-      landingTime:"13.12.2020",
-      flightFrom:"ankara",
-      flightTo:"baku"
-    },{
-      landingTime:"13.12.2020",
-      flightFrom:"ankara",
-      flightTo:"baku"
-    },{
-      landingTime:"13.12.2020",
-      flightFrom:"ankara",
-      flightTo:"baku"
-    },{
-      landingTime:"13.12.2020",
-      flightFrom:"ankara",
-      flightTo:"baku"
-    }]
+  constructor(public service:NewsService,public serviceFlight:FlightService,private translate: TranslateService,private languageService:LanguagesService) {
+    this.get()
   }
   ngOnInit(): void {
+    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.get()
+    });
+  }
+  get(){
+    this.service.getActive().subscribe(res=>{
+      res.forEach(r=>{
+        r.newsTranslates.forEach(st=>{
+          if(st.languageId==this.languageService.select.id){
+            r.newsTranslates[0]=st
+          }
+        })
+      })
+      this.newsArr=res;
+    })
+    this.serviceFlight.getActive().subscribe(res=>{
+      this.flights=res
+    })
   }
   ngAfterViewInit(){
     $('.owl-nav').removeClass('disabled');
@@ -61,6 +45,7 @@ export class NewsComponent implements OnInit,AfterViewInit {
     loop: true,
     dots: false,
     navSpeed: 700,
+    autoHeight: false,
     nav: true,
     navText: [ '<i class="fas fa-arrow-left"></i>','<i class="fas fa-arrow-right"></i>'],
     responsive: {
@@ -81,6 +66,8 @@ export class NewsComponent implements OnInit,AfterViewInit {
 
   newsArr:News[]=[];
   flights:Flight[]=[];
-  name:string="News"
+  public createImgPath = (serverPath: string) => {
+    return `https://localhost:44387/Site/images/news/${serverPath}`;
+  }
   bannerSrc:string="../../assets/image/banners/news-banner.png";
 }

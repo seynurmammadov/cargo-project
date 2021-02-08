@@ -1,0 +1,18 @@
+#control{
+  img{
+    height: 100%;
+    object-fit: cover;
+  }
+
+
+
+
+}
+@media (max-width: 880px){
+  #control{
+    .new-item{
+     padding: 0!important;
+      min-height: 300px;
+    }
+  }
+}

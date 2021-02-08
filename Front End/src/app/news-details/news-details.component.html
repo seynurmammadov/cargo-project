@@ -1,0 +1,25 @@
+<app-navbar>
+</app-navbar>
+<app-mobile-navbar>
+</app-mobile-navbar>
+<app-banner [name]="news.newsTranslates[0].title " [bannerSrc]="bannerSrc"></app-banner>
+<section id="news-page" class="pt-5">
+  <div class="container-fluid  pl-pr-10 pt-5 bg-color">
+    <div class="w-100 pt-5">
+
+    </div>
+      <div class="d-flex flex-wrap justify-content-center">
+        <div class="col-lg-4 col-md-7 col-sm-9 col-12 mb-5">
+          <img [src]="createImgPath(news.image)"  width="100%" alt="">
+        </div>
+        <div class="col-lg-8 col-md-12 col-sm-12 col-12" >
+          <h1><b>{{news.newsTranslates[0].title}}</b></h1>
+          <p class="mb-4">  <i>{{  news.createdDate|date:'yyyy-MM-dd'}}</i></p>
+          <div [innerHTML]="news.newsTranslates[0].description"></div>
+        </div>
+      </div>
+    <div class="w-100 pt-5"></div>
+  </div>
+</section>
+<app-footer></app-footer>
+

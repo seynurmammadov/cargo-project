@@ -41,6 +41,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\Site\images\countries\" />
+    <Folder Include="wwwroot\Site\images\news\" />
     <Folder Include="wwwroot\Site\images\serviceIcon\" />
     <Folder Include="wwwroot\Site\images\statements\" />
   </ItemGroup>

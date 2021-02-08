@@ -44,6 +44,10 @@ namespace DataAccess.Concrete
         public DbSet<FAQTranslate> FAQTranslates { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<ServiceTranslate> ServiceTranslates { get; set; }
+        public DbSet<MessageUser> MessageUsers { get; set; }
+        public DbSet<News> News { get; set; }
+        public DbSet<NewsTranslate> NewsTranslates { get; set; }
+        public DbSet<Flight> Flights { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
         }

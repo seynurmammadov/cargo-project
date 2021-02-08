@@ -1,4 +1,4 @@
-import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Inject, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Product} from '../../../Core/models/Product';
 import {CountryData} from '../../../Admin/countries-all/CountryData';
@@ -11,7 +11,8 @@ declare let alertify:any
 @Component({
   selector: 'app-waiting-invoice-dialog',
   templateUrl: './waiting-invoice-dialog.component.html',
-  styleUrls: ['./waiting-invoice-dialog.component.scss']
+  styleUrls: ['./waiting-invoice-dialog.component.scss'],
+  encapsulation:ViewEncapsulation.None
 })
 export class WaitingInvoiceDialogComponent implements OnInit {
   statementForm:FormGroup

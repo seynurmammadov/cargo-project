@@ -1,4 +1,4 @@
-import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Inject, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Product} from '../../../Core/models/Product';
 import {CountryData} from '../../../Admin/countries-all/CountryData';
@@ -11,7 +11,8 @@ declare let alertify:any
 @Component({
   selector: 'app-statement-update',
   templateUrl: './statement-update.component.html',
-  styleUrls: ['./statement-update.component.scss']
+  styleUrls: ['./statement-update.component.scss'],
+  encapsulation:ViewEncapsulation.None
 })
 export class StatementUpdateComponent implements OnInit {
 

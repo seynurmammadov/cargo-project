@@ -41,7 +41,7 @@
       width: 100%;
 
 
-      &:after{
+/*      &:after{
         content: "";
         width: 60%;
         border-bottom: 0.5px solid #409bf3;
@@ -51,12 +51,12 @@
         transform: translate(-50%, 0);
         height: 0.5em;
         z-index: -1;
-      }
-      &:hover{
+      }*/
+/*      &:hover{
         &:after{
           border-bottom:1px solid #3179ce;
         }
-      }
+      }*/
     }
   }
   .mat-expansion-indicator{

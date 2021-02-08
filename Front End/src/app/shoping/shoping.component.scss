@@ -58,7 +58,7 @@ background-color: #EBEEF2;
 @media (min-width: 990px) and (max-width: 1200px){
   #list{
     .mat-tab-header{
-      width: 38% !important;
+      width: 30% !important;
     }
   }
 }
@@ -133,4 +133,7 @@ background-color: #EBEEF2;
 padding-left: 0!important;
     }
   }
+}
+.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+  display: none!important;
 }

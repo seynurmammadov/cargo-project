@@ -97,6 +97,14 @@ namespace CamexAPI
             services.AddScoped<IFAQDAL, EFFAQ>();
             services.AddScoped<IFAQTranslateService, FAQTranslateManager>();
             services.AddScoped<IFAQTranslateDAL, EFFAQTranslate>();
+            services.AddScoped<IMessageUserService, MessageUserManager>();
+            services.AddScoped<IMessageUserDAL, EFMessageUser>();
+            services.AddScoped<INewsService, NewsManager>();
+            services.AddScoped<INewsDAL, EFNews>();
+            services.AddScoped<INewsTranslateService, NewsTranslateManager>();
+            services.AddScoped<INewsTranslateDAL, EFNewsTranslate>();
+            services.AddScoped<IFlightService, FlightManager>();
+            services.AddScoped<IFlightDAL, EFFlight>();
             // For Identity  
             services.AddIdentity<AppUser, IdentityRole>(IdentityOption =>
             {

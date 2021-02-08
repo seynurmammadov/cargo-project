@@ -19,6 +19,7 @@ declare let Swal:any
   styleUrls: ['./courier-service.component.scss'],
   encapsulation:ViewEncapsulation.None})
 export class CourierServiceComponent implements OnInit {
+
   dataSource: MatTableDataSource<CourierLocation>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;

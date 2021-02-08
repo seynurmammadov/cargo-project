@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild} from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild} from '@angular/core';
 import {
   ApexChart,
   ApexFill,
@@ -150,19 +150,16 @@ export class ControlPanelComponent implements OnInit,OnChanges {
       }
     };
   }
-
-      ngOnInit(): void {
-        this.get()
-      }
-      get(){
-        this.dataSource = new MatTableDataSource(this.user.receipts);
-        setTimeout(() => {
-          this.dataSource.paginator = this.paginator
-          this.dataSource.sort = this.sort;
-        });
-
+  ngOnInit(): void {
+    this.get()
   }
-
+  get(){
+    this.dataSource = new MatTableDataSource(this.user.receipts);
+    setTimeout(() => {
+      this.dataSource.paginator = this.paginator
+      this.dataSource.sort = this.sort;
+    });
+  }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

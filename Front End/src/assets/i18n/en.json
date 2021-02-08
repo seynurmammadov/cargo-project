@@ -77,5 +77,16 @@
   "WorkTime": "Work Time",
   "Phone": "Phone Number",
   "Email": "Email",
-  "CheckOnMap": "Check on map"
+  "CheckOnMap": "Check on map",
+  "sended":"Message sent!",
+  "LandingTime":"Landing Date",
+  "NameNSurname": "Name and Surname",
+  "Telephone": "Mobile number",
+  "DescribeYProbem": "Describe Your Problem",
+  "SendMessage": "Send Message",
+  "Send": "Send",
+  "Zone": "Zone",
+  "plus": "Replenished",
+  "minus": "Spent",
+  "refuse": "Returned"
 }

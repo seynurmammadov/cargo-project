@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatDialogRef} from '@angular/material/dialog';
 import {LanguagesService} from '../../../Core/services/lang/languages.service';
@@ -12,7 +12,8 @@ declare let alertify:any
 @Component({
   selector: 'app-statement-dialog',
   templateUrl: './statement-dialog.component.html',
-  styleUrls: ['./statement-dialog.component.scss']
+  styleUrls: ['./statement-dialog.component.scss'],
+  encapsulation:ViewEncapsulation.None
 })
 export class StatementDialogComponent implements OnInit {
   statementForm:FormGroup

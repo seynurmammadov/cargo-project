@@ -1,4 +1,4 @@
-import {Component,  OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatDialogRef} from '@angular/material/dialog';
 import {LanguagesService} from '../../../Core/services/lang/languages.service';
@@ -9,7 +9,8 @@ declare let alertify:any
 @Component({
   selector: 'app-balance-dialog',
   templateUrl: './balance-dialog.component.html',
-  styleUrls: ['./balance-dialog.component.scss']
+  styleUrls: ['./balance-dialog.component.scss'],
+  encapsulation:ViewEncapsulation.None
 })
 export class BalanceDialogComponent implements OnInit {
 

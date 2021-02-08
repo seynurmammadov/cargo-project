@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
 import {LanguagesService} from '../../../Core/services/lang/languages.service';
@@ -14,7 +14,8 @@ declare let Swal:any
 @Component({
   selector: 'app-order-dialog',
   templateUrl: './order-dialog.component.html',
-  styleUrls: ['./order-dialog.component.scss']
+  styleUrls: ['./order-dialog.component.scss'],
+  encapsulation:ViewEncapsulation.None
 })
 export class OrderDialogComponent implements OnInit {
   orderForm:FormGroup

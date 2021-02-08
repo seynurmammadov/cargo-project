@@ -36,8 +36,10 @@ export class OrdersComponent implements OnInit {
   this.service.get().subscribe(res=>{
       this.Data=res;
       this.dataSource = new MatTableDataSource(this.Data);
-      setTimeout(() => this.dataSource.paginator = this.paginator);
-      this.dataSource.sort = this.sort;
+      setTimeout(() => {
+        this.dataSource.paginator = this.paginator
+        this.dataSource.sort = this.sort;
+      });
   })
   }
   applyFilter(event: Event) {

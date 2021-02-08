@@ -2,35 +2,38 @@
 </app-navbar>
 <app-mobile-navbar>
 </app-mobile-navbar>
-<app-banner [name]="name" [bannerSrc]="bannerSrc"></app-banner>
+<app-banner [name]="'news'|translate" [bannerSrc]="bannerSrc"></app-banner>
 <section id="news-page" class="pt-5">
   <div class="container-fluid  pl-pr-10 pt-5 bg-color">
     <div class="w-100 pt-4"></div>
-    <div class="w-100 pt-3"></div>
-    <owl-carousel-o [options]="customOptions">
+    <owl-carousel-o [options]="customOptions" class="news">
       <ng-template carouselSlide *ngFor="let news of newsArr">
-        <div class="pr-2 pl-2">
-          <div class="card col-12 mb-3 p-0 bg-color rounded" >
-            <div class="news-image rounded" [ngStyle]="{'background-image': 'url('+news.newsImgSrc+')'}">
+          <div class="pr-2 h-100 pl-2 ">
+            <a routerLink="/news/{{news.id}}">
+            <div class="card col-12 h-100 mb-3 p-0 bg-color rounded" >
+              <div class="news-image rounded" [ngStyle]="{'background-image': 'url('+ createImgPath(news.image)+')'}">
+              </div>
+              <div class="card-body">
+                <h3 class="card-title font-weight-bolder" *ngIf="news.newsTranslates[0].title.length>25 else elseblock">{{news.newsTranslates[0].title.substr(0,25)+'...'}}</h3>
+                <ng-template #elseblock>
+                  <h3 class="card-title font-weight-bolder" >{{news.newsTranslates[0].title}}</h3>
+                </ng-template>
+                <p class="card-text" [innerHTML]="news.newsTranslates[0].description.substr(0,105)+'...'"></p>
+              </div>
             </div>
-            <div class="card-body">
-              <h3 class="card-title font-weight-bolder">{{news.title}}</h3>
-              <p class="card-text">{{news.description}}</p>
-            </div>
+            </a>
           </div>
-        </div>
       </ng-template>
     </owl-carousel-o>
-    <div class="w-100 pt-5"></div>
     <div class="w-100 pt-5"></div>
     <owl-carousel-o [options]="customOptions">
       <div class="w-100 pt-3"></div>
       <ng-template carouselSlide *ngFor="let flight of flights">
         <div class="d-flex bg-color m-2 mb-3 pt-4 pb-4 rounded">
-          <div class="col-3 p-0  d-flex justify-content-center align-items-center"><i class="fal fa-plane fa-2x ml-4 mb-3" style="transform: rotate(315deg);color: #9D9FA1"></i></div>
-          <div class="col-9">
-            <p class="text-uppercase "><b>{{flight.flightFrom}} - {{flight.flightTo}}</b></p>
-            <p>Landing time: {{flight.landingTime}}</p>
+          <div class="col-2 ml-2 p-0  d-flex justify-content-center align-items-center"><i class="fal fa-plane fa-2x ml-4 mb-3" style="transform: rotate(315deg);color: #9D9FA1"></i></div>
+          <div class="col-9 pr-0">
+            <p class="text-uppercase "><b>{{flight.from}} - {{flight.to}}</b></p>
+            <p>{{'LandingTime'|translate}} : {{flight.landingDate|date:'yyyy-MM-dd'}}</p>
           </div>
         </div>
       </ng-template>

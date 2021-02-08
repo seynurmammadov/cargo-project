@@ -24,7 +24,7 @@ export class FaqComponent implements OnInit {
     });
   }
   get(){
-    this.service.get().subscribe(res=>{
+    this.service.getActive().subscribe(res=>{
       res.forEach(r=>{
         r.faqTranslates.forEach(st=>{
           if(st.languageId==this.languageService.select.id){
@@ -33,7 +33,6 @@ export class FaqComponent implements OnInit {
         })
       })
       this.faqs=res;
-
     })
   }
 

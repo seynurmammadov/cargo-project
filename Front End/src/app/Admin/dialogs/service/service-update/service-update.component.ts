@@ -5,7 +5,6 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import {ServiceService} from '../../../../Core/services/Admin/service/service.service';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {LanguagesService} from '../../../../Core/services/lang/languages.service';
-import {FAQ} from '../../../../Core/models/FAQ';
 import {Service} from '../../../../Core/models/Service';
 @Component({
   selector: 'app-service-update',

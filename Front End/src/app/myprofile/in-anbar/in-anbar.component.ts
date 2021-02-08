@@ -9,7 +9,6 @@ import {MatDialog} from '@angular/material/dialog';
 import {TranslateService} from '@ngx-translate/core';
 import {WaitingInvoiceDialogComponent} from '../dialogs/waiting-invoice-dialog/waiting-invoice-dialog.component';
 import {SelectionModel} from '@angular/cdk/collections';
-import {Balance} from '../../Admin/Models/Balance';
 import {BalanceService} from '../../Core/services/balance/balance.service';
 declare let Swal:any
 declare let alertify:any
@@ -167,7 +166,7 @@ export class InAnbarComponent implements OnInit {
                         alertify.error(e.messageLang);
                       }
                     })
-                  })
+               })
               }
             })
 

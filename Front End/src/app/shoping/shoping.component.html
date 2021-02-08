@@ -9,8 +9,8 @@
       <mat-tab *ngFor="let tab of tabs">
         <ng-template mat-tab-label ><b>{{tab.shopTranslates[0].name}}</b></ng-template>
         <div class="w-100 link-content d-flex flex-wrap mt-2 mb-4 pl-4 ">
-            <div class="rounded col-xl-4 col-lg-6 col-md-6 col-sm-12  col-12 d-flex align-items-center justify-content-center mt-4 " *ngFor="let link of tab.shopLinks">
-              <div class="item rounded">
+            <div class="rounded  col-xl-4 col-lg-6 col-md-6 col-sm-12  col-12 d-flex align-items-center justify-content-center mt-4 " *ngFor="let link of tab.shopLinks">
+              <div class="item rounded overflow-hidden">
                 <p class="m-0 ml-4 d-flex align-items-center">
                   <i class="far fa-link mr-3" style="color: #2780dc"></i>
                   <a href="{{link.link}}" target="_blank">

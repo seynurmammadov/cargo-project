@@ -50,7 +50,9 @@ button{
     font-size: 14px;
   }
 }
-
+.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+  display: none!important;
+}
 @media (min-width: 768px) {
   .label-head {
     font-size: 18px;

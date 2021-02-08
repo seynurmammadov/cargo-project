@@ -1,94 +1,106 @@
-<div class="w-100 d-flex flex-wrap">
-  <div class="col-md-8 col-sm-12 col-xs-12 mb-4">
-    <div class="style">
-      <img [src]="srcImg" class="img-val" width="100%" alt="">
-      <div class="bg-color-val"></div>
-      <div class="content pl-3 pr-3">
-        <div class="balance ">
-          <div  class="balance-count">
-            <div class="camexID pr-3 pl-3 pt-2 pb-2">
-              <span>Camex ID: A{{getCamexId(user.camexId)}}</span>
-            </div>
-            <br>
-            <span>Balansım</span>
-            <br>
-            <br>
-            <span class="count">{{user.balance.userBalance}}
-                           <sup>$</sup>
+<div class="d-flex" id="control">
+  <div class="line"></div>
+  <div class="w-100 d-flex flex-wrap">
+    <div class="col-lg-8 col-md-12 col-sm-12 col-12 mb-4 new-item">
+      <div class="style h-100">
+        <img [src]="srcImg" class="img-val" width="100%" alt="">
+        <div class="bg-color-val"></div>
+        <div class="content pl-3 pr-3">
+          <div class="balance ">
+            <div  class="balance-count">
+              <div class="camexID pr-3 pl-3 pt-2 pb-2">
+                <span>Camex ID: A{{getCamexId(user.camexId)}}</span>
+              </div>
+              <br>
+              <span>Balansım</span>
+              <br>
+              <br>
+              <span class="count">{{user.balance.userBalance}}
+                <sup>$</sup>
                         </span>
-          </div>
-          <div class="balance-date" *ngIf="user.receipts[0]!=null">
-            <span>Son əlavə tarixi</span>
-            <br>
-            <span class="time">
+            </div>
+            <div class="balance-date" *ngIf="user.receipts[0]!=null">
+              <span>Son əlavə tarixi</span>
+              <br>
+              <span class="time">
               {{user.receipts[0].createdDate | date:'yyyy-MM-dd HH:mm:ss z'}}
              </span>
-          </div>
-          <div class="balance-text">
-            <p>
-              <b>
-                ARTIRILAN BALANS GERİ QAYTARILMIR.
-              </b>
-            </p>
-          </div>
-          <div class="btn-balance">
-            <button mat-stroked-button (click)="openDialog()" >Balansı artır</button>
+            </div>
+            <div class="balance-text">
+              <p>
+                <b>
+                  ARTIRILAN BALANS GERİ QAYTARILMIR.
+                </b>
+              </p>
+            </div>
+            <div class="btn-balance">
+              <button mat-stroked-button (click)="openDialog()" >Balansı artır</button>
 
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-md-4 col-sm-12 col-xs-12 mb-4">
-    <div class="style h-100 p-3 d-flex flex-column align-items-center justify-content-center">
-      <p>Son 30 gün</p>
-      <div id="chart">
-        <apx-chart
-          [series]="chartOptions.series"
-          [chart]="chartOptions.chart"
-          [plotOptions]="chartOptions.plotOptions"
-          [labels]="chartOptions.labels"
-          [stroke]="chartOptions.stroke"
-          [fill]="chartOptions.fill"
-        ></apx-chart>
+    <div class="col-lg-4 col-md-12 col-sm-12 col-12 mb-4 new-item">
+      <div class="style h-100 p-3 d-flex flex-column align-items-center justify-content-center">
+        <p>Son 30 gün</p>
+        <div id="chart">
+          <apx-chart
+            [series]="chartOptions.series"
+            [chart]="chartOptions.chart"
+            [plotOptions]="chartOptions.plotOptions"
+            [labels]="chartOptions.labels"
+            [stroke]="chartOptions.stroke"
+            [fill]="chartOptions.fill"
+          ></apx-chart>
+        </div>
+        <p>0.00 <sup>$</sup></p>
       </div>
-      <p>0.00 <sup>$</sup></p>
     </div>
-  </div>
-  <div class="col-md-12 mb-4">
-    <div class="style">
-      <div class="p-5 table-angular " >
-        <mat-form-field>
-          <mat-label>Filter</mat-label>
-          <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
-        </mat-form-field>
-        <div>
-          <table mat-table [dataSource]="dataSource" matSort>
-            <!-- Name Column -->
-            <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-              <td mat-cell *matCellDef="let row"> {{row.name}} </td>
-            </ng-container>
+    <div class="col-md-12 mb-4 new-item">
+      <div class="style content-tab">
+        <div class="table-angular " >
+          <mat-form-field  class="filter">
+            <mat-label>Filter</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+          </mat-form-field>
+          <div class="scroll">
+            <table  mat-table [dataSource]="dataSource" matSort>
+              <!-- Name Column -->
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                <td mat-cell  *matCellDef="let row" >
+                  <span *ngIf="row.name =='minus' else elseblock"> {{'minus'|translate}}</span>
+                  <ng-template #elseblock>
+                    <span *ngIf="row.name =='plus' else elseblock2"> {{'plus'|translate}}</span>
+                    <ng-template #elseblock2>
+                      <span > {{'refuse'|translate}}</span>
+                    </ng-template>
+                  </ng-template>
+                </td>
+              </ng-container>
 
-            <!-- Color Column -->
-            <ng-container matColumnDef="value">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Value </th>
-              <td mat-cell *matCellDef="let row" > {{row.value}} USD </td>
-            </ng-container>
+              <!-- Color Column -->
+              <ng-container matColumnDef="value">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Value </th>
+                <td mat-cell *matCellDef="let row" > {{row.value}} USD </td>
+              </ng-container>
 
-            <ng-container matColumnDef="createdDate">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
-              <td mat-cell *matCellDef="let row"> {{row.createdDate | date:'yyyy-MM-dd H:mm:ss z'}} </td>
-            </ng-container>
+              <ng-container matColumnDef="createdDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+                <td mat-cell *matCellDef="let row"> {{row.createdDate | date:'yyyy-MM-dd H:mm:ss z'}} </td>
+              </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            <!-- Row shown when there is no matching data. -->
-            <tr class="mat-row" *matNoDataRow>
-              <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-            </tr>
-          </table>
-          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              <!-- Row shown when there is no matching data. -->
+              <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+              </tr>
+            </table>
+          </div>
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
         </div>
       </div>
     </div>

@@ -35,6 +35,5 @@ export class ShopingComponent implements OnInit {
       this.tabs=res;
     })
   }
-  name:string="mağazalar"
   bannerSrc:string="../../assets/image/banners/shop-banner.png";
 }

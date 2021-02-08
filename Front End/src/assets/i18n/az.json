@@ -78,6 +78,17 @@
   "WorkTime": "İş Vaxtları ",
   "Phone": "Telefon",
   "Email": "E-poçt",
-  "CheckOnMap": "Xəritədə bax"
+  "CheckOnMap": "Xəritədə bax",
+  "sended":"Məktub göndərildi!",
+  "LandingTime":"Eniş Tarixi",
+  "NameNSurname": "Ad və Soyad",
+  "Telephone": "Mobil nömrə",
+  "DescribeYProbem": "Probleminizi izah edin",
+  "SendMessage": "Məktub Göndər",
+  "Send": "Göndər",
+  "Zone": "Zona",
+  "plus": "Artırılıb",
+  "minus": "Xerclənib",
+  "refuse": "Geri qaytarılıb"
 }
 

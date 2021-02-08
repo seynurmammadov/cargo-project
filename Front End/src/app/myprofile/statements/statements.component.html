@@ -4,13 +4,13 @@
       <span class="m-0 pl-3 title">Beyanlarim</span>
       <button mat-raised-button (click)="openDialogCreate()">Bəyan et</button>
     </div>
-    <div class="style mt-4">
+    <div class="style content-tab mt-4">
       <div class="table-angular ">
-        <mat-form-field>
+        <mat-form-field class="filter">
           <mat-label>Filter</mat-label>
           <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
         </mat-form-field>
-        <div>
+        <div class="scroll">
           <table mat-table [dataSource]="dataSource" matSort>
             <ng-container matColumnDef="track">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Track </th>
@@ -43,8 +43,8 @@
               <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
             </tr>
           </table>
-          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
         </div>
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
       </div>
     </div>
   </div>

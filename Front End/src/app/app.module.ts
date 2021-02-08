@@ -125,6 +125,15 @@ import { FaqUpdateComponent } from './Admin/dialogs/faq/faq-update/faq-update.co
 import { ServiceUpdateComponent } from './Admin/dialogs/service/service-update/service-update.component';
 import { ServiceCreateComponent } from './Admin/dialogs/service/service-create/service-create.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { MessagesComponent } from './Admin/messages/messages.component';
+import { AnswerUserComponent } from './Admin/dialogs/answer-user/answer-user.component';
+import { FlightComponent } from './Admin/flight/flight.component';
+import { CreateNewsComponent } from './Admin/dialogs/news/create-news/create-news.component';
+import { UpdateNewsComponent } from './Admin/dialogs/news/update-news/update-news.component';
+import { UpdateFlightComponent } from './Admin/dialogs/flight/update-flight/update-flight.component';
+import { CreateFlightComponent } from './Admin/dialogs/flight/create-flight/create-flight.component';
+import {NewsAdminComponent} from './Admin/news-admin/news-admin.component';
+import { NewsDetailsComponent } from './news-details/news-details.component';
 const routes: Routes=[
   { path: "home", redirectTo:"" ,pathMatch:"full"},
   { path:"",  component:HomeComponent },
@@ -134,6 +143,7 @@ const routes: Routes=[
   { path:"calculator",  component:CalculatorComponent, data: {animation: 'Calculator'} },
   { path:"courier",  component:CourierComponent, data: {animation: 'Courier'} },
   { path:"news",  component:NewsComponent, data: {animation: 'News'} },
+  { path:"news/:id",  component:NewsDetailsComponent, data: {animation: 'NewsDetails'} },
   { path:"faq",  component:FaqComponent, data: {animation: 'Faq'} },
   { path:"contact",  component:ContactComponent, data: {animation: 'Contact'} },
   { path:"services",  component:ServiceComponent, data: {animation: 'Services'} },
@@ -163,6 +173,11 @@ const routes: Routes=[
         path: 'users',
         component: UsersComponent,
         data: {animation: 'users'},
+      },
+      {
+        path: 'replies',
+        component: MessagesComponent,
+        data: {animation: 'replies'},
       },
       {
         path: 'users/orders/:id',
@@ -283,12 +298,22 @@ const routes: Routes=[
       {
         path: 'faq',
         component: FAQAdminComponent,
-        data: {animation: 'CourierService'},
+        data: {animation: 'faq'},
+      },
+      {
+        path: 'news',
+        component: NewsAdminComponent,
+        data: {animation: 'news'},
+      },
+      {
+        path: 'flights',
+        component: FlightComponent,
+        data: {animation: 'flights'},
       },
       {
         path: 'service',
         component: ServiceAdminComponent,
-        data: {animation: 'CourierService'},
+        data: {animation: 'service'},
       },
       {
         path: 'cities',
@@ -401,7 +426,16 @@ const routes: Routes=[
     FaqCreateComponent,
     FaqUpdateComponent,
     ServiceUpdateComponent,
-    ServiceCreateComponent
+    ServiceCreateComponent,
+    MessagesComponent,
+    AnswerUserComponent,
+    FlightComponent,
+    CreateNewsComponent,
+    UpdateNewsComponent,
+    UpdateFlightComponent,
+    CreateFlightComponent,
+    NewsAdminComponent,
+    NewsDetailsComponent
   ],
   imports: [
     BrowserModule,

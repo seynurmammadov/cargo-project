@@ -1,16 +1,16 @@
-<div class="w-100 d-flex flex-wrap">
+<div class="w-100 d-flex flex-wrap" >
   <div class="col-12 " id="inside-tab">
     <mat-tab-group class="style">
 
       <mat-tab *ngFor="let country of countryData">
-        <ng-template mat-tab-label><img [src]="createImgPath(country.image)" alt="icon" width="20px" class="mr-2"> {{country.name}}</ng-template>
+        <ng-template mat-tab-label><img [src]="createImgPath(country.image)" alt="icon" width="20px" class="mr-2 ml-2"><span class="title-panel"> {{country.name}}</span></ng-template>
         <div class="w-100 d-flex flex-wrap">
           <div class="col-12 p-0">
             <div class="d-flex flex-wrap">
-              <div class="col-2 p-0 flag" [ngStyle]="{'background-image':'url('+createImgPath(country.bgImage)+')'}">
+              <div class="col-lg-2 col-md-2 col-sm-4  p-0 flag" [ngStyle]="{'background-image':'url('+createImgPath(country.bgImage)+')'}">
               </div>
-              <div class="col-10 py-3 px-4 countryAbout d-flex flex-wrap">
-                <div class="col-3" *ngFor="let desc of country.countryAddressDescriptions">
+              <div class="col-lg-10 col-md-10 col-sm-8 py-3 px-4 countryAbout d-flex flex-wrap">
+                <div class="col-lg-3 col-md-4 col-sm-6  col-12" *ngFor="let desc of country.countryAddressDescriptions">
                   <span>{{desc.title}}:</span>
                   <p><b>{{desc.description}}</b></p>
                 </div>

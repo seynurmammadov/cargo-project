@@ -5,6 +5,7 @@ import {LanguagesService} from '../../../../Core/services/lang/languages.service
 declare let alertify:any
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import {ServiceService} from '../../../../Core/services/Admin/service/service.service';
+import {NewsService} from '../../../../Core/services/Admin/news/news.service';
 @Component({
   selector: 'app-service-create',
   templateUrl: './service-create.component.html',

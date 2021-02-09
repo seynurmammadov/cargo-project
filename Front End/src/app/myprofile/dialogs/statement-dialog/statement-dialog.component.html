@@ -1,30 +1,30 @@
 <div id="dialog">
-  <h2 mat-dialog-title>Beyanat yarad</h2>
+  <h2 mat-dialog-title>{{'CreateStatement'|translate}}</h2>
   <form [formGroup]="statementForm" novalidate (ngSubmit)="submit()">
     <mat-dialog-content class="mat-typography">
       <div class="d-flex flex-wrap w-100 mt-4">
         <div class="col-lg-6 col-md-6 col-12">
           <mat-form-field class="w-100" appearance="fill">
-            <mat-label class="text-capitalize" >TrekNomre</mat-label>
-            <input type="text" matInput  placeholder="2131233124asdasdasd211" formControlName="Track">
+            <mat-label class="text-capitalize" >{{'Track'|translate}}</mat-label>
+            <input type="text" matInput  placeholder="17017X300339206441" formControlName="Track">
             <mat-error  *ngIf="errorHandling('Track','required')" [innerHTML]="'Required' | translate ">
             </mat-error>
             <mat-error  *ngIf="Track.errors?.minlength " >
-              Error min 5 simbols
+                {{'ErrorMin5'|translate}}
             </mat-error>
           </mat-form-field>
         </div>
         <div class="col-lg-6 col-md-6 col-12">
           <mat-form-field class="w-100" appearance="fill">
-            <mat-label class="text-capitalize" >Saytin adi</mat-label>
-            <input type="text" matInput  placeholder="Trendyoll" formControlName="Name">
+            <mat-label class="text-capitalize" >{{'SiteNMag'|translate}}</mat-label>
+            <input type="text" matInput  placeholder="Pull And Bear" formControlName="Name">
             <mat-error  *ngIf="errorHandling('Name','required')" [innerHTML]="'Required' | translate ">
             </mat-error>
           </mat-form-field>
         </div>
         <div class="col-12">
           <mat-form-field class="w-100" appearance="fill">
-            <mat-label class="text-capitalize" >Mehsul</mat-label>
+            <mat-label class="text-capitalize" >{{'Product'|translate}}</mat-label>
             <mat-select  formControlName="Product">
               <mat-option *ngFor="let item of products"  [value]="item.id"  class="text-capitalize">
                 {{item.productTranslates[0].name}}
@@ -40,8 +40,8 @@
         </div>
         <div class="col-lg-4 col-md-4 col-12">
           <mat-form-field class="w-100" appearance="fill">
-            <mat-label class="text-capitalize">Qiymet</mat-label>
-            <input type="number" matInput placeholder="123123 " formControlName="Price">
+            <mat-label class="text-capitalize">{{'Price'|translate}}</mat-label>
+            <input type="number" matInput placeholder="1000 " formControlName="Price">
             <mat-error  *ngIf="errorHandling('Price','required')" [innerHTML]="'Required' | translate ">
             </mat-error>
             <mat-error  *ngIf="errorHandling('Price','pattern') " >
@@ -51,12 +51,11 @@
         </div>
         <div class="col-lg-4 col-md-4 col-12 ">
           <mat-form-field class="w-100" appearance="fill">
-            <mat-label class="text-capitalize" >Valuta</mat-label>
+            <mat-label class="text-capitalize" >{{'Wallet'|translate}}</mat-label>
             <mat-select  formControlName="Wallet">
               <mat-option *ngFor="let item of wallet" [value]="item.id" class="text-capitalize">
                 {{item.wallet}}
               </mat-option>
-
             </mat-select>
             <mat-error  *ngIf="errorHandling('Wallet','required')" [innerHTML]="'Required' | translate ">
             </mat-error>
@@ -67,8 +66,8 @@
         </div>
         <div class="col-lg-4 col-md-4 col-12">
           <mat-form-field class="w-100" appearance="fill">
-            <mat-label class="text-capitalize">Say</mat-label>
-            <input type="number" matInput placeholder="123123 " formControlName="Count">
+            <mat-label class="text-capitalize">{{'Count'|translate}}</mat-label>
+            <input type="number" matInput placeholder="5 " formControlName="Count">
             <mat-error  *ngIf="errorHandling('Count','required')" [innerHTML]="'Required' | translate ">
             </mat-error>
             <mat-error  *ngIf="errorHandling('Count','pattern') " >
@@ -78,8 +77,8 @@
         </div>
         <div class="col-12">
           <mat-form-field class="w-100" appearance="fill">
-            <mat-label class="text-capitalize" >Qeyd</mat-label>
-            <textarea type="text" matInput  placeholder="somt text" rows="7"  formControlName="TextArea">
+            <mat-label class="text-capitalize" >{{'Notice'|translate}}</mat-label>
+            <textarea type="text" matInput  placeholder="Lorem inpus some text example" rows="7"  formControlName="TextArea">
           </textarea>
           </mat-form-field>
         </div>
@@ -88,7 +87,7 @@
             <div class="d-flex justify-content-between">
               <input matInput [value]="fileAttr" readonly name="name" />
               <button mat-raised-button type="button"  (click)="fileInput.click()">
-                Browse File
+                {{'Browse'|translate}}
               </button>
               <input type="file" hidden #fileInput formControlName="FileInput"  (change)="uploadFileEvt($event)" name="uploadFile" multiple="multiple"
                      accept="image/*" />
@@ -100,8 +99,8 @@
       </div>
     </mat-dialog-content>
     <mat-dialog-actions align="end" id="bottom-btns">
-      <button mat-button mat-dialog-close>Cancel</button>
-      <button mat-raised-button class="text-uppercase reg-button"  [disabled]="!statementForm.valid">Yadda saxla  </button>
+      <button mat-button mat-dialog-close>{{'Cancel'|translate}}</button>
+      <button mat-raised-button class="text-uppercase reg-button"  [disabled]="!statementForm.valid">{{'Save'|translate}}</button>
     </mat-dialog-actions>
   </form>
 

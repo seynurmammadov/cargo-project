@@ -10,7 +10,6 @@ import {StatementService} from '../../Core/services/statement/statement.service'
 import {Cargo} from '../../Core/models/Cargo';
 import {LanguagesService} from '../../Core/services/lang/languages.service';
 import { TranslateService} from '@ngx-translate/core';
-import {AddStatementToAnbarComponent} from '../../Admin/dialogs/add-statement-to-anbar/add-statement-to-anbar.component';
 declare let alertify:any
 declare let Swal:any
 @Component({
@@ -62,18 +61,19 @@ export class StatementsComponent implements OnInit {
 
   delete(id:number){
     Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      title: this.translate.instant("AreUSure"),
+      text: this.translate.instant("Revert"),
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      cancelButtonText:this.translate.instant("YesDelete"),
+      confirmButtonText: this.translate.instant("Cancel")
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
+          this.translate.instant("Deleted"),
+          this.translate.instant("SuccDeleted"),
           'success'
         )
         this.service.delete(id).subscribe(

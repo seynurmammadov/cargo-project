@@ -1,0 +1,26 @@
+.top-statement{
+  background-color: #3179ce;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding: 10px;
+  .title{
+    font-weight: 800;
+    font-size: 25px;
+    color: white;
+  }
+  .mat-raised-button:not(.mat-button-disabled) {
+    border-color: white;
+    background-color: rgba(255,255,255,0.9);
+    color: #3179ce;
+    transition: 0.3s;
+    &:focus{
+      outline: none;
+    }
+    &:hover{
+      color: white;
+      background-color: transparent;
+    }
+  }
+}

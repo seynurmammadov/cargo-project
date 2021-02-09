@@ -1,12 +1,12 @@
 <div *ngIf="loaded" class="w-100 d-flex flex-wrap">
   <div class="col-12" id="in-anbar">
     <div class="top-statement d-flex justify-content-between align-items-center">
-      <span class="m-0 pl-3 title">Invoys Gozleyenler</span>
+      <span class="m-0 pl-3 title">{{'Parcels'|translate}}</span>
     </div>
     <div class="style content-panel mt-4">
       <div class="table-angular ">
         <mat-form-field>
-          <mat-label class="filter">Filter</mat-label>
+          <mat-label class="filter">{{'Filter'|translate}}</mat-label>
           <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
         </mat-form-field>
         <div class="scroll">
@@ -14,14 +14,14 @@
             <!-- Checkbox Column -->
             <ng-container matColumnDef="select" >
               <th mat-header-cell  *matHeaderCellDef >
-                <mat-checkbox  color="primary" (change)="$event ? masterToggle() : null"
+                <mat-checkbox style="padding-left: 12px;"  color="primary" (change)="$event ? masterToggle() : null"
                               [checked]="selection.hasValue() && isAllSelected()"
                                (change)="log()"
                               [indeterminate]="selection.hasValue() && !isAllSelected()"
                               [aria-label]="checkboxLabel()">
                 </mat-checkbox>
               </th>
-              <td mat-cell  *matCellDef="let row">
+              <td mat-cell style="padding-left: 12px;"    *matCellDef="let row">
                 <mat-checkbox *ngIf="!row.paymentStatus"  color="primary" (click)="$event.stopPropagation()"
                                 (change)="$event ? selection.toggle(row) : null"
                                 (change)="log()"
@@ -31,32 +31,43 @@
               </td>
             </ng-container>
             <ng-container matColumnDef="track">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Track </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'Track'|translate}} </th>
               <td mat-cell *matCellDef="let row"> {{row.track}} </td>
             </ng-container>
 
             <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Site / Magazin name </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'SiteNMag'|translate}}</th>
               <td mat-cell *matCellDef="let row"> {{row.name}} </td>
             </ng-container>
             <ng-container matColumnDef="weight">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> weight </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'Weight'|translate}} </th>
               <td mat-cell *matCellDef="let row"> {{row.weight}} </td>
             </ng-container>
             <ng-container matColumnDef="status">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-              <td mat-cell *matCellDef="let row"> {{row.status.name}} </td>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'Status'|translate}} </th>
+              <td mat-cell *matCellDef="let row">
+              <span *ngIf="row.status.name=='InAnbar' else else1"> {{'InAnbar'|translate}}</span>
+                <ng-template #else1>
+                  <span *ngIf="row.status.name=='InСustoms' else else2"> {{'InСustoms'|translate}}</span>
+                  <ng-template #else2>
+                    <span *ngIf="row.status.name=='InOffice' else else3"> {{'InOffice'|translate}}</span>
+                    <ng-template #else3>
+                      <span > {{'InWay'|translate}}</span>
+                    </ng-template>
+                  </ng-template>
+                </ng-template>
+              </td>
             </ng-container>
             <ng-container matColumnDef="price">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Cargo Price </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'CamexPrice'|translate}} </th>
               <td mat-cell *matCellDef="let row" > {{row.camexPrice}} USD</td>
             </ng-container>
             <ng-container matColumnDef="office">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> office </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'Destination'|translate}} </th>
               <td mat-cell *matCellDef="let row" > {{row.office.officeNameTranlates[0].name}} </td>
             </ng-container>
             <ng-container matColumnDef="actions">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'Actions'|translate}} </th>
               <td mat-cell *matCellDef="let row" class="">
                 <div class="buttons"  *ngIf="row.status.name == 'InAnbar'">
                   <button mat-icon-button  color="primary" (click)="openDialogEdit(row)" > <mat-icon style="font-size: 22px ">edit</mat-icon></button>

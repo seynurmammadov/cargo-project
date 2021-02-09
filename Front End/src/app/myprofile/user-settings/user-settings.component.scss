@@ -1,5 +1,9 @@
-#control{
+#settings{
+  .style{
+    padding: 20px 22px!important;
+  }
   .top-statement{
+    box-shadow: 3px 3px 20px 0 #c8c8c8;
     background-color: #3179ce;
     border-radius: 8px;
     overflow: hidden;
@@ -25,16 +29,5 @@
       }
     }
   }
-  img{
-    height: 100%;
-    object-fit: cover;
-  }
-}
-@media (max-width: 880px){
-  #control{
-    .new-item{
-     padding: 0!important;
-      min-height: 300px;
-    }
-  }
+
 }

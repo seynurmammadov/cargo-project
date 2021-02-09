@@ -39,7 +39,6 @@ export class AddToAnbarNewParcelComponent implements OnInit {
         Validators.minLength(5),
       ]),
       FileInput: new FormControl('', [
-        Validators.required,
       ]),
       Weight: new FormControl('', [
         Validators.required,
@@ -119,7 +118,9 @@ export class AddToAnbarNewParcelComponent implements OnInit {
 
     const body = new FormData();
     body.append("Track",this.statementForm.controls["Track"].value.trim())
-    body.append("Photo",this.fileToUpload,this.fileToUpload.name)
+    if(this.fileToUpload!=undefined){
+      body.append("Photo",this.fileToUpload,this.fileToUpload.name)
+    }
     body.append("ProductId",this.statementForm.controls["Product"].value)
     body.append("CamexPrice",this.statementForm.controls["CamexPrice"].value)
     body.append("Weight",this.statementForm.controls["Weight"].value)

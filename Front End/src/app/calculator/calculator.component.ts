@@ -14,10 +14,11 @@ import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
   encapsulation: ViewEncapsulation.None
 })
 export class CalculatorComponent implements OnInit {
+  bannerSrc:string="../../assets/image/banners/calculators-banner.jpg";
+
   countries:CountryData[]
   offices:Office[]
   total=0;
-  bannerSrc:string="../../assets/image/banners/calculators-banner.jpg";
   Form:FormGroup
   constructor(private serviceCountry:CountriesService,private serviceOffice:OfficeService,
               private languageService:LanguagesService,

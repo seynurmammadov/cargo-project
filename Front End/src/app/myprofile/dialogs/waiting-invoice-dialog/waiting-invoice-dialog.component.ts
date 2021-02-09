@@ -7,6 +7,7 @@ import {LanguagesService} from '../../../Core/services/lang/languages.service';
 import {ProductService} from '../../../Core/services/Admin/product/product.service';
 import {CountriesService} from '../../../Core/services/Admin/countries/countries.service';
 import {CargoService} from '../../../Core/services/cargo/cargo.service';
+import {TranslateService} from '@ngx-translate/core';
 declare let alertify:any
 @Component({
   selector: 'app-waiting-invoice-dialog',
@@ -16,7 +17,7 @@ declare let alertify:any
 })
 export class WaitingInvoiceDialogComponent implements OnInit {
   statementForm:FormGroup
-  fileAttr = 'Choose File';
+  fileAttr = this.translate.instant("ChooseFile");
   fileToUpload:File;
   products:Product[];
   wallet:CountryData[];
@@ -26,6 +27,7 @@ export class WaitingInvoiceDialogComponent implements OnInit {
                private languageService:LanguagesService,
                private service:CargoService,
                private proService:ProductService,
+               private translate:TranslateService,
                private cntService:CountriesService,
                @Inject(MAT_DIALOG_DATA) public data:any) {
     this.getProduct();

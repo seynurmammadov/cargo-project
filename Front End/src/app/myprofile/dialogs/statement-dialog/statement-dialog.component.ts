@@ -7,6 +7,7 @@ import {ProductService} from '../../../Core/services/Admin/product/product.servi
 import {Product} from '../../../Core/models/Product';
 import {CountriesService} from '../../../Core/services/Admin/countries/countries.service';
 import {CountryData} from '../../../Admin/countries-all/CountryData';
+import {TranslateService} from '@ngx-translate/core';
 declare let alertify:any
 
 @Component({
@@ -17,7 +18,7 @@ declare let alertify:any
 })
 export class StatementDialogComponent implements OnInit {
   statementForm:FormGroup
-  fileAttr = 'Choose File';
+  fileAttr = this.translate.instant("ChooseFile");
   fileToUpload:File;
   products:Product[];
   wallet:CountryData[];
@@ -27,6 +28,7 @@ export class StatementDialogComponent implements OnInit {
                private languageService:LanguagesService,
                private service:StatementService,
                private proService:ProductService,
+               private translate:TranslateService,
                private cntService:CountriesService) {
     this.getProduct();
   }

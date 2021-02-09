@@ -169,17 +169,24 @@ namespace CamexAPI.Controllers.Admin
                         }
                     });
                 }
-
+                if (cargo.Photo!=null)
+                {
+                    ValidateModel res = cargo.Photo.PhotoValidate();
+                    if (!res.Success) return StatusCode(StatusCodes.Status500InternalServerError, res.Response);
+                    string folder = Path.Combine("Site", "images", "statements");
+                    string fileName = await cargo.Photo.SaveImage(_env.WebRootPath, folder);
+                    cargo.Image = fileName;
+                    cargo.StatusId = _statusContext.GetWithStatement("InAnbar").Id;
+                }
+                else
+                {
+                    cargo.StatusId = _statusContext.GetWithStatement("WaitingInvoice").Id;
+                }
                 cargo.IsActived = true;
                 cargo.OfficeId = user.OfficeId;
                 cargo.UserId = user.Id;
-                cargo.StatusId = _statusContext.GetWithStatement("InAnbar").Id;
                 cargo.TrackCamex = Guid.NewGuid().ToString() + user.CamexId;
-                ValidateModel res = cargo.Photo.PhotoValidate();
-                if (!res.Success) return StatusCode(StatusCodes.Status500InternalServerError, res.Response);
-                string folder = Path.Combine("Site", "images", "statements");
-                string fileName = await cargo.Photo.SaveImage(_env.WebRootPath, folder);
-                cargo.Image = fileName;
+            
 
                 _cargoContext.Add(cargo);
 

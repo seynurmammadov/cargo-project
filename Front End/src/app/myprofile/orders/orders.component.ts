@@ -7,6 +7,7 @@ import {MatSort} from '@angular/material/sort';
 import {LanguagesService} from '../../Core/services/lang/languages.service';
 import {Order} from '../../Core/models/Order';
 import {OrderService} from '../../Core/services/order/order.service';
+import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-orders',
@@ -20,17 +21,34 @@ export class OrdersComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   Data:Order[];
+  user_agreement:string;
+  user_agreementArr:any[]=[{
+    val:"az",
+    path:  "../../assets/userAgreement/user_agreement_az.pdf"
+  },{
+    val:"ru",
+    path:  "../../assets/userAgreement/user_agreement_ru.pdf"
+  },{
+    val:"en",
+    path:  "../../assets/userAgreement/user_agreement_en.pdf"
+  },
+  ]
   @Output() event = new EventEmitter();
   callParent(): void {
     this.event.next();
   }
-  constructor(public languageService:LanguagesService,public service:OrderService,public dialog: MatDialog,) {
+  constructor(public languageService:LanguagesService,public service:OrderService,public dialog: MatDialog, private translate: TranslateService,) {
     this.get()
+
+    this.user_agreement=this.user_agreementArr.find(u=>u.val==languageService.selected).path
   }
 
 
   ngOnInit(): void {
   this.get()
+    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.user_agreement=this.user_agreementArr.find(u=>u.val==this.languageService.select.value).path
+    });
   }
   get(){
   this.service.get().subscribe(res=>{
@@ -52,6 +70,7 @@ export class OrdersComponent implements OnInit {
 openDialogCreate(): void {
     const dialogRefCreate = this.dialog.open(OrderDialogComponent, {
       width: '1000px',
+      data: this.user_agreement
     });
     dialogRefCreate.afterClosed().subscribe(() => {
       this.get()

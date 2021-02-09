@@ -44,8 +44,12 @@ export class MyprofileComponent implements OnInit {
   waiting:boolean=false
   inAnbar:boolean=false
   Ended:boolean=false
+  settings:boolean=false
   activeStatement(){
     this.statement=true
+  }
+  activeSettings(){
+    this.settings=true
   }
   activeEnded(){
     this.Ended=true

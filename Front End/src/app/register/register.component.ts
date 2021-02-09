@@ -198,7 +198,6 @@ export class RegisterComponent implements OnInit {
       "Name": this.privateForm.controls['Name'].value.split(' ').join(''),
       "OfficeId": this.privateForm.controls['OfficeId'].value
     }
-    console.log(body.CitizenshipId)
     this.registerService.PostRegisterPrivate(body).subscribe(
     ()=> {
         this.router.navigate(['login'])

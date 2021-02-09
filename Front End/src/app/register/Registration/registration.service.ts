@@ -20,7 +20,6 @@ export class RegistrationService {
     this.pathPostPrivate=global.path+"Auth/register-private"
     this.pathPostBusiness=global.path+"Auth/register-business"
   }
-
   getRegister():Observable<Register>{
     return this.http.get<Register>(this.path)
   }
@@ -28,7 +27,12 @@ export class RegistrationService {
   PostRegisterPrivate(body){
     return this.http.post(this.pathPostPrivate,body)
   }
-
+  UpdateBusiness(body){
+    return this.http.put(this.global.path+"User/business",body)
+  }
+  UpdatePrivate(body){
+    return this.http.put(this.global.path+"User/private",body)
+  }
   PostRegisterBusiness(body){
     return this.http.post(this.pathPostBusiness,body)
   }

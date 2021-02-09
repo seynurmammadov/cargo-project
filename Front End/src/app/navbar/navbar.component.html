@@ -61,12 +61,14 @@
         <div *ngIf="authService.user$ | async as user   " class="user-box d-flex align-items-center">
           <div class="user d-flex mr-3">
             <div class="img">
-
             </div>
             <div class="title" *ngIf="loaded">
               <p class="m-0 mb-2">
                 <a *ngIf="userNav.companyName else privateuser" class="username text-capitalize" routerLink="/myprofile" >
-                  {{userNav.companyName.substr(0,15)}}...
+                  <span *ngIf="userNav.companyName.length>15 else elseBlock2"> {{userNav.companyName.substr(0,15)}}...</span>
+                  <ng-template #elseBlock2>
+                    <span > {{userNav.companyName}}</span>
+                  </ng-template>
                 </a>
                 <ng-template #privateuser>
                   <a  class="username text-capitalize" routerLink="/myprofile" >{{userNav.name.substr(0,8)+" "+userNav.surname.substr(0,8)}}</a>

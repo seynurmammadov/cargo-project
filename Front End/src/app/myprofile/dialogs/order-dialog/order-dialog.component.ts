@@ -1,10 +1,10 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, Inject,  OnInit, ViewEncapsulation} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
+import { TranslateService} from '@ngx-translate/core';
 import {LanguagesService} from '../../../Core/services/lang/languages.service';
 import {CountriesService} from '../../../Core/services/Admin/countries/countries.service';
 import {CountryData} from '../../../Admin/countries-all/CountryData';
-import {MatDialogRef} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {BalanceService} from '../../../Core/services/balance/balance.service';
 import {OrderService} from '../../../Core/services/order/order.service';
 
@@ -20,25 +20,16 @@ declare let Swal:any
 export class OrderDialogComponent implements OnInit {
   orderForm:FormGroup
   wallet:CountryData[];
-  user_agreementArr:any[]=[{
-    val:"az",
-    path:  "../../assets/userAgreement/user_agreement_az.pdf"
-  },{
-    val:"ru",
-    path:  "../../assets/userAgreement/user_agreement_ru.pdf"
-  },{
-    val:"en",
-    path:  "../../assets/userAgreement/user_agreement_en.pdf"
-  },
-  ]
-  user_agreement:string;
 
+ user_agreement:string;
   constructor(private languageService:LanguagesService,
               private translate: TranslateService,
               private cntService:CountriesService,
               public dialogRef: MatDialogRef<OrderDialogComponent>,
               private balanceService:BalanceService,
-              private service:OrderService) {
+              private service:OrderService,
+              @Inject(MAT_DIALOG_DATA) public data:string,
+  ) {
 
     this.orderForm= new FormGroup({
       Name: new FormControl(
@@ -80,14 +71,12 @@ export class OrderDialogComponent implements OnInit {
         Validators.required,
       ])
     })
-    this.user_agreement=this.user_agreementArr.find(u=>u.val==languageService.selected).path
+    this.user_agreement=data
     this.get();
   }
 
   ngOnInit(): void {
-    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
-      this.user_agreement=this.user_agreementArr.find(u=>u.val==this.languageService.select.value).path
-    });
+
   }
   get(){
     this.cntService.getCountriesActive().subscribe(

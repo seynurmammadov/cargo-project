@@ -7,6 +7,7 @@ import {LanguagesService} from '../../../Core/services/lang/languages.service';
 import {StatementService} from '../../../Core/services/statement/statement.service';
 import {ProductService} from '../../../Core/services/Admin/product/product.service';
 import {CountriesService} from '../../../Core/services/Admin/countries/countries.service';
+import {TranslateService} from '@ngx-translate/core';
 declare let alertify:any
 @Component({
   selector: 'app-statement-update',
@@ -17,7 +18,7 @@ declare let alertify:any
 export class StatementUpdateComponent implements OnInit {
 
   statementForm:FormGroup
-  fileAttr = 'Choose File';
+  fileAttr = this.translate.instant("ChooseFile");
   fileToUpload:File;
   products:Product[];
   wallet:CountryData[];
@@ -27,6 +28,7 @@ export class StatementUpdateComponent implements OnInit {
                private languageService:LanguagesService,
                private service:StatementService,
                private proService:ProductService,
+               private translate:TranslateService,
                private cntService:CountriesService,
                @Inject(MAT_DIALOG_DATA) public data:any,) {
     this.getProduct();

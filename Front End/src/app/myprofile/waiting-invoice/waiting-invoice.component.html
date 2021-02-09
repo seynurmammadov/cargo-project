@@ -1,39 +1,39 @@
 <div class="w-100 d-flex flex-wrap">
   <div class="col-12" id="waiting-invoice">
     <div class="top-statement d-flex justify-content-between align-items-center">
-      <span class="m-0 pl-3 title">Invoys Gozleyenler</span>
+      <span class="m-0 pl-3 title">{{'WaitingInvoice'|translate}}</span>
     </div>
     <div class="style ontent-tab mt-4">
       <div class="table-angular ">
         <mat-form-field class="filter">
-          <mat-label>Filter</mat-label>
+          <mat-label>{{'Filter'|translate}}</mat-label>
           <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
         </mat-form-field>
         <div class="scroll">
           <table mat-table [dataSource]="dataSource" matSort>
             <ng-container matColumnDef="track">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Track </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'Track'|translate}} </th>
               <td mat-cell *matCellDef="let row"> {{row.track}} </td>
             </ng-container>
 
             <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Site / Magazin name </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'SiteNMagazine'|translate}}</th>
               <td mat-cell *matCellDef="let row"> {{row.name}} </td>
             </ng-container>
             <ng-container matColumnDef="weight">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> weight </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'Weight'|translate}} </th>
               <td mat-cell *matCellDef="let row"> {{row.weight}} </td>
             </ng-container>
             <ng-container matColumnDef="price">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> price </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'CamexPrice'|translate}} </th>
               <td mat-cell *matCellDef="let row" > {{row.camexPrice}} </td>
             </ng-container>
             <ng-container matColumnDef="office">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> office </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'Destination'|translate}} </th>
               <td mat-cell *matCellDef="let row" > {{row.office.officeNameTranlates[0].name}} </td>
             </ng-container>
             <ng-container matColumnDef="actions">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'Actions'|translate}} </th>
               <td mat-cell *matCellDef="let row" class="">
                 <div class="buttons">
                   <button mat-icon-button  color="primary" (click)="openDialogEdit(row)" > <mat-icon style="font-size: 22px ">edit</mat-icon></button>

@@ -1,5 +1,10 @@
 <div class="w-100 d-flex flex-wrap" >
-  <div class="col-12 " id="inside-tab">
+  <div class="col-12 mb-4">
+    <div class="top-statement d-flex justify-content-between align-items-center">
+      <span class="m-0 pl-3 title">{{'OutsideAddress'|translate}}</span>
+    </div>
+  </div>
+  <div class="col-12 mb-4" id="inside-tab">
     <mat-tab-group class="style">
 
       <mat-tab *ngFor="let country of countryData">

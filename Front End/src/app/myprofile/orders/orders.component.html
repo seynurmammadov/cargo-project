@@ -1,45 +1,45 @@
 <div class="w-100 d-flex flex-wrap" id="orders">
   <div class="col-12">
     <div class="top-statement d-flex justify-content-between align-items-center">
-      <span class="m-0 pl-3 title">Sifarislerim</span>
-      <button mat-raised-button (click)="openDialogCreate()">Sifaris et</button>
+      <span class="m-0 pl-3 title">{{'Orders'|translate}}</span>
+      <button mat-raised-button (click)="openDialogCreate()"> {{'Order'|translate}}</button>
     </div>
     <div class="style content-tab mt-4">
     <div class="table-angular ">
       <mat-form-field class="filter">
-        <mat-label>Filter</mat-label>
+        <mat-label>{{'Filter'|translate}}</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
       </mat-form-field>
       <div class="scroll">
         <table mat-table [dataSource]="dataSource" matSort>
           <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Site / Magazin name </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'SiteNMag'|translate}}</th>
             <td mat-cell *matCellDef="let row"> {{row.name}} </td>
           </ng-container>
           <ng-container matColumnDef="IsActived">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'Status'|translate}} </th>
             <td mat-cell *matCellDef="let row" >
-              <span *ngIf="row.status.name == 'Processed'; else elseblock" class="badge badge-success">Processed</span>
+              <span *ngIf="row.status.name == 'Processed'; else elseblock" class="badge badge-success">{{'Processed'|translate}}</span>
               <ng-template #elseblock >
-                <span class="badge badge-danger">In Process</span>
+                <span class="badge badge-danger">{{'InProcess'|translate}}</span>
               </ng-template>
             </td>
 
 
           <ng-container matColumnDef="total">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Total price </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>{{'TotalPrice'|translate}}</th>
             <td mat-cell *matCellDef="let row" > {{row.receipt.value}} {{row.country.wallet}}</td>
           </ng-container>
           </ng-container>
           <ng-container matColumnDef="url">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Url </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'Url'|translate}} </th>
             <td mat-cell *matCellDef="let row"><a [href]="row.url" target="_blank">Mehsulun linki</a></td>
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           <!-- Row shown when there is no matching data. -->
           <tr class="mat-row" *matNoDataRow>
-            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+            <td class="mat-cell" colspan="4">{{'DataNotFound'|translate}}{{input.value}}"</td>
           </tr>
         </table>
       </div>

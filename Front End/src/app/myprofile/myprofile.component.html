@@ -9,7 +9,7 @@
         <ng-template mat-tab-label > <div class="item" (click)="onSwitch('/myprofile/control-panel')">
           <i class="fas fa-bars ml-2 mr-3"></i>
          <span class="title-panel">
-            Panel səyfəsi
+          {{'PanelPage'|translate}}
          </span>
         </div>
         </ng-template>
@@ -19,7 +19,7 @@
         <ng-template mat-tab-label  ><div class="item" (click)="onSwitch('/myprofile/countries')">
           <i class="far fa-globe-europe ml-2 mr-3"></i>
           <span class="title-panel">
-           Xaricdəki ünvanlarım
+          {{'OutsideAddress'|translate}}
           </span>
         </div>
         </ng-template>
@@ -30,7 +30,7 @@
           <div class="item" (click)="onSwitch('/myprofile/statements')" (click)="activeStatement()">
             <i class="fas fa-edit ml-2 mr-3"></i>
             <span class="title-panel">
-              Bətanlarım
+          {{'Statements'|translate}}
             </span>
           </div>
         </ng-template>
@@ -40,7 +40,7 @@
         <ng-template mat-tab-label><div class="item" (click)="onSwitch('/myprofile/orders')" (click)="activeOrder()">
           <i class="far fa-browser ml-2 mr-3"></i>
           <span class="title-panel">
-          Sifarislerim
+          {{'Orders'|translate}}
           </span>
         </div>
         </ng-template>
@@ -50,7 +50,7 @@
         <ng-template mat-tab-label><div class="item" (click)="onSwitch('/myprofile/waiting-invoice')" (click)="activeWaiting()">
           <i style="font-size: 17px;" class="far fa-file-invoice ml-2 mr-3"></i>
           <span class="title-panel">
-           Invoys Gozleyen
+          {{'WaitingInvoice'|translate}}
           </span>
         </div>
         </ng-template>
@@ -60,7 +60,7 @@
         <ng-template mat-tab-label><div class="item" (click)="onSwitch('/myprofile/waiting-invoice')" (click)="activeInAnbar()">
           <i class="fas fa-inventory ml-2 mr-3"></i>
           <span class="title-panel">
-              Anbarda olan
+          {{'Parcels'|translate}}
           </span>
         </div>
         </ng-template>
@@ -70,11 +70,21 @@
         <ng-template mat-tab-label><div class="item" (click)="onSwitch('/myprofile/waiting-invoice')" (click)="activeEnded()">
           <i class="far fa-hourglass-end ml-2 mr-3"></i>
           <span class="title-panel">
-            Bitən
+          {{'Ended'|translate}}
           </span>
         </div>
         </ng-template>
         <app-ended   *ngIf="Ended"></app-ended>
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label><div class="item" (click)="onSwitch('/myprofile/settings')" (click)="activeSettings()">
+          <i class="far fa-cog ml-2 mr-3"></i>
+          <span class="title-panel">
+          {{'Settings'|translate}}
+          </span>
+        </div>
+        </ng-template>
+        <app-user-settings  [user]="fullUser" *ngIf="settings"></app-user-settings>
       </mat-tab>
     </mat-tab-group>
     <ng-template #elseblock>

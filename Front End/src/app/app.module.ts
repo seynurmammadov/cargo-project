@@ -134,6 +134,7 @@ import { UpdateFlightComponent } from './Admin/dialogs/flight/update-flight/upda
 import { CreateFlightComponent } from './Admin/dialogs/flight/create-flight/create-flight.component';
 import {NewsAdminComponent} from './Admin/news-admin/news-admin.component';
 import { NewsDetailsComponent } from './news-details/news-details.component';
+import { UserSettingsComponent } from './myprofile/user-settings/user-settings.component';
 const routes: Routes=[
   { path: "home", redirectTo:"" ,pathMatch:"full"},
   { path:"",  component:HomeComponent },
@@ -155,6 +156,7 @@ const routes: Routes=[
   { path:"myprofile/countries", redirectTo:"myprofile" },
   { path:"myprofile/orders", redirectTo:"myprofile" },
   { path:"myprofile/waiting-invoice", redirectTo:"myprofile" },
+  { path:"myprofile/settings", redirectTo:"myprofile" },
   { path:"myprofile",  component:MyprofileComponent, data: {animation: 'Myprofile'}, canActivate: [AuthGuard] },
   {
     path: 'admin',
@@ -435,7 +437,8 @@ const routes: Routes=[
     UpdateFlightComponent,
     CreateFlightComponent,
     NewsAdminComponent,
-    NewsDetailsComponent
+    NewsDetailsComponent,
+    UserSettingsComponent
   ],
   imports: [
     BrowserModule,

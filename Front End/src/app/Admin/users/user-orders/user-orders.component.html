@@ -1,9 +1,9 @@
 <app-layout>
   <div *ngIf="loaded else elseblock" id="orders">
-    <app-title-admin [title]="'User Orders'"></app-title-admin>
+    <app-title-admin [title]="'İstifadəçinin Sifarişləri'"></app-title-admin>
     <div style="padding: 25px 35px;">
       <div class="top-title d-flex justify-content-between align-items-center">
-        <span class="m-0 pl-3 title">User With Camex Id {{data.camexId}}</span>
+        <span class="m-0 pl-3 title">Camex Id {{data.camexId}} olan istifadəçi </span>
       </div>
     </div>
     <div class="margin">
@@ -16,25 +16,25 @@
           <div>
             <table mat-table [dataSource]="dataSource" matSort>
               <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Site / Magazin name </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Saytın / Mağazanın adı</th>
                 <td mat-cell *matCellDef="let row"> {{row.name}} </td>
               </ng-container>
 
               <ng-container matColumnDef="url">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Url </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Link  </th>
                 <td mat-cell *matCellDef="let row"><a [href]="row.url" target="_blank">Mehsulun linki</a></td>
               </ng-container>
 
               <ng-container matColumnDef="total">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Total price </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Ümumi məbləğ </th>
                 <td mat-cell *matCellDef="let row" > {{row.receipt.value}} {{row.country.wallet}}</td>
               </ng-container>
               <ng-container matColumnDef="isActived">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Statusu </th>
                 <td mat-cell *matCellDef="let row" >
-                  <span *ngIf="row.status.name == 'Processed'; else elseblock" class="badge badge-success">Processed</span>
+                  <span *ngIf="row.status.name == 'Processed'; else elseblock" class="badge badge-success">İşlənib</span>
                   <ng-template #elseblock >
-                    <span class="badge badge-danger">In Process</span>
+                    <span class="badge badge-danger">Prossesdə</span>
                   </ng-template>
                 </td>
               </ng-container>
@@ -42,9 +42,9 @@
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
                 <td mat-cell *matCellDef="let row" class="">
                   <div class="buttons">
-                    <button mat-raised-button color="primary" class="mr-2"  (click)="openDialogAdd(row)">Add to Anbar</button>
-                    <button mat-raised-button color="accent" class="mr-2" [disabled]="checkStatus(row.status.name)"  (click)="changeStatus(row.id)">Accept</button>
-                    <button mat-raised-button color="warn" class="mr-2"  (click)="refuse(row.userId,row.receiptId, row.id)">Refuse</button>
+                    <button mat-raised-button color="primary" class="mr-2"  (click)="openDialogAdd(row)">Anbara Əlavə Et</button>
+                    <button mat-raised-button color="accent" class="mr-2" [disabled]="checkStatus(row.status.name)"  (click)="changeStatus(row.id)">Qəbul Et</button>
+                    <button mat-raised-button color="warn" class="mr-2"  (click)="refuse(row.userId,row.receiptId, row.id)">Rəd Et</button>
                     <button mat-icon-button  color="primary" (click)="openDialogInfo(row)" > <mat-icon style="font-size: 26px ">info</mat-icon></button>
                   </div>
                 </td>
@@ -54,7 +54,7 @@
               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
               <!-- Row shown when there is no matching data. -->
               <tr class="mat-row" *matNoDataRow>
-                <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                <td class="mat-cell" colspan="12">Data tapılmadır</td>
               </tr>
             </table>
             <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>

@@ -1,5 +1,5 @@
 <h1 class="mb-2" mat-dialog-title>
-  <b>Create Tariff </b>
+  <b>Tarif yenilə</b>
 </h1>
 
 
@@ -11,7 +11,7 @@
           <div class="d-flex flex-wrap w-100">
             <div class="col-12">
               <mat-form-field class="w-100" appearance="fill">
-                <mat-label class="text-capitalize">Min</mat-label>
+                <mat-label class="text-capitalize">Minimum çəki</mat-label>
                 <input type="number" matInput formControlName="Min" step="0.01">
                 <mat-error  *ngIf="errorHandling('Min','required')" [innerHTML]="'Required' | translate ">
                 </mat-error>
@@ -19,9 +19,9 @@
                   {{'NumberPattern' | translate }}
                 </mat-error>
               </mat-form-field>
-              <p>Write max 100 system understand than upper</p>
+              <p>Maksimum dəyərə 100 yazsanız səyfədə "yuxarı" kimi görünəcək</p>
               <mat-form-field class="w-100" appearance="fill">
-                <mat-label class="text-capitalize">Max</mat-label>
+                <mat-label class="text-capitalize">Maksimum çəki</mat-label>
                 <input type="number" matInput formControlName="Max" step="0.01">
                 <mat-error  *ngIf="errorHandling('Max','required')" [innerHTML]="'Required' | translate ">
                 </mat-error>
@@ -29,7 +29,7 @@
                   {{'NumberPattern' | translate }}
                 </mat-error>
                 <mat-error  *ngIf="errorHandling('Max','greaterThan')" >
-                  max should be greatest than min
+                  Maksimum çəki minimum çəkidən cox olmalıdır
                 </mat-error>
               </mat-form-field>
               <mat-form-field class="w-100" appearance="fill">
@@ -48,8 +48,8 @@
     </div>
   </div>
   <div mat-dialog-actions class="w-100 justify-content-end">
-    <button mat-button mat-dialog-close color="warn">Cancel</button>
-    <button mat-raised-button class="text-uppercase reg-button"  color="primary" [disabled]="!createForm.valid">Create</button>
+    <button mat-button mat-dialog-close color="warn">Ləğv Et</button>
+    <button mat-raised-button class="text-uppercase reg-button"  color="primary" [disabled]="!createForm.valid">Yarad</button>
   </div>
 
 </form>

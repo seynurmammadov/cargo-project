@@ -12,7 +12,7 @@ import {Service} from '../../../../Core/models/Service';
   styleUrls: ['./service-update.component.scss']
 })
 export class ServiceUpdateComponent implements OnInit {
-  fileAttr = 'Choose File';
+  fileAttr = 'Şəkil seç';
   fileToUpload:File
   @ViewChild('fileInput') fileInput: ElementRef;
   public Editor = ClassicEditor;
@@ -62,7 +62,7 @@ export class ServiceUpdateComponent implements OnInit {
       // Reset if duplicate image uploaded again
       this.fileInput.nativeElement.value = "";
     } else {
-      this.fileAttr = 'Choose File';
+      this.fileAttr = 'Şəkil seç';
     }
   }
   submit(){

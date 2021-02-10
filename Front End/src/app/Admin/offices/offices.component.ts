@@ -32,8 +32,11 @@ export class OfficesComponent implements OnInit {
     this.service.getOffices().subscribe(res=>{
       this.officeData=res;
       this.dataSource = new MatTableDataSource(this.officeData);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+      setTimeout(()=>{
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      })
+
     })
   }
   openDialogCreate(): void {
@@ -55,18 +58,19 @@ export class OfficesComponent implements OnInit {
   }
   deleteOffice(id:number){
     Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      title: 'Əminsiniz?',
+      text: "Bunu geri qaytara bilməyəcəksiz!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      cancelButtonText: 'Ləğv et',
+      confirmButtonText: 'Poz!'
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
+          'Pozuldu!',
+          'Data pozuldu!',
           'success'
         )
         this.service.deleteOffice(id).subscribe(

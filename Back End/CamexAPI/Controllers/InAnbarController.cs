@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using CamexAPI.Identity;
 using Entity.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -30,6 +31,7 @@ namespace CamexAPI.Controllers
             _user = user;
         }
         [HttpGet]
+        [Authorize]
         public IActionResult Get()
         {
             try

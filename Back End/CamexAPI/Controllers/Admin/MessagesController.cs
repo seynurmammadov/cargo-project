@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using CamexAPI.Models;
 using Entity.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -14,6 +15,7 @@ namespace CamexAPI.Controllers.Admin
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class MessagesController : ControllerBase
     {
         private readonly IMessageUserService _userContext;
@@ -24,6 +26,7 @@ namespace CamexAPI.Controllers.Admin
         }
         [HttpPost]
         [Route("user")]
+        [AllowAnonymous]
         public IActionResult Post([FromForm] MessageUser userMesssage)
         {
             try

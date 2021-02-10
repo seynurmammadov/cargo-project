@@ -1,5 +1,5 @@
 <h1 class="mb-2" mat-dialog-title>
-  <b>Create Shop</b>
+  <b>Cavab formu</b>
 </h1>
 
 <form [formGroup]="createForm" novalidate (ngSubmit)="submit()">
@@ -9,24 +9,25 @@
         <div class="w-100">
           <div class="d-flex flex-wrap w-100">
             <div class="col-12">
-              <h3 class="text-capitalize">Name: <b>{{this.data.fullname}}</b></h3>
-              <h4 class="text-capitalize">Phone number: +994<b>{{this.data.phoneNumber}}</b></h4>
-              <h4 class="text-capitalize">CamexId: <b>{{this.data.camexId}}</b></h4>
-              <h4 class="text-capitalize">Message: <b>{{this.data.message}}</b></h4>
+              <h3 class="text-capitalize">Adı: <b>{{this.data.fullname}}</b></h3>
+              <h4 class="text-capitalize">Mobil nömrə: <b>+994{{this.data.phoneNumber}}</b></h4>
+              <h4 class="text-capitalize">Camex Id: <b>{{this.data.camexId}}</b></h4>
+              <h4 class="text-capitalize">Sual: <b>{{this.data.message}}</b></h4>
 
               <mat-form-field class="w-100" appearance="fill">
                 <mat-label class="text-capitalize">Email</mat-label>
-                <input type="text" matInput formControlName="Email" readonly  placeholder="Имя">
+                <input type="text" matInput formControlName="Email" readonly >
               </mat-form-field>
               <mat-form-field class="w-100" appearance="fill">
-                <mat-label class="text-capitalize">Subject</mat-label>
-                <input type="text" matInput formControlName="Subject"  placeholder="Имя">
+                <mat-label class="text-capitalize">Mövzu</mat-label>
+                <input type="text" matInput formControlName="Subject" >
                 <mat-error  *ngIf="errorHandling('Subject','required')" [innerHTML]="'Required' | translate ">
                 </mat-error>
               </mat-form-field>
-              <mat-label class="text-capitalize">Message</mat-label>
+              <mat-label class="text-capitalize">Cavab</mat-label>
+              <br>
+              <br>
               <ckeditor [editor]="Editor" formControlName="Message" data="<p>Hello, world!</p>"></ckeditor>
-
 
             </div>
           </div>
@@ -35,8 +36,8 @@
     </div>
   </div>
   <div mat-dialog-actions class="w-100 justify-content-end">
-    <button mat-button mat-dialog-close color="warn">Cancel</button>
-    <button mat-raised-button class="text-uppercase reg-button"  color="primary" [disabled]="!createForm.valid">Create</button>
+    <button mat-button mat-dialog-close color="warn">Ləğv Et</button>
+    <button mat-raised-button class="text-uppercase reg-button"  color="primary" [disabled]="!createForm.valid">Cavablandır</button>
   </div>
 
 </form>

@@ -1,5 +1,5 @@
 <h1 class="mb-2" mat-dialog-title>
-  <b>Create Shop</b>
+  <b>FAQ yarad</b>
 </h1>
 
 <form [formGroup]="createForm" novalidate (ngSubmit)="submit()">
@@ -10,35 +10,39 @@
           <div class="d-flex flex-wrap w-100">
             <div class="col-12">
               <mat-form-field class="w-100" appearance="fill">
-                <mat-label class="text-capitalize">Notice in Russia</mat-label>
-                <input type="text" matInput formControlName="TitleRussia"  placeholder="Имя">
+                <mat-label class="text-capitalize">Rus dilində təsvir</mat-label>
+                <input type="text" matInput formControlName="TitleRussia">
                 <mat-error  *ngIf="errorHandling('TitleRussia','required')" [innerHTML]="'Required' | translate ">
                 </mat-error>
               </mat-form-field>
               <mat-form-field class="w-100" appearance="fill">
-                <mat-label class="text-capitalize">Notice in English</mat-label>
-                <input type="text" matInput formControlName="TitleEnglish"  placeholder="Name">
+                <mat-label class="text-capitalize">İnglis dilində təsvir</mat-label>
+                <input type="text" matInput formControlName="TitleEnglish">
                 <mat-error  *ngIf="errorHandling('TitleEnglish','required')" [innerHTML]="'Required' | translate ">
                 </mat-error>
               </mat-form-field>
               <mat-form-field class="w-100" appearance="fill">
-                <mat-label class="text-capitalize">Notice in Azerbaijan</mat-label>
-                <input type="text" matInput formControlName="TitleAzerbaijan"  placeholder="Ad">
+                <mat-label class="text-capitalize">Azərbaycan dilində təsvir</mat-label>
+                <input type="text" matInput formControlName="TitleAzerbaijan">
                 <mat-error  *ngIf="errorHandling('TitleAzerbaijan','required')" [innerHTML]="'Required' | translate ">
                 </mat-error>
               </mat-form-field>
 
-                <mat-label class="text-capitalize">Notice in Russia</mat-label>
+                <mat-label class="text-capitalize">Rus dilində təsvir</mat-label>
+                <br>
+                <br>
                 <ckeditor [editor]="Editor" formControlName="DescRussia" data="<p>Hello, world!</p>"></ckeditor>
-
-                <mat-label class="text-capitalize">Notice in English</mat-label>
+                <br>
+                <mat-label class="text-capitalize">İnglis dilində təsvir</mat-label>
+              <br>  <br>
                 <ckeditor [editor]="Editor" formControlName="DescEnglish"  data="<p>Hello, world!</p>"></ckeditor>
-
-                <mat-label class="text-capitalize">Notice in Azerbaijan</mat-label>
+              <br>
+                <mat-label class="text-capitalize">Azərbaycan dilində təsvir</mat-label>
+              <br>  <br>
                 <ckeditor [editor]="Editor" formControlName="DescAzerbaijan" data="<p>Hello, world!</p>"></ckeditor>
-
+              <br>
               <mat-checkbox class="mt-2 w-100 text-capitalize" color="primary" formControlName="IsActived" >
-                Activation
+                Activasiya
               </mat-checkbox>
             </div>
           </div>
@@ -47,8 +51,8 @@
     </div>
   </div>
   <div mat-dialog-actions class="w-100 justify-content-end">
-    <button mat-button mat-dialog-close color="warn">Cancel</button>
-    <button mat-raised-button class="text-uppercase reg-button"  color="primary" [disabled]="!createForm.valid">Create</button>
+    <button mat-button mat-dialog-close color="warn">Ləğv Et</button>
+    <button mat-raised-button class="text-uppercase reg-button"  color="primary" [disabled]="!createForm.valid">Yarad</button>
   </div>
 
 </form>

@@ -5,12 +5,15 @@ using CamexAPI.Identity;
 using CamexAPI.Models;
 using CamexAPI.Models.VM;
 using Entity.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -19,6 +22,7 @@ namespace CamexAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class UserController : ControllerBase
     {
         private readonly MyIdentityDbContext _user;
@@ -27,7 +31,9 @@ namespace CamexAPI.Controllers
         public readonly IBusinessCustomerService _businesContext;
         private readonly ICityService _cityContext;
         private readonly IOfficeService _officeContext;
-        public UserController(MyIdentityDbContext user, IOfficeService officeContext, ICityService cityContext, UserManager<AppUser> userManager, IPrivateCustomerService privateContext, IBusinessCustomerService businesContext)
+
+        private readonly IHttpContextAccessor _contextAccessor;
+        public UserController(MyIdentityDbContext user, IHttpContextAccessor contextAccessor, IOfficeService officeContext, ICityService cityContext, UserManager<AppUser> userManager, IPrivateCustomerService privateContext, IBusinessCustomerService businesContext)
         {
             _privateContext = privateContext;
             _user = user;
@@ -35,6 +41,7 @@ namespace CamexAPI.Controllers
             _userManager = userManager;
             _cityContext = cityContext;
             _officeContext = officeContext;
+            _contextAccessor = contextAccessor;
         }
 
         [HttpGet]
@@ -435,6 +442,125 @@ namespace CamexAPI.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("forgot/{id}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Forgot(string id)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError, new Response
+                    {
+                        Status = "Error",
+                        Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="Model state isn't valid!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Состояние модели недействительно!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="Model vəziyyəti etibarsızdır!"
+                            }
+                        }
+                    });
+                }
+                AppUser user = await _userManager.FindByEmailAsync(id);
+                if (user == null)
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError, new Response
+                    {
+                        Status = "Error",
+                        Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="Model state isn't valid!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Состояние модели недействительно!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="Model vəziyyəti etibarsızdır!"
+                            }
+                        }
+                    });
+                }
+                if (user.ActiveCode != null)
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError, new Response
+                    {
+                        Status = "Error",
+                        Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang="We already sent email!"
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang="Мы уже отправили письмо на вашу почту!"
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                MessageLang="Biz artıq email göndərmişik!"
+                            }
+                        }
+                    });
+                }
+                user.ActiveCode = Guid.NewGuid().ToString();
+                await _user.SaveChangesAsync();
+                string url = "http://localhost:4200/restore/" + user.ActiveCode;
+                MailMessage message = new MailMessage();
+                message.From = new MailAddress("camex.supp0rt@gmail.com", "Camex Support");
+                message.To.Add(new MailAddress(user.Email));
 
+                message.Subject = "Reset Password";
+                message.Body = "We heard that you lost your password. Sorry about that!<br>" +
+                    "<br>But don’t worry! You can use the following link to <span class='il' >reset</span> your password:<br>" +
+                    "<br><a href = " + url + " rel='noreferrer' target='_blank'>" + url + "</a><br>" +
+                    "<br>If you don’t use this link within 3 hours, it will expire.<br>" +
+                    "Thanks,<br>" +
+                    "The Seynur Team";
+                message.IsBodyHtml = true;
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp.gmail.com";
+                smtp.Port = 587;
+                smtp.EnableSsl = true;
+
+                smtp.Credentials = new NetworkCredential("camex.supp0rt@gmail.com", "seynur2462736");
+                smtp.Send(message);
+
+                return Ok();
+
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new Response
+                {
+                    Status = "Error",
+                    Messages = new Message[] {
+                            new Message {
+                                Lang_id = 1,
+                                MessageLang=e.Message + e.InnerException
+                            },
+                            new Message {
+                                Lang_id = 2,
+                                MessageLang=e.Message + e.InnerException
+
+                            },
+                            new Message {
+                                Lang_id = 3,
+                                 MessageLang=e.Message + e.InnerException
+                            }
+                        }
+                });
+            }
+        }
     }
 }

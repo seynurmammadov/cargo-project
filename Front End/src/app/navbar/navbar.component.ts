@@ -49,5 +49,7 @@ export class NavbarComponent implements OnInit {
       }
     })
   }
-
+  public createImgPath = (serverPath: string) => {
+    return `https://localhost:44387/Site/images/users/${serverPath}`;
+  }
 }

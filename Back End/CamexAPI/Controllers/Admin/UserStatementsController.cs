@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using CamexAPI.Identity;
 using CamexAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,17 +14,20 @@ namespace CamexAPI.Controllers.Admin
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class UserStatementsController : ControllerBase
     {
         private readonly MyIdentityDbContext _user;
         private readonly IStatusService _statusContext;
+
         public UserStatementsController(MyIdentityDbContext user, IStatusService statusContext)
         {
             _user = user;
             _statusContext = statusContext;
         }
-        // GET: api/<UserController>
+
         [HttpGet("{id}")]
+        [Authorize]
         public IActionResult Get(int id)
         {
             try

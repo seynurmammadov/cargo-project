@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {GlobalService} from '../global/global.service';
 import {Observable} from 'rxjs/internal/Observable';
-import {Cargo} from '../../models/Cargo';
-import {AppUser} from '../../../Admin/Models/AppUser';
+
 import {UserVM} from '../../models/UserVM';
 
 @Injectable({
@@ -16,5 +15,10 @@ export class UserService {
   get():Observable<UserVM>{
     return this.http.get<UserVM>(`${this.global.path}User`);
   }
-
+  send(str){
+    return this.http.get<any>(`${this.global.path}User/forgot/${str}`);
+  }
+  restore(body){
+    return this.http.put<any>(`${this.global.path}Reset/${body.get("id")}`,body);
+  }
 }

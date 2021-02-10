@@ -16,7 +16,7 @@
               </a>
               <br>
               <br>
-              <a (click)=" showScroll()" (click)="logout()" class="mt-3" role="button">Log Out</a>
+              <a (click)=" showScroll()" (click)="logout()" class="mt-3" role="button">{{'LogOut'|translate}}</a>
               <ng-template #privateuser>
                 <a (click)=" showScroll()"  class="username text-capitalize" routerLink="/myprofile" >{{userNav.name.substr(0,8)+" "+userNav.surname.substr(0,8)}}</a>
               </ng-template>
@@ -26,16 +26,16 @@
 
         <ng-template #elseBlock>
           <li (click)=" showScroll()">
-            <a routerLink="/login" (click)=" showScroll()">Gİrİş</a>
+            <a routerLink="/login" (click)=" showScroll()">{{'login'|translate}}</a>
           </li>
         </ng-template>
-        <li><a routerLink="" (click)=" showScroll()">ana səhİfə</a></li>
-        <li><a routerLink="/shopping" (click)=" showScroll()">mağazalar</a></li>
-        <li><a routerLink="/tariffs" (click)=" showScroll()">tarİflər</a></li>
-        <li><a routerLink="/news" (click)=" showScroll()">xəbərlər</a></li>
-        <li><a routerLink="/faq" (click)=" showScroll()">faq</a></li>
-        <li><a routerLink="/about" (click)=" showScroll()">hadqqımızda</a></li>
-        <li><a routerLink="/contact" (click)=" showScroll()">əlaqə</a></li>
+        <li><a routerLink="" (click)=" showScroll()">{{'HomePage'|translate}}</a></li>
+        <li><a routerLink="/shopping" (click)=" showScroll()">{{'shopping'|translate}}</a></li>
+        <li><a routerLink="/tariffs" (click)=" showScroll()">{{'tariffs'|translate}}</a></li>
+        <li><a routerLink="/news" (click)=" showScroll()">{{'news'|translate}}</a></li>
+        <li><a routerLink="/faq" (click)=" showScroll()">{{'FAQ'|translate}}</a></li>
+        <li><a routerLink="/about" (click)=" showScroll()">{{'about'|translate}}</a></li>
+        <li><a routerLink="/contact" (click)=" showScroll()">{{'contact'|translate}}</a></li>
       </ul>
       <ul class="d-flex flagUl flex-wrap"  >
         <li *ngFor="let lang of languages" >

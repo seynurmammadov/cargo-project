@@ -32,8 +32,10 @@ export class ProductsComponent implements OnInit {
     this.service.getProducts().subscribe(res=>{
       this.productData=res;
       this.dataSource = new MatTableDataSource(this.productData);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+      setTimeout(()=>{
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      })
     })
   }
   openDialogCreate(): void {
@@ -55,18 +57,19 @@ export class ProductsComponent implements OnInit {
   }
   deleteProduct(id:number){
     Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      title: 'Əminsiniz?',
+      text: "Bunu geri qaytara bilməyəcəksiz!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      cancelButtonText: 'Ləğv et',
+      confirmButtonText: 'Poz!'
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
+          'Pozuldu!',
+          'Data pozuldu!',
           'success'
         )
         this.service.deleteProduct(id).subscribe(

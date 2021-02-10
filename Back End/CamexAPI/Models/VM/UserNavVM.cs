@@ -11,7 +11,8 @@ namespace CamexAPI.Models.VM
         public string Name { get; set; }
         public string Surname { get; set; }
         public string CompanyName { get; set; }
+        public string Image { get; set; }
         public decimal UserBalance { get; set; }
-
+        public IList<string> Roles { get; set; }
     }
 }

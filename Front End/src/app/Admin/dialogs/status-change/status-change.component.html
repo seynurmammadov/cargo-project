@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Beyanat yarad</h2>
+<h2 mat-dialog-title>Statusu dəyiş</h2>
 <form [formGroup]="statementForm" novalidate (ngSubmit)="submit()">
   <mat-dialog-content class="mat-typography">
     <div class="d-flex flex-wrap w-100 mt-4">
@@ -21,7 +21,7 @@
     </div>
   </mat-dialog-content>
   <mat-dialog-actions align="end" id="bottom-btns">
-    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button mat-dialog-close>Ləğv Et</button>
     <button mat-raised-button class="text-uppercase reg-button"  [disabled]="!statementForm.valid">Yadda saxla </button>
   </mat-dialog-actions>
 </form>

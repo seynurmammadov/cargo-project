@@ -19,7 +19,7 @@ declare let alertify:any
 export class AddToAnbarComponent implements OnInit {
 
   statementForm:FormGroup
-  fileAttr = 'Choose File';
+  fileAttr = 'İnvoysu Seç';
   fileToUpload:File;
   products:Product[];
   wallet:CountryData[];
@@ -64,17 +64,9 @@ export class AddToAnbarComponent implements OnInit {
   getProduct(){
     this.proService.getProductsActive().subscribe((res)=>
       {
-        res.forEach(p=>{
-          p.productTranslates.forEach(pt=>{
-            if(pt.languageId==this.languageService.select.id){
-              p.productTranslates[0]=pt
-              this.products=res;
-            }
-          })
+        this.products=res;
         })
-      }
-    )
-    this.cntService.getCountriesActive().subscribe(
+      this.cntService.getCountriesActive().subscribe(
       (res)=>{
         this.wallet=res;
       })
@@ -95,7 +87,7 @@ export class AddToAnbarComponent implements OnInit {
       // Reset if duplicate image uploaded again
       this.fileInput.nativeElement.value = "";
     } else {
-      this.fileAttr = 'Choose File';
+      this.fileAttr = 'İnvoysu Seç';
     }
   }
   submit(){
@@ -106,7 +98,6 @@ export class AddToAnbarComponent implements OnInit {
     body.append("ProductId",this.statementForm.controls["Product"].value)
     body.append("CamexPrice",this.statementForm.controls["CamexPrice"].value)
     body.append("Weight",this.statementForm.controls["Weight"].value)
-    console.log(this.data)
     body.append("Name",this.data.name)
     body.append("Price",this.data.receipt.value)
     body.append("Count",this.data.count)

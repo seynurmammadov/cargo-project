@@ -17,6 +17,7 @@ namespace Entity.Models
         public int CityId { get; set; }
         public virtual City City { get; set; }
         public string Address { get; set; }
+        public string ActiveCode { get; set; }
         public int OfficeId { get; set; }
         public virtual Office Office { get; set; }
         public string Image { get; set; }

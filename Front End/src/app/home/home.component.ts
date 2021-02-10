@@ -153,4 +153,5 @@ export class HomeComponent implements OnInit {
   public createImgPath = (serverPath: string) => {
     return `https://localhost:44387/Site/images/news/${serverPath}`;
   }
+
 }

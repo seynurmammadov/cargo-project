@@ -2,6 +2,7 @@
 using CamexAPI.Identity;
 using CamexAPI.Models;
 using Entity.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +26,7 @@ namespace CamexAPI.Controllers
         }
         [HttpPut]
         [Route("add")]
+        [Authorize]
         public IActionResult Put([FromForm] decimal balance)
         {
             try
@@ -89,6 +91,7 @@ namespace CamexAPI.Controllers
         }
         [HttpPut]
         [Route("remove")]
+        [Authorize]
         public  IActionResult PutRemove([FromForm] decimal total)
         {
             try
@@ -174,6 +177,7 @@ namespace CamexAPI.Controllers
         }
 
         [HttpPut("status/{id}")]
+        [Authorize]
         public IActionResult Status( int id)
         {
             try

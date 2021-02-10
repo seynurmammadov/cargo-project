@@ -17,7 +17,7 @@ declare let alertify:any
 export class AddToAnbarNewParcelComponent implements OnInit {
 
   statementForm:FormGroup
-  fileAttr = 'Choose File';
+  fileAttr = 'Şəkil Seç';
   fileToUpload:File;
   products:Product[];
   wallet:CountryData[];
@@ -111,7 +111,7 @@ export class AddToAnbarNewParcelComponent implements OnInit {
       // Reset if duplicate image uploaded again
       this.fileInput.nativeElement.value = "";
     } else {
-      this.fileAttr = 'Choose File';
+      this.fileAttr = 'Şəkil Seç';
     }
   }
   submit(){

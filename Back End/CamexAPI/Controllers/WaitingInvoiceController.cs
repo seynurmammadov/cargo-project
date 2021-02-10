@@ -3,6 +3,7 @@ using Business.Abstract;
 using CamexAPI.Identity;
 using CamexAPI.Models;
 using Entity.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,6 +19,7 @@ namespace CamexAPI.Controllers.Admin
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class WaitingInvoiceController : ControllerBase
     {
         private readonly ICargoService _cargoContext;
@@ -94,7 +96,7 @@ namespace CamexAPI.Controllers.Admin
                         }
                     });
 
-                if (cargo.Image == null || cargo.Image=="")
+                if (db_cargo.Image == null || db_cargo.Image=="")
                 {
                     ValidateModel res = cargo.Photo.PhotoValidate();
                     if (!res.Success) return StatusCode(StatusCodes.Status500InternalServerError, res.Response);

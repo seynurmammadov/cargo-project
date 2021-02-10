@@ -1,25 +1,24 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {Tariff} from '../../../../Core/models/Tariff';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
-import {CountryInfoService} from '../../../../Core/services/Admin/countries/country-info.service';
 import {TariffService} from '../../../../Core/services/Admin/countries/tariff/tariff.service';
 import {MatDialog} from '@angular/material/dialog';
 import {LanguagesService} from '../../../../Core/services/lang/languages.service';
 import {ActivatedRoute} from '@angular/router';
-import {TariffCreateComponent} from '../../../dialogs/country/tariff-create/tariff-create.component';
-import {TariffUpdateComponent} from '../../../dialogs/country/tariff-update/tariff-update.component';
 import {PriceList} from '../../../../Core/models/PriceList';
 import {PriceService} from '../../../../Core/services/Admin/countries/tariff/price.service';
 import {PriceUpdateComponent} from '../../../dialogs/country/price-update/price-update.component';
 import {PriceCreateComponent} from '../../../dialogs/country/price-create/price-create.component';
+
 declare let alertify:any
 declare let Swal:any
 @Component({
   selector: 'app-tariff-prices',
   templateUrl: './tariff-prices.component.html',
-  styleUrls: ['./tariff-prices.component.scss']
+  styleUrls: ['./tariff-prices.component.scss'],
+  encapsulation:ViewEncapsulation.None
 })
 export class TariffPricesComponent implements OnInit {
 
@@ -82,18 +81,19 @@ export class TariffPricesComponent implements OnInit {
   }
   delete(id:number) {
     Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      title: 'Əminsiniz?',
+      text: "Bunu geri qaytara bilməyəcəksiz!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      cancelButtonText: 'Ləğv et',
+      confirmButtonText: 'Poz!'
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
+          'Pozuldu!',
+          'Data pozuldu!',
           'success'
         )
         this.service.delete(id).subscribe(

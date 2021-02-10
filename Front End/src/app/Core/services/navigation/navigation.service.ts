@@ -15,5 +15,7 @@ export class NavigationService {
   getUser():Observable<UserNavVM>{
     return this.http.get<UserNavVM>(`${this.global.path}Navbar/get-user-info`);
   }
-
+  getUserRole():Observable<any>{
+    return this.http.get(`${this.global.path}Auth/user`);
+  }
 }

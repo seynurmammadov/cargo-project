@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using CamexAPI.Models;
 using Entity.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -21,6 +22,7 @@ namespace CamexAPI.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize]
         public IActionResult Get(int id)
         {
             try
@@ -34,6 +36,7 @@ namespace CamexAPI.Controllers
             }
         }
         [HttpPost]
+        [Authorize]
         public IActionResult Create([FromForm] PriceList priceList)
         {
             try
@@ -71,6 +74,7 @@ namespace CamexAPI.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize]
         public IActionResult PutAsync(int id, [FromForm] PriceList priceList)
         {
             try
@@ -132,6 +136,7 @@ namespace CamexAPI.Controllers
 
 
         [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult Delete(int id)
         {
             try

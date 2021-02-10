@@ -1,24 +1,24 @@
-<h2 mat-dialog-title>Beyanat yarad</h2>
+<h2 mat-dialog-title>Anbara əlavə et</h2>
 <form [formGroup]="statementForm" novalidate (ngSubmit)="submit()" id="addtoanbar">
   <mat-dialog-content class="mat-typography">
     <div class="d-flex flex-wrap w-100 mt-4">
       <div class=" col-12">
         <mat-form-field class="w-100" appearance="fill">
-          <mat-label class="text-capitalize" >TrekNomre</mat-label>
-          <input type="text" matInput  placeholder="2131233124asdasdasd211" formControlName="Track">
+          <mat-label class="text-capitalize" >İzləmə kodu</mat-label>
+          <input type="text" matInput  placeholder="05228964284282P" formControlName="Track">
           <mat-error  *ngIf="errorHandling('Track','required')" [innerHTML]="'Required' | translate ">
           </mat-error>
           <mat-error  *ngIf="Track.errors?.minlength " >
-            Error min 5 simbols
+            Ən azı 5 simvol olmalıdır
           </mat-error>
         </mat-form-field>
       </div>
-      <div class="col-lg-6 col-md-6 col-12">
+      <div class="col-lg-6 col-md-12 col-12">
         <mat-form-field class="w-100" appearance="fill">
-          <mat-label class="text-capitalize" >Mehsul</mat-label>
+          <mat-label class="text-capitalize" >Məhsul</mat-label>
           <mat-select  formControlName="Product">
             <mat-option *ngFor="let item of products"  [value]="item.id"  class="text-capitalize">
-              {{item.productTranslates[0].name}}
+              {{item.productTranslates[2].name}}
             </mat-option>
 
           </mat-select>
@@ -29,10 +29,10 @@
           </mat-error>
         </mat-form-field>
       </div>
-      <div class="col-lg-3 col-md-3 col-12">
+      <div class="col-lg-3 col-md-12 col-12">
         <mat-form-field class="w-100" appearance="fill">
-          <mat-label class="text-capitalize">Qiymet</mat-label>
-          <input type="number" step="0.01" matInput placeholder="123123 " formControlName="CamexPrice">
+          <mat-label class="text-capitalize">Məbləğ</mat-label>
+          <input type="number" step="0.01" matInput placeholder="100" formControlName="CamexPrice">
           <mat-error  *ngIf="errorHandling('CamexPrice','required')" [innerHTML]="'Required' | translate ">
           </mat-error>
           <mat-error  *ngIf="errorHandling('CamexPrice','pattern') " >
@@ -41,10 +41,10 @@
         </mat-form-field>
       </div>
 
-      <div class="col-lg-3 col-md-3 col-12">
+      <div class="col-lg-3 col-md-12 col-12">
         <mat-form-field class="w-100" appearance="fill">
-          <mat-label class="text-capitalize">Say</mat-label>
-          <input type="number" matInput placeholder="123123 " formControlName="Weight">
+          <mat-label class="text-capitalize">Sayı</mat-label>
+          <input type="number" matInput placeholder="5" formControlName="Weight">
           <mat-error  *ngIf="errorHandling('Weight','required')" [innerHTML]="'Required' | translate ">
           </mat-error>
           <mat-error  *ngIf="errorHandling('Weight','pattern') " >
@@ -57,7 +57,7 @@
           <div class="d-flex justify-content-between">
             <input matInput [value]="fileAttr" readonly name="name" />
             <button mat-raised-button type="button"  (click)="fileInput.click()">
-              Browse File
+              Seç
             </button>
             <input type="file" hidden #fileInput formControlName="FileInput"  (change)="uploadFileEvt($event)" name="uploadFile" multiple="multiple"
                    accept="image/*" />
@@ -69,7 +69,7 @@
     </div>
   </mat-dialog-content>
   <mat-dialog-actions align="end" id="bottom-btns">
-    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button mat-dialog-close>Ləğv ET</button>
     <button mat-raised-button class="text-uppercase reg-button"  [disabled]="!statementForm.valid">Yadda saxla  </button>
   </mat-dialog-actions>
 </form>

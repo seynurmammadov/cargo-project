@@ -19,8 +19,8 @@ namespace CamexAPI.Controllers.Admin
 
 
     [Route("api/[controller]")]
-    [ApiController]/*
-    [Authorize(Roles = "Admin,MainAdmin")]*/
+    [ApiController]
+    [Authorize(Roles = "Admin,MainAdmin")]
     public class UsersController : Controller
     {
 
@@ -41,6 +41,7 @@ namespace CamexAPI.Controllers.Admin
         // GET: UsersController
         [Route("get")]
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Get()
         {
             try
@@ -70,6 +71,7 @@ namespace CamexAPI.Controllers.Admin
 
         [Route("get-private")]
         [HttpGet]
+        [Authorize]
         public IActionResult Private(string id)
         {
             try

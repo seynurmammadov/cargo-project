@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using CamexAPI.Models;
 using Entity.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -21,6 +22,7 @@ namespace CamexAPI.Controllers
         }
 
         [HttpGet]
+        
         public IActionResult Get()
         {
             try
@@ -49,8 +51,8 @@ namespace CamexAPI.Controllers
             }
         }
 
-        // POST api/<CountryController>
         [HttpPost]
+        [Authorize]
         public IActionResult Create([FromForm] Flight flight)
         {
             try
@@ -89,6 +91,7 @@ namespace CamexAPI.Controllers
 
         // PUT api/<CountryController>/5
         [HttpPut("{id}")]
+        [Authorize]
         public IActionResult Put(int id, [FromForm] Flight flight)
         {
             try
@@ -134,7 +137,6 @@ namespace CamexAPI.Controllers
                             }
                         }
                     });
-
                 db_flight.IsActived = flight.IsActived;
                 db_flight.LandingDate = flight.LandingDate;
                 db_flight.To = flight.To;
@@ -150,6 +152,7 @@ namespace CamexAPI.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult Delete(int id)
         {
             try

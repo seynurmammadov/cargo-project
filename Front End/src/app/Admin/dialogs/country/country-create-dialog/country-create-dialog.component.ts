@@ -4,6 +4,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {LanguagesService} from '../../../../Core/services/lang/languages.service';
 import {CountriesService} from '../../../../Core/services/Admin/countries/countries.service';
 declare let alertify:any;
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 @Component({
   selector: 'app-country-create-dialog',
   templateUrl: './country-create-dialog.component.html',
@@ -11,10 +12,11 @@ declare let alertify:any;
 })
 export class CountryCreateDialogComponent implements OnInit {
   createForm:FormGroup
-  fileAttr = 'Choose File';
-  fileAttr2 = 'Choose File';
+  fileAttr = 'Şəkil seç';
+  fileAttr2 = 'Şəkil seç';
   fileToUpload:File
   fileToUpload2:File
+  public Editor = ClassicEditor;
   @ViewChild('fileInput') fileInput: ElementRef;
   @ViewChild('fileInput2') fileInput2: ElementRef;
   constructor(

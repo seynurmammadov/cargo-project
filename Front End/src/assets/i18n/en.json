@@ -145,6 +145,12 @@
   "WeOffer": "We offer",
   "TransportingParsels": "Transportation of parcels",
   "CoopService": "Corporate services",
-  "InsideCityDelivery": "Intra-city courier service"
-
+  "InsideCityDelivery": "Intra-city courier service",
+  "LogOut": "Logout",
+  "Parcel": "Parcel",
+  "restore": "Restore",
+  "restorePass": "RESTORE PASSWORD",
+  "SendEmail": "Send Email",
+  "successEmail": "Email sent!",
+  "Restored": "Restored!"
 }

@@ -1,13 +1,13 @@
 <h1 class="mb-2" mat-dialog-title>
-  <b>Change Role</b>
+  <b>Rolu Dəyiş</b>
 </h1>
-<h4 class="mb-1">Current Roles:
+<h4 class="mb-1">İstifadəçinin Rolları:
 </h4>
 <p><i>{{data.str.concat()}}</i></p>
 
 <div mat-dialog-content>
   <mat-form-field class="w-100">
-    <mat-label>Select Roles</mat-label>
+    <mat-label>Rol seç</mat-label>
     <mat-chip-list #chipList aria-label="Fruit selection">
       <mat-chip
         *ngFor="let roles of myuserRoles"
@@ -18,7 +18,7 @@
         <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
       </mat-chip>
       <input
-        placeholder="Add role..."
+        placeholder="Rol əlavə et"
         #fruitInput
         [formControl]="rolesCtrl"
         [matAutocomplete]="auto"
@@ -34,7 +34,7 @@
   </mat-form-field>
 </div>
 <div mat-dialog-actions class="w-100 justify-content-end">
-  <button mat-button (click)="onNoClick()" color="warn">No Thanks</button>
-  <button mat-button (click)="addRole()" color="primary" cdkFocusInitial>Change</button>
+  <button mat-button (click)="onNoClick()" color="warn">Ləğv Et</button>
+  <button mat-button (click)="addRole()" color="primary" cdkFocusInitial>Dəyiş</button>
 </div>
 

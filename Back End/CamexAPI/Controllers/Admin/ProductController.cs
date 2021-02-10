@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using CamexAPI.Models;
 using Entity.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -14,6 +15,7 @@ namespace CamexAPI.Controllers.Admin
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productContext;
@@ -25,6 +27,7 @@ namespace CamexAPI.Controllers.Admin
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Get()
         {
             try
@@ -39,6 +42,7 @@ namespace CamexAPI.Controllers.Admin
         }
         [HttpGet]
         [Route("active")]
+        [AllowAnonymous]
         public IActionResult GetActive()
         {
             try

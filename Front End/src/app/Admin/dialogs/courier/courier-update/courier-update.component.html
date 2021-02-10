@@ -1,5 +1,5 @@
 <h1 class="mb-2" mat-dialog-title>
-  <b>Create Shop</b>
+  <b>Kuryer servisi Yenilə</b>
 </h1>
 
 <form [formGroup]="createForm" novalidate (ngSubmit)="submit()">
@@ -10,7 +10,7 @@
           <div class="d-flex flex-wrap w-100">
             <div class="col-12">
               <mat-form-field class="w-100" appearance="fill">
-                <mat-label class="text-capitalize">Price </mat-label>
+                <mat-label class="text-capitalize">Qiymət</mat-label>
                 <input type="number" matInput formControlName="Price"  placeholder="0.3">
                 <mat-error  *ngIf="errorHandling('Price','required')" [innerHTML]="'Required' | translate ">
                 </mat-error>
@@ -19,25 +19,25 @@
                 </mat-error>
               </mat-form-field>
               <mat-form-field class="w-100" appearance="fill">
-                <mat-label class="text-capitalize">Notice in Russia</mat-label>
-                <input type="text" matInput formControlName="NameRussia"  placeholder="Имя">
+                <mat-label class="text-capitalize">Rayonların adı Rus dilində</mat-label>
+                <input type="text" matInput formControlName="NameRussia">
                 <mat-error  *ngIf="errorHandling('NameRussia','required')" [innerHTML]="'Required' | translate ">
                 </mat-error>
               </mat-form-field>
               <mat-form-field class="w-100" appearance="fill">
-                <mat-label class="text-capitalize">Notice in English</mat-label>
-                <input type="text" matInput formControlName="NameEnglish"  placeholder="Name">
+                <mat-label class="text-capitalize">Rayonların adı İnglis dilində</mat-label>
+                <input type="text" matInput formControlName="NameEnglish" >
                 <mat-error  *ngIf="errorHandling('NameEnglish','required')" [innerHTML]="'Required' | translate ">
                 </mat-error>
               </mat-form-field>
               <mat-form-field class="w-100" appearance="fill">
-                <mat-label class="text-capitalize">Notice in Azerbaijan</mat-label>
-                <input type="text" matInput formControlName="NameAzerbaijan"  placeholder="Ad">
+                <mat-label class="text-capitalize">Rayonların adı Azərbaycan dilində</mat-label>
+                <input type="text" matInput formControlName="NameAzerbaijan" >
                 <mat-error  *ngIf="errorHandling('NameAzerbaijan','required')" [innerHTML]="'Required' | translate ">
                 </mat-error>
               </mat-form-field>
               <mat-checkbox class="mt-2 w-100 text-capitalize" color="primary" formControlName="IsActived" >
-                Activation
+                Activasiya
               </mat-checkbox>
             </div>
           </div>
@@ -46,8 +46,8 @@
     </div>
   </div>
   <div mat-dialog-actions class="w-100 justify-content-end">
-    <button mat-button mat-dialog-close color="warn">Cancel</button>
-    <button mat-raised-button class="text-uppercase reg-button"  color="primary" [disabled]="!createForm.valid">Create</button>
+    <button mat-button mat-dialog-close color="warn">Ləğv Et</button>
+    <button mat-raised-button class="text-uppercase reg-button"  color="primary" [disabled]="!createForm.valid">Yenilə</button>
   </div>
 
 </form>

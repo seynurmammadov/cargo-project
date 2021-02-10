@@ -14,7 +14,7 @@ import {News} from '../../../../Core/models/News';
   styleUrls: ['./update-news.component.scss']
 })
 export class UpdateNewsComponent implements OnInit {
-  fileAttr = 'Choose File';
+  fileAttr = 'Şəkil seçin';
   fileToUpload:File
   @ViewChild('fileInput') fileInput: ElementRef;
   public Editor = ClassicEditor;

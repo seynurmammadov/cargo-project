@@ -1,11 +1,11 @@
 import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {CountryData} from '../../../countries-all/CountryData';
 import {LanguagesService} from '../../../../Core/services/lang/languages.service';
 import {CountriesService} from '../../../../Core/services/Admin/countries/countries.service';
 declare let alertify:any;
 
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 @Component({
   selector: 'app-country-edit-dialog',
   templateUrl: './country-edit-dialog.component.html',
@@ -14,10 +14,11 @@ declare let alertify:any;
 export class CountryEditDialogComponent implements OnInit {
 
   editForm:FormGroup
-  fileAttr = 'Choose File';
-  fileAttr2 = 'Choose File';
+  fileAttr = 'Şəkil seç';
+  fileAttr2 = 'Şəkil seç';
   fileToUpload:File
   fileToUpload2:File
+  public Editor = ClassicEditor;
   @ViewChild('fileInput') fileInput: ElementRef;
   @ViewChild('fileInput2') fileInput2: ElementRef;
   data:any

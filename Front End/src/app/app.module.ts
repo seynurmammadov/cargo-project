@@ -135,6 +135,8 @@ import { CreateFlightComponent } from './Admin/dialogs/flight/create-flight/crea
 import {NewsAdminComponent} from './Admin/news-admin/news-admin.component';
 import { NewsDetailsComponent } from './news-details/news-details.component';
 import { UserSettingsComponent } from './myprofile/user-settings/user-settings.component';
+import {AdminPanelGuard} from './Core/guards/admin-panel.guard';
+import { RestorePasswordComponent } from './restore-password/restore-password.component';
 const routes: Routes=[
   { path: "home", redirectTo:"" ,pathMatch:"full"},
   { path:"",  component:HomeComponent },
@@ -151,6 +153,7 @@ const routes: Routes=[
   { path:"register",  component:RegisterComponent, data: {animation: 'Register'}, canActivate: [AuthOutGuard] },
   { path:"login",  component:LoginComponent, data: {animation: 'Login'},canActivate: [AuthOutGuard]},
   { path:"restore",  component:RestoreComponent, data: {animation: 'Restore'}, canActivate: [AuthOutGuard] },
+  { path:"restore/:id",  component:RestorePasswordComponent, data: {animation: 'Restore'}, canActivate: [AuthOutGuard] },
   { path:"myprofile/statements", redirectTo:"myprofile" },
   { path:"myprofile/control-panel", redirectTo:"myprofile" },
   { path:"myprofile/countries", redirectTo:"myprofile" },
@@ -163,7 +166,7 @@ const routes: Routes=[
     children: [
       {
         path: '',
-        component: DashboardComponent,
+        component: UsersComponent,
         data: {animation: 'admin'},
       },
       {
@@ -333,6 +336,8 @@ const routes: Routes=[
         data: {animation: 'errorr'},
       },
     ],
+    canActivate: [AdminPanelGuard],
+
   },
   { path:"**", component:ErrorComponent,data: {animation: 'Error'}}
 ]
@@ -438,7 +443,8 @@ const routes: Routes=[
     CreateFlightComponent,
     NewsAdminComponent,
     NewsDetailsComponent,
-    UserSettingsComponent
+    UserSettingsComponent,
+    RestorePasswordComponent
   ],
   imports: [
     BrowserModule,

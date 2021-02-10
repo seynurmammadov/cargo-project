@@ -146,6 +146,13 @@
   "WeOffer": "Biz təklif edirik ",
   "TransportingParsels": "Bağlamaların daşınılması",
   "CoopService": "Korporativ xidmətlər",
-  "InsideCityDelivery": "Şəhər daxili Kuryer xidməti"
+  "InsideCityDelivery": "Şəhər daxili Kuryer xidməti",
+  "LogOut": "Çıxış",
+  "Parcel": "Bağlama",
+  "restore": "Sıfırla",
+  "restorePass": "Şifrəni sıfırla",
+  "SendEmail": "Email Göndər",
+  "successEmail": "Email Göndərildi",
+  "Restored": "Sıfırlandı!"
 }
 

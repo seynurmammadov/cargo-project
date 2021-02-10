@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using CamexAPI.Models;
 using Entity.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -22,6 +23,7 @@ namespace CamexAPI.Controllers
             _shopLinkContext = shopLinkContext;
         }
         [HttpPost]
+        [Authorize]
         public IActionResult Post([FromForm] ShopLink shopLink)
         {
             try
@@ -78,6 +80,7 @@ namespace CamexAPI.Controllers
 
 
         [HttpPut("{id}")]
+        [Authorize]
         public IActionResult Put(int id, [FromForm] ShopLink shopLink)
         {
             try
@@ -156,6 +159,7 @@ namespace CamexAPI.Controllers
 
 
         [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult Delete(int id)
         {
             try

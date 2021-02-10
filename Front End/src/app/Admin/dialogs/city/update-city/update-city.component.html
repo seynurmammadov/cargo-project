@@ -1,5 +1,5 @@
 <h1 class="mb-2" mat-dialog-title>
-  <b>Create Country</b>
+  <b>Şəhər yarad</b>
 </h1>
 
 <form [formGroup]="UpdateForm" novalidate (ngSubmit)="submit()">
@@ -10,26 +10,26 @@
           <div class="d-flex flex-wrap w-100">
             <div class="col-12">
               <mat-form-field class="w-100" appearance="fill">
-                <mat-label class="text-capitalize">Name in Russia</mat-label>
+                <mat-label class="text-capitalize">Şəhərin adı Rus dilində</mat-label>
                 <input type="text" matInput formControlName="NameRussia"  placeholder="Имя">
                 <mat-error  *ngIf="errorHandling('NameRussia','required')" [innerHTML]="'Required' | translate ">
                 </mat-error>
               </mat-form-field>
               <mat-form-field class="w-100" appearance="fill">
-                <mat-label class="text-capitalize">Name in English</mat-label>
+                <mat-label class="text-capitalize">Şəhərin adı Englis dilində</mat-label>
                 <input type="text" matInput formControlName="NameEnglish"  placeholder="Name">
                 <mat-error  *ngIf="errorHandling('NameEnglish','required')" [innerHTML]="'Required' | translate ">
                 </mat-error>
               </mat-form-field>
               <mat-form-field class="w-100" appearance="fill">
-                <mat-label class="text-capitalize">Name in Azerbaijan</mat-label>
+                <mat-label class="text-capitalize">Şəhərin adı Azərbaycan dilində</mat-label>
                 <input type="text" matInput formControlName="NameAzerbaijan"  placeholder="Ad">
                 <mat-error  *ngIf="errorHandling('NameAzerbaijan','required')" [innerHTML]="'Required' | translate ">
                 </mat-error>
               </mat-form-field>
 
               <mat-checkbox class="mt-2 w-100 text-capitalize" color="primary" formControlName="IsActived" >
-                Activation
+                Activasiya
               </mat-checkbox>
             </div>
           </div>
@@ -38,8 +38,8 @@
     </div>
   </div>
   <div mat-dialog-actions class="w-100 justify-content-end">
-    <button mat-button mat-dialog-close color="warn">Cancel</button>
-    <button mat-raised-button class="text-uppercase reg-button"  color="primary" [disabled]="!UpdateForm.valid">Update</button>
+    <button mat-button mat-dialog-close color="warn">Ləğv etmək</button>
+    <button mat-raised-button class="text-uppercase reg-button"  color="primary" [disabled]="!UpdateForm.valid">Yenilə</button>
   </div>
 
 </form>

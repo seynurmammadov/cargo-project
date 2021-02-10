@@ -1,4 +1,7 @@
 #layout{
+  .white{
+    color: white
+  }
   .toolbar-container {
     display: flex;
     flex-direction: column;
@@ -18,6 +21,9 @@
       position: fixed;
       z-index: 2;
     }
+  }
+  .active{
+    height: 0;
   }
   .toolbar{
     background-color: #2F6BB7 ;
@@ -80,7 +86,7 @@
   .mat-list-item-content{
   }
   .mat-drawer-inner-container{
-    width: 16rem;
+    width: 17rem;
   }
   .slidenav-item{
     font-size: 14px;
@@ -89,7 +95,6 @@
     background-image: url("../assets/background.webp");
     .profile-img{
       border-radius: 50%;
-      background-image: url("../assets/placeholder.jpg");
       height: 75px;
       width: 75px;
       background-size: cover;
@@ -126,4 +131,17 @@
     outline: 0!important
   }
 }
-
+@media (max-width: 600px) {
+  .mat-toolbar {
+    position: fixed;
+    z-index: 100;
+    top: 0px;
+  }
+  #layout .mat-drawer{
+    box-shadow: none;
+    top: 55px!important;
+  }
+  .nav-line{
+    display: block!important;
+  }
+}

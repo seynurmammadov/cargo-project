@@ -8,19 +8,19 @@
         <div class="w-100">
           <h4 class=" pl-3 pt-4 pb-2 w-100 text-uppercase"><b>{{'PersonalInfo' | translate }} </b></h4>
           <div class="d-flex flex-wrap w-100">
-            <div class="col-lg-6 col-md-6 col-12">
+            <div class="col-lg-6 col-md-12 col-12">
               <mat-form-field class="w-100" appearance="fill">
                 <mat-label class="text-capitalize">{{'Email' | translate }} </mat-label>
                 <input type="email" matInput [value]="customer.user.email" disabled placeholder="camex.example@example.com">
               </mat-form-field>
             </div>
-            <div class="col-lg-6 col-md-6 col-12">
+            <div class="col-lg-6 col-md-12 col-12">
               <mat-form-field class="w-100" appearance="fill">
                 <mat-label class="text-capitalize" >{{'CompanyRegistrationNumber' | translate }}</mat-label>
                 <input type="number" matInput [value]="customer.businessCustomer.companyRegistrationNumber" disabled  placeholder="12345678">
               </mat-form-field>
             </div>
-            <div class="col-lg-6 col-md-6 col-12">
+            <div class="col-lg-6 col-md-12 col-12">
               <mat-form-field class="w-100" appearance="fill">
                 <mat-label class="text-capitalize" >{{'CompanyName' | translate }}</mat-label>
                 <input type="text" matInput [value]="customer.businessCustomer.companyName" disabled placeholder="Seynur" >
@@ -31,7 +31,7 @@
 
           <h4 class=" pl-3  pt-4 pb-2 w-100 text-uppercase"><b>{{'Contact' | translate }}</b></h4>
           <div class="d-flex flex-wrap w-100">
-            <div class="col-lg-6 col-md-6 col-12">
+            <div class="col-lg-6 col-md-12 col-12">
               <mat-form-field class="w-100" appearance="fill" >
                 <mat-label class="text-capitalize">{{'City' | translate }}</mat-label>
                 <mat-select value="selected" disabled>
@@ -41,13 +41,13 @@
                 </mat-select>
               </mat-form-field>
             </div>
-            <div class="col-lg-6 col-md-6 col-12">
+            <div class="col-lg-6 col-md-12 col-12">
               <mat-form-field class="w-100" appearance="fill">
                 <mat-label class="text-capitalize">{{'Address' | translate }}</mat-label>
                 <input type="text" matInput [value]="customer.user.address" disabled placeholder="Nizami rayonu, Cəmşid Naxçivanski 73 ">
               </mat-form-field>
             </div>
-            <div class="col-lg-6 col-md-6 col-12">
+            <div class="col-lg-6 col-md-12 col-12">
               <mat-form-field appearance="fill" class="w-100">
                 <mat-label class="text-capitalize">{{'PhoneNum' | translate }}</mat-label>
                 <input type="text" [value]="customer.user.phoneNumber" disabled matInput placeholder="559294860" >
@@ -56,7 +56,7 @@
           </div>
           <h4 class=" pl-3  pt-4 pb-2 w-100 text-uppercase"><b>{{'OfficeTitle' | translate }}</b></h4>
           <div class="d-flex flex-wrap w-100">
-            <div class="col-lg-6 col-md-6 col-12">
+            <div class="col-lg-6 col-md-12 col-12">
               <mat-form-field class="w-100" appearance="fill">
                 <mat-label class="text-capitalize">{{'Office' | translate }}</mat-label>
                 <mat-select  value="selected" disabled>

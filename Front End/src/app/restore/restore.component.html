@@ -3,23 +3,22 @@
 <app-mobile-navbar>
 </app-mobile-navbar>
 <section id="restore">
-  <app-title [title]="title" ></app-title>
+  <app-title [title]="'restorePass'|translate" ></app-title>
   <div class="container-fluid  pl-pr-10 pt-5 pb-5 d-flex justify-content-center">
     <div class="bg-color col-xl-6 xol-lg-6 col-md-9 col-sm-12 col-12 p-sm-0">
       <div class="p-lg-5 p-md-5 p-sm-3 pb-sm-4 p-2 pb-4">
         <div class="pr-lg-2 pl-lg-2  p-0 pt-2">
           <mat-form-field class="w-100 mt-3" appearance="fill">
-            <mat-label class="ml-2">Email</mat-label>
+            <mat-label class="ml-2">{{'EmailLogin'|translate}}</mat-label>
             <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
             <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-              Please enter a valid email address
+              {{'EmailInCorrect'|translate}}
             </mat-error>
-            <mat-error *ngIf="emailFormControl.hasError('required')">
-              Email is <strong>required</strong>
+            <mat-error *ngIf="emailFormControl.hasError('required')" [innerHTML]="'Required'|translate">
             </mat-error>
           </mat-form-field>
           <div class="w-100 d-flex  mt-4">
-            <button mat-raised-button class="text-uppercase restore-button  w-100">Send Email </button>
+            <button mat-raised-button class="text-uppercase restore-button  w-100" (click)="send()">{{'SendEmail'|translate}}</button>
           </div>
         </div>
       </div>

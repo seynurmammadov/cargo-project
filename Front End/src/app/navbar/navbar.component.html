@@ -59,10 +59,10 @@
     <div class="d-flex col-4 p-0 justify-content-end align-items-center">
       <div *ngIf="authService.user$ | async as user  else elseBlock">
         <div *ngIf="authService.user$ | async as user   " class="user-box d-flex align-items-center">
-          <div class="user d-flex mr-3">
-            <div class="img">
+          <div class="user d-flex mr-3" *ngIf="loaded">
+            <div class="img" [ngStyle]="{'background-image': 'url('+createImgPath(userNav.image)+')'}">
             </div>
-            <div class="title" *ngIf="loaded">
+            <div class="title">
               <p class="m-0 mb-2">
                 <a *ngIf="userNav.companyName else privateuser" class="username text-capitalize" routerLink="/myprofile" >
                   <span *ngIf="userNav.companyName.length>15 else elseBlock2"> {{userNav.companyName.substr(0,15)}}...</span>

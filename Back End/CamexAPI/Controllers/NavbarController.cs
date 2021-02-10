@@ -55,7 +55,9 @@ namespace CamexAPI.Controllers
                     UserNavVM userNav = new UserNavVM
                     {
                         CompanyName = businessCustomer.CompanyName,
-                        UserBalance = user.Balance.UserBalance
+                        UserBalance = user.Balance.UserBalance,
+                        Roles= Roles,
+                        Image = user.Image
                     };
 
                     return Ok(userNav);
@@ -67,7 +69,9 @@ namespace CamexAPI.Controllers
                     {
                         Name= privateCustomer.Name,
                         Surname=privateCustomer.Surname,
-                        UserBalance = user.Balance.UserBalance
+                        UserBalance = user.Balance.UserBalance,
+                        Roles = Roles,
+                        Image = user.Image
                     };
 
                     return Ok(userNav);

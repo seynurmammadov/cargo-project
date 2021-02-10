@@ -3,6 +3,7 @@ using Business.Abstract;
 using CamexAPI.Controllers.Admin;
 using CamexAPI.Models;
 using Entity.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -59,6 +60,7 @@ namespace CamexAPI.Controllers
 
         // POST api/<CountryController>
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> CreateAsync([FromForm] Service service)
         {
             try
@@ -108,6 +110,7 @@ namespace CamexAPI.Controllers
 
         // PUT api/<CountryController>/5
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutAsync(int id, [FromForm] Service service)
         {
             try
@@ -183,6 +186,7 @@ namespace CamexAPI.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult Delete(int id)
         {
             try

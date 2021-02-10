@@ -1,5 +1,5 @@
 <h1 class="mb-2" mat-dialog-title>
-  <b>Reset Password</b>
+  <b>Şifrəni sıfırla</b>
 </h1>
 <form [formGroup]="resetForm" novalidate (ngSubmit)="resetPassword()">
   <div mat-dialog-content>
@@ -30,7 +30,7 @@
     </div>
   </div>
   <div mat-dialog-actions class="w-100 justify-content-end">
-    <button mat-button (click)="onNoClick()" color="warn">Cancel</button>
-    <button mat-button [disabled]="!resetForm.valid" color="primary" cdkFocusInitial>Reset</button>
+    <button mat-button (click)="onNoClick()" color="warn">Ləğv Et</button>
+    <button mat-button [disabled]="!resetForm.valid" color="primary" cdkFocusInitial>Sıfırla</button>
   </div>
 </form>

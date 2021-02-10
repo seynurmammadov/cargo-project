@@ -1,94 +1,94 @@
+<h1 class="mb-2" mat-dialog-title>
+  <b>Ölkə yarad</b>
+</h1>
 
-  <h1 class="mb-2" mat-dialog-title>
-    <b>Create Country</b>
-  </h1>
+<form [formGroup]="editForm" novalidate (ngSubmit)="submit()">
+  <div mat-dialog-content >
+    <div class="d-flex flex-wrap">
+      <div class="pt-4 pb-4  pl-1 pr-1 w-100">
+        <div class="w-100">
+          <div class="d-flex flex-wrap w-100">
+            <div class="col-12">
+              <mat-form-field class="w-100" appearance="fill">
+                <mat-label class="text-capitalize">Ölkənin adı</mat-label>
+                <input type="text" matInput formControlName="Name"  placeholder="USA">
+                <mat-error  *ngIf="errorHandling('Name','required')" [innerHTML]="'Required' | translate ">
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="w-100" appearance="fill">
+                <mat-label class="text-capitalize">Dəyəri</mat-label>
+                <input type="number" matInput formControlName="Value"  placeholder="1">
+                <mat-error  *ngIf="errorHandling('Value','required')" [innerHTML]="'Required' | translate ">
+                </mat-error>
+                <mat-error  *ngIf="errorHandling('Value','pattern') " >
+                  {{'NumberPattern' | translate }}
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="w-100" appearance="fill">
+                <mat-label class="text-capitalize">Valyuta</mat-label>
+                <input type="text" matInput formControlName="Wallet"  placeholder="USD">
+                <mat-error  *ngIf="errorHandling('Wallet','required')" [innerHTML]="'Required' | translate ">
+                </mat-error>
+              </mat-form-field>
 
-  <form [formGroup]="editForm" novalidate (ngSubmit)="submit()">
-    <div mat-dialog-content >
-      <div class="d-flex flex-wrap">
-        <div class="pt-4 pb-4  pl-1 pr-1 w-100">
-          <div class="w-100">
-            <div class="d-flex flex-wrap w-100">
-              <div class="col-12">
-                <mat-form-field class="w-100" appearance="fill">
-                  <mat-label class="text-capitalize">Name</mat-label>
-                  <input type="text" matInput formControlName="Name" [value]="data.name"   placeholder="camex.example@example.com">
-                  <mat-error  *ngIf="errorHandling('Name','required')" [innerHTML]="'Required' | translate ">
+              <mat-label class="text-capitalize">Xəbərdarlıq Rus dilində</mat-label>
+              <br>
+              <br>
+              <ckeditor [editor]="Editor" formControlName="NameRussia" data="<p>Hello, world!</p>"></ckeditor>
+              <br>
+              <mat-label class="text-capitalize">Xəbərdarlıq İnglis dilində</mat-label>
+              <br>
+              <br>
+              <ckeditor [editor]="Editor" formControlName="NameEnglish"  data="<p>Hello, world!</p>"></ckeditor>
+              <br>
+              <mat-label class="text-capitalize">Xəbərdarlıq Azərbaycan dilində</mat-label>
+              <br>
+              <br>
+              <ckeditor [editor]="Editor" formControlName="NameAzerbaijan" data="<p>Hello, world!</p>"></ckeditor>
+              <br>
+
+              <div class="w-100 " id="fileInput">
+                <mat-form-field>
+                  <mat-label class="text-capitalize">Bayraq</mat-label>
+                  <div class="d-flex justify-content-between">
+                    <input matInput [value]="fileAttr" readonly name="name" />
+                    <button mat-raised-button type="button"  (click)="fileInput.click()">
+                      Seç
+                    </button>
+                    <input type="file"  hidden #fileInput formControlName="FileInput"  (change)="uploadFileEvt($event)" name="uploadFile"
+                           accept="image/*" />
+                  </div>
+                  <mat-error  *ngIf="errorHandling('FileInput','required')" [innerHTML]="'Required' | translate ">
                   </mat-error>
                 </mat-form-field>
-                <mat-form-field class="w-100" appearance="fill">
-                  <mat-label class="text-capitalize">Value</mat-label>
-                  <input type="number" matInput formControlName="Value" [value]="data.value" placeholder="camex.example@example.com">
-                  <mat-error  *ngIf="errorHandling('Value','required')" [innerHTML]="'Required' | translate ">
-                  </mat-error>
-                  <mat-error  *ngIf="errorHandling('Value','pattern') " >
-                    {{'NumberPattern' | translate }}
-                  </mat-error>
-                </mat-form-field>
-                <mat-form-field class="w-100" appearance="fill">
-                  <mat-label class="text-capitalize">Wallet</mat-label>
-                  <input type="text" matInput formControlName="Wallet"  placeholder="USD">
-                  <mat-error  *ngIf="errorHandling('Wallet','required')" [innerHTML]="'Required' | translate ">
-                  </mat-error>
-                </mat-form-field>
-                <mat-form-field class="w-100" appearance="fill">
-                  <mat-label class="text-capitalize">Notice in Russia</mat-label>
-                  <input type="text" matInput formControlName="NameRussia"  placeholder="Имя">
-                  <mat-error  *ngIf="errorHandling('NameRussia','required')" [innerHTML]="'Required' | translate ">
+
+                <mat-form-field>
+                  <mat-label class="text-capitalize">Arxa şəkil</mat-label>
+                  <div class="d-flex justify-content-between">
+                    <input matInput [value]="fileAttr2" readonly name="name" />
+                    <button mat-raised-button type="button"  (click)="fileInput2.click()">
+                      Seç
+                    </button>
+                    <input type="file"  hidden #fileInput2 formControlName="FileInput2"  (change)="uploadFileEvt2($event)" name="uploadFile2"
+                           accept="image/*" />
+                  </div>
+                  <mat-error  *ngIf="errorHandling('FileInput2','required')" [innerHTML]="'Required' | translate ">
                   </mat-error>
                 </mat-form-field>
-                <mat-form-field class="w-100" appearance="fill">
-                  <mat-label class="text-capitalize">Notice in English</mat-label>
-                  <input type="text" matInput formControlName="NameEnglish"  placeholder="Name">
-                  <mat-error  *ngIf="errorHandling('NameEnglish','required')" [innerHTML]="'Required' | translate ">
-                  </mat-error>
-                </mat-form-field>
-                <mat-form-field class="w-100" appearance="fill">
-                  <mat-label class="text-capitalize">Notice in Azerbaijan</mat-label>
-                  <input type="text" matInput formControlName="NameAzerbaijan"  placeholder="Ad">
-                  <mat-error  *ngIf="errorHandling('NameAzerbaijan','required')" [innerHTML]="'Required' | translate ">
-                  </mat-error>
-                </mat-form-field>
-                <div class="w-100 " id="fileInput">
-                  <mat-form-field>
-                    <mat-label class="text-capitalize">Flag image</mat-label>
-                    <div class="d-flex justify-content-between">
-                      <input matInput [value]="fileAttr" readonly name="name" />
-                      <button mat-raised-button type="button"  (click)="fileInput.click()">
-                        Browse File
-                      </button>
-                      <input type="file"  hidden #fileInput formControlName="FileInput"  (change)="uploadFileEvt($event)" name="uploadFile"
-                             accept="image/*" />
-                    </div>
-                    <mat-error  *ngIf="errorHandling('FileInput','required')" [innerHTML]="'Required' | translate ">
-                    </mat-error>
-                  </mat-form-field>
-                  <mat-form-field>
-                    <mat-label class="text-capitalize">Background Flag image</mat-label>
-                    <div class="d-flex justify-content-between">
-                      <input matInput [value]="fileAttr2" readonly name="name" />
-                      <button mat-raised-button type="button"  (click)="fileInput2.click()">
-                        Browse File
-                      </button>
-                      <input type="file"  hidden #fileInput2 formControlName="FileInput2"  (change)="uploadFileEvt2($event)" name="uploadFile2"
-                             accept="image/*" />
-                    </div>
-                    <mat-error  *ngIf="errorHandling('FileInput2','required')" [innerHTML]="'Required' | translate ">
-                    </mat-error>
-                  </mat-form-field>                  <mat-checkbox class="mt-2 w-100 text-capitalize" color="primary"[attr.checked]="data.isActived  ? 'checked' : null" formControlName="IsActived" >
-                    Activation
-                  </mat-checkbox>
-                </div>
+                <mat-checkbox class="mt-2 w-100 text-capitalize" color="primary" formControlName="IsActived" >
+                  Activasiya
+                </mat-checkbox>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div mat-dialog-actions class="w-100 justify-content-end">
-      <button mat-button mat-dialog-close color="warn">Cancel</button>
-      <button mat-raised-button class="text-uppercase reg-button"  color="primary" [disabled]="!editForm.valid">Update</button>
-    </div>
+  </div>
+  <div mat-dialog-actions class="w-100 justify-content-end">
+    <button mat-button mat-dialog-close color="warn">Ləğv Et</button>
+    <button mat-raised-button class="text-uppercase reg-button"  color="primary" [disabled]="!editForm.valid">Yarad</button>
+  </div>
 
-  </form>
+</form>
 

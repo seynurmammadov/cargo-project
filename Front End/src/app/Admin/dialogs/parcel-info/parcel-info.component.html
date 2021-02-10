@@ -1,88 +1,85 @@
-<h2 mat-dialog-title>Beyanat yarad</h2>
+<h2 mat-dialog-title>İnformasiya</h2>
 <form [formGroup]="statementForm" novalidate  *ngIf="statementForm">
   <mat-dialog-content class="mat-typography">
     <div class="d-flex flex-wrap w-100 mt-4">
-      <div class="col-lg-6 col-md-6 col-12">
+      <div class="col-lg-6 col-md-12 col-12">
         <mat-form-field class="w-100" appearance="fill">
-          <mat-label class="text-capitalize" >TrekNomre</mat-label>
-          <input type="text" matInput readonly placeholder="2131233124asdasdasd211" formControlName="Track">
-
+          <mat-label class="text-capitalize" >İzləmə kodu</mat-label>
+          <input type="text" matInput readonly placeholder="05228964284282P" formControlName="Track">
         </mat-form-field>
       </div>
-      <div class="col-lg-6 col-md-6 col-12">
+      <div class="col-lg-6 col-md-12 col-12">
         <mat-form-field class="w-100" appearance="fill">
-          <mat-label class="text-capitalize" >Saytin adi</mat-label>
+          <mat-label class="text-capitalize">Camex İzləmə kodu</mat-label>
+          <input type="text" matInput placeholder="052SA64284282P " formControlName="TrackCamex">
+        </mat-form-field>
+      </div>
+      <div class="col-lg-6 col-md-12 col-12">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label class="text-capitalize" >Saytın / Maqazinin adı</mat-label>
           <input type="text" matInput  placeholder="Trendyoll" formControlName="Name">
-
         </mat-form-field>
       </div>
-      <div class="col-12">
+      <div class="col-lg-4 col-md-12 col-12">
         <mat-form-field class="w-100" appearance="fill">
-          <mat-label class="text-capitalize" >Mehsul</mat-label>
+          <mat-label class="text-capitalize" >Məhsul</mat-label>
           <mat-select  formControlName="Product">
             <mat-option *ngFor="let item of products"  [value]="item.id"  class="text-capitalize">
-              {{item.productTranslates[0].name}}
+              {{item.productTranslates[2].name}}
             </mat-option>
-
           </mat-select>
-
         </mat-form-field>
       </div>
-      <div class="col-lg-4 col-md-4 col-12">
+      <div class="col-lg-2 col-md-12 col-12 ">
         <mat-form-field class="w-100" appearance="fill">
-          <mat-label class="text-capitalize">Qiymet</mat-label>
-          <input type="number" matInput placeholder="123123 " formControlName="Price">
-        </mat-form-field>
-      </div>
-      <div class="col-lg-4 col-md-4 col-12 ">
-        <mat-form-field class="w-100" appearance="fill">
-          <mat-label class="text-capitalize" >Valuta</mat-label>
+          <mat-label class="text-capitalize" >Valyuta</mat-label>
           <mat-select  formControlName="Wallet">
             <mat-option *ngFor="let item of wallet" [value]="item.id" class="text-capitalize">
               {{item.wallet}}
             </mat-option>
-
           </mat-select>
         </mat-form-field>
       </div>
-      <div class="col-lg-4 col-md-4 col-12">
-        <mat-form-field class="w-100" appearance="fill">
-          <mat-label class="text-capitalize">Say</mat-label>
-          <input type="number" matInput placeholder="123123 " formControlName="Count">
-        </mat-form-field>
-      </div>
-      <div class="col-lg-4 col-md-4 col-12">
-        <mat-form-field class="w-100" appearance="fill">
-          <mat-label class="text-capitalize">CargoPrice</mat-label>
-          <input type="number" matInput placeholder="123123 " formControlName="CargoPrice">
-        </mat-form-field>
-      </div>
-      <div class="col-lg-4 col-md-4 col-12">
-        <mat-form-field class="w-100" appearance="fill">
-          <mat-label class="text-capitalize">TrackCamex</mat-label>
-          <input type="text" matInput placeholder="123123 " formControlName="TrackCamex">
-        </mat-form-field>
-      </div>
-      <div class="col-lg-4 col-md-4 col-12">
+      <div class="col-lg-4 col-md-12 col-12">
         <mat-form-field class="w-100" appearance="fill">
           <mat-label class="text-capitalize">CamexID</mat-label>
-          <input type="number" matInput placeholder="123123 " formControlName="CamexID">
+          <input type="number" matInput placeholder="234612" formControlName="CamexID">
         </mat-form-field>
       </div>
-      <div class="col-lg-4 col-md-4 col-12">
+      <div class="col-lg-2 col-md-12 col-12">
         <mat-form-field class="w-100" appearance="fill">
-          <mat-label class="text-capitalize">Weight</mat-label>
+          <mat-label class="text-capitalize">Ümumi məbləğ</mat-label>
+          <input type="number" matInput placeholder="100 " formControlName="Price">
+        </mat-form-field>
+      </div>
+      <div class="col-lg-2 col-md-12 col-12">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label class="text-capitalize">Sayı</mat-label>
+          <input type="number" matInput placeholder="5" formControlName="Count">
+        </mat-form-field>
+      </div>
+      <div class="col-lg-2 col-md-12 col-12">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label class="text-capitalize">Daşınma haqqı</mat-label>
+          <input type="number" matInput placeholder="100" formControlName="CargoPrice">
+        </mat-form-field>
+      </div>
+
+      <div class="col-lg-2 col-md-12 col-12">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label class="text-capitalize">Çəkisi</mat-label>
           <input type="number" matInput placeholder="123123 " formControlName="Weight">
         </mat-form-field>
       </div>
       <div class="col-12">
         <mat-form-field class="w-100" appearance="fill">
           <mat-label class="text-capitalize" >Qeyd</mat-label>
-          <textarea type="text" matInput  placeholder="somt text" rows="7"  formControlName="TextArea">
+          <textarea type="text" matInput  placeholder="some text example" rows="7"  formControlName="TextArea">
           </textarea>
         </mat-form-field>
+        <a target="_blank" [href]="createImgPath(this.parcelData.image)"> Şəkil</a>
       </div>
-      <a target="_blank" [href]="createImgPath(this.parcelData.image)"> Image src</a>
+
 
     </div>
   </mat-dialog-content>

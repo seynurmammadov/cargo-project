@@ -11,5 +11,6 @@ namespace CamexAPI.Models.VM
         public AppUser User { get; set; }
         public BusinessCustomer BusinessCustomer { get; set; }
         public PrivateCustomer PrivateCustomer { get; set; }
+        public IList<string> Roles { get; set; }
     }
 }

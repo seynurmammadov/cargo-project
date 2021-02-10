@@ -12,7 +12,7 @@ declare let alertify:any
   styleUrls: ['./create-news.component.scss']
 })
 export class CreateNewsComponent implements OnInit {
-  fileAttr = 'Choose File';
+  fileAttr = 'Şəkil seçin';
   fileToUpload:File
   @ViewChild('fileInput') fileInput: ElementRef;
   public Editor = ClassicEditor;

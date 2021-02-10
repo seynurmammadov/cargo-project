@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using CamexAPI.Models;
 using Entity.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -24,6 +25,7 @@ namespace CamexAPI.Controllers
         }
 
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public IActionResult Get(int id)
         {
             try
@@ -37,6 +39,7 @@ namespace CamexAPI.Controllers
             }
         }
         [HttpPost]
+        [Authorize]
         public IActionResult Create([FromForm] Tariff tariff)
         {
             try
@@ -81,6 +84,7 @@ namespace CamexAPI.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize]
         public IActionResult PutAsync(int id, [FromForm] Tariff tariff)
         {
             try
@@ -138,6 +142,7 @@ namespace CamexAPI.Controllers
             }
         }
         [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult Delete(int id)
         {
             try
@@ -171,6 +176,7 @@ namespace CamexAPI.Controllers
             }
         }
         [HttpGet("withId/{id}")]
+        [AllowAnonymous]
         public IActionResult GetId(int id)
         {
             try

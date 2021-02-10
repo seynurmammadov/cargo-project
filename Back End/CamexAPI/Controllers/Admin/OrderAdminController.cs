@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using CamexAPI.Identity;
 using Entity.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -15,6 +16,7 @@ namespace CamexAPI.Controllers.Admin
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class OrderAdminController : ControllerBase
     {
         private readonly IOrderService _orderContext;

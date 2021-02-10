@@ -77,18 +77,19 @@ export class OrderInProcessComponent implements OnInit {
     const bodyOrder = new FormData();
     bodyOrder.append("id",orderId)
     Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      title: 'Əminsiniz?',
+      text: "Bunu geri qaytara bilməyəcəksiz!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      cancelButtonText: 'Ləğv et',
+      confirmButtonText: 'Rəd Et!'
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
+          'Rəd edildi!',
+          '',
           'success'
         )
         this.serviceOrder.refuse(body).subscribe(
@@ -120,18 +121,19 @@ export class OrderInProcessComponent implements OnInit {
     const bodyOrder = new FormData();
     bodyOrder.append("id",orderId)
     Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      title: 'Əminsiniz?',
+      text: "Bunu geri qaytara bilməyəcəksiz!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      cancelButtonText: 'Ləğv et',
+      confirmButtonText: 'Qəbul Et!'
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
+          'Qəbul Edildi!',
+          '',
           'success'
         )
         this.serviceOrder.changeStatus(bodyOrder).subscribe(

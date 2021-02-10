@@ -4,6 +4,7 @@ using CamexAPI.Controllers.Admin;
 using CamexAPI.Identity;
 using CamexAPI.Models;
 using Entity.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -19,6 +20,7 @@ using System.Threading.Tasks;
 namespace CamexAPI.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class StatementController : ControllerBase
     {
@@ -50,6 +52,7 @@ namespace CamexAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Post([FromForm] Cargo cargo)
         {
             try
@@ -116,8 +119,8 @@ namespace CamexAPI.Controllers
             }
         }
 
-        // PUT api/<CountryController>/5
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutAsync(int id, [FromForm] Cargo cargo)
         {
             try
@@ -190,10 +193,8 @@ namespace CamexAPI.Controllers
             }
         }
 
-
-
-        // DELETE api/<CountryController>/5
         [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult Delete(int id)
         {
             try

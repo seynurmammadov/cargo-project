@@ -2,6 +2,7 @@
 using CamexAPI.Identity;
 using CamexAPI.Models;
 using Entity.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -30,6 +31,7 @@ namespace CamexAPI.Controllers
             _user = user;
         }
         [HttpGet]
+        [Authorize]
         public IActionResult Get()
         {
             try
@@ -45,6 +47,7 @@ namespace CamexAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Post([FromForm] Order order)
         {
             try

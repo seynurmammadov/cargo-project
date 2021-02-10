@@ -5,7 +5,6 @@ import {LanguagesService} from '../../../../Core/services/lang/languages.service
 import {FaqService} from '../../../../Core/services/Admin/faq/faq.service';
 declare let alertify:any
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import {CourierLocation} from '../../../../Core/models/CourierLocation';
 import {FAQ} from '../../../../Core/models/FAQ';
 @Component({
   selector: 'app-faq-update',

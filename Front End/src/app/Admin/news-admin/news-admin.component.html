@@ -1,10 +1,10 @@
 <app-layout >
   <div id="shops" >
-    <app-title-admin [title]="'News'"></app-title-admin>
+    <app-title-admin [title]="'Xəbərlər'"></app-title-admin>
     <div style="    padding: 25px 35px;">
       <div class="top-title d-flex justify-content-between align-items-center">
-        <span class="m-0 pl-3 title">News</span>
-        <button mat-raised-button (click)="openDialogCreate()">Create</button>
+        <span class="m-0 pl-3 title">Xəbərlər</span>
+        <button mat-raised-button (click)="openDialogCreate()">Yarad</button>
       </div>
     </div>
 
@@ -19,25 +19,25 @@
             <table mat-table [dataSource]="dataSource" matSort>
 
               <ng-container matColumnDef="title"  >
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
-                <td mat-cell *matCellDef="let row"> {{row.newsTranslates[0].title}} </td>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Başlıq </th>
+                <td mat-cell *matCellDef="let row"> {{row.newsTranslates[2].title}} </td>
               </ng-container>
               <ng-container matColumnDef="createdDate"  >
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Created Date </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Yaranma Tarixi</th>
                 <td mat-cell *matCellDef="let row"> {{row.createdDate | date:'yyyy-MM-dd'}} </td>
               </ng-container>
               <ng-container matColumnDef="isActived">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Statusu </th>
                 <td mat-cell *matCellDef="let row" >
-                  <span *ngIf="row.isActived; else elseblock" class="badge badge-success">Actived</span>
+                  <span *ngIf="row.isActived; else elseblock" class="badge badge-success">Activedi</span>
                   <ng-template #elseblock >
-                    <span class="badge badge-danger">Deactived</span>
+                    <span class="badge badge-danger">Deactivdi</span>
                   </ng-template>
                 </td>
               </ng-container>
 
               <ng-container matColumnDef="actions">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Əməliyyatlar </th>
                 <td mat-cell *matCellDef="let row" class="">
                   <div class="buttons">
                     <button mat-icon-button  color="primary" (click)="openDialogEdit(row)" > <mat-icon style="font-size: 22px ">edit</mat-icon></button>
@@ -50,7 +50,7 @@
               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
               <!-- Row shown when there is no matching data. -->
               <tr class="mat-row" *matNoDataRow>
-                <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                <td class="mat-cell"  colspan="12">Data tapılmadır</td>
               </tr>
             </table>
           </div>

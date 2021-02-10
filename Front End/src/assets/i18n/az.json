@@ -153,6 +153,10 @@
   "restorePass": "Şifrəni sıfırla",
   "SendEmail": "Email Göndər",
   "successEmail": "Email Göndərildi",
-  "Restored": "Sıfırlandı!"
+  "Restored": "Sıfırlandı!",
+  "ProfileImage": "Profil şəkili",
+  "BalancePay": "Balansdan ödə",
+  "count": "Say"
+
 }
 

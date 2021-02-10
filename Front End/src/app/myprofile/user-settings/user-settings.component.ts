@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, FormGroupDirective, Validators} from '@angular/forms';
 import {RxwebValidators} from '@rxweb/reactive-form-validators';
 import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
@@ -19,6 +19,11 @@ export class UserSettingsComponent implements OnInit {
   @Input() user;
   currentCities:City[];
   offices:Office[];
+
+  fileAttr = this.translate.instant("ChooseFile");
+  fileToUpload:File
+  @ViewChild('fileInput') fileInput: ElementRef;
+
   @ViewChild(FormGroupDirective) formGroupDirective: FormGroupDirective;
   constructor(
     private registerService:RegistrationService,
@@ -122,7 +127,8 @@ export class UserSettingsComponent implements OnInit {
          Validators.required,
          Validators.pattern(/^\d*\.?\d*$/)
        ]),
-
+       FileInput: new FormControl('', [
+       ]),
      })
    }
    else{
@@ -172,6 +178,8 @@ export class UserSettingsComponent implements OnInit {
          Validators.required,
          Validators.pattern(/^\d*\.?\d*$/)
        ]),
+       FileInput: new FormControl('', [
+       ]),
      })
    }
   }
@@ -186,7 +194,12 @@ export class UserSettingsComponent implements OnInit {
     body.append("OfficeId",this.privateForm.controls['OfficeId'].value)
     body.append("Birthday",JSON.stringify(this.privateForm.controls['Birthday'].value).split('"').join(''))
     body.append("IsMan",this.privateForm.controls['IsMan'].value)
-
+    if(this.fileToUpload == undefined){
+      body.append("Photo",null)
+    }
+    else{
+      body.append("Photo",this.fileToUpload,this.fileToUpload.name)
+    }
     this.registerService.UpdatePrivate(body).subscribe(
       ()=> {
         alertify.success(this.translate.instant("changed")+"!");
@@ -202,6 +215,19 @@ export class UserSettingsComponent implements OnInit {
         })
       })
   }
+  uploadFileEvt(imgFile: any) {
+    if (imgFile.target.files && imgFile.target.files[0]) {
+      this.fileAttr = '';
+      this.fileAttr = imgFile.target.files[0].name
+
+      this.fileToUpload= <File>imgFile.target.files[0]
+
+      // Reset if duplicate image uploaded again
+      this.fileInput.nativeElement.value = "";
+    } else {
+      this.fileAttr = this.translate.instant("ChooseFile");
+    }
+  }
   submitBusiness(){
     const body = new FormData()
     body.append("CheckPassword",this.businessForm.controls['CheckPassword'].value.split(' ').join(''))
@@ -212,7 +238,12 @@ export class UserSettingsComponent implements OnInit {
     body.append("PhoneNumber",this.businessForm.controls['PhoneNumber'].value)
     body.append("OfficeId",this.businessForm.controls['OfficeId'].value)
     body.append("CompanyName",this.businessForm.controls['CompanyName'].value)
-
+    if(this.fileToUpload == undefined){
+      body.append("Photo",null)
+    }
+    else{
+      body.append("Photo",this.fileToUpload,this.fileToUpload.name)
+    }
     this.registerService.UpdateBusiness(body).subscribe((s)=> {
         alertify.success(this.translate.instant("changed")+"!");
         setTimeout(()=>{

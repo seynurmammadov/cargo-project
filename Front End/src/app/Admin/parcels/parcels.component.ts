@@ -63,7 +63,6 @@ export class ParcelsComponent implements OnInit {
     else {
       this.service.getUserId(this.val,this.userId).subscribe(res=>{
         this.data=res;
-        console.log(res)
         this.dataSource = new MatTableDataSource(this.data);
         this.loaded=true
         setTimeout(() => {

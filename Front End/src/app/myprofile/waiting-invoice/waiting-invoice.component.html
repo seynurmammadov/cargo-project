@@ -44,7 +44,7 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             <tr class="mat-row" *matNoDataRow>
-              <td class="mat-cell" colspan="12">No data matching the filter "{{input.value}}"</td>
+              <td class="mat-cell"  colspan="12"> {{'DataNotFound'|translate}}</td>
             </tr>
           </table>
         </div>

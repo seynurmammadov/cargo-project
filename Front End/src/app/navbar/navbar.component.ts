@@ -4,6 +4,7 @@ import {Languages} from './models/languages';
 import {LoginService} from '../Core/services/login/login.service';
 import {NavigationService} from '../Core/services/navigation/navigation.service';
 import {UserNavVM} from './models/UserNavVM';
+import {DescriptionsService} from '../Core/services/descriptions/descriptions.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +13,9 @@ import {UserNavVM} from './models/UserNavVM';
   encapsulation: ViewEncapsulation.None
 })
 export class NavbarComponent implements OnInit {
-  constructor(private languagesService:LanguagesService, public authService:LoginService, private navigation:NavigationService) {
+  constructor(private languagesService:LanguagesService,
+              private service:DescriptionsService,
+              public authService:LoginService, private navigation:NavigationService) {
     this.languagesService.getLang().subscribe(res=>{
       res.forEach(r=>{
         r.flagSrc='../../assets/image/navbar/'+r.flagSrc
@@ -21,7 +24,7 @@ export class NavbarComponent implements OnInit {
       this.select=this.languagesService.select;
     });
     this.getUser();
-
+    this.get()
   }
   ngOnInit(): void {
   }
@@ -30,7 +33,13 @@ export class NavbarComponent implements OnInit {
   selected:string=this.languagesService.selected;
   select:Languages;
   userNav:UserNavVM;
-
+  data:any
+  get(){
+    this.service.getBio().subscribe((res)=>{
+      this.data=res[0]
+      this.loaded2=true
+    })
+  }
   SetLanguage(lang){
     this.languagesService.SetLanguage(lang);
     this.select=this.languagesService.select;
@@ -39,6 +48,7 @@ export class NavbarComponent implements OnInit {
     this.authService.logout();
   }
   loaded:boolean=false
+  loaded2:boolean=false
   getUser(){
     this.authService.user$.subscribe(user=> {
       if (user != null && this.authService.end) {
@@ -51,5 +61,8 @@ export class NavbarComponent implements OnInit {
   }
   public createImgPath = (serverPath: string) => {
     return `https://localhost:44387/Site/images/users/${serverPath}`;
+  }
+  public createImgPathLogo = (serverPath: string) => {
+    return `https://localhost:44387/Site/images/bio/${serverPath}`;
   }
 }

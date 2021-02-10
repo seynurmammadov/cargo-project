@@ -33,7 +33,7 @@
                 </mat-error>
               </mat-form-field>
               <mat-form-field class="w-100" appearance="fill">
-                <mat-label class="text-capitalize">Price</mat-label>
+                <mat-label class="text-capitalize">Qiymət</mat-label>
                 <input type="number" matInput formControlName="Price" step="0.01">
                 <mat-error  *ngIf="errorHandling('Price','required')" [innerHTML]="'Required' | translate ">
                 </mat-error>
@@ -49,7 +49,7 @@
   </div>
   <div mat-dialog-actions class="w-100 justify-content-end">
     <button mat-button mat-dialog-close color="warn">Ləğv Et</button>
-    <button mat-raised-button class="text-uppercase reg-button"  color="primary" [disabled]="!createForm.valid">Yarad</button>
+    <button mat-raised-button class="text-uppercase reg-button"  color="primary" [disabled]="!createForm.valid">Yenilə</button>
   </div>
 
 </form>

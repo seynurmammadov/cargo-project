@@ -46,12 +46,12 @@
                   </mat-panel-title>
                 </mat-expansion-panel-header >
                   <div class="mat-expansion-panel-content active" id="active"  >
-                    <mat-list-item routerLink="[child.route]">
+            <!--        <mat-list-item routerLink="[child.route]">
                       <div class="white">
                         Tənzimləmələr
                       </div>
-                    </mat-list-item>
-                    <mat-list-item routerLink="[child.route]">
+                    </mat-list-item>-->
+                    <mat-list-item (click)="logout()" role="button">
                       <div class="white">
                         Çıxış
                       </div>
@@ -201,6 +201,21 @@
               <mat-list-item routerLink="/admin/flights">
                 <div  class="slidenav-item">
                   Reyslər
+                </div>
+              </mat-list-item>
+              <mat-list-item routerLink="/admin/bio">
+                <div  class="slidenav-item">
+                  Bio
+                </div>
+              </mat-list-item>
+              <mat-list-item routerLink="/admin/about-description">
+                <div  class="slidenav-item">
+                  Haqqımızda
+                </div>
+              </mat-list-item>
+              <mat-list-item routerLink="/admin/contact-notice">
+                <div  class="slidenav-item">
+                  Əlagə (bildirişi)
                 </div>
               </mat-list-item>
             </div>

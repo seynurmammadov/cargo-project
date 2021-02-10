@@ -74,7 +74,7 @@ loaded:boolean=false
     this.service.getEnded().subscribe(res=>{
       this.Data=res;
       this.youLimit=0
-      if(this.Data[0].createdDate!=undefined){
+      if(this.Data[0]!=null){
         this.Data.forEach(data=>{
           let today = new Date()
           let day = new Date(data.createdDate )
@@ -83,6 +83,8 @@ loaded:boolean=false
           }
         })
 
+      }else{
+        this.youLimit=0
       }
       this.limit= ((this.youLimit*100)/300).toString()
       this.chartOptions = {

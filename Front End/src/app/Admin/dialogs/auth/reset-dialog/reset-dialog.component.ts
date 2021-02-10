@@ -51,7 +51,7 @@ export class ResetDialogComponent implements OnInit {
     }
     this.service.ResetPassword(body).subscribe(
       ()=> {
-        alertify.success("Changed!");
+        alertify.success("Sıfırlandı!");
         this.dialogRef.close();
       },
       error => {

@@ -137,6 +137,9 @@ import { NewsDetailsComponent } from './news-details/news-details.component';
 import { UserSettingsComponent } from './myprofile/user-settings/user-settings.component';
 import {AdminPanelGuard} from './Core/guards/admin-panel.guard';
 import { RestorePasswordComponent } from './restore-password/restore-password.component';
+import { BioComponent } from './Admin/bio/bio.component';
+import { AboutUsComponent } from './Admin/about-us/about-us.component';
+import { ContactNoticeComponent } from './Admin/contact-notice/contact-notice.component';
 const routes: Routes=[
   { path: "home", redirectTo:"" ,pathMatch:"full"},
   { path:"",  component:HomeComponent },
@@ -193,6 +196,21 @@ const routes: Routes=[
         path: 'order-in-process',
         component: OrderInProcessComponent,
         data: {animation: 'OrderInProcess'},
+      },
+      {
+        path: 'about-description',
+        component: AboutUsComponent,
+        data: {animation: 'aboutDescription'},
+      },
+      {
+        path: 'contact-notice',
+        component: ContactNoticeComponent,
+        data: {animation: 'contactNotice'},
+      },
+      {
+        path: 'bio',
+        component: BioComponent,
+        data: {animation: 'Bio'},
       },
       {
         path: 'order-processed',
@@ -444,7 +462,10 @@ const routes: Routes=[
     NewsAdminComponent,
     NewsDetailsComponent,
     UserSettingsComponent,
-    RestorePasswordComponent
+    RestorePasswordComponent,
+    BioComponent,
+    AboutUsComponent,
+    ContactNoticeComponent
   ],
   imports: [
     BrowserModule,

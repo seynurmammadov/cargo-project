@@ -176,6 +176,23 @@
                       {{'NumberPattern' | translate }}
                     </mat-error>
                   </mat-form-field>
+
+                </div>
+                <div class="col-12 " id="fileInput">
+                  <mat-form-field>
+                    <mat-label class="text-capitalize">{{"ProfileImage"|translate}}</mat-label>
+                    <div class="d-flex justify-content-between">
+                      <input matInput [value]="fileAttr" readonly name="name" />
+                      <button mat-raised-button type="button"  (click)="fileInput.click()">
+                        {{"Browse"|translate}}
+                      </button>
+                      <input type="file"  hidden #fileInput formControlName="FileInput"  (change)="uploadFileEvt($event)" name="uploadFile"
+                             accept="image/*" />
+                    </div>
+                    <mat-error  *ngIf="errorHandling('FileInput','required')" [innerHTML]="'Required' | translate ">
+                    </mat-error>
+                  </mat-form-field>
+
                 </div>
               </div>
               <h4 class=" pl-3  pt-4 pb-2 w-100 text-uppercase"><b>{{'OfficeTitle' | translate }}</b></h4>

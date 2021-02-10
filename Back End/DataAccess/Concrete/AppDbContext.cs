@@ -48,6 +48,9 @@ namespace DataAccess.Concrete
         public DbSet<News> News { get; set; }
         public DbSet<NewsTranslate> NewsTranslates { get; set; }
         public DbSet<Flight> Flights { get; set; }
+        public DbSet<About> About { get; set; }
+        public DbSet<Bio> Bio { get; set; }
+        public DbSet<ContactNotice> ContactNotice { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
         }

@@ -19,6 +19,30 @@ namespace DataAccess.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Entity.Models.About", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("DescAz")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DescEng")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DescRus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("About");
+                });
+
             modelBuilder.Entity("Entity.Models.AppUser", b =>
                 {
                     b.Property<string>("Id")
@@ -26,6 +50,9 @@ namespace DataAccess.Migrations
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
+
+                    b.Property<string>("ActiveCode")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
@@ -128,6 +155,55 @@ namespace DataAccess.Migrations
                         .HasFilter("[UserId] IS NOT NULL");
 
                     b.ToTable("Balances");
+                });
+
+            modelBuilder.Entity("Entity.Models.Bio", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CallCenter")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LogoFooter")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LogoNavbar")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PageTitle")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ShortDescAz")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ShortDescEng")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ShortDescRus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SliderTitleAz")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SliderTitleEng")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SliderTitleRus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Bio");
                 });
 
             modelBuilder.Entity("Entity.Models.BusinessCustomer", b =>
@@ -288,6 +364,30 @@ namespace DataAccess.Migrations
                     b.HasIndex("LanguageId");
 
                     b.ToTable("CityNameTranslates");
+                });
+
+            modelBuilder.Entity("Entity.Models.ContactNotice", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("DescAz")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DescEng")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DescRus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ContactNotice");
                 });
 
             modelBuilder.Entity("Entity.Models.Country", b =>

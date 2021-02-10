@@ -137,7 +137,7 @@
   "CamexPrice": "Cargo Price",
   "Destination": "Destination",
   "ImgSrc": "Check invoice",
-  "InAnbar": "In abroed Anbar",
+  "InAnbar": "In abroad Anbar",
   "InСustoms": "In Сustoms",
   "InOffice": "In Office",
   "InWay": "In Way",
@@ -152,5 +152,9 @@
   "restorePass": "RESTORE PASSWORD",
   "SendEmail": "Send Email",
   "successEmail": "Email sent!",
-  "Restored": "Restored!"
+  "Restored": "Restored!",
+  "ProfileImage": "Profile Image",
+  "BalancePay": "Pay for balance",
+  "count": "Count"
+
 }

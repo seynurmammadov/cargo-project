@@ -90,11 +90,13 @@
   </div>
   <div class="container-fluid pl-pr-10 pt-2">
     <div class="bg-color p-4 pl-5 rounded">
-      <div class="form-box">
-        <p><b>Təklif və şikayətlərinizlə əlaqədar olaraq müraciət edin:</b> <a href="mailto:qualitycontrol@camex.az" style="color: red"> qualitycontrol@camex.az</a></p>
-        <p>Qeyd: həftəiçi 19:00-dan, şənbə günləri 16:00-dan sonra bağlamaların təhvil verilməsi üçün, daşınma haqqı mütləq şəkildə <span style="color:red">ONLAYN</span> ödənilməlidir.</p>
+      <div class="form-box" [innerHTML]="this.desc">
       </div>
     </div>
   </div>
 </section>
 <app-footer></app-footer>
+<!--
+<p><b>Təklif və şikayətlərinizlə əlaqədar olaraq müraciət edin:</b> <a href="mailto:qualitycontrol@camex.az" style="color: red"> qualitycontrol@camex.az</a></p>
+<p>Qeyd: həftəiçi 19:00-dan, şənbə günləri 16:00-dan sonra bağlamaların təhvil verilməsi üçün, daşınma haqqı mütləq şəkildə <span style="color:red">ONLAYN</span> ödənilməlidir.</p>
+-->

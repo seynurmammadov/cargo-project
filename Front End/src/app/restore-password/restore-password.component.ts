@@ -49,7 +49,7 @@ export class RestorePasswordComponent implements OnInit {
     const body = new FormData();
     body.append("id",this.id.toString())
     body.append("NewPassword",this.Form.controls["Password"].value)
-    this.service.restore(body).subscribe(()=> {
+      this.service.restore(body).subscribe(()=> {
       alertify.success(this.translate.instant("Restored"));
       setTimeout(()=>{
           this.route.navigate(['login'])

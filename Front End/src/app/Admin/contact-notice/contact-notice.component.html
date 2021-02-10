@@ -1,0 +1,47 @@
+<app-layout>
+  <div id="countries">
+    <app-title-admin [title]="'Əlagə bildirişi'"></app-title-admin>
+    <div style="    padding: 25px 35px;">
+      <div class="top-title d-flex justify-content-between align-items-center">
+        <span class="m-0 pl-3 title">Əlagə bildirişi</span>
+      </div>
+    </div>
+
+    <div class="margin" *ngIf="loaded">
+      <div class="content">
+        <form [formGroup]="form"  novalidate (ngSubmit)="submit()">
+          <div mat-dialog-content >
+            <div class="d-flex flex-wrap">
+              <div class="pt-4 pb-4  pl-1 pr-1 w-100">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap w-100">
+                    <div class="col-12">   <mat-label class="text-capitalize"> Əlagə bildirişi Rus dilində</mat-label>
+                      <br>
+                      <br>
+                      <ckeditor [editor]="Editor" formControlName="DescRus" data="<p>Hello, world!</p>"></ckeditor>
+                      <br>
+                      <mat-label class="text-capitalize">Əlagə bildirişi İnglis dilində</mat-label>
+                      <br>
+                      <br>
+                      <ckeditor [editor]="Editor" formControlName="DescEng"  data="<p>Hello, world!</p>"></ckeditor>
+                      <br>
+                      <mat-label class="text-capitalize">Əlagə bildirişi Azərbaycan dilində</mat-label>
+                      <br>
+                      <br>
+                      <ckeditor [editor]="Editor" formControlName="DescAz" data="<p>Hello, world!</p>"></ckeditor>
+                      <br>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <div mat-dialog-actions class="col-12 d-flex justify-content-end">
+            <button mat-raised-button class="text-uppercase reg-button"  color="primary" [disabled]="!form.valid">Yenilə</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</app-layout>

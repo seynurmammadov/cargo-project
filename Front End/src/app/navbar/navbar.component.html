@@ -3,7 +3,7 @@
     <div class="container-fluid pl-pr-10 ">
      <div class="d-flex justify-content-between">
        <nav class=" col-7  p-0">
-         <a routerLink="" class="logo lg-logo"></a>
+         <a routerLink=""  *ngIf="loaded2" [ngStyle]="{'background-image': 'url('+createImgPathLogo(this.data.logoNavbar)+')'}" class="logo lg-logo"></a>
          <a routerLink="/home"></a>
          <a routerLink="/news"> {{'news' | translate }}</a>
          <a routerLink="/faq" class="text-uppercase">{{'FAQ' | translate }}</a>
@@ -12,9 +12,9 @@
          <a routerLink="/services">{{'services' | translate }}</a>
        </nav>
        <div class="top-header-right  col-5 justify-content-end p-0">
-         <div class="phone">
+         <div class="phone" *ngIf="loaded2">
            <span>{{'call' | translate }}</span>
-           <span>  *2112</span>
+             <span>  {{this.data.callCenter}}</span>
          </div>
          <div class="langues">
            <div class="dropdown">
@@ -46,7 +46,7 @@
   </div>
   <div class="container-fluid pl-pr-10 d-flex justify-content-between">
     <div class="d-flex col-8 p-0">
-      <a routerLink="" class="logo lg-logo"></a>
+      <a *ngIf="loaded2" routerLink="" class="logo lg-logo" [ngStyle]="{'background-image': 'url('+createImgPathLogo(this.data.logoNavbar)+')'}"></a>
       <div class="menu">
         <ul>
           <a routerLink="/shopping"><li><i class="far fa-shopping-bag fa-nav-icon"></i>{{'shopping' | translate }}</li></a>

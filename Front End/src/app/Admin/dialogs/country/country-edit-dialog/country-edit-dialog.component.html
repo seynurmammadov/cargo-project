@@ -1,5 +1,5 @@
 <h1 class="mb-2" mat-dialog-title>
-  <b>Ölkə yarad</b>
+  <b>Ölkə yenilə</b>
 </h1>
 
 <form [formGroup]="editForm" novalidate (ngSubmit)="submit()">
@@ -87,7 +87,7 @@
   </div>
   <div mat-dialog-actions class="w-100 justify-content-end">
     <button mat-button mat-dialog-close color="warn">Ləğv Et</button>
-    <button mat-raised-button class="text-uppercase reg-button"  color="primary" [disabled]="!editForm.valid">Yarad</button>
+    <button mat-raised-button class="text-uppercase reg-button"  color="primary" [disabled]="!editForm.valid">Yenilə</button>
   </div>
 
 </form>

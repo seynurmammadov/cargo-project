@@ -183,7 +183,7 @@ namespace CamexAPI.Controllers
 
                     string folder = Path.Combine("Site", "images", "news");
                     string fileName = await news.Photo.SaveImage(_env.WebRootPath, folder);
-                    news.Image = fileName;
+                    db_news.Image = fileName;
                 }
                 db_news.IsActived = news.IsActived;
                 _newsContext.Update(db_news);

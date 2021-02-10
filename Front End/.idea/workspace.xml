@@ -13,113 +13,52 @@
       <change beforePath="$PROJECT_DIR$/../Back End/CamexAPI/obj/Debug/netcoreapp3.1/CamexAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/CamexAPI/obj/Debug/netcoreapp3.1/CamexAPI.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Back End/CamexAPI/obj/Debug/netcoreapp3.1/CamexAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../Back End/CamexAPI/obj/Debug/netcoreapp3.1/CamexAPI.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/cities/cities.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/cities/cities.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/cities/cities.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/cities/cities.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/countries-all/countries-all.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/countries-all/countries-all.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/countries-all/countries-all.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/countries-all/countries-all.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/countries-all/country-info/country-info.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/countries-all/country-info/country-info.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/countries-all/country-info/country-info.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/countries-all/country-info/country-info.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/countries-all/country-tariff/country-tariff.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/countries-all/country-tariff/country-tariff.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/countries-all/country-tariff/country-tariff.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/countries-all/country-tariff/country-tariff.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/countries-all/country-tariff/tariff-prices/tariff-prices.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/countries-all/country-tariff/tariff-prices/tariff-prices.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/countries-all/country-tariff/tariff-prices/tariff-prices.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/countries-all/country-tariff/tariff-prices/tariff-prices.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/courier-service/courier-service.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/courier-service/courier-service.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/courier-service/courier-service.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/courier-service/courier-service.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/add-statement-to-anbar/add-statement-to-anbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/add-statement-to-anbar/add-statement-to-anbar.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/add-to-anbar-new-parcel/add-to-anbar-new-parcel.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/add-to-anbar-new-parcel/add-to-anbar-new-parcel.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/add-to-anbar-new-parcel/add-to-anbar-new-parcel.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/add-to-anbar-new-parcel/add-to-anbar-new-parcel.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/answer-user/answer-user.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/answer-user/answer-user.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/add-to-anbar-new-parcel/add-to-anbar-new-parcel.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/add-to-anbar-new-parcel/add-to-anbar-new-parcel.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/auth/info-business-dialog/info-business-dialog.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/auth/info-business-dialog/info-business-dialog.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/auth/info-dialog/info-dialog.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/auth/info-dialog/info-dialog.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/auth/reset-dialog/reset-dialog.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/auth/reset-dialog/reset-dialog.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/auth/role-dialog/role-dialog.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/auth/role-dialog/role-dialog.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/cargo/add-to-anbar/add-to-anbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/cargo/add-to-anbar/add-to-anbar.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/cargo/add-to-anbar/add-to-anbar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/cargo/add-to-anbar/add-to-anbar.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/city/create-city/create-city.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/city/create-city/create-city.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/city/update-city/update-city.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/city/update-city/update-city.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/country/country-create-dialog/country-create-dialog.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/country/country-create-dialog/country-create-dialog.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/country/country-create-dialog/country-create-dialog.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/country/country-create-dialog/country-create-dialog.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/auth/reset-dialog/reset-dialog.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/auth/reset-dialog/reset-dialog.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/auth/role-dialog/role-dialog.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/auth/role-dialog/role-dialog.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/country/country-edit-dialog/country-edit-dialog.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/country/country-edit-dialog/country-edit-dialog.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/country/country-edit-dialog/country-edit-dialog.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/country/country-edit-dialog/country-edit-dialog.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/country/country-info-create/country-info-create.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/country/country-info-create/country-info-create.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/country/country-info-edit/country-info-edit.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/country/country-info-edit/country-info-edit.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/country/price-create/price-create.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/country/price-create/price-create.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/country/price-update/price-update.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/country/price-update/price-update.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/country/tariff-create/tariff-create.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/country/tariff-create/tariff-create.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/country/tariff-update/tariff-update.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/country/tariff-update/tariff-update.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/courier/courier-create/courier-create.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/courier/courier-create/courier-create.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/courier/courier-update/courier-update.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/courier/courier-update/courier-update.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/faq/faq-create/faq-create.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/faq/faq-create/faq-create.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/faq/faq-update/faq-update.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/faq/faq-update/faq-update.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/faq/faq-update/faq-update.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/faq/faq-update/faq-update.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/flight/create-flight/create-flight.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/flight/create-flight/create-flight.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/flight/update-flight/update-flight.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/flight/update-flight/update-flight.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/news/create-news/create-news.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/news/create-news/create-news.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/news/create-news/create-news.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/news/create-news/create-news.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/news/update-news/update-news.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/news/update-news/update-news.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/news/update-news/update-news.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/news/update-news/update-news.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/office/create-office/create-office.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/office/create-office/create-office.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/office/update-office/update-office.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/office/update-office/update-office.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/order/order-info/order-info.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/order/order-info/order-info.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/parcel-info/parcel-info.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/parcel-info/parcel-info.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/product/create-ptoduct/create-ptoduct.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/product/create-ptoduct/create-ptoduct.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/product/update-product/update-product.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/product/update-product/update-product.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/service/service-create/service-create.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/service/service-create/service-create.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/service/service-create/service-create.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/service/service-create/service-create.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/service/service-update/service-update.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/service/service-update/service-update.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/service/service-update/service-update.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/service/service-update/service-update.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/shop/shop-create-dialog/shop-create-dialog.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/shop/shop-create-dialog/shop-create-dialog.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/shop/shop-link-create-dialog/shop-link-create-dialog.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/shop/shop-link-create-dialog/shop-link-create-dialog.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/shop/shop-link-update-dialog/shop-link-update-dialog.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/shop/shop-link-update-dialog/shop-link-update-dialog.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/shop/shop-update-dialog/shop-update-dialog.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/shop/shop-update-dialog/shop-update-dialog.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/dialogs/status-change/status-change.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/dialogs/status-change/status-change.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/faqadmin/faqadmin.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/faqadmin/faqadmin.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/faqadmin/faqadmin.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/faqadmin/faqadmin.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/flight/flight.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/flight/flight.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/flight/flight.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/flight/flight.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/Admin/layout/layout.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/layout/layout.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/layout/layout.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/layout/layout.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/layout/layout.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/layout/layout.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/messages/messages.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/messages/messages.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/messages/messages.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/messages/messages.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/news-admin/news-admin.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/news-admin/news-admin.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/news-admin/news-admin.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/news-admin/news-admin.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/offices/offices.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/offices/offices.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/offices/offices.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/offices/offices.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/order-in-process/order-in-process.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/order-in-process/order-in-process.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/order-in-process/order-in-process.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/order-in-process/order-in-process.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/order-processed/order-processed.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/order-processed/order-processed.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/order-processed/order-processed.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/order-processed/order-processed.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/parcels/parcels.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/parcels/parcels.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/products/products.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/products/products.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/products/products.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/products/products.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/service-admin/service-admin.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/service-admin/service-admin.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/service-admin/service-admin.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/service-admin/service-admin.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/shops/shop-link/shop-link.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/shops/shop-link/shop-link.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/shops/shop-link/shop-link.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/shops/shop-link/shop-link.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/shops/shops.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/shops/shops.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/shops/shops.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/shops/shops.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/statemets-admin/statemets-admin.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/statemets-admin/statemets-admin.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/title-admin/title-admin.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/title-admin/title-admin.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/users/user-orders/user-orders.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/users/user-orders/user-orders.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/users/user-orders/user-orders.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/users/user-orders/user-orders.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Admin/users/users.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/users/users.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Core/services/navigation/navigation.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Core/services/navigation/navigation.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/Core/services/user/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Core/services/user/user.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Admin/parcels/parcels.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Admin/parcels/parcels.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/about/about.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/about/about.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/about/about.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/about/about.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/contact/contact.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/contact/contact.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/contact/contact.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/contact/contact.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/footer/footer.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/footer/footer.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/footer/footer.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/footer/footer.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/home/home.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/home/home.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/mobile-navbar/mobile-navbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/mobile-navbar/mobile-navbar.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/myprofile/dialogs/waiting-invoice-dialog/waiting-invoice-dialog.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/myprofile/dialogs/waiting-invoice-dialog/waiting-invoice-dialog.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/myprofile/control-panel/control-panel.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/myprofile/control-panel/control-panel.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/myprofile/control-panel/control-panel.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/myprofile/control-panel/control-panel.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/myprofile/countries/countries.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/myprofile/countries/countries.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/myprofile/ended/ended.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/myprofile/ended/ended.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/myprofile/in-anbar/in-anbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/myprofile/in-anbar/in-anbar.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/myprofile/myprofile.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/myprofile/myprofile.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/myprofile/orders/orders.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/myprofile/orders/orders.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/myprofile/statements/statements.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/myprofile/statements/statements.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/myprofile/user-settings/user-settings.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/myprofile/user-settings/user-settings.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/myprofile/user-settings/user-settings.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/myprofile/user-settings/user-settings.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/myprofile/user-settings/user-settings.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/myprofile/user-settings/user-settings.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/myprofile/waiting-invoice/waiting-invoice.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/myprofile/waiting-invoice/waiting-invoice.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/navbar/models/UserNavVM.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/navbar/models/UserNavVM.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/navbar/navbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/navbar/navbar.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/navbar/navbar.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/navbar/navbar.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/navbar/navbar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/navbar/navbar.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/restore/restore.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/restore/restore.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/restore/restore.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/restore/restore.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/restore-password/restore-password.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/restore-password/restore-password.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/service/service.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/service/service.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/tariffs/tariffs.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/tariffs/tariffs.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/i18n/az.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/i18n/az.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/i18n/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/i18n/en.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/i18n/ru.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/i18n/ru.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/src/favicon.ico" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,9 +84,6 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedIndex" value="1" />
-  </component>
   <component name="ProjectId" id="1ms2WZSFgc13IO9IF6MvR9ZxM1L" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -170,11 +106,11 @@
       <recent name="C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Front End\src\app\Admin\@theme" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Front End\src" />
       <recent name="C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Front End\src\app\Core\services\Admin" />
       <recent name="C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Front End\src\app\Core\services\Admin\Shop" />
       <recent name="C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Front End\src\app\Admin\dialogs\order" />
       <recent name="C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Front End\src\app\Core\services\UserOrder" />
-      <recent name="C:\Users\Seynur\Desktop\Folders\Projects\cargo-project\Front End\src\app\Admin\dialogs\auth" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -219,6 +155,7 @@
       <workItem from="1612699535262" duration="35592000" />
       <workItem from="1612789320483" duration="32126000" />
       <workItem from="1612880256383" duration="33965000" />
+      <workItem from="1612957884237" duration="19495000" />
     </task>
     <servers />
   </component>
@@ -332,12 +269,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/myprofile/user-settings/user-settings.component.ts</url>
-          <line>32</line>
+          <line>37</line>
           <option name="timeStamp" value="37" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/myprofile/user-settings/user-settings.component.ts</url>
-          <line>128</line>
+          <line>134</line>
           <option name="timeStamp" value="40" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -348,8 +285,31 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/restore-password/restore-password.component.html</url>
           <line>14</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/Admin/dialogs/country/country-edit-dialog/country-edit-dialog.component.html</url>
+          <line>4</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/Admin/bio/bio.component.html</url>
+          <line>11</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/Admin/bio/bio.component.html</url>
+          <line>9</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/Admin/about-us/about-us.component.html</url>
+          <line>9</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="48" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

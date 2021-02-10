@@ -5,6 +5,7 @@ import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
 import {LanguagesService} from '../Core/services/lang/languages.service';
 import {OfficeService} from '../Core/services/Admin/office/office.service';
 import {MessageService} from '../Core/services/message/message.service';
+import {DescriptionsService} from '../Core/services/descriptions/descriptions.service';
 declare let alertify:any
 @Component({
   selector: 'app-contact',
@@ -17,7 +18,9 @@ export class ContactComponent implements OnInit {
   offices:Office[];
   form:FormGroup;
   @ViewChild(FormGroupDirective) formGroupDirective: FormGroupDirective;
-  constructor(private service:OfficeService,private serviceMessage:MessageService,private translate: TranslateService,private languageService:LanguagesService) {
+  constructor(private service:OfficeService,
+              private serviceContact:DescriptionsService,
+              private serviceMessage:MessageService,private translate: TranslateService,private languageService:LanguagesService) {
     this.form= new FormGroup({
       FullName: new FormControl(
         '', [
@@ -57,6 +60,8 @@ export class ContactComponent implements OnInit {
   get PhoneNumber() {
     return this.form.get('PhoneNumber');
   }
+  data:any
+  desc:string
   get(){
     this.service.getActive().subscribe(res=>{
       res.forEach(r=>{
@@ -67,6 +72,18 @@ export class ContactComponent implements OnInit {
         })
       })
       this.offices=res;
+    })
+    this.serviceContact.getContactDesc().subscribe((res)=>{
+      this.data=res[0]
+      if(this.languageService.select.id==1){
+        this.desc=this.data.descEng
+      }
+      if(this.languageService.select.id==2){
+        this.desc=this.data.descRus
+      }
+      if(this.languageService.select.id==3){
+        this.desc=this.data.descAz
+      }
     })
   }
   reset(){

@@ -296,7 +296,7 @@ namespace CamexAPI.Controllers
                     Address = privateUser.Address,
                     Image = "placeholder.jpg",
                     IsTermsAccepted = privateUser.IsTermsAccepted,
-                    IsActived = false,
+                    IsActived = true,
                 };
 
                 user.Balance = new Balance
@@ -572,7 +572,7 @@ namespace CamexAPI.Controllers
                     Address = businessUser.Address,
                     Image = "placeholder.jpg",
                     IsTermsAccepted = businessUser.IsTermsAccepted,
-                    IsActived = false,
+                    IsActived = true,
                 };
 
                 user.Balance = new Balance

@@ -2,7 +2,6 @@ import { ElementRef, ViewEncapsulation} from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import * as Parallax from 'parallax-js';
 import {Office} from '../Core/models/Office';
-import {Country} from '../Core/models/Country';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {CountriesService} from '../Core/services/Admin/countries/countries.service';
 import {OfficeService} from '../Core/services/Admin/office/office.service';
@@ -11,6 +10,7 @@ import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
 import {CountryData} from '../Admin/countries-all/CountryData';
 import {NewsService} from '../Core/services/Admin/news/news.service';
 import {News} from '../Core/models/News';
+import {DescriptionsService} from '../Core/services/descriptions/descriptions.service';
 
 @Component({
   selector: 'app-home',
@@ -28,11 +28,11 @@ export class HomeComponent implements OnInit {
   total=0;
   newsArr:News[]=[];
   Form:FormGroup
-  imgSrc:string="../../assets/image/news/5f4fcff5535eb.png";
   border:string;
   constructor(private elementRef: ElementRef,private serviceCountry:CountriesService,private serviceOffice:OfficeService,
               private languageService:LanguagesService,
               public serviceNews:NewsService,
+              private service:DescriptionsService,
               private translate: TranslateService,) {
     this.border= window.innerWidth / 2 + 160 + 'px solid transparent'
     this.Form= new FormGroup({
@@ -79,6 +79,8 @@ export class HomeComponent implements OnInit {
     this.get()
   }
   loaded:boolean=false
+  data:any
+  title:string
   get(){
     this.serviceCountry.getWithTariffs().subscribe((res)=>{
       this.countries=res;
@@ -106,6 +108,18 @@ export class HomeComponent implements OnInit {
       this.loaded=true
     })
     this.newsArr.reverse();
+    this.service.getBio().subscribe((res)=>{
+      this.data=res[0]
+      if(this.languageService.select.id==1){
+        this.title=this.data.sliderTitleEng
+      }
+      if(this.languageService.select.id==2){
+        this.title=this.data.sliderTitleRus
+      }
+      if(this.languageService.select.id==3){
+        this.title=this.data.sliderTitleAz
+      }
+    })
   }
 
   onResize(){

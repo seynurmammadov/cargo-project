@@ -1,16 +1,20 @@
-﻿using BackProject.Helpers;
+﻿using BackProject.Extentions;
+using BackProject.Helpers;
 using Business.Abstract;
+using CamexAPI.Controllers.Admin;
 using CamexAPI.Controllers.Admin.Models;
 using CamexAPI.Identity;
 using CamexAPI.Models;
 using CamexAPI.Models.VM;
 using Entity.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -31,9 +35,10 @@ namespace CamexAPI.Controllers
         public readonly IBusinessCustomerService _businesContext;
         private readonly ICityService _cityContext;
         private readonly IOfficeService _officeContext;
+        private readonly IWebHostEnvironment _env;
 
         private readonly IHttpContextAccessor _contextAccessor;
-        public UserController(MyIdentityDbContext user, IHttpContextAccessor contextAccessor, IOfficeService officeContext, ICityService cityContext, UserManager<AppUser> userManager, IPrivateCustomerService privateContext, IBusinessCustomerService businesContext)
+        public UserController(MyIdentityDbContext user, IHttpContextAccessor contextAccessor, IOfficeService officeContext, IWebHostEnvironment env, ICityService cityContext, UserManager<AppUser> userManager, IPrivateCustomerService privateContext, IBusinessCustomerService businesContext)
         {
             _privateContext = privateContext;
             _user = user;
@@ -42,6 +47,7 @@ namespace CamexAPI.Controllers
             _cityContext = cityContext;
             _officeContext = officeContext;
             _contextAccessor = contextAccessor;
+            _env = env;
         }
 
         [HttpGet]
@@ -213,6 +219,15 @@ namespace CamexAPI.Controllers
                         }
                         });
                     }
+                }
+                if (privateUser.Photo != null)
+                {
+                    ValidateModel res = privateUser.Photo.PhotoValidate();
+                    if (!res.Success) return StatusCode(StatusCodes.Status500InternalServerError, res.Response);
+
+                    string folder = Path.Combine("Site", "images", "users");
+                    string fileName = await privateUser.Photo.SaveImage(_env.WebRootPath, folder);
+                    user.Image = fileName;
                 }
                 user.Address = privateUser.Address;
                 user.CityId = privateUser.CityId;
@@ -389,6 +404,15 @@ namespace CamexAPI.Controllers
                         }
                       });
                     }
+                }
+                if (businessUser.Photo != null)
+                {
+                    ValidateModel res = businessUser.Photo.PhotoValidate();
+                    if (!res.Success) return StatusCode(StatusCodes.Status500InternalServerError, res.Response);
+
+                    string folder = Path.Combine("Site", "images", "users");
+                    string fileName = await businessUser.Photo.SaveImage(_env.WebRootPath, folder);
+                    user.Image = fileName;
                 }
                 user.Address = businessUser.Address;
                 user.CityId = businessUser.CityId;

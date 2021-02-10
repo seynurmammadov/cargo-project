@@ -14,7 +14,7 @@
             <!-- Checkbox Column -->
             <ng-container matColumnDef="select" >
               <th mat-header-cell  *matHeaderCellDef >
-                <mat-checkbox style="padding-left: 12px;"  color="primary" (change)="$event ? masterToggle() : null"
+                <mat-checkbox style="padding-left: 21px;"  color="primary" (change)="$event ? masterToggle() : null"
                               [checked]="selection.hasValue() && isAllSelected()"
                                (change)="log()"
                               [indeterminate]="selection.hasValue() && !isAllSelected()"
@@ -78,12 +78,12 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             <tr class="mat-row" *matNoDataRow>
-              <td class="mat-cell" colspan="12">No data matching the filter "{{input.value}}"</td>
+              <td class="mat-cell"  colspan="12"> {{'DataNotFound'|translate}}</td>
             </tr>
           </table>
         </div>
         <div *ngIf="balanceDisplay" class=" mt-3 pr-2 pl-2 foot-price d-flex justify-content-between align-items-center">
-            <span class="m-0 pl-3 ">Sayi
+            <span class="m-0 pl-3 ">{{"count"|translate}}
               {{this.count}}
             </span>
           <div class="d-flex">
@@ -91,7 +91,7 @@
               <i class="fad fa-wallet mr-2" style="font-size: 20px;color: #2F6BB7"></i>
               {{this.totalPrice}} $
             </div>
-            <button mat-raised-button (click)="pay(this.totalPrice)">Balansdan Ode</button>
+            <button mat-raised-button (click)="pay(this.totalPrice)">{{'BalancePay'|translate}}</button>
           </div>
         </div>
           <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>

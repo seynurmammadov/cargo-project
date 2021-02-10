@@ -17,11 +17,10 @@
               <div class="col-lg-10 col-md-10 col-sm-8 py-3 px-4 countryAbout d-flex flex-wrap">
                 <div class="col-lg-3 col-md-4 col-sm-6  col-12" *ngFor="let desc of country.countryAddressDescriptions">
                   <span>{{desc.title}}:</span>
-                  <p><b>{{desc.description}}</b></p>
+                  <p style="font-size: 13px"><b [innerHTML]="desc.description"></b></p>
                 </div>
 
-                <div class="col-12 notice mt-4">
-                  {{country.noticeTranslate[0].name}}
+                <div class="col-12 notice mt-4" [innerHTML]="country.noticeTranslate[0].name">
                 </div>
               </div>
             </div>

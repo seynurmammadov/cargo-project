@@ -1,0 +1,120 @@
+<app-layout>
+  <div id="countries">
+    <app-title-admin [title]="'Bio'"></app-title-admin>
+    <div style="    padding: 25px 35px;">
+      <div class="top-title d-flex justify-content-between align-items-center">
+        <span class="m-0 pl-3 title">Bio</span>
+      </div>
+    </div>
+
+    <div class="margin" *ngIf="loaded">
+      <div class="content">
+        <form [formGroup]="form"  novalidate (ngSubmit)="submit()">
+          <div mat-dialog-content >
+            <div class="d-flex flex-wrap">
+              <div class="pt-4 pb-4  pl-1 pr-1 w-100">
+                <div class="w-100">
+                  <div class="d-flex flex-wrap w-100">
+                    <div class="col-12">
+                      <mat-form-field class="w-100" appearance="fill">
+                        <mat-label class="text-capitalize">Saytın Title-lı</mat-label>
+                        <input type="text" matInput formControlName="PageTitle">
+                        <mat-error  *ngIf="errorHandling('PageTitle','required')" [innerHTML]="'Required' | translate ">
+                        </mat-error>
+                      </mat-form-field>
+                      <mat-form-field class="w-100" appearance="fill">
+                        <mat-label class="text-capitalize">Telefon nömrəsi</mat-label>
+                        <input type="text" matInput formControlName="CallCenter">
+                        <mat-error  *ngIf="errorHandling('CallCenter','required')" [innerHTML]="'Required' | translate ">
+                        </mat-error>
+                      </mat-form-field>
+                      <mat-form-field class="w-100" appearance="fill">
+                        <mat-label class="text-capitalize">Footer tesviri İnglis dilində</mat-label>
+                        <input type="text" matInput formControlName="ShortDescEng" >
+                        <mat-error  *ngIf="errorHandling('ShortDescEng','required')" [innerHTML]="'Required' | translate ">
+                        </mat-error>
+                      </mat-form-field>
+                      <mat-form-field class="w-100" appearance="fill">
+                        <mat-label class="text-capitalize">Footer tesviri Rus dilində</mat-label>
+                        <input type="text" matInput formControlName="ShortDescRus" >
+                        <mat-error  *ngIf="errorHandling('ShortDescRus','required')" [innerHTML]="'Required' | translate ">
+                        </mat-error>
+                      </mat-form-field>
+                      <mat-form-field class="w-100" appearance="fill">
+                        <mat-label class="text-capitalize">Footer tesviri Azərbaycan dilində</mat-label>
+                        <input type="text" matInput formControlName="ShortDescAz" >
+                        <mat-error  *ngIf="errorHandling('ShortDescAz','required')" [innerHTML]="'Required' | translate ">
+                        </mat-error>
+                      </mat-form-field>
+
+                      <mat-form-field class="w-100" appearance="fill">
+                        <mat-label class="text-capitalize">Slider title-lı İnglis dilində</mat-label>
+                        <input type="text" matInput formControlName="SliderTitleEng" >
+                        <mat-error  *ngIf="errorHandling('SliderTitleEng','required')" [innerHTML]="'Required' | translate ">
+                        </mat-error>
+                      </mat-form-field>
+
+                      <mat-form-field class="w-100" appearance="fill">
+                        <mat-label class="text-capitalize">Slider title-lı Rus dilində</mat-label>
+                        <input type="text" matInput formControlName="SliderTitleRus" >
+                        <mat-error  *ngIf="errorHandling('SliderTitleRus','required')" [innerHTML]="'Required' | translate ">
+                        </mat-error>
+                      </mat-form-field>
+
+                      <mat-form-field class="w-100" appearance="fill">
+                        <mat-label class="text-capitalize">Slider title-lı Azərbaycan dilində</mat-label>
+                        <input type="text" matInput formControlName="SliderTitleAz" >
+                        <mat-error  *ngIf="errorHandling('SliderTitleAz','required')" [innerHTML]="'Required' | translate ">
+                        </mat-error>
+                      </mat-form-field>
+
+                      <div class="w-100 " id="fileInput">
+                        <div style="width: 200px;" class="mb-3">
+                          <img [src]="createImgPath(this.data.logoNavbar)" width="100%">
+                        </div>
+                        <mat-form-field>
+                          <mat-label class="text-capitalize">Navbar logosu</mat-label>
+                          <div class="d-flex justify-content-between">
+                            <input matInput [value]="fileAttr" readonly name="name" />
+                            <button mat-raised-button type="button"  (click)="fileInput.click()">
+                              Seç
+                            </button>
+                            <input type="file"  hidden #fileInput formControlName="FileInput"  (change)="uploadFileEvt($event)" name="uploadFile"
+                                   accept="image/*" />
+                          </div>
+                          <mat-error  *ngIf="errorHandling('FileInput','required')" [innerHTML]="'Required' | translate ">
+                          </mat-error>
+                        </mat-form-field>
+                        <div style="width: 200px;" class="mb-3">
+                          <img [src]="createImgPath(this.data.logoFooter)" width="100%">
+                        </div>
+                        <mat-form-field>
+                          <mat-label class="text-capitalize">Footer Logosu</mat-label>
+                          <div class="d-flex justify-content-between">
+                            <input matInput [value]="fileAttr2" readonly name="name" />
+                            <button mat-raised-button type="button"  (click)="fileInput2.click()">
+                              Seç
+                            </button>
+                            <input type="file"  hidden #fileInput2 formControlName="FileInput2"  (change)="uploadFileEvt2($event)" name="uploadFile2"
+                                   accept="image/*" />
+                          </div>
+                          <mat-error  *ngIf="errorHandling('FileInput2','required')" [innerHTML]="'Required' | translate ">
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div mat-dialog-actions class="col-12 d-flex justify-content-end">
+            <button mat-raised-button class="text-uppercase reg-button"  color="primary" [disabled]="!form.valid">Yenilə</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</app-layout>

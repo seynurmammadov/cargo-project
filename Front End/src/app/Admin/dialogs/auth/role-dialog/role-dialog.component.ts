@@ -96,7 +96,7 @@ export class RoleDialogComponent implements OnInit {
   }
   addRole(){
     if(this.myuserRoles.length==0 && this.data.str.length==1){
-      alertify.error("Select Roles")
+      alertify.error("Rol seçin!")
       return
     }
     const body = {
@@ -105,7 +105,7 @@ export class RoleDialogComponent implements OnInit {
     }
     this.service.AddRoles(body).subscribe(
       ()=> {
-        alertify.success("Changed!");
+        alertify.success("Dəyişildi!");
         this.dialogRef.close();
       },
       error => {
